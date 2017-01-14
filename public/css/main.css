@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+body {
+  height: 100%; }
+
+h1, h2, h3, p, ul, li, a, label, input {
+  font-family: "Roboto", sans-serif;
+  line-height: 1.5em; }
+
+p, li, a, label, input {
+  font-size: 14px; }
+
+h1 {
+  color: #5898D8;
+  font-size: 32px; }
+
+h2 {
+  font-size: 28px; }
+
+h2.page-title {
+  margin: 0 auto 30px auto;
+  width: 100%;
+  display: block;
+  text-align: center; }
+
+h3 {
+  font-size: 22px; }
+
+.footer .navbar {
+  background-color: black;
+  position: fixed;
+  width: 100%; }
+  .footer .navbar ul.nav-list {
+    padding-left: 0;
+    display: flex;
+    justify-content: space-around; }
+    .footer .navbar ul.nav-list li {
+      padding: 10px; }
+      .footer .navbar ul.nav-list li a {
+        color: white;
+        text-decoration: none; }
+      .footer .navbar ul.nav-list li a:hover {
+        color: #8CD7FC;
+        text-decoration: none; }
+
+div.form-container {
+  margin: 0 auto;
+  display: block;
+  width: 100%;
+  text-align: center; }
+  div.form-container form.login-form input, div.form-container form.login-form select, div.form-container form.login-form label, div.form-container form.signup-form input, div.form-container form.signup-form select, div.form-container form.signup-form label, div.form-container form.address-form input, div.form-container form.address-form select, div.form-container form.address-form label {
+    width: 100%;
+    display: block;
+    margin: 10px auto;
+    text-align: left; }
+  div.form-container form.login-form label, div.form-container form.signup-form label, div.form-container form.address-form label {
+    margin-top: 20px; }
+  div.form-container form.login-form input:required:invalid, div.form-container form.login-form input:focus:invalid, div.form-container form.signup-form input:required:invalid, div.form-container form.signup-form input:focus:invalid, div.form-container form.address-form input:required:invalid, div.form-container form.address-form input:focus:invalid {
+    color: #A12827;
+    -moz-box-shadow: none; }
+  div.form-container form.login-form div.dob-container, div.form-container form.signup-form div.dob-container, div.form-container form.address-form div.dob-container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; }
+    div.form-container form.login-form div.dob-container select.dob-day, div.form-container form.login-form div.dob-container select.dob-month, div.form-container form.login-form div.dob-container select.dob-year, div.form-container form.signup-form div.dob-container select.dob-day, div.form-container form.signup-form div.dob-container select.dob-month, div.form-container form.signup-form div.dob-container select.dob-year, div.form-container form.address-form div.dob-container select.dob-day, div.form-container form.address-form div.dob-container select.dob-month, div.form-container form.address-form div.dob-container select.dob-year {
+      width: 60% / 3; }
+    div.form-container form.login-form div.dob-container select.dob-month, div.form-container form.signup-form div.dob-container select.dob-month, div.form-container form.address-form div.dob-container select.dob-month {
+      margin-right: 10px; }
+    div.form-container form.login-form div.dob-container select.dob-year, div.form-container form.signup-form div.dob-container select.dob-year, div.form-container form.address-form div.dob-container select.dob-year {
+      margin-left: 10px; }
+  div.form-container form.login-form button, div.form-container form.signup-form button, div.form-container form.address-form button {
+    font-size: 14px;
+    font-weight: 60;
+    text-transform: uppercase;
+    background-color: #8CD7FC;
+    color: #FFF;
+    border: none;
+    width: 100%;
+    display: block;
+    margin: 20px auto 50px; }
+
+.rep-photo-container {
+  width: 150px;
+  height: 150px;
+  max-width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 0 auto; }
+
+img.rep-photo {
+  display: block;
+  margin: 0 auto;
+  height: 130%; }
+
+p.rep-names {
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0 auto; }

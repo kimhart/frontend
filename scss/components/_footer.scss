@@ -1,0 +1,23 @@
+.footer {
+  .navbar {
+    background-color: black;
+    position: fixed;
+    width: 100%;
+    ul.nav-list {
+      padding-left: 0;
+      display: flex;
+      justify-content: space-around;
+      li {
+        padding: 10px;
+        a {
+          color: white;
+          text-decoration: none;
+        }
+        a:hover {
+          color: $sky-blue;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

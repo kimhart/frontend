@@ -1,0 +1,28 @@
+h1, h2, h3, p, ul, li, a, label, input {
+ font-family: $roboto-font;
+ line-height: $standard-line-height;
+}
+
+p,  li, a, label, input {
+  font-size: $paragraph-size;
+}
+
+h1 {
+  color: $cornflower-blue;
+  font-size: $standard-h1;
+}
+
+h2 {
+  font-size: $standard-h2;
+}
+
+h2.page-title {
+  margin: 0 auto 30px auto;
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+
+h3 {
+  font-size: $standard-h3;
+}

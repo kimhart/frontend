@@ -1,0 +1,21 @@
+.rep-photo-container {
+  width: 150px;
+  height: 150px;
+  max-width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+img.rep-photo {
+  display: block; 
+  margin: 0 auto;
+  height: 130%;
+}
+
+p.rep-names {
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0 auto;
+}

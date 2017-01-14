@@ -1,0 +1,3 @@
+{
+  "ignore": ["graphql/schema.json", "scss/main.scss"]
+}

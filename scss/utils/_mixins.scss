@@ -1,0 +1,12 @@
+$desktop: 1024px;
+$tablet: 768px;
+$iphone-6: 736px;
+$iphone-5: 640px;
+$iphone-old: 400px;
+
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+
