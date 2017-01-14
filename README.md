@@ -13,6 +13,6 @@ Check out the Python code [here](https://github.com/alexhubbard89/reps_app).
 
 ### Team
 
-*Front End Engineer — [Kim Hart](https://github.com/kimhart)
-*Data Scientist / Python Developer — [Alex Hubbard](https://github.com/alexhubbard89)
-*UX Designer / Research Lead — Jesse Smith
+* Front End Engineer — [Kim Hart](https://github.com/kimhart)
+* Data Scientist / Python Developer — [Alex Hubbard](https://github.com/alexhubbard89)
+* UX Designer / Research Lead — Jesse Smith
