@@ -1,4 +1,7 @@
-body {
-  height: 100%;
+.page-wrap {
+  background-color: skyblue;
+  @include breakpoint(baby-bear) { 
+    background-color: pink; 
+  }
 }
 

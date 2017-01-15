@@ -1,12 +1,17 @@
-$desktop: 1024px;
-$tablet: 768px;
-$iphone-6: 736px;
-$iphone-5: 640px;
-$iphone-old: 400px;
 
-@mixin desktop {
-  @media (min-width: #{$desktop}) {
-    @content;
+// Responsive breakpoints
+
+@mixin breakpoint($point) {
+  @if $point == papa-bear {
+    @media (max-width: 1600px) { @content; }
+  }
+  @else if $point == mama-bear {
+    @media (max-width: 1250px) { @content; }
+  }
+  @else if $point == baby-bear {
+    @media (max-width: 800px)  { @content; }
+  }
+  @else if $point == babiest-bear {
+    @media (max-width: 400px)  { @content; }
   }
 }
-

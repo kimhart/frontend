@@ -10,10 +10,7 @@ class Template extends React.Component {
 
   render() {
     return (
-      <Grid fluid={true}> 
-        <div>
-         {/* Header would go here on desktop version */} 
-        </div>
+      <Grid fluid={true} className="page-wrap"> 
         <div className="page-content">
           { this.props.children }
         </div>

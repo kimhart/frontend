@@ -14,7 +14,6 @@ div.form-container {
         margin-top: 20px;
       }
       input:required:invalid, input:focus:invalid {
-        color: $error-red;
         -moz-box-shadow: none;
       }
       div.dob-container {

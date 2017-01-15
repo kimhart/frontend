@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
-body {
-  height: 100%; }
+.page-wrap {
+  background-color: skyblue; }
+  @media (max-width: 800px) {
+    .page-wrap {
+      background-color: pink; } }
 
 h1, h2, h3, p, ul, li, a, label, input {
   font-family: "Roboto", sans-serif;
@@ -55,7 +58,6 @@ div.form-container {
   div.form-container form.login-form label, div.form-container form.signup-form label, div.form-container form.address-form label {
     margin-top: 20px; }
   div.form-container form.login-form input:required:invalid, div.form-container form.login-form input:focus:invalid, div.form-container form.signup-form input:required:invalid, div.form-container form.signup-form input:focus:invalid, div.form-container form.address-form input:required:invalid, div.form-container form.address-form input:focus:invalid {
-    color: #A12827;
     -moz-box-shadow: none; }
   div.form-container form.login-form div.dob-container, div.form-container form.signup-form div.dob-container, div.form-container form.address-form div.dob-container {
     width: 100%;
