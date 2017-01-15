@@ -1,5 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
+import { Grid, Row, Col, Clearfix } from 'react-bootstrap';
 
 
 class Signup extends React.Component {
@@ -61,8 +62,8 @@ class Signup extends React.Component {
  
     render() {
       return (
-        <div className="row">
-          <div className="col-md-12">
+        <Row>
+          <Col md={12}>
             <h2 className="page-title">Sign Up</h2>
             <div className="form-container">
               <form className="signup-form" onChange={this.handleChange} onSubmit={this.handleSubmit}>
@@ -252,8 +253,8 @@ class Signup extends React.Component {
                 <button type="submit">Sign Up</button>
               </form>
             </div>
-          </div>
-        </div>
+          </Col>
+        </Row>
       );
     }
 }

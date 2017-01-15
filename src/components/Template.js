@@ -2,6 +2,7 @@ import React from 'react';
 import Relay from 'react-relay';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, IndexLink, Link, browserHistory, applyRouterMiddleware } from 'react-router';
+import { Grid, Row, Col, Clearfix } from 'react-bootstrap';
 import useRelay from 'react-router-relay';
 
 
@@ -9,7 +10,7 @@ class Template extends React.Component {
 
   render() {
     return (
-      <div className="container-fluid"> 
+      <Grid fluid={true}> 
         <div>
          {/* Header would go here on desktop version */} 
         </div>
@@ -25,7 +26,7 @@ class Template extends React.Component {
             </ul>
           </div>
         </div>
-      </div>
+      </Grid>
     );
   }
 }

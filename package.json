@@ -33,6 +33,7 @@
     "moment": "^2.15.2",
     "node-sass": "^3.11.2",
     "react": "^15.3.2",
+    "react-bootstrap": "^0.30.7",
     "react-bootstrap-grid": "^1.0.0",
     "react-dom": "^15.3.2",
     "react-relay": "^0.9.3",
