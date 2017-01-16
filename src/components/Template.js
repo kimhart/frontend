@@ -15,6 +15,8 @@ class Template extends React.Component {
           { this.props.children }
         </div>
         <div className="footer">
+          <div className="scroll-fade"></div>
+          <div className="scroll-buffer"></div>
           <div className="navbar row">
             <ul className="nav-list">
               <li><Link to="/">Home</Link></li>

@@ -1,7 +1,19 @@
+html, body {
+  background-color: white;
+  height: 100%;
+}
+
 .page-wrap {
-  background-color: skyblue;
+  background-color: white;
+  overflow-y: hidden;
+  padding-bottom: 30px;
   @include breakpoint(baby-bear) { 
-    background-color: pink; 
+    background-color: white; 
   }
 }
 
+.page-content {
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 90px;
+}

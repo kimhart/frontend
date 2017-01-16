@@ -1,14 +1,23 @@
+
+
 .footer {
+    width: 100%;
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 90px;
+    position: fixed;
   .navbar {
     background-color: black;
-    position: fixed;
-    width: 100%;
     ul.nav-list {
       padding-left: 0;
       display: flex;
       justify-content: space-around;
+      align-items: center;
+      list-style-type: none;
+      height: 50px;
+      margin: 0;
       li {
-        padding: 10px;
+        padding: 0 10px;
         a {
           color: white;
           text-decoration: none;
@@ -20,4 +29,13 @@
       }
     }
   }
+  .scroll-buffer {
+    height: 10px;
+    background-color: white;
+  }
+  .scroll-fade {
+    height: 30px;
+    background: linear-gradient(to bottom, transparent, white); /* Standard syntax (must be last) */
+  }
 }
+
