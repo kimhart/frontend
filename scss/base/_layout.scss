@@ -8,7 +8,6 @@ html, body {
   overflow-y: hidden;
   padding-bottom: 30px;
   @include breakpoint(baby-bear) { 
-    background-color: white; 
   }
 }
 
@@ -18,10 +17,11 @@ html, body {
   padding-bottom: 90px;
 }
 
-.signup-page {
-  margin: 5vh 0;
+.signup-page, .login-page {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
 }
 
-.login-page {
-  margin: 15vh 0;
-}
+.signup-page { margin: 5vh 0; }
+.login-page { margin: 15vh 0; }

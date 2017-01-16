@@ -1,5 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
+import ReactDOM from 'react-dom';
 import { Grid, Row, Col, Clearfix, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 
 

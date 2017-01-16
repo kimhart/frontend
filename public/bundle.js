@@ -22107,7 +22107,7 @@
 	        _react2.default.createElement(
 	          _reactRouter.Route,
 	          { path: '/', component: _Template2.default, queries: RootQuery },
-	          _react2.default.createElement(_reactRouter.IndexRoute, { component: _Signup2.default, queries: RootQuery }),
+	          _react2.default.createElement(_reactRouter.IndexRoute, { component: _MainDash2.default, queries: RootQuery }),
 	          _react2.default.createElement(_reactRouter.Route, { path: '/login', component: _Login2.default }),
 	          _react2.default.createElement(_reactRouter.Route, { path: '/signup', component: _Signup2.default }),
 	          _react2.default.createElement(_reactRouter.Route, { path: '/dash', component: _MainDash2.default })
@@ -56389,6 +56389,12 @@
 	
 	var _AddressForm2 = _interopRequireDefault(_AddressForm);
 	
+	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 643);
+	
+	var _TallyScore = __webpack_require__(/*! ./TallyScore */ 801);
+	
+	var _TallyScore2 = _interopRequireDefault(_TallyScore);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -56400,24 +56406,10 @@
 	var MainDash = function (_React$Component) {
 	  _inherits(MainDash, _React$Component);
 	
-	  function MainDash(props) {
+	  function MainDash() {
 	    _classCallCheck(this, MainDash);
 	
-	    var _this = _possibleConstructorReturn(this, (MainDash.__proto__ || Object.getPrototypeOf(MainDash)).call(this, props));
-	
-	    _this.handleClick = function (event) {
-	      event.preventDefault();
-	      _this.setState({
-	        street: _this.refs.streetInput.value,
-	        zipcode: _this.refs.zipcodeInput.value
-	      });
-	    };
-	
-	    _this.state = {
-	      street: null,
-	      zipcode: null
-	    };
-	    return _this;
+	    return _possibleConstructorReturn(this, (MainDash.__proto__ || Object.getPrototypeOf(MainDash)).apply(this, arguments));
 	  }
 	
 	  _createClass(MainDash, [{
@@ -56425,35 +56417,54 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { className: 'main-dash' },
 	        _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
+	          _reactBootstrap.Row,
+	          null,
 	          _react2.default.createElement(
-	            'div',
-	            { className: 'twelve columns' },
+	            _reactBootstrap.Col,
+	            { md: 12 },
 	            _react2.default.createElement(
 	              'h2',
 	              { className: 'page-title' },
-	              'Your Dashboard'
+	              'Tally Card'
 	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'form-container' },
-	              _react2.default.createElement(
-	                'h3',
-	                null,
-	                'Check a different address:'
-	              ),
-	              _react2.default.createElement(_AddressForm2.default, { onSubmit: this.handleClick })
-	            )
+	            _react2.default.createElement(_TallyScore2.default, null)
 	          )
 	        ),
 	        _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
-	          _react2.default.createElement(_Senators2.default, _extends({}, this.props, this.state)),
-	          _react2.default.createElement(_Congresspeople2.default, _extends({}, this.props, this.state))
+	          _reactBootstrap.Row,
+	          null,
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { md: 12 },
+	            _react2.default.createElement(
+	              'h3',
+	              null,
+	              'Your Representatives'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'reps-list' },
+	              _react2.default.createElement(
+	                'p',
+	                null,
+	                'hey'
+	              ),
+	              _react2.default.createElement(
+	                'p',
+	                null,
+	                'you'
+	              ),
+	              _react2.default.createElement(
+	                'p',
+	                null,
+	                'guys'
+	              ),
+	              _react2.default.createElement(_Senators2.default, _extends({}, this.props, this.state)),
+	              _react2.default.createElement(_Congresspeople2.default, _extends({}, this.props, this.state))
+	            )
+	          )
 	        )
 	      );
 	    }
@@ -56925,6 +56936,10 @@
 	
 	var _reactRelay2 = _interopRequireDefault(_reactRelay);
 	
+	var _reactDom = __webpack_require__(/*! react-dom */ 32);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
 	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 643);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -56955,8 +56970,8 @@
 	  _createClass(Login, [{
 	    key: 'handleChange',
 	    value: function handleChange(event) {
-	      var email = ReactDOM.findDOMNode(this.refs.emailInput).value;
-	      var password = ReactDOM.findDOMNode(this.refs.passwordInput).value;
+	      var email = _reactDom2.default.findDOMNode(this.refs.emailInput).value;
+	      var password = _reactDom2.default.findDOMNode(this.refs.passwordInput).value;
 	
 	      this.setState({
 	        email: email,
@@ -75684,6 +75699,140 @@
 	}(_react2.default.Component);
 	
 	exports.default = Footer;
+
+/***/ },
+/* 801 */
+/*!**************************************!*\
+  !*** ./src/components/TallyScore.js ***!
+  \**************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRelay = __webpack_require__(/*! react-relay */ 179);
+	
+	var _reactRelay2 = _interopRequireDefault(_reactRelay);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 32);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 643);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var TallyScore = function (_React$Component) {
+	  _inherits(TallyScore, _React$Component);
+	
+	  function TallyScore(props) {
+	    _classCallCheck(this, TallyScore);
+	
+	    var _this = _possibleConstructorReturn(this, (TallyScore.__proto__ || Object.getPrototypeOf(TallyScore)).call(this, props));
+	
+	    _this.state = {
+	      tallyScore: null
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(TallyScore, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          _reactBootstrap.Row,
+	          null,
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { md: 12 },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'tally-container' },
+	              _react2.default.createElement(
+	                'h1',
+	                { className: 'tally-score' },
+	                '66'
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          _reactBootstrap.Row,
+	          null,
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { md: 12 },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'score-toggle' },
+	              _react2.default.createElement(
+	                'a',
+	                { href: '#', className: 'active' },
+	                'Actual'
+	              ),
+	              ' | ',
+	              _react2.default.createElement(
+	                'a',
+	                { href: '#' },
+	                'Predictive'
+	              ),
+	              _react2.default.createElement(
+	                'p',
+	                { className: 'toggle-description' },
+	                'Explainer copy goes here. Lorem ipsum lorem ipsum lorem ipsum lorem ipsum.'
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return TallyScore;
+	}(_react2.default.Component);
+	
+	exports.default = _reactRelay2.default.createContainer(TallyScore, {
+	  initialVariables: {},
+	  fragments: {
+	    data: function data() {
+	      return function () {
+	        return {
+	          children: [{
+	            fieldName: 'id',
+	            kind: 'Field',
+	            metadata: {
+	              isRequisite: true
+	            },
+	            type: 'ID'
+	          }],
+	          id: _reactRelay2.default.QL.__id(),
+	          kind: 'Fragment',
+	          metadata: {},
+	          name: 'TallyScore_DataRelayQL',
+	          type: 'Data'
+	        };
+	      }();
+	    }
+	  }
+	});
 
 /***/ }
 /******/ ]);

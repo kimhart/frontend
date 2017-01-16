@@ -1,21 +1,15 @@
-.rep-photo-container {
-  width: 150px;
-  height: 150px;
-  max-width: 100%;
-  position: relative;
-  overflow: hidden;
-  border-radius: 50%;
-  margin: 0 auto;
-}
-
-img.rep-photo {
-  display: block; 
-  margin: 0 auto;
-  height: 130%;
-}
-
-p.rep-names {
-  text-transform: uppercase;
-  text-align: center;
-  margin: 0 auto;
+.reps-list {
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+  align-items: center;
+  margin: 20px auto;
+  p {
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+    width: 80px;
+    border-radius: 40px;
+    background-color: $light-gray;
+  }
 }

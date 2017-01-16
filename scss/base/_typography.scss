@@ -5,6 +5,11 @@ h1, h2, h3, p, ul, li, a, label, input {
 
 p,  li, a, label, input {
   font-size: $paragraph-size;
+  color: $text-gray;
+}
+
+h1, h2, h3 {
+  text-align: center;
 }
 
 h1 {
