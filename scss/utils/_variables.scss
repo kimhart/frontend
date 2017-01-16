@@ -1,10 +1,12 @@
 // GOOGLE FONTS
 // ----------------------------------------------
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Lobster+Two:400,400i');
 
 // TYPOGRAPHY
 // ----------------------------------------------
 $roboto-font: 'Roboto', sans-serif;
+$lobster-font: 'Lobster Two', cursive;
 
 $logo-size: 26px;
 $paragraph-size: 14px;
@@ -16,7 +18,7 @@ $standard-h3: 18px;
 
 // BRAND COLORS
 // ----------------------------------------------
-$soft-red: #CA3E41;
+$soft-red: #D95852;
 $cornflower-blue: #5898D8;
 $sky-blue: #8CD7FC;
 $white: #FFF;

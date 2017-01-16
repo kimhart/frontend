@@ -7,7 +7,7 @@
     height: 90px;
     position: fixed;
   .navbar {
-    background-color: black;
+    background-color: $soft-red;
     ul.nav-list {
       padding-left: 0;
       display: flex;
@@ -18,12 +18,9 @@
       margin: 0;
       li {
         padding: 0 10px;
+        text-transform: uppercase;
         a {
           color: white;
-          text-decoration: none;
-        }
-        a:hover {
-          color: $sky-blue;
           text-decoration: none;
         }
       }

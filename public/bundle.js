@@ -56279,6 +56279,10 @@
 	
 	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 643);
 	
+	var _Footer = __webpack_require__(/*! ./Footer */ 800);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
 	var _reactRouterRelay = __webpack_require__(/*! react-router-relay */ 530);
 	
 	var _reactRouterRelay2 = _interopRequireDefault(_reactRouterRelay);
@@ -56311,47 +56315,7 @@
 	          { className: 'page-content' },
 	          this.props.children
 	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'footer' },
-	          _react2.default.createElement('div', { className: 'scroll-fade' }),
-	          _react2.default.createElement('div', { className: 'scroll-buffer' }),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'navbar row' },
-	            _react2.default.createElement(
-	              'ul',
-	              { className: 'nav-list' },
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { to: '/' },
-	                  'Home'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { to: '/signup' },
-	                  'Signup'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { to: '/login' },
-	                  'Login'
-	                )
-	              )
-	            )
-	          )
-	        )
+	        _react2.default.createElement(_Footer2.default, null)
 	      );
 	    }
 	  }]);
@@ -56961,6 +56925,8 @@
 	
 	var _reactRelay2 = _interopRequireDefault(_reactRelay);
 	
+	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 643);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -56989,9 +56955,12 @@
 	  _createClass(Login, [{
 	    key: 'handleChange',
 	    value: function handleChange(event) {
+	      var email = ReactDOM.findDOMNode(this.refs.emailInput).value;
+	      var password = ReactDOM.findDOMNode(this.refs.passwordInput).value;
+	
 	      this.setState({
-	        email: this.refs.emailInput.value,
-	        password: this.refs.passwordInput.value
+	        email: email,
+	        password: password
 	      });
 	    }
 	  }, {
@@ -57004,7 +56973,12 @@
 	      $.ajax({
 	        type: 'POST',
 	        url: 'http://heroku-postgres-7720c2d1.herokuapp.com/login',
-	        data: userData
+	        data: userData,
+	        crossDomain: true,
+	        headers: {
+	          'Access-Control-Allow-Headers': 'x-requested-with',
+	          'Access-Control-Allow-Origin': '*'
+	        }
 	      }).done(function (userData) {
 	        console.log(userData);
 	      }).fail(function () {
@@ -57015,28 +56989,32 @@
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'div',
-	        { className: 'row' },
+	        _reactBootstrap.Row,
+	        null,
 	        _react2.default.createElement(
-	          'div',
-	          { className: 'col-md-12' },
+	          _reactBootstrap.Col,
+	          { md: 12, className: 'login-page' },
+	          _react2.default.createElement(
+	            'h2',
+	            { className: 'page-title' },
+	            'Log In'
+	          ),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'form-container' },
 	            _react2.default.createElement(
-	              'h2',
-	              { className: 'page-title' },
-	              'Log In Now'
-	            ),
-	            _react2.default.createElement(
 	              'form',
 	              { className: 'login-form', onChange: this.handleChange, onSubmit: this.handleSubmit },
-	              _react2.default.createElement('input', { type: 'email', placeholder: 'Email', ref: 'emailInput' }),
-	              _react2.default.createElement('input', { type: 'password', placeholder: 'Password', ref: 'passwordInput' }),
 	              _react2.default.createElement(
-	                'button',
-	                { type: 'submit' },
-	                'Log In'
+	                _reactBootstrap.FormGroup,
+	                null,
+	                _react2.default.createElement(_reactBootstrap.FormControl, { type: 'email', placeholder: 'Email', ref: 'emailInput', required: true }),
+	                _react2.default.createElement(_reactBootstrap.FormControl, { type: 'password', placeholder: 'Password', ref: 'passwordInput', required: true }),
+	                _react2.default.createElement(
+	                  'button',
+	                  { type: 'submit' },
+	                  'Go!'
+	                )
 	              )
 	            )
 	          )
@@ -57185,7 +57163,7 @@
 	        null,
 	        _react2.default.createElement(
 	          _reactBootstrap.Col,
-	          { md: 12 },
+	          { md: 12, className: 'signup-page' },
 	          _react2.default.createElement(
 	            'h2',
 	            { className: 'page-title' },
@@ -58071,11 +58049,6 @@
 	                )
 	              )
 	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            null,
-	            '"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"'
 	          )
 	        )
 	      );
@@ -58092,9 +58065,49 @@
 	      return function () {
 	        return {
 	          children: [{
+	            children: [{
+	              fieldName: 'email',
+	              kind: 'Field',
+	              metadata: {},
+	              type: 'String'
+	            }, {
+	              fieldName: 'password',
+	              kind: 'Field',
+	              metadata: {},
+	              type: 'String'
+	            }, {
+	              fieldName: 'street',
+	              kind: 'Field',
+	              metadata: {},
+	              type: 'String'
+	            }, {
+	              fieldName: 'zip_code',
+	              kind: 'Field',
+	              metadata: {},
+	              type: 'String'
+	            }, {
+	              fieldName: 'gender',
+	              kind: 'Field',
+	              metadata: {},
+	              type: 'String'
+	            }, {
+	              fieldName: 'dob',
+	              kind: 'Field',
+	              metadata: {},
+	              type: 'String'
+	            }],
+	            fieldName: 'user',
+	            kind: 'Field',
+	            metadata: {
+	              canHaveSubselections: true,
+	              isPlural: true
+	            },
+	            type: 'User'
+	          }, {
 	            fieldName: 'id',
 	            kind: 'Field',
 	            metadata: {
+	              isGenerated: true,
 	              isRequisite: true
 	            },
 	            type: 'ID'
@@ -75573,6 +75586,104 @@
 	exports.bootstrapUtils = _bootstrapUtils;
 	exports.createChainedFunction = _createChainedFunction3['default'];
 	exports.ValidComponentChildren = _ValidComponentChildren3['default'];
+
+/***/ },
+/* 800 */
+/*!**********************************!*\
+  !*** ./src/components/Footer.js ***!
+  \**********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRelay = __webpack_require__(/*! react-relay */ 179);
+	
+	var _reactRelay2 = _interopRequireDefault(_reactRelay);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 475);
+	
+	var _reactRouterRelay = __webpack_require__(/*! react-router-relay */ 530);
+	
+	var _reactRouterRelay2 = _interopRequireDefault(_reactRouterRelay);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Footer = function (_React$Component) {
+	  _inherits(Footer, _React$Component);
+	
+	  function Footer() {
+	    _classCallCheck(this, Footer);
+	
+	    return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).apply(this, arguments));
+	  }
+	
+	  _createClass(Footer, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'footer',
+	        { className: 'footer' },
+	        _react2.default.createElement('div', { className: 'scroll-fade' }),
+	        _react2.default.createElement('div', { className: 'scroll-buffer' }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'navbar row' },
+	          _react2.default.createElement(
+	            'ul',
+	            { className: 'nav-list' },
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/' },
+	                'Home'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/signup' },
+	                'Signup'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/login' },
+	                'Login'
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Footer;
+	}(_react2.default.Component);
+	
+	exports.default = Footer;
 
 /***/ }
 /******/ ]);

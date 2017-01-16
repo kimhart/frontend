@@ -1,5 +1,7 @@
 import React from 'react';
 import Relay from 'react-relay';
+import { Grid, Row, Col, Clearfix, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
+
 
 class Login extends React.Component {
 
@@ -14,9 +16,12 @@ class Login extends React.Component {
     }
 
     handleChange(event) {
+      let email = ReactDOM.findDOMNode(this.refs.emailInput).value;
+      let password = ReactDOM.findDOMNode(this.refs.passwordInput).value;
+
       this.setState({
-        email: this.refs.emailInput.value,
-        password: this.refs.passwordInput.value
+        email: email,
+        password: password
       })
     }
 
@@ -28,7 +33,12 @@ class Login extends React.Component {
       $.ajax({
         type: 'POST',
         url: 'http://heroku-postgres-7720c2d1.herokuapp.com/login',
-        data: userData
+        data: userData,
+        crossDomain: true,
+        headers: {
+          'Access-Control-Allow-Headers': 'x-requested-with',
+          'Access-Control-Allow-Origin': '*'
+        },
       })
       .done(function(userData) {
         console.log(userData);
@@ -40,18 +50,20 @@ class Login extends React.Component {
 
     render() {
       return (
-        <div className="row">
-          <div className="col-md-12">
+        <Row>
+          <Col md={12} className="login-page">
+            <h2 className="page-title">Log In</h2>
             <div className="form-container">
-              <h2 className="page-title">Log In Now</h2>
               <form className="login-form" onChange={this.handleChange} onSubmit={this.handleSubmit}>
-                <input type="email" placeholder="Email" ref="emailInput" />
-                <input type="password" placeholder="Password" ref="passwordInput" />
-                <button type="submit">Log In</button>
+                <FormGroup>
+                  <FormControl type="email" placeholder="Email" ref="emailInput" required />
+                  <FormControl type="password" placeholder="Password" ref="passwordInput" required />
+                  <button type="submit">Go!</button>
+                </FormGroup>
               </form>
             </div>
-          </div>
-        </div>
+          </Col>
+        </Row>
       );
     }
 }
