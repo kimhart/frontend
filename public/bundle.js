@@ -56447,19 +56447,94 @@
 	              'div',
 	              { className: 'reps-list' },
 	              _react2.default.createElement(
-	                'p',
-	                null,
-	                'hey'
+	                'div',
+	                { className: 'rep-info-cluster' },
+	                _react2.default.createElement('img', { src: './img/bio_images/placeholder.png', className: 'bio-photo' }),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'name' },
+	                  'Kristin Gillibrand'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'role' },
+	                  'Senate (D)'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'location' },
+	                  'New York'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'match-score' },
+	                  '100%'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'with-me' },
+	                  'matched with me'
+	                )
 	              ),
 	              _react2.default.createElement(
-	                'p',
-	                null,
-	                'you'
+	                'div',
+	                { className: 'rep-info-cluster' },
+	                _react2.default.createElement('img', { src: './img/bio_images/placeholder.png', className: 'bio-photo' }),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'name' },
+	                  'Snoop Dogg'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'role' },
+	                  'Senate (D)'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'location' },
+	                  'New York'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'match-score' },
+	                  '84%'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'with-me' },
+	                  'matched with me'
+	                )
 	              ),
 	              _react2.default.createElement(
-	                'p',
-	                null,
-	                'guys'
+	                'div',
+	                { className: 'rep-info-cluster' },
+	                _react2.default.createElement('img', { src: './img/bio_images/placeholder.png', className: 'bio-photo' }),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'name' },
+	                  'Chris Farley'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'role' },
+	                  'Congress (R)'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'location' },
+	                  'The Moon'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'match-score' },
+	                  '21%'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'with-me' },
+	                  'matched with me'
+	                )
 	              ),
 	              _react2.default.createElement(_Senators2.default, _extends({}, this.props, this.state)),
 	              _react2.default.createElement(_Congresspeople2.default, _extends({}, this.props, this.state))
@@ -75810,7 +75885,9 @@
 	}(_react2.default.Component);
 	
 	exports.default = _reactRelay2.default.createContainer(TallyScore, {
-	  initialVariables: {},
+	  initialVariables: {
+	    TallyScore: null
+	  },
 	  fragments: {
 	    data: function data() {
 	      return function () {

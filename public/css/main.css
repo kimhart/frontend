@@ -127,15 +127,28 @@ div.form-container {
   display: flex;
   flex: 1;
   justify-content: space-around;
-  align-items: center;
+  font-size: 14px;
+  flex-wrap: wrap;
   margin: 20px auto; }
+  .reps-list .bio-photo {
+    max-width: 140px;
+    margin: 20px 0 5px 0; }
   .reps-list p {
-    height: 80px;
-    text-align: center;
-    line-height: 80px;
-    width: 80px;
-    border-radius: 40px;
-    background-color: #D2D2D2; }
+    margin: 0;
+    text-align: center; }
+    .reps-list p.name {
+      font-weight: bold; }
+    .reps-list p.match-score {
+      margin: 5px 0;
+      font-size: 28px;
+      color: #81C7EA; }
+    .reps-list p.with-me {
+      font-size: 18px;
+      margin-top: -15px;
+      color: #81C7EA;
+      text-align: center;
+      font-family: "Lobster Two", cursive;
+      font-style: italic; }
 
 .tally-container {
   text-align: center;

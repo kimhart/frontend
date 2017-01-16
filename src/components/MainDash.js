@@ -23,9 +23,30 @@ class MainDash extends React.Component {
           <Col md={12}>
             <h3>Your Representatives</h3>
             <div className="reps-list">
-              <p>hey</p>
-              <p>you</p>
-              <p>guys</p>
+              <div className="rep-info-cluster">
+                <img src="./img/bio_images/placeholder.png" className="bio-photo"/>
+                <p className="name">Kristin Gillibrand</p>
+                <p className="role">Senate (D)</p>
+                <p className="location">New York</p>
+                <p className="match-score">100%</p>
+                <p className="with-me">matched with me</p>
+              </div>
+              <div className="rep-info-cluster">
+                <img src="./img/bio_images/placeholder.png" className="bio-photo"/>
+                <p className="name">Snoop Dogg</p>
+                <p className="role">Senate (D)</p>
+                <p className="location">New York</p>
+                <p className="match-score">84%</p>
+                <p className="with-me">matched with me</p>
+              </div>
+              <div className="rep-info-cluster">
+                <img src="./img/bio_images/placeholder.png" className="bio-photo"/>
+                <p className="name">Chris Farley</p>
+                <p className="role">Congress (R)</p>
+                <p className="location">The Moon</p>
+                <p className="match-score">21%</p>
+                <p className="with-me">matched with me</p>
+              </div>
               <Senators {...this.props} {...this.state} />
               <Congresspeople {...this.props} {...this.state} />
             </div>

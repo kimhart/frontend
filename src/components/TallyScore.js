@@ -37,7 +37,9 @@ class TallyScore extends React.Component {
 }
 
 export default Relay.createContainer(TallyScore, {
-  initialVariables: {},
+  initialVariables: {
+    TallyScore: null
+  },
   fragments: {
     data: () => Relay.QL`
       fragment on Data {

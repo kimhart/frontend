@@ -2,14 +2,32 @@
   display: flex;
   flex: 1;
   justify-content: space-around;
-  align-items: center;
+  font-size: 14px;
+  flex-wrap: wrap;
   margin: 20px auto;
-  p {
-    height: 80px;
-    text-align: center;
-    line-height: 80px;
-    width: 80px;
-    border-radius: 40px;
-    background-color: $light-gray;
+  .bio-photo {
+    max-width: 140px;
+    margin: 20px 0 5px 0;
   }
+  p { 
+    margin: 0;
+    text-align: center; 
+    &.name { 
+      font-weight: bold; 
+    }
+    &.match-score {
+      margin: 5px 0;
+      font-size: 28px;
+      color: $sky-blue;
+    }
+    &.with-me {
+      font-size: 18px;
+      margin-top: -15px;
+      color: $sky-blue;
+      text-align: center;
+      font-family: $lobster-font;
+      font-style: italic;
+    }
+  }
+
 }
