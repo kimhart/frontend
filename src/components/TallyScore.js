@@ -26,7 +26,7 @@ class TallyScore extends React.Component {
           <Row>
             <Col md={12}>
               <div className="score-toggle">
-                <a href="#" className="active">Actual</a> | <a href="#">Predictive</a>
+                <a href="#" className="active">Current</a> | <a href="#">Predictive</a>
                 <p className="toggle-description">Explainer copy goes here. Lorem ipsum lorem ipsum lorem ipsum lorem ipsum.</p>
               </div>
             </Col>

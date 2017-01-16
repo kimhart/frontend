@@ -9,8 +9,6 @@ class Footer extends React.Component {
   render() {
     return (
      <footer className="footer">
-        <div className="scroll-fade"></div>
-        <div className="scroll-buffer"></div>
         <div className="navbar row">
           <ul className="nav-list">
             <li><Link to="/">Home</Link></li>

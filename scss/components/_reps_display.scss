@@ -1,33 +1,164 @@
-.reps-list {
-  display: flex;
-  flex: 1;
-  justify-content: space-around;
-  font-size: 14px;
-  flex-wrap: wrap;
-  margin: 20px auto;
-  .bio-photo {
-    max-width: 140px;
-    margin: 20px 0 5px 0;
+.reps-display {
+  h2 {
+    text-transform: uppercase;
+    margin-bottom: -25px;
   }
-  p { 
-    margin: 0;
-    text-align: center; 
-    &.name { 
-      font-weight: bold; 
+  .reps-list {
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+    font-size: 14px;
+    flex-wrap: wrap;
+    margin: 20px 0 40px 0;
+    .bio-photo {
+      max-width: 140px;
+      margin: 20px 0 5px 0;
     }
-    &.match-score {
-      margin: 5px 0;
-      font-size: 28px;
-      color: $sky-blue;
-    }
-    &.with-me {
-      font-size: 18px;
-      margin-top: -15px;
-      color: $sky-blue;
-      text-align: center;
-      font-family: $lobster-font;
-      font-style: italic;
+    p { 
+      margin: 0;
+      text-align: center; 
+      &.name { 
+        font-weight: 500; 
+      }
+      &.match-score {
+        margin: 5px 0;
+        font-size: 28px;
+        color: $sky-blue;
+      }
+      &.with-me {
+        font-size: 18px;
+        margin-top: -15px;
+        color: $sky-blue;
+        text-align: center;
+        font-family: $lobster-font;
+        font-style: italic;
+      }
     }
   }
-
 }
+
+.scorecards-list {
+  background-color: $sky-blue;
+  margin: 0;
+  padding: 20px 20px 40px 20px;
+  h2 {
+    color: white;
+    text-transform: uppercase;
+    margin-top: 0;
+  }
+  .scorecard {
+    background-color: white;
+    margin: 20px 0;
+    border: 1px solid $medium-gray;
+    border-radius: 4px;
+    padding: 10px;
+    .name {
+      font-weight: 500;
+      font-size: 26px;
+      margin-top: 10px;
+    }
+    .role {
+      text-align: center;
+      margin-top: -5px;
+    }
+    .photo-grade-container {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      margin: 30px auto;
+      .photo-container {
+        width: 50%;
+        .bio-photo {
+          width: 90%;
+          height: auto;
+          margin: 5px;
+        }
+      }
+      .letter-grade-container {
+        text-align: center;
+        background-color: $light-green;
+        border-radius: 4px;
+        width: 50%;
+        box-sizing: border-box;
+        .info-icon {
+          float: right;
+          color: white;
+          padding: 0 5px 5px 0;
+          margin: -15px 0 0 0;
+        }
+        p {
+          color: white;
+          text-transform: uppercase;
+          margin: 15px 0 -20px 0;
+          font-size: 18px;
+          &.grade {
+            font-size: 80px;
+            margin: -20px;
+            color: white;
+            text-align: center;
+          }
+        }
+      }
+    }
+    .badge-container {
+      margin: 10px auto;
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      i {
+        font-size: 32px;
+        color: $medium-gray;
+        padding: 5px;
+      }
+    }
+    .alignment-container {
+      h3 {
+        font-size: 18px;
+        margin: 40px 0 0 0;
+        text-transform: uppercase;
+        color: $text-gray;
+      }
+      .alignment-breakdown {
+        margin: 20px auto;
+        display: flex;
+        justify-content: space-between;
+        .percentages {
+          margin-top: -10px;
+          width: 33.33%;
+          text-align: center;
+          p {
+            font-weight: 500;
+            font-size: 13px;
+            width: 100%;
+            margin: 0 auto;
+            &.alignment-score {
+              font-size: 26px;
+              padding-top: 10px;
+              color: $sky-blue;
+            }
+          }
+          img {
+            max-width: 60%;
+          }
+        }
+      }
+    }
+    .learn-more {
+      .view-rep-btn {
+        background-color: $sky-blue;
+        text-transform: uppercase;
+        font-size: 18px;
+        color: white;
+        width: 90%;
+        margin: 20px auto 10px auto;
+        display: block;
+        border: none;
+        border-radius: 4px;
+      }
+    }
+  }
+}
+
+
+
+

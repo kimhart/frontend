@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,500i,700,700i");
 @import url("https://fonts.googleapis.com/css?family=Lobster+Two:400,400i");
 html, body {
   background-color: white;
@@ -11,8 +11,7 @@ html, body {
 
 .page-content {
   min-height: 100%;
-  position: relative;
-  padding-bottom: 90px; }
+  position: relative; }
 
 .signup-page, .login-page {
   overflow: hidden;
@@ -43,6 +42,7 @@ h2 {
   font-size: 24px; }
 
 h2.page-title {
+  font-size: 30px;
   margin: 20px auto;
   width: 100%;
   display: block;
@@ -59,7 +59,7 @@ h3 {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 90px;
+  height: 50px;
   position: fixed; }
   .footer .navbar {
     background-color: #D95852; }
@@ -77,13 +77,6 @@ h3 {
         .footer .navbar ul.nav-list li a {
           color: white;
           text-decoration: none; }
-  .footer .scroll-buffer {
-    height: 10px;
-    background-color: white; }
-  .footer .scroll-fade {
-    height: 30px;
-    background: linear-gradient(to bottom, transparent, white);
-    /* Standard syntax (must be last) */ }
 
 div.form-container {
   margin: 0 auto;
@@ -123,26 +116,30 @@ div.form-container {
     display: block;
     margin: 20px auto 50px; }
 
-.reps-list {
+.reps-display h2 {
+  text-transform: uppercase;
+  margin-bottom: -25px; }
+
+.reps-display .reps-list {
   display: flex;
   flex: 1;
   justify-content: space-around;
   font-size: 14px;
   flex-wrap: wrap;
-  margin: 20px auto; }
-  .reps-list .bio-photo {
+  margin: 20px 0 40px 0; }
+  .reps-display .reps-list .bio-photo {
     max-width: 140px;
     margin: 20px 0 5px 0; }
-  .reps-list p {
+  .reps-display .reps-list p {
     margin: 0;
     text-align: center; }
-    .reps-list p.name {
-      font-weight: bold; }
-    .reps-list p.match-score {
+    .reps-display .reps-list p.name {
+      font-weight: 500; }
+    .reps-display .reps-list p.match-score {
       margin: 5px 0;
       font-size: 28px;
       color: #81C7EA; }
-    .reps-list p.with-me {
+    .reps-display .reps-list p.with-me {
       font-size: 18px;
       margin-top: -15px;
       color: #81C7EA;
@@ -150,20 +147,117 @@ div.form-container {
       font-family: "Lobster Two", cursive;
       font-style: italic; }
 
+.scorecards-list {
+  background-color: #81C7EA;
+  margin: 0;
+  padding: 20px 20px 40px 20px; }
+  .scorecards-list h2 {
+    color: white;
+    text-transform: uppercase;
+    margin-top: 0; }
+  .scorecards-list .scorecard {
+    background-color: white;
+    margin: 20px 0;
+    border: 1px solid #B4B4B4;
+    border-radius: 4px;
+    padding: 10px; }
+    .scorecards-list .scorecard .name {
+      font-weight: 500;
+      font-size: 26px;
+      margin-top: 10px; }
+    .scorecards-list .scorecard .role {
+      text-align: center;
+      margin-top: -5px; }
+    .scorecards-list .scorecard .photo-grade-container {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      margin: 30px auto; }
+      .scorecards-list .scorecard .photo-grade-container .photo-container {
+        width: 50%; }
+        .scorecards-list .scorecard .photo-grade-container .photo-container .bio-photo {
+          width: 90%;
+          height: auto;
+          margin: 5px; }
+      .scorecards-list .scorecard .photo-grade-container .letter-grade-container {
+        text-align: center;
+        background-color: #A3BE4B;
+        border-radius: 4px;
+        width: 50%;
+        box-sizing: border-box; }
+        .scorecards-list .scorecard .photo-grade-container .letter-grade-container .info-icon {
+          float: right;
+          color: white;
+          padding: 0 5px 5px 0;
+          margin: -15px 0 0 0; }
+        .scorecards-list .scorecard .photo-grade-container .letter-grade-container p {
+          color: white;
+          text-transform: uppercase;
+          margin: 15px 0 -20px 0;
+          font-size: 18px; }
+          .scorecards-list .scorecard .photo-grade-container .letter-grade-container p.grade {
+            font-size: 80px;
+            margin: -20px;
+            color: white;
+            text-align: center; }
+    .scorecards-list .scorecard .badge-container {
+      margin: 10px auto;
+      display: flex;
+      flex: 1;
+      justify-content: center; }
+      .scorecards-list .scorecard .badge-container i {
+        font-size: 32px;
+        color: #B4B4B4;
+        padding: 5px; }
+    .scorecards-list .scorecard .alignment-container h3 {
+      font-size: 18px;
+      margin: 40px 0 0 0;
+      text-transform: uppercase;
+      color: #373737; }
+    .scorecards-list .scorecard .alignment-container .alignment-breakdown {
+      margin: 20px auto;
+      display: flex;
+      justify-content: space-between; }
+      .scorecards-list .scorecard .alignment-container .alignment-breakdown .percentages {
+        margin-top: -10px;
+        width: 33.33%;
+        text-align: center; }
+        .scorecards-list .scorecard .alignment-container .alignment-breakdown .percentages p {
+          font-weight: 500;
+          font-size: 13px;
+          width: 100%;
+          margin: 0 auto; }
+          .scorecards-list .scorecard .alignment-container .alignment-breakdown .percentages p.alignment-score {
+            font-size: 26px;
+            padding-top: 10px;
+            color: #81C7EA; }
+        .scorecards-list .scorecard .alignment-container .alignment-breakdown .percentages img {
+          max-width: 60%; }
+    .scorecards-list .scorecard .learn-more .view-rep-btn {
+      background-color: #81C7EA;
+      text-transform: uppercase;
+      font-size: 18px;
+      color: white;
+      width: 90%;
+      margin: 20px auto 10px auto;
+      display: block;
+      border: none;
+      border-radius: 4px; }
+
 .tally-container {
   text-align: center;
   margin: 0 auto;
-  width: 100px;
-  height: 100px;
-  line-height: 100px;
-  border-radius: 50px;
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  border-radius: 60px;
   background-color: #81C7EA; }
 
 .tally-score {
   color: white;
-  line-height: 100px;
-  height: 100px;
-  font-size: 54px;
+  line-height: 120px;
+  height: 120px;
+  font-size: 60px;
   margin: 0; }
 
 .score-toggle {
@@ -173,7 +267,8 @@ div.form-container {
   .score-toggle a {
     text-decoration: none;
     color: #373737;
-    font-size: 20px; }
+    font-size: 20px;
+    font-weight: 500; }
     .score-toggle a.active {
       border-bottom: 2px solid #81C7EA;
       padding-bottom: 3px;

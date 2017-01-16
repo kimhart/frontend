@@ -56427,7 +56427,7 @@
 	            _react2.default.createElement(
 	              'h2',
 	              { className: 'page-title' },
-	              'Tally Card'
+	              'Tally Score'
 	            ),
 	            _react2.default.createElement(_TallyScore2.default, null)
 	          )
@@ -56437,11 +56437,11 @@
 	          null,
 	          _react2.default.createElement(
 	            _reactBootstrap.Col,
-	            { md: 12 },
+	            { md: 12, className: 'reps-display' },
 	            _react2.default.createElement(
-	              'h3',
+	              'h2',
 	              null,
-	              'Your Representatives'
+	              'Your Reps'
 	            ),
 	            _react2.default.createElement(
 	              'div',
@@ -56473,7 +56473,7 @@
 	                _react2.default.createElement(
 	                  'p',
 	                  { className: 'with-me' },
-	                  'matched with me'
+	                  'matched with you'
 	                )
 	              ),
 	              _react2.default.createElement(
@@ -56503,7 +56503,7 @@
 	                _react2.default.createElement(
 	                  'p',
 	                  { className: 'with-me' },
-	                  'matched with me'
+	                  'matched with you'
 	                )
 	              ),
 	              _react2.default.createElement(
@@ -56533,11 +56533,196 @@
 	                _react2.default.createElement(
 	                  'p',
 	                  { className: 'with-me' },
-	                  'matched with me'
+	                  'matched with you'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'rep-info-cluster' },
+	                _react2.default.createElement('img', { src: './img/bio_images/placeholder.png', className: 'bio-photo' }),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'name' },
+	                  'Ryan Gosling'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'role' },
+	                  'Congress (R)'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'location' },
+	                  'California'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'match-score' },
+	                  '112%'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'with-me' },
+	                  'matched with you'
 	                )
 	              ),
 	              _react2.default.createElement(_Senators2.default, _extends({}, this.props, this.state)),
 	              _react2.default.createElement(_Congresspeople2.default, _extends({}, this.props, this.state))
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          _reactBootstrap.Row,
+	          null,
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { md: 12, className: 'scorecards-list' },
+	            _react2.default.createElement(
+	              'h2',
+	              null,
+	              'Report Cards'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'scorecard' },
+	              _react2.default.createElement(
+	                'h3',
+	                { className: 'name' },
+	                'Kristin Gillibrand'
+	              ),
+	              _react2.default.createElement(
+	                'p',
+	                { className: 'role' },
+	                'Senate (D), New York'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'badge-container' },
+	                _react2.default.createElement(
+	                  'i',
+	                  { className: 'material-icons' },
+	                  'verified_user'
+	                ),
+	                _react2.default.createElement(
+	                  'i',
+	                  { className: 'material-icons' },
+	                  'monetization_on'
+	                ),
+	                _react2.default.createElement(
+	                  'i',
+	                  { className: 'material-icons' },
+	                  'public'
+	                ),
+	                _react2.default.createElement(
+	                  'i',
+	                  { className: 'material-icons' },
+	                  'whatshot'
+	                ),
+	                _react2.default.createElement(
+	                  'i',
+	                  { className: 'material-icons' },
+	                  'star'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'photo-grade-container' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'photo-container' },
+	                  _react2.default.createElement('img', { className: 'bio-photo', src: './img/bio_images/placeholder.png' })
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'letter-grade-container' },
+	                  _react2.default.createElement(
+	                    'p',
+	                    null,
+	                    'Job Score'
+	                  ),
+	                  _react2.default.createElement(
+	                    'p',
+	                    { className: 'grade' },
+	                    'A-'
+	                  ),
+	                  _react2.default.createElement(
+	                    'p',
+	                    null,
+	                    _react2.default.createElement(
+	                      'i',
+	                      { className: 'material-icons info-icon' },
+	                      'help_outline'
+	                    )
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'alignment-container' },
+	                _react2.default.createElement(
+	                  'h3',
+	                  null,
+	                  'Voting Alignment'
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'alignment-breakdown' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'percentages' },
+	                    _react2.default.createElement(
+	                      'p',
+	                      null,
+	                      'You'
+	                    ),
+	                    _react2.default.createElement('img', { src: './img/parties/you.png' }),
+	                    _react2.default.createElement(
+	                      'p',
+	                      { className: 'alignment-score' },
+	                      '66%'
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'percentages' },
+	                    _react2.default.createElement(
+	                      'p',
+	                      null,
+	                      'Democrats'
+	                    ),
+	                    _react2.default.createElement('img', { src: './img/parties/democrat.png' }),
+	                    _react2.default.createElement(
+	                      'p',
+	                      { className: 'alignment-score' },
+	                      '98%'
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'percentages' },
+	                    _react2.default.createElement(
+	                      'p',
+	                      null,
+	                      'Republicans'
+	                    ),
+	                    _react2.default.createElement('img', { src: './img/parties/republican.jpeg' }),
+	                    _react2.default.createElement(
+	                      'p',
+	                      { className: 'alignment-score' },
+	                      '35%'
+	                    )
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'learn-more' },
+	                _react2.default.createElement(
+	                  'button',
+	                  { className: 'view-rep-btn' },
+	                  'More'
+	                )
+	              )
 	            )
 	          )
 	        )
@@ -75729,8 +75914,6 @@
 	      return _react2.default.createElement(
 	        'footer',
 	        { className: 'footer' },
-	        _react2.default.createElement('div', { className: 'scroll-fade' }),
-	        _react2.default.createElement('div', { className: 'scroll-buffer' }),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'navbar row' },
@@ -75861,7 +76044,7 @@
 	              _react2.default.createElement(
 	                'a',
 	                { href: '#', className: 'active' },
-	                'Actual'
+	                'Current'
 	              ),
 	              ' | ',
 	              _react2.default.createElement(

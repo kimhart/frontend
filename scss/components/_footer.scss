@@ -1,10 +1,8 @@
-
-
 .footer {
     width: 100%;
     position: absolute;
     left: 0; right: 0; bottom: 0;
-    height: 90px;
+    height: 50px;
     position: fixed;
   .navbar {
     background-color: $soft-red;
@@ -25,14 +23,6 @@
         }
       }
     }
-  }
-  .scroll-buffer {
-    height: 10px;
-    background-color: white;
-  }
-  .scroll-fade {
-    height: 30px;
-    background: linear-gradient(to bottom, transparent, white); /* Standard syntax (must be last) */
   }
 }
 
