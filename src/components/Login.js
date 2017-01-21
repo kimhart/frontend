@@ -2,6 +2,7 @@ import React from 'react';
 import Relay from 'react-relay';
 import ReactDOM from 'react-dom';
 import { Grid, Row, Col, Clearfix, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
+let userConfig = require('../../utilities/UserConfig.js');
 
 
 class Login extends React.Component {
@@ -19,7 +20,6 @@ class Login extends React.Component {
     handleChange(event) {
       let email = ReactDOM.findDOMNode(this.refs.emailInput).value;
       let password = ReactDOM.findDOMNode(this.refs.passwordInput).value;
-
       this.setState({
         email: email,
         password: password
@@ -42,10 +42,15 @@ class Login extends React.Component {
         },
       })
       .done(function(userData) {
-        console.log(userData);
+        if (userData.results) {
+          userConfig = userData.results[0];
+          console.log(userConfig);
+        } else {
+          console.log('Wrong username or password');
+        }
       })
       .fail(function() {
-        console.log('failed');
+        console.log('Failed');
       })
     }
 

@@ -13,6 +13,8 @@ class Signup extends React.Component {
       this.state = {
         email: null, 
         password: null,
+        first_name: null,
+        last_name: null,
         street: null,
         zip_code: null,
         gender: null,
@@ -23,6 +25,8 @@ class Signup extends React.Component {
     handleChange(event) {
         let email = ReactDOM.findDOMNode(this.refs.emailInput).value;
         let password = ReactDOM.findDOMNode(this.refs.passwordInput).value;
+        let firstName = ReactDOM.findDOMNode(this.refs.firstNameInput).value;
+        let lastName = ReactDOM.findDOMNode(this.refs.lastNameInput).value;
         let street = ReactDOM.findDOMNode(this.refs.streetInput).value;
         let zipcode = ReactDOM.findDOMNode(this.refs.zipcodeInput).value;
         let gender = ReactDOM.findDOMNode(this.refs.genderInput).value;
@@ -31,6 +35,8 @@ class Signup extends React.Component {
         this.setState({
             email: email,
             password: password,
+            first_name: firstName,
+            last_name: lastName,
             street: street,
             zip_code: zipcode,
             gender: gender,
@@ -75,6 +81,8 @@ class Signup extends React.Component {
                 <FormGroup>
                     <FormControl type="email" placeholder="Email" ref="emailInput" required />
                     <FormControl type="password" placeholder="Password" ref="passwordInput" pattern=".{8,14}" required />
+                    <FormControl type="text" placeholder="First Name" ref="firstNameInput" required />
+                    <FormControl type="text" placeholder="Last Name" ref="lastNameInput" required />
                     <FormControl type="text" placeholder="Street Address" ref="streetInput" required />
                     <FormControl type="text" placeholder="ZIP code" ref="zipcodeInput" required />
                     <ControlLabel>Gender:</ControlLabel>
@@ -273,6 +281,8 @@ export default Relay.createContainer(Signup, {
         user {
             email
             password
+            first_name
+            last_name
             street
             zip_code
             gender

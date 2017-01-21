@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,500i,700,700i");
-@import url("https://fonts.googleapis.com/css?family=Lobster+Two:400,400i");
+@import url("https://fonts.googleapis.com/css?family=Bitter");
 html, body {
   background-color: white;
   height: 100%; }
@@ -17,9 +17,6 @@ html, body {
   overflow: hidden;
   position: fixed;
   width: 100%; }
-
-.signup-page {
-  margin: 5vh 0; }
 
 .login-page {
   margin: 15vh 0; }
@@ -43,11 +40,11 @@ h2 {
 
 h2.page-title {
   font-size: 30px;
-  margin: 20px auto;
+  margin: 10px auto;
   width: 100%;
   display: block;
   text-align: center;
-  font-family: "Lobster Two", cursive;
+  font-family: "Bitter", serif;
   color: #D95852; }
 
 h3 {
@@ -140,17 +137,17 @@ div.form-container {
       font-size: 28px;
       color: #81C7EA; }
     .reps-display .reps-list p.with-me {
-      font-size: 18px;
+      font-size: 16px;
       margin-top: -15px;
       color: #81C7EA;
       text-align: center;
-      font-family: "Lobster Two", cursive;
+      font-family: "Bitter", serif;
       font-style: italic; }
 
 .scorecards-list {
   background-color: #81C7EA;
   margin: 0;
-  padding: 20px 20px 40px 20px; }
+  padding: 20px 15px 40px 15px; }
   .scorecards-list h2 {
     color: white;
     text-transform: uppercase;

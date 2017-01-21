@@ -7,7 +7,6 @@ import AddressForm from './AddressForm';
 import { Grid, Row, Col, Clearfix } from 'react-bootstrap';
 import TallyScore from './TallyScore';
 
-
 class MainDash extends React.Component {
 
   render() {
@@ -15,7 +14,7 @@ class MainDash extends React.Component {
       <div className="main-dash">
         <Row>
           <Col md={12}>
-            <h2 className="page-title">Tally Score</h2>
+            <h2 className="page-title">Tally</h2>
             <TallyScore/>
           </Col>
         </Row>
@@ -42,7 +41,7 @@ class MainDash extends React.Component {
               <div className="rep-info-cluster">
                 <img src="./img/bio_images/placeholder.png" className="bio-photo"/>
                 <p className="name">Chris Farley</p>
-                <p className="role">Congress (R)</p>
+                <p className="role">House (R)</p>
                 <p className="location">The Moon</p>
                 <p className="match-score">21%</p>
                 <p className="with-me">matched with you</p>
@@ -50,7 +49,7 @@ class MainDash extends React.Component {
               <div className="rep-info-cluster">
                 <img src="./img/bio_images/placeholder.png" className="bio-photo"/>
                 <p className="name">Ryan Gosling</p>
-                <p className="role">Congress (R)</p>
+                <p className="role">House (R)</p>
                 <p className="location">California</p>
                 <p className="match-score">112%</p>
                 <p className="with-me">matched with you</p>

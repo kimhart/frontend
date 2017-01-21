@@ -7,20 +7,20 @@ import {graphql} from 'graphql';
 import {introspectionQuery} from 'graphql/utilities';
 import SchemaExporter from './utilities/SchemaExporter';
 
-let app = express()
-  , schema = Schema(/* optional required connection */)
-  , port = 3000
+
+const app = express();
+const schema = Schema(/* optional required connection */);
+const port = 3000;
 
 app.use(bodyParser.json({limit: '2mb'}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', express.static('public'));
 
-
-app.use("/graphql", GraphQLHTTP({
+app.use('/graphql', GraphQLHTTP({
   schema,
   graphiql: true
 }));
 
-app.listen(port, () => console.log(new Date(), "Listening on port", port));
+app.listen(port, () => console.log(new Date(), 'Listening on port', port));
 
 SchemaExporter(schema);

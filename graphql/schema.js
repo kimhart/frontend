@@ -18,7 +18,7 @@ import {
   nodeDefinitions
 } from 'graphql-relay';
 
-import rp from "request-promise";
+import rp from 'request-promise';
 
 
 let schema = (db) => {
@@ -95,6 +95,8 @@ let schema = (db) => {
         args: {
           email: { type: GraphQLString },
           password: { type: GraphQLString },
+          first_name: { type: GraphQLString },
+          last_name: { type: GraphQLString },
           street: { type: GraphQLString },
           zip_code: { type: GraphQLString },
           gender: {type: GraphQLString },
@@ -107,6 +109,8 @@ let schema = (db) => {
               uri: "https://heroku-postgres-7720c2d1.herokuapp.com/new_user",
               body: { email: args.email,
                       password: args.password,
+                      first_name: args.first_name,
+                      last_name: args.last_name,
                       street: args.street,
                       zip_code: args.zip_code,
                       gender: args.gender,
@@ -148,6 +152,8 @@ let schema = (db) => {
     fields: () => ({
       email: { type: GraphQLString, resolve: user => user.email },
       password: { type: GraphQLString, resolve: user => user.password },
+      first_name: { type: GraphQLString, resolve: user => user.first_name },
+      last_name: { type: GraphQLString, resolve: user => user.last_name },
       street: { type: GraphQLString, resolve: user => user.street },
       zip_code: { type: GraphQLString, resolve: user => user.zipcode },
       gender: { type: GraphQLString, resolve: user => user.gender },

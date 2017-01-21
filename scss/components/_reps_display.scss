@@ -26,11 +26,11 @@
         color: $sky-blue;
       }
       &.with-me {
-        font-size: 18px;
+        font-size: 16px;
         margin-top: -15px;
         color: $sky-blue;
         text-align: center;
-        font-family: $lobster-font;
+        font-family: $bitter;
         font-style: italic;
       }
     }
@@ -40,7 +40,7 @@
 .scorecards-list {
   background-color: $sky-blue;
   margin: 0;
-  padding: 20px 20px 40px 20px;
+  padding: 20px 15px 40px 15px;
   h2 {
     color: white;
     text-transform: uppercase;
