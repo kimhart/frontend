@@ -4,10 +4,10 @@ import Relay from 'react-relay';
 import { Router, Route, IndexRoute, IndexLink, Link, browserHistory, applyRouterMiddleware } from 'react-router';
 import useRelay from 'react-router-relay';
 import Template from './components/Template';
-import MainDash from './components/MainDash';
-import Login from './components/Login';
-import Signup from './components/Signup';
-
+import DashboardPage from './components/DashboardPage';
+import LoginPage from './components/LoginPage';
+import SignupPage from './components/SignupPage';
+import HomePage from './components/HomePage';
 
 let RootQuery = {
   data: (Component) => Relay.QL`
@@ -25,10 +25,10 @@ class App extends React.Component {
     return (
       <Router history={browserHistory} render={applyRouterMiddleware(useRelay)} environment={Relay.Store}>
         <Route path="/" component={Template} queries={RootQuery}>
-          <IndexRoute component={Login} queries={RootQuery} />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/dash" component={MainDash} />
+          <IndexRoute component={HomePage}/>
+          <Route path="login" component={LoginPage} />
+          <Route path="signup" component={SignupPage} />
+          <Route path="dashboard" component={DashboardPage} queries={RootQuery} />
         </Route>
       </Router>
     );

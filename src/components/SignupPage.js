@@ -4,7 +4,7 @@ import Relay from 'react-relay';
 import { Grid, Row, Col, Clearfix, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 
 
-class Signup extends React.Component {
+class SignupPage extends React.Component {
 
     constructor(props) {
       super(props);
@@ -273,24 +273,6 @@ class Signup extends React.Component {
     }
 }
 
-export default Relay.createContainer(Signup, {
-  initialVariables: {},
-  fragments: {
-    data: () => Relay.QL`
-      fragment on Data {
-        user {
-            email
-            password
-            first_name
-            last_name
-            street
-            zip_code
-            gender
-            dob
-        }
-      }
-    `
-  }
-});
+export default SignupPage;
 
 

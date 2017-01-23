@@ -7,7 +7,7 @@ import AddressForm from './AddressForm';
 import { Grid, Row, Col, Clearfix } from 'react-bootstrap';
 import TallyScore from './TallyScore';
 
-class MainDash extends React.Component {
+class DashboardPage extends React.Component {
 
   render() {
     return (
@@ -114,7 +114,7 @@ class MainDash extends React.Component {
 
 }
 
-export default Relay.createContainer(MainDash, {
+export default Relay.createContainer(DashboardPage, {
   initialVariables: {
     street: null,
     zipcode: null

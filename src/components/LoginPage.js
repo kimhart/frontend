@@ -1,11 +1,14 @@
 import React from 'react';
 import Relay from 'react-relay';
 import ReactDOM from 'react-dom';
+import { Link, browserHistory } from 'react-router';
 import { Grid, Row, Col, Clearfix, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
+import DashboardPage from './DashboardPage';
+
 let userConfig = require('../../utilities/UserConfig.js');
 
 
-class Login extends React.Component {
+class LoginPage extends React.Component {
 
     constructor(props) {
       super(props);
@@ -45,8 +48,9 @@ class Login extends React.Component {
         if (userData.results) {
           userConfig = userData.results[0];
           console.log(userConfig);
+          browserHistory.push('/dashboard');
         } else {
-          console.log('Wrong username or password');
+          alert('Wrong username or password');
         }
       })
       .fail(function() {
@@ -64,7 +68,7 @@ class Login extends React.Component {
                 <FormGroup>
                   <FormControl type="email" placeholder="Email" ref="emailInput" required />
                   <FormControl type="password" placeholder="Password" ref="passwordInput" required />
-                  <button type="submit">Go!</button>
+                    <button type="submit">Go!</button>
                 </FormGroup>
               </form>
             </div>
@@ -74,14 +78,5 @@ class Login extends React.Component {
     }
 }
 
-export default Relay.createContainer(Login, {
-  initialVariables: {},
-  fragments: {
-    data: () => Relay.QL`
-      fragment on Data {
-        id
-      }
-    `
-  }
-});
+export default LoginPage;
 
