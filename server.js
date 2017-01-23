@@ -7,7 +7,6 @@ import {graphql} from 'graphql';
 import {introspectionQuery} from 'graphql/utilities';
 import SchemaExporter from './utilities/SchemaExporter';
 
-
 const app = express();
 const schema = Schema(/* optional required connection */);
 const port = 3000;

@@ -15,7 +15,6 @@ class Template extends React.Component {
         <div className="page-content">
           { this.props.children }
         </div>
-        <Footer/>
       </Grid>
     );
   }

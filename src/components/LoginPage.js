@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { Link, browserHistory } from 'react-router';
 import { Grid, Row, Col, Clearfix, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import DashboardPage from './DashboardPage';
+import Footer from './Footer';
 
 let userConfig = require('../../utilities/UserConfig.js');
 
@@ -60,20 +61,23 @@ class LoginPage extends React.Component {
 
     render() {
       return (
-        <Row>
-          <Col md={12} className="login-page">
-            <h2 className="page-title">Log In</h2>
-            <div className="form-container">
-              <form className="login-form" onChange={this.handleChange} onSubmit={this.handleSubmit}>
-                <FormGroup>
-                  <FormControl type="email" placeholder="Email" ref="emailInput" required />
-                  <FormControl type="password" placeholder="Password" ref="passwordInput" required />
-                    <button type="submit">Go!</button>
-                </FormGroup>
-              </form>
-            </div>
-          </Col>
-        </Row>
+        <div>
+          <Row>
+            <Col md={12} className="login-page">
+              <h2 className="page-title">Log In</h2>
+              <div className="form-container">
+                <form className="login-form" onChange={this.handleChange} onSubmit={this.handleSubmit}>
+                  <FormGroup>
+                    <FormControl type="email" placeholder="Email" ref="emailInput" required />
+                    <FormControl type="password" placeholder="Password" ref="passwordInput" required />
+                      <button type="submit">Go!</button>
+                  </FormGroup>
+                </form>
+              </div>
+            </Col>
+          </Row>
+          <Footer />
+        </div>
       );
     }
 }

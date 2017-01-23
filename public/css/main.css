@@ -21,6 +21,19 @@ html, body {
 .login-page {
   margin: 15vh 0; }
 
+button {
+  font-size: 16px;
+  font-weight: 60;
+  text-transform: uppercase;
+  background-color: #81C7EA;
+  border-radius: 3px;
+  padding: 10px;
+  color: #FFF;
+  border: none;
+  width: 100%;
+  display: block;
+  margin: 20px auto 50px; }
+
 h1, h2, h3, p, ul, li, a, label, input {
   font-family: "Roboto", sans-serif;
   line-height: 1.5em; }
@@ -49,6 +62,22 @@ h2.page-title {
 
 h3 {
   font-size: 22px; }
+
+.home-page .page-title {
+  margin-top: 50%; }
+
+.home-page .home-button, .home-page .signup-button {
+  margin: 20px auto;
+  font-size: 18px;
+  width: 70%; }
+  .home-page .home-button a, .home-page .home-button a:hover, .home-page .home-button a:active, .home-page .signup-button a, .home-page .signup-button a:hover, .home-page .signup-button a:active {
+    color: #FFF; }
+
+.home-page .or {
+  margin: 0 auto;
+  display: block;
+  width: auto;
+  text-align: center; }
 
 .footer {
   width: 100%;

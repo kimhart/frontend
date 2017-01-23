@@ -29,6 +29,8 @@
     "flux": "^3.1.0",
     "graphql": "^0.7.2",
     "graphql-relay": "^0.4.3",
+    "isomorphic-relay": "^0.7.4",
+    "isomorphic-relay-router": "^0.8.6",
     "jquery": "^3.1.1",
     "lodash": "^4.16.6",
     "moment": "^2.15.2",

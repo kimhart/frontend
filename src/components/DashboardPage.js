@@ -6,6 +6,7 @@ import Congresspeople from './Congresspeople';
 import AddressForm from './AddressForm';
 import { Grid, Row, Col, Clearfix } from 'react-bootstrap';
 import TallyScore from './TallyScore';
+import Footer from './Footer';
 
 class DashboardPage extends React.Component {
 
@@ -108,6 +109,7 @@ class DashboardPage extends React.Component {
             </div>
           </Col>
         </Row>
+        <Footer />
       </div>
     );
   }

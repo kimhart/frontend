@@ -16,7 +16,12 @@ class HomePage extends Component {
 
     render() {
         return (
-            <h1>Tally</h1>
+          <div className="home-page">
+            <h2 className="page-title">Tally</h2>
+            <Link to="/signup"><button className="signup-button">Signup</button></Link>
+            <span className="or">—OR—</span>
+            <Link to="/login"><button className="home-button">Login</button></Link>
+          </div>
         );
     }
 }

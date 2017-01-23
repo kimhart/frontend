@@ -56318,8 +56318,7 @@
 	          'div',
 	          { className: 'page-content' },
 	          this.props.children
-	        ),
-	        _react2.default.createElement(_Footer2.default, null)
+	        )
 	      );
 	    }
 	  }]);
@@ -74471,6 +74470,10 @@
 	
 	var _DashboardPage2 = _interopRequireDefault(_DashboardPage);
 	
+	var _Footer = __webpack_require__(/*! ./Footer */ 793);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -74540,36 +74543,41 @@
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        _reactBootstrap.Row,
+	        'div',
 	        null,
 	        _react2.default.createElement(
-	          _reactBootstrap.Col,
-	          { md: 12, className: 'login-page' },
+	          _reactBootstrap.Row,
+	          null,
 	          _react2.default.createElement(
-	            'h2',
-	            { className: 'page-title' },
-	            'Log In'
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'form-container' },
+	            _reactBootstrap.Col,
+	            { md: 12, className: 'login-page' },
 	            _react2.default.createElement(
-	              'form',
-	              { className: 'login-form', onChange: this.handleChange, onSubmit: this.handleSubmit },
+	              'h2',
+	              { className: 'page-title' },
+	              'Log In'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'form-container' },
 	              _react2.default.createElement(
-	                _reactBootstrap.FormGroup,
-	                null,
-	                _react2.default.createElement(_reactBootstrap.FormControl, { type: 'email', placeholder: 'Email', ref: 'emailInput', required: true }),
-	                _react2.default.createElement(_reactBootstrap.FormControl, { type: 'password', placeholder: 'Password', ref: 'passwordInput', required: true }),
+	                'form',
+	                { className: 'login-form', onChange: this.handleChange, onSubmit: this.handleSubmit },
 	                _react2.default.createElement(
-	                  'button',
-	                  { type: 'submit' },
-	                  'Go!'
+	                  _reactBootstrap.FormGroup,
+	                  null,
+	                  _react2.default.createElement(_reactBootstrap.FormControl, { type: 'email', placeholder: 'Email', ref: 'emailInput', required: true }),
+	                  _react2.default.createElement(_reactBootstrap.FormControl, { type: 'password', placeholder: 'Password', ref: 'passwordInput', required: true }),
+	                  _react2.default.createElement(
+	                    'button',
+	                    { type: 'submit' },
+	                    'Go!'
+	                  )
 	                )
 	              )
 	            )
 	          )
-	        )
+	        ),
+	        _react2.default.createElement(_Footer2.default, null)
 	      );
 	    }
 	  }]);
@@ -74618,6 +74626,10 @@
 	var _reactRelay2 = _interopRequireDefault(_reactRelay);
 	
 	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 636);
+	
+	var _Footer = __webpack_require__(/*! ./Footer */ 793);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -74704,900 +74716,905 @@
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        _reactBootstrap.Row,
+	        'div',
 	        null,
 	        _react2.default.createElement(
-	          _reactBootstrap.Col,
-	          { md: 12, className: 'signup-page' },
+	          _reactBootstrap.Row,
+	          null,
 	          _react2.default.createElement(
-	            'h2',
-	            { className: 'page-title' },
-	            'Create an Account'
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'form-container' },
+	            _reactBootstrap.Col,
+	            { md: 12, className: 'signup-page' },
 	            _react2.default.createElement(
-	              'form',
-	              { className: 'signup-form', onChange: this.handleChange, onSubmit: this.handleSubmit },
+	              'h2',
+	              { className: 'page-title' },
+	              'Create an Account'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'form-container' },
 	              _react2.default.createElement(
-	                _reactBootstrap.FormGroup,
-	                null,
-	                _react2.default.createElement(_reactBootstrap.FormControl, { type: 'email', placeholder: 'Email', ref: 'emailInput', required: true }),
-	                _react2.default.createElement(_reactBootstrap.FormControl, { type: 'password', placeholder: 'Password', ref: 'passwordInput', pattern: '.{8,14}', required: true }),
-	                _react2.default.createElement(_reactBootstrap.FormControl, { type: 'text', placeholder: 'First Name', ref: 'firstNameInput', required: true }),
-	                _react2.default.createElement(_reactBootstrap.FormControl, { type: 'text', placeholder: 'Last Name', ref: 'lastNameInput', required: true }),
-	                _react2.default.createElement(_reactBootstrap.FormControl, { type: 'text', placeholder: 'Street Address', ref: 'streetInput', required: true }),
-	                _react2.default.createElement(_reactBootstrap.FormControl, { type: 'text', placeholder: 'ZIP code', ref: 'zipcodeInput', required: true }),
+	                'form',
+	                { className: 'signup-form', onChange: this.handleChange, onSubmit: this.handleSubmit },
 	                _react2.default.createElement(
-	                  _reactBootstrap.ControlLabel,
+	                  _reactBootstrap.FormGroup,
 	                  null,
-	                  'Gender:'
-	                ),
-	                _react2.default.createElement(
-	                  _reactBootstrap.FormControl,
-	                  { componentClass: 'select', name: 'gender', ref: 'genderInput', required: true },
+	                  _react2.default.createElement(_reactBootstrap.FormControl, { type: 'email', placeholder: 'Email', ref: 'emailInput', required: true }),
+	                  _react2.default.createElement(_reactBootstrap.FormControl, { type: 'password', placeholder: 'Password', ref: 'passwordInput', pattern: '.{8,14}', required: true }),
+	                  _react2.default.createElement(_reactBootstrap.FormControl, { type: 'text', placeholder: 'First Name', ref: 'firstNameInput', required: true }),
+	                  _react2.default.createElement(_reactBootstrap.FormControl, { type: 'text', placeholder: 'Last Name', ref: 'lastNameInput', required: true }),
+	                  _react2.default.createElement(_reactBootstrap.FormControl, { type: 'text', placeholder: 'Street Address', ref: 'streetInput', required: true }),
+	                  _react2.default.createElement(_reactBootstrap.FormControl, { type: 'text', placeholder: 'ZIP code', ref: 'zipcodeInput', required: true }),
 	                  _react2.default.createElement(
-	                    'option',
-	                    { value: 'female' },
-	                    'Female'
+	                    _reactBootstrap.ControlLabel,
+	                    null,
+	                    'Gender:'
 	                  ),
 	                  _react2.default.createElement(
-	                    'option',
-	                    { value: 'male' },
-	                    'Male'
+	                    _reactBootstrap.FormControl,
+	                    { componentClass: 'select', name: 'gender', ref: 'genderInput', required: true },
+	                    _react2.default.createElement(
+	                      'option',
+	                      { value: 'female' },
+	                      'Female'
+	                    ),
+	                    _react2.default.createElement(
+	                      'option',
+	                      { value: 'male' },
+	                      'Male'
+	                    ),
+	                    _react2.default.createElement(
+	                      'option',
+	                      { value: 'nonbinary' },
+	                      'Non-binary'
+	                    ),
+	                    _react2.default.createElement(
+	                      'option',
+	                      { value: 'NA' },
+	                      'Rather not say'
+	                    )
 	                  ),
 	                  _react2.default.createElement(
-	                    'option',
-	                    { value: 'nonbinary' },
-	                    'Non-binary'
+	                    _reactBootstrap.ControlLabel,
+	                    null,
+	                    'Date of Birth:'
 	                  ),
 	                  _react2.default.createElement(
-	                    'option',
-	                    { value: 'NA' },
-	                    'Rather not say'
+	                    'div',
+	                    { className: 'dob-container' },
+	                    _react2.default.createElement(
+	                      _reactBootstrap.FormControl,
+	                      { componentClass: 'select', name: 'dob-month', className: 'dob-month', ref: 'dobMonthInput', required: true },
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '' },
+	                        'Month'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '01' },
+	                        'January'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '02' },
+	                        'February'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '03' },
+	                        'March'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '04' },
+	                        'April'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '05' },
+	                        'May'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '06' },
+	                        'June'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '07' },
+	                        'July'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '08' },
+	                        'August'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '09' },
+	                        'September'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '10' },
+	                        'October'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '11' },
+	                        'November'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '12' },
+	                        'December'
+	                      )
+	                    ),
+	                    _react2.default.createElement(
+	                      _reactBootstrap.FormControl,
+	                      { componentClass: 'select', name: 'dob-day', className: 'dob-day', ref: 'dobDayInput', required: true },
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '' },
+	                        'Day'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '01' },
+	                        '01'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '02' },
+	                        '02'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '03' },
+	                        '03'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '04' },
+	                        '04'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '05' },
+	                        '05'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '06' },
+	                        '06'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '07' },
+	                        '07'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '08' },
+	                        '08'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '09' },
+	                        '09'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '10' },
+	                        '10'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '11' },
+	                        '11'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '12' },
+	                        '12'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '13' },
+	                        '13'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '14' },
+	                        '14'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '15' },
+	                        '15'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '16' },
+	                        '16'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '17' },
+	                        '17'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '18' },
+	                        '18'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '19' },
+	                        '19'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '20' },
+	                        '20'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '21' },
+	                        '21'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '22' },
+	                        '22'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '23' },
+	                        '23'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '24' },
+	                        '24'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '25' },
+	                        '25'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '26' },
+	                        '26'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '27' },
+	                        '27'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '28' },
+	                        '28'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '29' },
+	                        '29'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '30' },
+	                        '30'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '31' },
+	                        '31'
+	                      )
+	                    ),
+	                    _react2.default.createElement(
+	                      _reactBootstrap.FormControl,
+	                      { componentClass: 'select', name: 'dob-year', className: 'dob-year', ref: 'dobYearInput', required: true },
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '' },
+	                        'Year'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '2012' },
+	                        '2016'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '2012' },
+	                        '2015'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '2012' },
+	                        '2014'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '2012' },
+	                        '2013'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '2012' },
+	                        '2012'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '2011' },
+	                        '2011'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '2010' },
+	                        '2010'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '2009' },
+	                        '2009'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '2008' },
+	                        '2008'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '2007' },
+	                        '2007'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '2006' },
+	                        '2006'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '2005' },
+	                        '2005'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '2004' },
+	                        '2004'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '2003' },
+	                        '2003'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '2002' },
+	                        '2002'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '2001' },
+	                        '2001'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '2000' },
+	                        '2000'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1999' },
+	                        '1999'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1998' },
+	                        '1998'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1997' },
+	                        '1997'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1996' },
+	                        '1996'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1995' },
+	                        '1995'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1994' },
+	                        '1994'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1993' },
+	                        '1993'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1992' },
+	                        '1992'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1991' },
+	                        '1991'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1990' },
+	                        '1990'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1989' },
+	                        '1989'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1988' },
+	                        '1988'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1987' },
+	                        '1987'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1986' },
+	                        '1986'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1985' },
+	                        '1985'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1984' },
+	                        '1984'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1983' },
+	                        '1983'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1982' },
+	                        '1982'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1981' },
+	                        '1981'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1980' },
+	                        '1980'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1979' },
+	                        '1979'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1978' },
+	                        '1978'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1977' },
+	                        '1977'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1976' },
+	                        '1976'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1975' },
+	                        '1975'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1974' },
+	                        '1974'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1973' },
+	                        '1973'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1972' },
+	                        '1972'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1971' },
+	                        '1971'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1970' },
+	                        '1970'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1969' },
+	                        '1969'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1968' },
+	                        '1968'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1967' },
+	                        '1967'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1966' },
+	                        '1966'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1965' },
+	                        '1965'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1964' },
+	                        '1964'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1963' },
+	                        '1963'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1962' },
+	                        '1962'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1961' },
+	                        '1961'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1960' },
+	                        '1960'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1959' },
+	                        '1959'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1958' },
+	                        '1958'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1957' },
+	                        '1957'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1956' },
+	                        '1956'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1955' },
+	                        '1955'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1954' },
+	                        '1954'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1953' },
+	                        '1953'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1952' },
+	                        '1952'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1951' },
+	                        '1951'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1950' },
+	                        '1950'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1949' },
+	                        '1949'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1948' },
+	                        '1948'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1947' },
+	                        '1947'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1946' },
+	                        '1946'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1945' },
+	                        '1945'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1944' },
+	                        '1944'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1943' },
+	                        '1943'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1942' },
+	                        '1942'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1941' },
+	                        '1941'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1940' },
+	                        '1940'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1939' },
+	                        '1939'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1938' },
+	                        '1938'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1937' },
+	                        '1937'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1936' },
+	                        '1936'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1935' },
+	                        '1935'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1934' },
+	                        '1934'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1933' },
+	                        '1933'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1932' },
+	                        '1932'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1931' },
+	                        '1931'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1930' },
+	                        '1930'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1929' },
+	                        '1929'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1928' },
+	                        '1928'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1927' },
+	                        '1927'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1926' },
+	                        '1926'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1925' },
+	                        '1925'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1924' },
+	                        '1924'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1923' },
+	                        '1923'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1922' },
+	                        '1922'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1921' },
+	                        '1921'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1920' },
+	                        '1920'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1919' },
+	                        '1919'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1918' },
+	                        '1918'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1917' },
+	                        '1917'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1916' },
+	                        '1916'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1915' },
+	                        '1915'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1914' },
+	                        '1914'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1913' },
+	                        '1913'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1912' },
+	                        '1912'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1911' },
+	                        '1911'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1910' },
+	                        '1910'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1909' },
+	                        '1909'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1908' },
+	                        '1908'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1907' },
+	                        '1907'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1906' },
+	                        '1906'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1905' },
+	                        '1905'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1904' },
+	                        '1904'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1903' },
+	                        '1903'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1901' },
+	                        '1901'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '1900' },
+	                        '1900'
+	                      )
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'button',
+	                    { type: 'submit' },
+	                    'Create Account'
 	                  )
-	                ),
-	                _react2.default.createElement(
-	                  _reactBootstrap.ControlLabel,
-	                  null,
-	                  'Date of Birth:'
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'dob-container' },
-	                  _react2.default.createElement(
-	                    _reactBootstrap.FormControl,
-	                    { componentClass: 'select', name: 'dob-month', className: 'dob-month', ref: 'dobMonthInput', required: true },
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '' },
-	                      'Month'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '01' },
-	                      'January'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '02' },
-	                      'February'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '03' },
-	                      'March'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '04' },
-	                      'April'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '05' },
-	                      'May'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '06' },
-	                      'June'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '07' },
-	                      'July'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '08' },
-	                      'August'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '09' },
-	                      'September'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '10' },
-	                      'October'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '11' },
-	                      'November'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '12' },
-	                      'December'
-	                    )
-	                  ),
-	                  _react2.default.createElement(
-	                    _reactBootstrap.FormControl,
-	                    { componentClass: 'select', name: 'dob-day', className: 'dob-day', ref: 'dobDayInput', required: true },
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '' },
-	                      'Day'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '01' },
-	                      '01'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '02' },
-	                      '02'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '03' },
-	                      '03'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '04' },
-	                      '04'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '05' },
-	                      '05'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '06' },
-	                      '06'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '07' },
-	                      '07'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '08' },
-	                      '08'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '09' },
-	                      '09'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '10' },
-	                      '10'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '11' },
-	                      '11'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '12' },
-	                      '12'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '13' },
-	                      '13'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '14' },
-	                      '14'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '15' },
-	                      '15'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '16' },
-	                      '16'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '17' },
-	                      '17'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '18' },
-	                      '18'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '19' },
-	                      '19'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '20' },
-	                      '20'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '21' },
-	                      '21'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '22' },
-	                      '22'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '23' },
-	                      '23'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '24' },
-	                      '24'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '25' },
-	                      '25'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '26' },
-	                      '26'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '27' },
-	                      '27'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '28' },
-	                      '28'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '29' },
-	                      '29'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '30' },
-	                      '30'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '31' },
-	                      '31'
-	                    )
-	                  ),
-	                  _react2.default.createElement(
-	                    _reactBootstrap.FormControl,
-	                    { componentClass: 'select', name: 'dob-year', className: 'dob-year', ref: 'dobYearInput', required: true },
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '' },
-	                      'Year'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '2012' },
-	                      '2016'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '2012' },
-	                      '2015'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '2012' },
-	                      '2014'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '2012' },
-	                      '2013'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '2012' },
-	                      '2012'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '2011' },
-	                      '2011'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '2010' },
-	                      '2010'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '2009' },
-	                      '2009'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '2008' },
-	                      '2008'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '2007' },
-	                      '2007'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '2006' },
-	                      '2006'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '2005' },
-	                      '2005'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '2004' },
-	                      '2004'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '2003' },
-	                      '2003'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '2002' },
-	                      '2002'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '2001' },
-	                      '2001'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '2000' },
-	                      '2000'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1999' },
-	                      '1999'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1998' },
-	                      '1998'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1997' },
-	                      '1997'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1996' },
-	                      '1996'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1995' },
-	                      '1995'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1994' },
-	                      '1994'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1993' },
-	                      '1993'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1992' },
-	                      '1992'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1991' },
-	                      '1991'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1990' },
-	                      '1990'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1989' },
-	                      '1989'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1988' },
-	                      '1988'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1987' },
-	                      '1987'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1986' },
-	                      '1986'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1985' },
-	                      '1985'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1984' },
-	                      '1984'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1983' },
-	                      '1983'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1982' },
-	                      '1982'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1981' },
-	                      '1981'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1980' },
-	                      '1980'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1979' },
-	                      '1979'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1978' },
-	                      '1978'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1977' },
-	                      '1977'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1976' },
-	                      '1976'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1975' },
-	                      '1975'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1974' },
-	                      '1974'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1973' },
-	                      '1973'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1972' },
-	                      '1972'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1971' },
-	                      '1971'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1970' },
-	                      '1970'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1969' },
-	                      '1969'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1968' },
-	                      '1968'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1967' },
-	                      '1967'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1966' },
-	                      '1966'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1965' },
-	                      '1965'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1964' },
-	                      '1964'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1963' },
-	                      '1963'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1962' },
-	                      '1962'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1961' },
-	                      '1961'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1960' },
-	                      '1960'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1959' },
-	                      '1959'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1958' },
-	                      '1958'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1957' },
-	                      '1957'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1956' },
-	                      '1956'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1955' },
-	                      '1955'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1954' },
-	                      '1954'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1953' },
-	                      '1953'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1952' },
-	                      '1952'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1951' },
-	                      '1951'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1950' },
-	                      '1950'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1949' },
-	                      '1949'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1948' },
-	                      '1948'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1947' },
-	                      '1947'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1946' },
-	                      '1946'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1945' },
-	                      '1945'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1944' },
-	                      '1944'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1943' },
-	                      '1943'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1942' },
-	                      '1942'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1941' },
-	                      '1941'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1940' },
-	                      '1940'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1939' },
-	                      '1939'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1938' },
-	                      '1938'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1937' },
-	                      '1937'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1936' },
-	                      '1936'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1935' },
-	                      '1935'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1934' },
-	                      '1934'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1933' },
-	                      '1933'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1932' },
-	                      '1932'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1931' },
-	                      '1931'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1930' },
-	                      '1930'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1929' },
-	                      '1929'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1928' },
-	                      '1928'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1927' },
-	                      '1927'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1926' },
-	                      '1926'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1925' },
-	                      '1925'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1924' },
-	                      '1924'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1923' },
-	                      '1923'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1922' },
-	                      '1922'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1921' },
-	                      '1921'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1920' },
-	                      '1920'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1919' },
-	                      '1919'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1918' },
-	                      '1918'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1917' },
-	                      '1917'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1916' },
-	                      '1916'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1915' },
-	                      '1915'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1914' },
-	                      '1914'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1913' },
-	                      '1913'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1912' },
-	                      '1912'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1911' },
-	                      '1911'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1910' },
-	                      '1910'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1909' },
-	                      '1909'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1908' },
-	                      '1908'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1907' },
-	                      '1907'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1906' },
-	                      '1906'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1905' },
-	                      '1905'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1904' },
-	                      '1904'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1903' },
-	                      '1903'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1901' },
-	                      '1901'
-	                    ),
-	                    _react2.default.createElement(
-	                      'option',
-	                      { value: '1900' },
-	                      '1900'
-	                    )
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  'button',
-	                  { type: 'submit' },
-	                  'Create Account'
 	                )
 	              )
 	            )
 	          )
-	        )
+	        ),
+	        _react2.default.createElement(_Footer2.default, null)
 	      );
 	    }
 	  }]);
@@ -75653,6 +75670,10 @@
 	var _TallyScore = __webpack_require__(/*! ./TallyScore */ 799);
 	
 	var _TallyScore2 = _interopRequireDefault(_TallyScore);
+	
+	var _Footer = __webpack_require__(/*! ./Footer */ 793);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -75984,7 +76005,8 @@
 	              )
 	            )
 	          )
-	        )
+	        ),
+	        _react2.default.createElement(_Footer2.default, null)
 	      );
 	    }
 	  }]);
@@ -76072,9 +76094,36 @@
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
-	                'h1',
-	                null,
-	                'Tally'
+	                'div',
+	                { className: 'home-page' },
+	                _react2.default.createElement(
+	                    'h2',
+	                    { className: 'page-title' },
+	                    'Tally'
+	                ),
+	                _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { to: '/signup' },
+	                    _react2.default.createElement(
+	                        'button',
+	                        { className: 'signup-button' },
+	                        'Signup'
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'span',
+	                    { className: 'or' },
+	                    '\u2014OR\u2014'
+	                ),
+	                _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { to: '/login' },
+	                    _react2.default.createElement(
+	                        'button',
+	                        { className: 'home-button' },
+	                        'Login'
+	                    )
+	                )
 	            );
 	        }
 	    }]);
