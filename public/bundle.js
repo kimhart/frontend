@@ -22046,7 +22046,7 @@
 	
 	var _Template2 = _interopRequireDefault(_Template);
 	
-	var _DashboardPage = __webpack_require__(/*! ./components/DashboardPage */ 803);
+	var _DashboardPage = __webpack_require__(/*! ./components/DashboardPage */ 794);
 	
 	var _DashboardPage2 = _interopRequireDefault(_DashboardPage);
 	
@@ -22058,7 +22058,7 @@
 	
 	var _SignupPage2 = _interopRequireDefault(_SignupPage);
 	
-	var _HomePage = __webpack_require__(/*! ./components/HomePage */ 804);
+	var _HomePage = __webpack_require__(/*! ./components/HomePage */ 803);
 	
 	var _HomePage2 = _interopRequireDefault(_HomePage);
 	
@@ -73912,7 +73912,424 @@
 	exports.default = Footer;
 
 /***/ },
-/* 794 */,
+/* 794 */
+/*!*****************************************!*\
+  !*** ./src/components/DashboardPage.js ***!
+  \*****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRelay = __webpack_require__(/*! react-relay */ 179);
+	
+	var _reactRelay2 = _interopRequireDefault(_reactRelay);
+	
+	var _RepBio = __webpack_require__(/*! ./RepBio */ 795);
+	
+	var _RepBio2 = _interopRequireDefault(_RepBio);
+	
+	var _Senators = __webpack_require__(/*! ./Senators */ 796);
+	
+	var _Senators2 = _interopRequireDefault(_Senators);
+	
+	var _Congresspeople = __webpack_require__(/*! ./Congresspeople */ 797);
+	
+	var _Congresspeople2 = _interopRequireDefault(_Congresspeople);
+	
+	var _AddressForm = __webpack_require__(/*! ./AddressForm */ 798);
+	
+	var _AddressForm2 = _interopRequireDefault(_AddressForm);
+	
+	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 636);
+	
+	var _TallyScore = __webpack_require__(/*! ./TallyScore */ 799);
+	
+	var _TallyScore2 = _interopRequireDefault(_TallyScore);
+	
+	var _Footer = __webpack_require__(/*! ./Footer */ 793);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var DashboardPage = function (_React$Component) {
+	  _inherits(DashboardPage, _React$Component);
+	
+	  function DashboardPage() {
+	    _classCallCheck(this, DashboardPage);
+	
+	    return _possibleConstructorReturn(this, (DashboardPage.__proto__ || Object.getPrototypeOf(DashboardPage)).apply(this, arguments));
+	  }
+	
+	  _createClass(DashboardPage, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'main-dash' },
+	        _react2.default.createElement(
+	          _reactBootstrap.Row,
+	          null,
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { md: 12 },
+	            _react2.default.createElement(
+	              'h2',
+	              { className: 'page-title' },
+	              'Tally'
+	            ),
+	            _react2.default.createElement(_TallyScore2.default, null)
+	          )
+	        ),
+	        _react2.default.createElement(
+	          _reactBootstrap.Row,
+	          null,
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { md: 12, className: 'reps-display' },
+	            _react2.default.createElement(
+	              'h2',
+	              null,
+	              'Your Reps'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'reps-list' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'rep-info-cluster' },
+	                _react2.default.createElement('img', { src: './img/bio_images/placeholder.png', className: 'bio-photo' }),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'name' },
+	                  'Kristin Gillibrand'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'role' },
+	                  'Senate (D)'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'location' },
+	                  'New York'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'match-score' },
+	                  '100%'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'with-me' },
+	                  'matched with you'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'rep-info-cluster' },
+	                _react2.default.createElement('img', { src: './img/bio_images/placeholder.png', className: 'bio-photo' }),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'name' },
+	                  'Snoop Dogg'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'role' },
+	                  'Senate (D)'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'location' },
+	                  'New York'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'match-score' },
+	                  '84%'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'with-me' },
+	                  'matched with you'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'rep-info-cluster' },
+	                _react2.default.createElement('img', { src: './img/bio_images/placeholder.png', className: 'bio-photo' }),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'name' },
+	                  'Chris Farley'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'role' },
+	                  'House (R)'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'location' },
+	                  'The Moon'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'match-score' },
+	                  '21%'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'with-me' },
+	                  'matched with you'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'rep-info-cluster' },
+	                _react2.default.createElement('img', { src: './img/bio_images/placeholder.png', className: 'bio-photo' }),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'name' },
+	                  'Ryan Gosling'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'role' },
+	                  'House (R)'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'location' },
+	                  'California'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'match-score' },
+	                  '112%'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'with-me' },
+	                  'matched with you'
+	                )
+	              ),
+	              _react2.default.createElement(_Senators2.default, _extends({}, this.props, this.state)),
+	              _react2.default.createElement(_Congresspeople2.default, _extends({}, this.props, this.state))
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          _reactBootstrap.Row,
+	          null,
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { md: 12, className: 'scorecards-list' },
+	            _react2.default.createElement(
+	              'h2',
+	              null,
+	              'Report Cards'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'scorecard' },
+	              _react2.default.createElement(
+	                'h3',
+	                { className: 'name' },
+	                'Kristin Gillibrand'
+	              ),
+	              _react2.default.createElement(
+	                'p',
+	                { className: 'role' },
+	                'Senate (D), New York'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'badge-container' },
+	                _react2.default.createElement(
+	                  'i',
+	                  { className: 'material-icons' },
+	                  'verified_user'
+	                ),
+	                _react2.default.createElement(
+	                  'i',
+	                  { className: 'material-icons' },
+	                  'monetization_on'
+	                ),
+	                _react2.default.createElement(
+	                  'i',
+	                  { className: 'material-icons' },
+	                  'public'
+	                ),
+	                _react2.default.createElement(
+	                  'i',
+	                  { className: 'material-icons' },
+	                  'whatshot'
+	                ),
+	                _react2.default.createElement(
+	                  'i',
+	                  { className: 'material-icons' },
+	                  'star'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'photo-grade-container' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'photo-container' },
+	                  _react2.default.createElement('img', { className: 'bio-photo', src: './img/bio_images/placeholder.png' })
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'letter-grade-container' },
+	                  _react2.default.createElement(
+	                    'p',
+	                    null,
+	                    'Job Score'
+	                  ),
+	                  _react2.default.createElement(
+	                    'p',
+	                    { className: 'grade' },
+	                    'A-'
+	                  ),
+	                  _react2.default.createElement(
+	                    'p',
+	                    null,
+	                    _react2.default.createElement(
+	                      'i',
+	                      { className: 'material-icons info-icon' },
+	                      'help_outline'
+	                    )
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'alignment-container' },
+	                _react2.default.createElement(
+	                  'h3',
+	                  null,
+	                  'Voting Alignment'
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'alignment-breakdown' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'percentages' },
+	                    _react2.default.createElement(
+	                      'p',
+	                      null,
+	                      'You'
+	                    ),
+	                    _react2.default.createElement('img', { src: './img/parties/you.png' }),
+	                    _react2.default.createElement(
+	                      'p',
+	                      { className: 'alignment-score' },
+	                      '66%'
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'percentages' },
+	                    _react2.default.createElement(
+	                      'p',
+	                      null,
+	                      'Democrats'
+	                    ),
+	                    _react2.default.createElement('img', { src: './img/parties/democrat.png' }),
+	                    _react2.default.createElement(
+	                      'p',
+	                      { className: 'alignment-score' },
+	                      '98%'
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'percentages' },
+	                    _react2.default.createElement(
+	                      'p',
+	                      null,
+	                      'Republicans'
+	                    ),
+	                    _react2.default.createElement('img', { src: './img/parties/republican.jpeg' }),
+	                    _react2.default.createElement(
+	                      'p',
+	                      { className: 'alignment-score' },
+	                      '35%'
+	                    )
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'learn-more' },
+	                _react2.default.createElement(
+	                  'button',
+	                  { className: 'view-rep-btn' },
+	                  'More'
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(_Footer2.default, null)
+	      );
+	    }
+	  }]);
+	
+	  return DashboardPage;
+	}(_react2.default.Component);
+	
+	exports.default = _reactRelay2.default.createContainer(DashboardPage, {
+	  initialVariables: {
+	    street: null,
+	    zipcode: null
+	  },
+	  fragments: {
+	    data: function data() {
+	      return function (RQL_0, RQL_1) {
+	        return {
+	          children: [].concat.apply([], [{
+	            fieldName: 'id',
+	            kind: 'Field',
+	            metadata: {
+	              isRequisite: true
+	            },
+	            type: 'ID'
+	          }, _reactRelay2.default.QL.__frag(RQL_0), _reactRelay2.default.QL.__frag(RQL_1)]),
+	          id: _reactRelay2.default.QL.__id(),
+	          kind: 'Fragment',
+	          metadata: {},
+	          name: 'DashboardPage_DataRelayQL',
+	          type: 'Data'
+	        };
+	      }(_Senators2.default.getFragment('data'), _Congresspeople2.default.getFragment('data'));
+	    }
+	  }
+	});
+
+/***/ },
 /* 795 */
 /*!**********************************!*\
   !*** ./src/components/RepBio.js ***!
@@ -74466,7 +74883,7 @@
 	
 	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 636);
 	
-	var _DashboardPage = __webpack_require__(/*! ./DashboardPage */ 803);
+	var _DashboardPage = __webpack_require__(/*! ./DashboardPage */ 794);
 	
 	var _DashboardPage2 = _interopRequireDefault(_DashboardPage);
 	
@@ -74625,6 +75042,8 @@
 	
 	var _reactRelay2 = _interopRequireDefault(_reactRelay);
 	
+	var _reactRouter = __webpack_require__(/*! react-router */ 475);
+	
 	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 636);
 	
 	var _Footer = __webpack_require__(/*! ./Footer */ 793);
@@ -74700,9 +75119,8 @@
 	          'Access-Control-Allow-Origin': '*'
 	        },
 	        success: function success(response, textStatus, xhr) {
-	          // need to build in something for wrong password/username vs already existing in the system
 	          if (response.result === true) {
-	            alert("Thanks for signing up!");
+	            _reactRouter.browserHistory.push('/login');
 	          } else {
 	            alert("That username already exists in our system.");
 	          }
@@ -75626,424 +76044,6 @@
 
 /***/ },
 /* 803 */
-/*!*****************************************!*\
-  !*** ./src/components/DashboardPage.js ***!
-  \*****************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRelay = __webpack_require__(/*! react-relay */ 179);
-	
-	var _reactRelay2 = _interopRequireDefault(_reactRelay);
-	
-	var _RepBio = __webpack_require__(/*! ./RepBio */ 795);
-	
-	var _RepBio2 = _interopRequireDefault(_RepBio);
-	
-	var _Senators = __webpack_require__(/*! ./Senators */ 796);
-	
-	var _Senators2 = _interopRequireDefault(_Senators);
-	
-	var _Congresspeople = __webpack_require__(/*! ./Congresspeople */ 797);
-	
-	var _Congresspeople2 = _interopRequireDefault(_Congresspeople);
-	
-	var _AddressForm = __webpack_require__(/*! ./AddressForm */ 798);
-	
-	var _AddressForm2 = _interopRequireDefault(_AddressForm);
-	
-	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 636);
-	
-	var _TallyScore = __webpack_require__(/*! ./TallyScore */ 799);
-	
-	var _TallyScore2 = _interopRequireDefault(_TallyScore);
-	
-	var _Footer = __webpack_require__(/*! ./Footer */ 793);
-	
-	var _Footer2 = _interopRequireDefault(_Footer);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var DashboardPage = function (_React$Component) {
-	  _inherits(DashboardPage, _React$Component);
-	
-	  function DashboardPage() {
-	    _classCallCheck(this, DashboardPage);
-	
-	    return _possibleConstructorReturn(this, (DashboardPage.__proto__ || Object.getPrototypeOf(DashboardPage)).apply(this, arguments));
-	  }
-	
-	  _createClass(DashboardPage, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'main-dash' },
-	        _react2.default.createElement(
-	          _reactBootstrap.Row,
-	          null,
-	          _react2.default.createElement(
-	            _reactBootstrap.Col,
-	            { md: 12 },
-	            _react2.default.createElement(
-	              'h2',
-	              { className: 'page-title' },
-	              'Tally'
-	            ),
-	            _react2.default.createElement(_TallyScore2.default, null)
-	          )
-	        ),
-	        _react2.default.createElement(
-	          _reactBootstrap.Row,
-	          null,
-	          _react2.default.createElement(
-	            _reactBootstrap.Col,
-	            { md: 12, className: 'reps-display' },
-	            _react2.default.createElement(
-	              'h2',
-	              null,
-	              'Your Reps'
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'reps-list' },
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'rep-info-cluster' },
-	                _react2.default.createElement('img', { src: './img/bio_images/placeholder.png', className: 'bio-photo' }),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'name' },
-	                  'Kristin Gillibrand'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'role' },
-	                  'Senate (D)'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'location' },
-	                  'New York'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'match-score' },
-	                  '100%'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'with-me' },
-	                  'matched with you'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'rep-info-cluster' },
-	                _react2.default.createElement('img', { src: './img/bio_images/placeholder.png', className: 'bio-photo' }),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'name' },
-	                  'Snoop Dogg'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'role' },
-	                  'Senate (D)'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'location' },
-	                  'New York'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'match-score' },
-	                  '84%'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'with-me' },
-	                  'matched with you'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'rep-info-cluster' },
-	                _react2.default.createElement('img', { src: './img/bio_images/placeholder.png', className: 'bio-photo' }),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'name' },
-	                  'Chris Farley'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'role' },
-	                  'House (R)'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'location' },
-	                  'The Moon'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'match-score' },
-	                  '21%'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'with-me' },
-	                  'matched with you'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'rep-info-cluster' },
-	                _react2.default.createElement('img', { src: './img/bio_images/placeholder.png', className: 'bio-photo' }),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'name' },
-	                  'Ryan Gosling'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'role' },
-	                  'House (R)'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'location' },
-	                  'California'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'match-score' },
-	                  '112%'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'with-me' },
-	                  'matched with you'
-	                )
-	              ),
-	              _react2.default.createElement(_Senators2.default, _extends({}, this.props, this.state)),
-	              _react2.default.createElement(_Congresspeople2.default, _extends({}, this.props, this.state))
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          _reactBootstrap.Row,
-	          null,
-	          _react2.default.createElement(
-	            _reactBootstrap.Col,
-	            { md: 12, className: 'scorecards-list' },
-	            _react2.default.createElement(
-	              'h2',
-	              null,
-	              'Report Cards'
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'scorecard' },
-	              _react2.default.createElement(
-	                'h3',
-	                { className: 'name' },
-	                'Kristin Gillibrand'
-	              ),
-	              _react2.default.createElement(
-	                'p',
-	                { className: 'role' },
-	                'Senate (D), New York'
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'badge-container' },
-	                _react2.default.createElement(
-	                  'i',
-	                  { className: 'material-icons' },
-	                  'verified_user'
-	                ),
-	                _react2.default.createElement(
-	                  'i',
-	                  { className: 'material-icons' },
-	                  'monetization_on'
-	                ),
-	                _react2.default.createElement(
-	                  'i',
-	                  { className: 'material-icons' },
-	                  'public'
-	                ),
-	                _react2.default.createElement(
-	                  'i',
-	                  { className: 'material-icons' },
-	                  'whatshot'
-	                ),
-	                _react2.default.createElement(
-	                  'i',
-	                  { className: 'material-icons' },
-	                  'star'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'photo-grade-container' },
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'photo-container' },
-	                  _react2.default.createElement('img', { className: 'bio-photo', src: './img/bio_images/placeholder.png' })
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'letter-grade-container' },
-	                  _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    'Job Score'
-	                  ),
-	                  _react2.default.createElement(
-	                    'p',
-	                    { className: 'grade' },
-	                    'A-'
-	                  ),
-	                  _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    _react2.default.createElement(
-	                      'i',
-	                      { className: 'material-icons info-icon' },
-	                      'help_outline'
-	                    )
-	                  )
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'alignment-container' },
-	                _react2.default.createElement(
-	                  'h3',
-	                  null,
-	                  'Voting Alignment'
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'alignment-breakdown' },
-	                  _react2.default.createElement(
-	                    'div',
-	                    { className: 'percentages' },
-	                    _react2.default.createElement(
-	                      'p',
-	                      null,
-	                      'You'
-	                    ),
-	                    _react2.default.createElement('img', { src: './img/parties/you.png' }),
-	                    _react2.default.createElement(
-	                      'p',
-	                      { className: 'alignment-score' },
-	                      '66%'
-	                    )
-	                  ),
-	                  _react2.default.createElement(
-	                    'div',
-	                    { className: 'percentages' },
-	                    _react2.default.createElement(
-	                      'p',
-	                      null,
-	                      'Democrats'
-	                    ),
-	                    _react2.default.createElement('img', { src: './img/parties/democrat.png' }),
-	                    _react2.default.createElement(
-	                      'p',
-	                      { className: 'alignment-score' },
-	                      '98%'
-	                    )
-	                  ),
-	                  _react2.default.createElement(
-	                    'div',
-	                    { className: 'percentages' },
-	                    _react2.default.createElement(
-	                      'p',
-	                      null,
-	                      'Republicans'
-	                    ),
-	                    _react2.default.createElement('img', { src: './img/parties/republican.jpeg' }),
-	                    _react2.default.createElement(
-	                      'p',
-	                      { className: 'alignment-score' },
-	                      '35%'
-	                    )
-	                  )
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'learn-more' },
-	                _react2.default.createElement(
-	                  'button',
-	                  { className: 'view-rep-btn' },
-	                  'More'
-	                )
-	              )
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(_Footer2.default, null)
-	      );
-	    }
-	  }]);
-	
-	  return DashboardPage;
-	}(_react2.default.Component);
-	
-	exports.default = _reactRelay2.default.createContainer(DashboardPage, {
-	  initialVariables: {
-	    street: null,
-	    zipcode: null
-	  },
-	  fragments: {
-	    data: function data() {
-	      return function (RQL_0, RQL_1) {
-	        return {
-	          children: [].concat.apply([], [{
-	            fieldName: 'id',
-	            kind: 'Field',
-	            metadata: {
-	              isRequisite: true
-	            },
-	            type: 'ID'
-	          }, _reactRelay2.default.QL.__frag(RQL_0), _reactRelay2.default.QL.__frag(RQL_1)]),
-	          id: _reactRelay2.default.QL.__id(),
-	          kind: 'Fragment',
-	          metadata: {},
-	          name: 'DashboardPage_DataRelayQL',
-	          type: 'Data'
-	        };
-	      }(_Senators2.default.getFragment('data'), _Congresspeople2.default.getFragment('data'));
-	    }
-	  }
-	});
-
-/***/ },
-/* 804 */
 /*!************************************!*\
   !*** ./src/components/HomePage.js ***!
   \************************************/

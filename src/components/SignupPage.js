@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Relay from 'react-relay';
+import { Link, browserHistory } from 'react-router';
 import { Grid, Row, Col, Clearfix, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import Footer from './Footer';
 
@@ -58,9 +59,8 @@ class SignupPage extends React.Component {
           'Access-Control-Allow-Origin': '*'
         },
         success: function(response, textStatus, xhr) {
-          // need to build in something for wrong password/username vs already existing in the system
           if (response.result === true) {
-            alert("Thanks for signing up!");
+            browserHistory.push('/login');
           } else {
             alert("That username already exists in our system.")
           }
