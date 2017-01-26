@@ -6,8 +6,7 @@ import { Grid, Row, Col, Clearfix, FormGroup, FormControl, ControlLabel } from '
 import DashboardPage from './DashboardPage';
 import Footer from './Footer';
 
-let userConfig = require('../../utilities/UserConfig.js');
-
+let userConfig = require('../../utilities/UserConfig.js').userConfig;
 
 class LoginPage extends React.Component {
 

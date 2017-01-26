@@ -302,3 +302,21 @@ div.form-container {
   .score-toggle p {
     margin: 10px auto;
     width: 90%; }
+
+.not-found-page {
+  width: 100%; }
+  .not-found-page h2 {
+    margin-top: 40%;
+    color: #81C7EA; }
+  .not-found-page .back {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+    display: inline-flex;
+    justify-content: center;
+    vertical-align: middle; }
+    .not-found-page .back p, .not-found-page .back li, .not-found-page .back a {
+      font-size: 18px; }
+      .not-found-page .back p:hover, .not-found-page .back p:active, .not-found-page .back li:hover, .not-found-page .back li:active, .not-found-page .back a:hover, .not-found-page .back a:active {
+        text-decoration: none;
+        color: #373737; }

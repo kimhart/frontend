@@ -8,7 +8,18 @@ import { Grid, Row, Col, Clearfix } from 'react-bootstrap';
 import TallyScore from './TallyScore';
 import Footer from './Footer';
 
+let userConfig = require('../../utilities/UserConfig.js').userConfig;
+
+
 class DashboardPage extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount(props){
+    console.log(userConfig);
+  }
 
   render() {
     return (

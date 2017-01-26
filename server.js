@@ -1,5 +1,6 @@
 import fs from 'fs';
 import express from 'express';
+import path from 'path';
 import Schema from './graphql/schema'
 import bodyParser from 'body-parser';
 import GraphQLHTTP from 'express-graphql'
@@ -19,6 +20,10 @@ app.use('/graphql', GraphQLHTTP({
   schema,
   graphiql: true
 }));
+
+app.get('*', function (request, response){
+  response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
+})
 
 app.listen(port, () => console.log(new Date(), 'Listening on port', port));
 

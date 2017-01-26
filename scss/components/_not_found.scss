@@ -1,0 +1,24 @@
+.not-found-page {
+  width: 100%;
+  h2 {
+  margin-top: 40%;
+  color: $sky-blue;
+  }
+  .back {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+    display: inline-flex;
+    justify-content: center;
+    vertical-align: middle;
+    p, li, a {
+      font-size: 18px;
+      &:hover, &:active {
+        text-decoration: none;
+        color: $text-gray;
+      }
+    }
+  }
+}
+
+

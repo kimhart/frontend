@@ -22050,7 +22050,7 @@
 	
 	var _DashboardPage2 = _interopRequireDefault(_DashboardPage);
 	
-	var _LoginPage = __webpack_require__(/*! ./components/LoginPage */ 800);
+	var _LoginPage = __webpack_require__(/*! ./components/LoginPage */ 801);
 	
 	var _LoginPage2 = _interopRequireDefault(_LoginPage);
 	
@@ -22061,6 +22061,10 @@
 	var _HomePage = __webpack_require__(/*! ./components/HomePage */ 803);
 	
 	var _HomePage2 = _interopRequireDefault(_HomePage);
+	
+	var _NotFound = __webpack_require__(/*! ./components/NotFound */ 804);
+	
+	var _NotFound2 = _interopRequireDefault(_NotFound);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22114,7 +22118,8 @@
 	          _react2.default.createElement(_reactRouter.IndexRoute, { component: _HomePage2.default }),
 	          _react2.default.createElement(_reactRouter.Route, { path: 'login', component: _LoginPage2.default }),
 	          _react2.default.createElement(_reactRouter.Route, { path: 'signup', component: _SignupPage2.default }),
-	          _react2.default.createElement(_reactRouter.Route, { path: 'dashboard', component: _DashboardPage2.default, queries: RootQuery })
+	          _react2.default.createElement(_reactRouter.Route, { path: 'dashboard', component: _DashboardPage2.default, queries: RootQuery }),
+	          _react2.default.createElement(_reactRouter.Route, { path: '*', component: _NotFound2.default })
 	        )
 	      );
 	    }
@@ -73970,16 +73975,23 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
+	var userConfig = __webpack_require__(/*! ../../utilities/UserConfig.js */ 800).userConfig;
+	
 	var DashboardPage = function (_React$Component) {
 	  _inherits(DashboardPage, _React$Component);
 	
-	  function DashboardPage() {
+	  function DashboardPage(props) {
 	    _classCallCheck(this, DashboardPage);
 	
-	    return _possibleConstructorReturn(this, (DashboardPage.__proto__ || Object.getPrototypeOf(DashboardPage)).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (DashboardPage.__proto__ || Object.getPrototypeOf(DashboardPage)).call(this, props));
 	  }
 	
 	  _createClass(DashboardPage, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount(props) {
+	      console.log(userConfig);
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -74854,6 +74866,17 @@
 
 /***/ },
 /* 800 */
+/*!*********************************!*\
+  !*** ./utilities/UserConfig.js ***!
+  \*********************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	var userConfig = {};
+
+/***/ },
+/* 801 */
 /*!*************************************!*\
   !*** ./src/components/LoginPage.js ***!
   \*************************************/
@@ -74899,7 +74922,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var userConfig = __webpack_require__(/*! ../../utilities/UserConfig.js */ 801);
+	var userConfig = __webpack_require__(/*! ../../utilities/UserConfig.js */ 800).userConfig;
 	
 	var LoginPage = function (_React$Component) {
 	  _inherits(LoginPage, _React$Component);
@@ -75003,17 +75026,6 @@
 	}(_react2.default.Component);
 	
 	exports.default = LoginPage;
-
-/***/ },
-/* 801 */
-/*!*********************************!*\
-  !*** ./utilities/UserConfig.js ***!
-  \*********************************/
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	var userConfig = {};
 
 /***/ },
 /* 802 */
@@ -76079,7 +76091,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var userConfig = __webpack_require__(/*! ../../utilities/UserConfig.js */ 801);
+	var userConfig = __webpack_require__(/*! ../../utilities/UserConfig.js */ 800);
 	
 	var HomePage = function (_Component) {
 	    _inherits(HomePage, _Component);
@@ -76135,6 +76147,104 @@
 	    className: _react.PropTypes.string
 	};
 	exports.default = HomePage;
+
+/***/ },
+/* 804 */
+/*!************************************!*\
+  !*** ./src/components/NotFound.js ***!
+  \************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRelay = __webpack_require__(/*! react-relay */ 179);
+	
+	var _reactRelay2 = _interopRequireDefault(_reactRelay);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 32);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 475);
+	
+	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 636);
+	
+	var _DashboardPage = __webpack_require__(/*! ./DashboardPage */ 794);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var NotFound = function (_React$Component) {
+	  _inherits(NotFound, _React$Component);
+	
+	  function NotFound() {
+	    _classCallCheck(this, NotFound);
+	
+	    return _possibleConstructorReturn(this, (NotFound.__proto__ || Object.getPrototypeOf(NotFound)).apply(this, arguments));
+	  }
+	
+	  _createClass(NotFound, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'not-found-page' },
+	        _react2.default.createElement(
+	          _reactBootstrap.Row,
+	          null,
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { md: 12 },
+	            _react2.default.createElement(
+	              'h2',
+	              null,
+	              'Whoops!',
+	              _react2.default.createElement('br', null),
+	              ' That page doesn\'t exist.'
+	            ),
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'back' },
+	              _react2.default.createElement(
+	                'i',
+	                { className: 'material-icons' },
+	                'arrow_back\xA0'
+	              ),
+	              _react2.default.createElement(
+	                'p',
+	                null,
+	                _react2.default.createElement(
+	                  _reactRouter.Link,
+	                  { to: '/dashboard' },
+	                  'Return to dashboard'
+	                )
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return NotFound;
+	}(_react2.default.Component);
+	
+	exports.default = NotFound;
 
 /***/ }
 /******/ ]);
