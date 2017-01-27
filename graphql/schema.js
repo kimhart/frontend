@@ -45,76 +45,20 @@ let schema = (db) => {
     name: "Data",
     fields: () => ({
       id: globalIdField("Data"),
-      senators: {
-        type: new GraphQLList(senatorType),
-        args: {
-          zipcode: { type: GraphQLString }
-        },
-        resolve: (__, args) => {
-          return args.zipcode ? new Promise((resolve, reject) => {
-            rp({
-              method: "POST",
-              uri: "https://heroku-postgres-7720c2d1.herokuapp.com/find_senator",
-              body: { zipcode: args.zipcode },
-              json: true
-            })
-            .catch(error => {
-              reject(error)
-            })
-            .then(data => {
-              console.log({data});
-              resolve(data.results);
-            })
-          }) : null;
-        }
-      },
-      congresspeople: {
-        type: new GraphQLList(congresspersonType),
-        args: {
-          zipcode: { type: GraphQLString }
-        },
-        resolve: (__, args) => {
-          return args.zipcode ? new Promise((resolve, reject) => {
-            rp({
-              method: "POST",
-              uri: "https://heroku-postgres-7720c2d1.herokuapp.com/find_congressperson",
-              body: { zipcode: args.zipcode },
-              json: true
-            })
-            .catch(error => {
-              reject(error)
-            })
-            .then(data => {
-              resolve(data.results);
-            })
-          }) : null;
-        }
-      },
       user: {
         type: new GraphQLList(userType),
         args: {
           email: { type: GraphQLString },
-          password: { type: GraphQLString },
-          first_name: { type: GraphQLString },
-          last_name: { type: GraphQLString },
-          street: { type: GraphQLString },
-          zip_code: { type: GraphQLString },
-          gender: {type: GraphQLString },
-          DOB: {type: GraphQLString }
+          password: { type: GraphQLString }
         },
         resolve: (__, args) => {
-          return args.email && args.password && args.street && args.zip_code && args.gender && args.dob ? new Promise((resolve, reject) => {
+          return args.email && args.password ? new Promise((resolve, reject) => {
             rp({
               method: "POST",
-              uri: "https://heroku-postgres-7720c2d1.herokuapp.com/new_user",
-              body: { email: args.email,
-                      password: args.password,
-                      first_name: args.first_name,
-                      last_name: args.last_name,
-                      street: args.street,
-                      zip_code: args.zip_code,
-                      gender: args.gender,
-                      dob: args.dob
+              uri: "https://heroku-postgres-7720c2d1.herokuapp.com/login",
+              body: { 
+                      email: args.email,
+                      password: args.password
                     },
               json: true
             })
@@ -123,28 +67,13 @@ let schema = (db) => {
             })
             .then(data => {
               resolve(data.results);
+              console.log(data.results);
             })
           }) : null;
         }
       }
     }),
     interfaces: [nodeDefs.nodeInterface]
-  })
-
-  let senatorType = new GraphQLObjectType({
-    name: "Senator",
-    fields: () => ({
-      name: { type: GraphQLString, resolve: senator => `${senator.first_name} ${senator.last_name}` },
-      bioID: {type: GraphQLString, resolve: senator => senator.bioguide_id }
-    })
-  })
-
- let congresspersonType = new GraphQLObjectType({
-    name: "Congressperson",
-    fields: () => ({
-      name: { type: GraphQLString, resolve: congressperson => congressperson.name },
-      bioID: { type: GraphQLString, resolve: congressperson => congressperson.bioguide_id }
-    })
   })
 
   let userType = new GraphQLObjectType({

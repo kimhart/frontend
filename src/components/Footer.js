@@ -11,9 +11,8 @@ class Footer extends React.Component {
      <footer className="footer">
         <div className="navbar row">
           <ul className="nav-list">
-            <li><Link to="/dashboard">Home</Link></li>
-            <li><Link to="/signup">Signup</Link></li>
-            <li><Link to="/login">Login</Link></li>
+            <li><Link to="/"><i className="material-icons">home</i></Link></li>
+            <li><Link to="/dashboard"><i className="material-icons">dashboard</i></Link></li>
           </ul>
         </div>
       </footer>

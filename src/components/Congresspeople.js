@@ -42,19 +42,5 @@ class Congresspeople extends Component {
     }
 }
 
-export default Relay.createContainer(Congresspeople, {
-  initialVariables: {
-    zipcode: null
-  },
-  fragments: {
-    data: () => Relay.QL`
-      fragment on Data {
-        congresspeople(zipcode: $zipcode) {
-          name
-          bioID
-        }
-      }
-    `
-  }
-});
+export default Congresspeople;
 

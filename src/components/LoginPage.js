@@ -6,66 +6,54 @@ import { Grid, Row, Col, Clearfix, FormGroup, FormControl, ControlLabel } from '
 import DashboardPage from './DashboardPage';
 import Footer from './Footer';
 
-let userConfig = require('../../utilities/UserConfig.js').userConfig;
 
 class LoginPage extends React.Component {
 
     constructor(props) {
       super(props);
-      this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
       this.state = {
-        email: null, 
-        password: null
+        user: null
       }
-    }
-
-    handleChange(event) {
-      let email = ReactDOM.findDOMNode(this.refs.emailInput).value;
-      let password = ReactDOM.findDOMNode(this.refs.passwordInput).value;
-      this.setState({
-        email: email,
-        password: password
-      })
     }
 
     handleSubmit(event) {
       event.preventDefault();
+      let that = this;
 
-      let userData = this.state;
-
-      $.ajax({
-        type: 'POST',
-        url: 'http://heroku-postgres-7720c2d1.herokuapp.com/login',
-        data: userData,
-        crossDomain: true,
-        headers: {
-          'Access-Control-Allow-Headers': 'x-requested-with',
-          'Access-Control-Allow-Origin': '*'
-        },
+      fetch('http://heroku-postgres-7720c2d1.herokuapp.com/login', {
+        method: 'POST',
+        body: JSON.stringify({
+          email: ReactDOM.findDOMNode(this.refs.emailInput).value,
+          password: ReactDOM.findDOMNode(this.refs.passwordInput).value
+        })
       })
-      .done(function(userData) {
-        if (userData.results) {
-          userConfig = userData.results[0];
-          console.log(userConfig);
+      .then(function(res) {
+        return res.json();
+      })
+      .then(function(j) {
+        if (j.results) {
+          let currentUser = j.results[0];
+          localStorage.setItem('user', JSON.stringify(currentUser));
+          that.setState({
+            user: currentUser
+          })
           browserHistory.push('/dashboard');
         } else {
           alert('Wrong username or password');
         }
-      })
-      .fail(function() {
-        console.log('Failed');
-      })
+      });
     }
 
     render() {
+
       return (
         <div>
           <Row>
             <Col md={12} className="login-page">
               <h2 className="page-title">Log In</h2>
               <div className="form-container">
-                <form className="login-form" onChange={this.handleChange} onSubmit={this.handleSubmit}>
+                <form id="login-form" className="login-form" onSubmit={this.handleSubmit}>
                   <FormGroup>
                     <FormControl type="email" placeholder="Email" ref="emailInput" required />
                     <FormControl type="password" placeholder="Password" ref="passwordInput" required />
@@ -82,4 +70,3 @@ class LoginPage extends React.Component {
 }
 
 export default LoginPage;
-

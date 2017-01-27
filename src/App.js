@@ -10,6 +10,7 @@ import SignupPage from './components/SignupPage';
 import HomePage from './components/HomePage';
 import NotFound from './components/NotFound';
 
+
 let RootQuery = {
   data: (Component) => Relay.QL`
     query RootQuery {
@@ -27,7 +28,7 @@ class App extends React.Component {
       <Router history={browserHistory} render={applyRouterMiddleware(useRelay)} environment={Relay.Store}>
         <Route path="/" component={Template} queries={RootQuery}>
           <IndexRoute component={HomePage}/>
-          <Route path="login" component={LoginPage} />
+          <Route path="login" component={LoginPage}/>
           <Route path="signup" component={SignupPage} />
           <Route path="dashboard" component={DashboardPage} queries={RootQuery} />
           <Route path="*" component={NotFound} />

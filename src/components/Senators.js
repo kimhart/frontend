@@ -33,6 +33,7 @@ class Senators extends Component {
     render() {
       let { senators } = this.props.data;
       if (!senators) return null;
+
       return (
         <div className="three columns"> 
           { this.getReps(senators) }
@@ -41,19 +42,4 @@ class Senators extends Component {
     }
 }
 
-export default Relay.createContainer(Senators, {
-  initialVariables: {
-    zipcode: null
-  },
-  fragments: {
-    data: () => Relay.QL`
-      fragment on Data {
-        senators(zipcode: $zipcode) {
-          name
-          bioID
-        }
-      }
-    `
-  }
-});
-
+export default Senators;

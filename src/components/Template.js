@@ -5,7 +5,7 @@ import { Router, Route, IndexRoute, IndexLink, Link, browserHistory, applyRouter
 import { Grid, Row, Col, Clearfix } from 'react-bootstrap';
 import Footer from './Footer';
 import useRelay from 'react-router-relay';
-
+import LoginPage from './LoginPage';
 
 class Template extends React.Component {
 

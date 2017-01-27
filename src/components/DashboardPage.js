@@ -7,18 +7,25 @@ import AddressForm from './AddressForm';
 import { Grid, Row, Col, Clearfix } from 'react-bootstrap';
 import TallyScore from './TallyScore';
 import Footer from './Footer';
+import LoginPage from './LoginPage';
 
-let userConfig = require('../../utilities/UserConfig.js').userConfig;
-
+let localStorageRef = JSON.parse(localStorage.getItem('user'));
 
 class DashboardPage extends React.Component {
 
   constructor(props) {
     super(props);
+    if (localStorageRef) {
+      this.state = {
+        user: localStorageRef
+      }
+    }
   }
 
-  componentDidMount(props){
-    console.log(userConfig);
+  componentWillUpdate() {
+    this.setState({
+      user: localStorageRef
+    })
   }
 
   render() {
@@ -26,7 +33,7 @@ class DashboardPage extends React.Component {
       <div className="main-dash">
         <Row>
           <Col md={12}>
-            <h2 className="page-title">Tally</h2>
+            <h2 className="page-title">Hey { this.state.user.first_name }!</h2>
             <TallyScore/>
           </Col>
         </Row>
@@ -124,20 +131,16 @@ class DashboardPage extends React.Component {
       </div>
     );
   }
-
 }
 
 export default Relay.createContainer(DashboardPage, {
   initialVariables: {
-    street: null,
-    zipcode: null
+    user: null
   },
   fragments: {
     data: () => Relay.QL`
       fragment on Data {
         id
-        ${Senators.getFragment('data', )}
-        ${Congresspeople.getFragment('data', )}
       }
     `
   }

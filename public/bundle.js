@@ -22046,23 +22046,23 @@
 	
 	var _Template2 = _interopRequireDefault(_Template);
 	
-	var _DashboardPage = __webpack_require__(/*! ./components/DashboardPage */ 794);
+	var _DashboardPage = __webpack_require__(/*! ./components/DashboardPage */ 795);
 	
 	var _DashboardPage2 = _interopRequireDefault(_DashboardPage);
 	
-	var _LoginPage = __webpack_require__(/*! ./components/LoginPage */ 801);
+	var _LoginPage = __webpack_require__(/*! ./components/LoginPage */ 794);
 	
 	var _LoginPage2 = _interopRequireDefault(_LoginPage);
 	
-	var _SignupPage = __webpack_require__(/*! ./components/SignupPage */ 802);
+	var _SignupPage = __webpack_require__(/*! ./components/SignupPage */ 801);
 	
 	var _SignupPage2 = _interopRequireDefault(_SignupPage);
 	
-	var _HomePage = __webpack_require__(/*! ./components/HomePage */ 803);
+	var _HomePage = __webpack_require__(/*! ./components/HomePage */ 802);
 	
 	var _HomePage2 = _interopRequireDefault(_HomePage);
 	
-	var _NotFound = __webpack_require__(/*! ./components/NotFound */ 804);
+	var _NotFound = __webpack_require__(/*! ./components/NotFound */ 803);
 	
 	var _NotFound2 = _interopRequireDefault(_NotFound);
 	
@@ -56296,6 +56296,10 @@
 	
 	var _reactRouterRelay2 = _interopRequireDefault(_reactRouterRelay);
 	
+	var _LoginPage = __webpack_require__(/*! ./LoginPage */ 794);
+	
+	var _LoginPage2 = _interopRequireDefault(_LoginPage);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -73883,26 +73887,25 @@
 	              null,
 	              _react2.default.createElement(
 	                _reactRouter.Link,
+	                { to: '/' },
+	                _react2.default.createElement(
+	                  'i',
+	                  { className: 'material-icons' },
+	                  'home'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              _react2.default.createElement(
+	                _reactRouter.Link,
 	                { to: '/dashboard' },
-	                'Home'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              _react2.default.createElement(
-	                _reactRouter.Link,
-	                { to: '/signup' },
-	                'Signup'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              _react2.default.createElement(
-	                _reactRouter.Link,
-	                { to: '/login' },
-	                'Login'
+	                _react2.default.createElement(
+	                  'i',
+	                  { className: 'material-icons' },
+	                  'dashboard'
+	                )
 	              )
 	            )
 	          )
@@ -73918,6 +73921,144 @@
 
 /***/ },
 /* 794 */
+/*!*************************************!*\
+  !*** ./src/components/LoginPage.js ***!
+  \*************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRelay = __webpack_require__(/*! react-relay */ 179);
+	
+	var _reactRelay2 = _interopRequireDefault(_reactRelay);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 32);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 475);
+	
+	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 636);
+	
+	var _DashboardPage = __webpack_require__(/*! ./DashboardPage */ 795);
+	
+	var _DashboardPage2 = _interopRequireDefault(_DashboardPage);
+	
+	var _Footer = __webpack_require__(/*! ./Footer */ 793);
+	
+	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var LoginPage = function (_React$Component) {
+	  _inherits(LoginPage, _React$Component);
+	
+	  function LoginPage(props) {
+	    _classCallCheck(this, LoginPage);
+	
+	    var _this = _possibleConstructorReturn(this, (LoginPage.__proto__ || Object.getPrototypeOf(LoginPage)).call(this, props));
+	
+	    _this.handleSubmit = _this.handleSubmit.bind(_this);
+	    _this.state = {
+	      user: null
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(LoginPage, [{
+	    key: 'handleSubmit',
+	    value: function handleSubmit(event) {
+	      event.preventDefault();
+	      var that = this;
+	
+	      fetch('http://heroku-postgres-7720c2d1.herokuapp.com/login', {
+	        method: 'POST',
+	        body: JSON.stringify({
+	          email: _reactDom2.default.findDOMNode(this.refs.emailInput).value,
+	          password: _reactDom2.default.findDOMNode(this.refs.passwordInput).value
+	        })
+	      }).then(function (res) {
+	        return res.json();
+	      }).then(function (j) {
+	        if (j.results) {
+	          var currentUser = j.results[0];
+	          localStorage.setItem('user', JSON.stringify(currentUser));
+	          that.setState({
+	            user: currentUser
+	          });
+	          _reactRouter.browserHistory.push('/dashboard');
+	        } else {
+	          alert('Wrong username or password');
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          _reactBootstrap.Row,
+	          null,
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { md: 12, className: 'login-page' },
+	            _react2.default.createElement(
+	              'h2',
+	              { className: 'page-title' },
+	              'Log In'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'form-container' },
+	              _react2.default.createElement(
+	                'form',
+	                { id: 'login-form', className: 'login-form', onSubmit: this.handleSubmit },
+	                _react2.default.createElement(
+	                  _reactBootstrap.FormGroup,
+	                  null,
+	                  _react2.default.createElement(_reactBootstrap.FormControl, { type: 'email', placeholder: 'Email', ref: 'emailInput', required: true }),
+	                  _react2.default.createElement(_reactBootstrap.FormControl, { type: 'password', placeholder: 'Password', ref: 'passwordInput', required: true }),
+	                  _react2.default.createElement(
+	                    'button',
+	                    { type: 'submit' },
+	                    'Go!'
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(_Footer2.default, null)
+	      );
+	    }
+	  }]);
+	
+	  return LoginPage;
+	}(_react2.default.Component);
+	
+	exports.default = LoginPage;
+
+/***/ },
+/* 795 */
 /*!*****************************************!*\
   !*** ./src/components/DashboardPage.js ***!
   \*****************************************/
@@ -73941,31 +74082,35 @@
 	
 	var _reactRelay2 = _interopRequireDefault(_reactRelay);
 	
-	var _RepBio = __webpack_require__(/*! ./RepBio */ 795);
+	var _RepBio = __webpack_require__(/*! ./RepBio */ 796);
 	
 	var _RepBio2 = _interopRequireDefault(_RepBio);
 	
-	var _Senators = __webpack_require__(/*! ./Senators */ 796);
+	var _Senators = __webpack_require__(/*! ./Senators */ 797);
 	
 	var _Senators2 = _interopRequireDefault(_Senators);
 	
-	var _Congresspeople = __webpack_require__(/*! ./Congresspeople */ 797);
+	var _Congresspeople = __webpack_require__(/*! ./Congresspeople */ 798);
 	
 	var _Congresspeople2 = _interopRequireDefault(_Congresspeople);
 	
-	var _AddressForm = __webpack_require__(/*! ./AddressForm */ 798);
+	var _AddressForm = __webpack_require__(/*! ./AddressForm */ 799);
 	
 	var _AddressForm2 = _interopRequireDefault(_AddressForm);
 	
 	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 636);
 	
-	var _TallyScore = __webpack_require__(/*! ./TallyScore */ 799);
+	var _TallyScore = __webpack_require__(/*! ./TallyScore */ 800);
 	
 	var _TallyScore2 = _interopRequireDefault(_TallyScore);
 	
 	var _Footer = __webpack_require__(/*! ./Footer */ 793);
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
+	
+	var _LoginPage = __webpack_require__(/*! ./LoginPage */ 794);
+	
+	var _LoginPage2 = _interopRequireDefault(_LoginPage);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -73975,7 +74120,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var userConfig = __webpack_require__(/*! ../../utilities/UserConfig.js */ 800).userConfig;
+	var localStorageRef = JSON.parse(localStorage.getItem('user'));
 	
 	var DashboardPage = function (_React$Component) {
 	  _inherits(DashboardPage, _React$Component);
@@ -73983,13 +74128,22 @@
 	  function DashboardPage(props) {
 	    _classCallCheck(this, DashboardPage);
 	
-	    return _possibleConstructorReturn(this, (DashboardPage.__proto__ || Object.getPrototypeOf(DashboardPage)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (DashboardPage.__proto__ || Object.getPrototypeOf(DashboardPage)).call(this, props));
+	
+	    if (localStorageRef) {
+	      _this.state = {
+	        user: localStorageRef
+	      };
+	    }
+	    return _this;
 	  }
 	
 	  _createClass(DashboardPage, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount(props) {
-	      console.log(userConfig);
+	    key: 'componentWillUpdate',
+	    value: function componentWillUpdate() {
+	      this.setState({
+	        user: localStorageRef
+	      });
 	    }
 	  }, {
 	    key: 'render',
@@ -74006,7 +74160,9 @@
 	            _react2.default.createElement(
 	              'h2',
 	              { className: 'page-title' },
-	              'Tally'
+	              'Hey ',
+	              this.state.user.first_name,
+	              '!'
 	            ),
 	            _react2.default.createElement(_TallyScore2.default, null)
 	          )
@@ -74315,34 +74471,33 @@
 	
 	exports.default = _reactRelay2.default.createContainer(DashboardPage, {
 	  initialVariables: {
-	    street: null,
-	    zipcode: null
+	    user: null
 	  },
 	  fragments: {
 	    data: function data() {
-	      return function (RQL_0, RQL_1) {
+	      return function () {
 	        return {
-	          children: [].concat.apply([], [{
+	          children: [{
 	            fieldName: 'id',
 	            kind: 'Field',
 	            metadata: {
 	              isRequisite: true
 	            },
 	            type: 'ID'
-	          }, _reactRelay2.default.QL.__frag(RQL_0), _reactRelay2.default.QL.__frag(RQL_1)]),
+	          }],
 	          id: _reactRelay2.default.QL.__id(),
 	          kind: 'Fragment',
 	          metadata: {},
 	          name: 'DashboardPage_DataRelayQL',
 	          type: 'Data'
 	        };
-	      }(_Senators2.default.getFragment('data'), _Congresspeople2.default.getFragment('data'));
+	      }();
 	    }
 	  }
 	});
 
 /***/ },
-/* 795 */
+/* 796 */
 /*!**********************************!*\
   !*** ./src/components/RepBio.js ***!
   \**********************************/
@@ -74411,7 +74566,7 @@
 	exports.default = RepBio;
 
 /***/ },
-/* 796 */
+/* 797 */
 /*!************************************!*\
   !*** ./src/components/Senators.js ***!
   \************************************/
@@ -74433,7 +74588,7 @@
 	
 	var _reactRelay2 = _interopRequireDefault(_reactRelay);
 	
-	var _RepBio = __webpack_require__(/*! ./RepBio */ 795);
+	var _RepBio = __webpack_require__(/*! ./RepBio */ 796);
 	
 	var _RepBio2 = _interopRequireDefault(_RepBio);
 	
@@ -74481,6 +74636,7 @@
 	      var senators = this.props.data.senators;
 	
 	      if (!senators) return null;
+	
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'three columns' },
@@ -74495,64 +74651,10 @@
 	Senators.propTypes = {
 	  className: _react.PropTypes.string
 	};
-	exports.default = _reactRelay2.default.createContainer(Senators, {
-	  initialVariables: {
-	    zipcode: null
-	  },
-	  fragments: {
-	    data: function data() {
-	      return function () {
-	        return {
-	          children: [{
-	            calls: [{
-	              kind: 'Call',
-	              metadata: {},
-	              name: 'zipcode',
-	              value: {
-	                kind: 'CallVariable',
-	                callVariableName: 'zipcode'
-	              }
-	            }],
-	            children: [{
-	              fieldName: 'name',
-	              kind: 'Field',
-	              metadata: {},
-	              type: 'String'
-	            }, {
-	              fieldName: 'bioID',
-	              kind: 'Field',
-	              metadata: {},
-	              type: 'String'
-	            }],
-	            fieldName: 'senators',
-	            kind: 'Field',
-	            metadata: {
-	              canHaveSubselections: true,
-	              isPlural: true
-	            },
-	            type: 'Senator'
-	          }, {
-	            fieldName: 'id',
-	            kind: 'Field',
-	            metadata: {
-	              isGenerated: true,
-	              isRequisite: true
-	            },
-	            type: 'ID'
-	          }],
-	          id: _reactRelay2.default.QL.__id(),
-	          kind: 'Fragment',
-	          metadata: {},
-	          name: 'Senators_DataRelayQL',
-	          type: 'Data'
-	        };
-	      }();
-	    }
-	  }
-	});
+	exports.default = Senators;
 
 /***/ },
-/* 797 */
+/* 798 */
 /*!******************************************!*\
   !*** ./src/components/Congresspeople.js ***!
   \******************************************/
@@ -74574,7 +74676,7 @@
 	
 	var _reactRelay2 = _interopRequireDefault(_reactRelay);
 	
-	var _RepBio = __webpack_require__(/*! ./RepBio */ 795);
+	var _RepBio = __webpack_require__(/*! ./RepBio */ 796);
 	
 	var _RepBio2 = _interopRequireDefault(_RepBio);
 	
@@ -74636,64 +74738,10 @@
 	Congresspeople.propTypes = {
 	  className: _react.PropTypes.string
 	};
-	exports.default = _reactRelay2.default.createContainer(Congresspeople, {
-	  initialVariables: {
-	    zipcode: null
-	  },
-	  fragments: {
-	    data: function data() {
-	      return function () {
-	        return {
-	          children: [{
-	            calls: [{
-	              kind: 'Call',
-	              metadata: {},
-	              name: 'zipcode',
-	              value: {
-	                kind: 'CallVariable',
-	                callVariableName: 'zipcode'
-	              }
-	            }],
-	            children: [{
-	              fieldName: 'name',
-	              kind: 'Field',
-	              metadata: {},
-	              type: 'String'
-	            }, {
-	              fieldName: 'bioID',
-	              kind: 'Field',
-	              metadata: {},
-	              type: 'String'
-	            }],
-	            fieldName: 'congresspeople',
-	            kind: 'Field',
-	            metadata: {
-	              canHaveSubselections: true,
-	              isPlural: true
-	            },
-	            type: 'Congressperson'
-	          }, {
-	            fieldName: 'id',
-	            kind: 'Field',
-	            metadata: {
-	              isGenerated: true,
-	              isRequisite: true
-	            },
-	            type: 'ID'
-	          }],
-	          id: _reactRelay2.default.QL.__id(),
-	          kind: 'Fragment',
-	          metadata: {},
-	          name: 'Congresspeople_DataRelayQL',
-	          type: 'Data'
-	        };
-	      }();
-	    }
-	  }
-	});
+	exports.default = Congresspeople;
 
 /***/ },
-/* 798 */
+/* 799 */
 /*!***************************************!*\
   !*** ./src/components/AddressForm.js ***!
   \***************************************/
@@ -74754,7 +74802,7 @@
 	exports.default = AddressForm;
 
 /***/ },
-/* 799 */
+/* 800 */
 /*!**************************************!*\
   !*** ./src/components/TallyScore.js ***!
   \**************************************/
@@ -74865,170 +74913,7 @@
 	exports.default = TallyScore;
 
 /***/ },
-/* 800 */
-/*!*********************************!*\
-  !*** ./utilities/UserConfig.js ***!
-  \*********************************/
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	var userConfig = {};
-
-/***/ },
 /* 801 */
-/*!*************************************!*\
-  !*** ./src/components/LoginPage.js ***!
-  \*************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRelay = __webpack_require__(/*! react-relay */ 179);
-	
-	var _reactRelay2 = _interopRequireDefault(_reactRelay);
-	
-	var _reactDom = __webpack_require__(/*! react-dom */ 32);
-	
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-	
-	var _reactRouter = __webpack_require__(/*! react-router */ 475);
-	
-	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 636);
-	
-	var _DashboardPage = __webpack_require__(/*! ./DashboardPage */ 794);
-	
-	var _DashboardPage2 = _interopRequireDefault(_DashboardPage);
-	
-	var _Footer = __webpack_require__(/*! ./Footer */ 793);
-	
-	var _Footer2 = _interopRequireDefault(_Footer);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var userConfig = __webpack_require__(/*! ../../utilities/UserConfig.js */ 800).userConfig;
-	
-	var LoginPage = function (_React$Component) {
-	  _inherits(LoginPage, _React$Component);
-	
-	  function LoginPage(props) {
-	    _classCallCheck(this, LoginPage);
-	
-	    var _this = _possibleConstructorReturn(this, (LoginPage.__proto__ || Object.getPrototypeOf(LoginPage)).call(this, props));
-	
-	    _this.handleChange = _this.handleChange.bind(_this);
-	    _this.handleSubmit = _this.handleSubmit.bind(_this);
-	    _this.state = {
-	      email: null,
-	      password: null
-	    };
-	    return _this;
-	  }
-	
-	  _createClass(LoginPage, [{
-	    key: 'handleChange',
-	    value: function handleChange(event) {
-	      var email = _reactDom2.default.findDOMNode(this.refs.emailInput).value;
-	      var password = _reactDom2.default.findDOMNode(this.refs.passwordInput).value;
-	      this.setState({
-	        email: email,
-	        password: password
-	      });
-	    }
-	  }, {
-	    key: 'handleSubmit',
-	    value: function handleSubmit(event) {
-	      event.preventDefault();
-	
-	      var userData = this.state;
-	
-	      $.ajax({
-	        type: 'POST',
-	        url: 'http://heroku-postgres-7720c2d1.herokuapp.com/login',
-	        data: userData,
-	        crossDomain: true,
-	        headers: {
-	          'Access-Control-Allow-Headers': 'x-requested-with',
-	          'Access-Control-Allow-Origin': '*'
-	        }
-	      }).done(function (userData) {
-	        if (userData.results) {
-	          userConfig = userData.results[0];
-	          console.log(userConfig);
-	          _reactRouter.browserHistory.push('/dashboard');
-	        } else {
-	          alert('Wrong username or password');
-	        }
-	      }).fail(function () {
-	        console.log('Failed');
-	      });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          _reactBootstrap.Row,
-	          null,
-	          _react2.default.createElement(
-	            _reactBootstrap.Col,
-	            { md: 12, className: 'login-page' },
-	            _react2.default.createElement(
-	              'h2',
-	              { className: 'page-title' },
-	              'Log In'
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'form-container' },
-	              _react2.default.createElement(
-	                'form',
-	                { className: 'login-form', onChange: this.handleChange, onSubmit: this.handleSubmit },
-	                _react2.default.createElement(
-	                  _reactBootstrap.FormGroup,
-	                  null,
-	                  _react2.default.createElement(_reactBootstrap.FormControl, { type: 'email', placeholder: 'Email', ref: 'emailInput', required: true }),
-	                  _react2.default.createElement(_reactBootstrap.FormControl, { type: 'password', placeholder: 'Password', ref: 'passwordInput', required: true }),
-	                  _react2.default.createElement(
-	                    'button',
-	                    { type: 'submit' },
-	                    'Go!'
-	                  )
-	                )
-	              )
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(_Footer2.default, null)
-	      );
-	    }
-	  }]);
-	
-	  return LoginPage;
-	}(_react2.default.Component);
-	
-	exports.default = LoginPage;
-
-/***/ },
-/* 802 */
 /*!**************************************!*\
   !*** ./src/components/SignupPage.js ***!
   \**************************************/
@@ -76055,7 +75940,7 @@
 	exports.default = SignupPage;
 
 /***/ },
-/* 803 */
+/* 802 */
 /*!************************************!*\
   !*** ./src/components/HomePage.js ***!
   \************************************/
@@ -76064,7 +75949,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -76091,65 +75976,94 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var userConfig = __webpack_require__(/*! ../../utilities/UserConfig.js */ 800);
+	var localStorageRef = JSON.parse(localStorage.getItem('user'));
 	
 	var HomePage = function (_Component) {
-	    _inherits(HomePage, _Component);
+	  _inherits(HomePage, _Component);
 	
-	    function HomePage(props) {
-	        _classCallCheck(this, HomePage);
+	  function HomePage(props) {
+	    _classCallCheck(this, HomePage);
 	
-	        return _possibleConstructorReturn(this, (HomePage.__proto__ || Object.getPrototypeOf(HomePage)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (HomePage.__proto__ || Object.getPrototypeOf(HomePage)).call(this, props));
+	
+	    _this.handleLogout = _this.handleLogout.bind(_this);
+	    _this.state = {
+	      user: localStorageRef
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(HomePage, [{
+	    key: 'handleLogout',
+	    value: function handleLogout() {
+	      localStorage.removeItem('user');
+	      this.setState({
+	        user: null
+	      });
 	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      if (this.state.user) {
+	        return _react2.default.createElement(
+	          'div',
+	          { className: 'home-page' },
+	          _react2.default.createElement(
+	            'h2',
+	            { className: 'page-title' },
+	            'You\'re logged in as ',
+	            this.state.user.first_name,
+	            '.'
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { className: 'home-button', onClick: this.handleLogout },
+	            'Logout'
+	          )
+	        );
+	      }
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'home-page' },
+	        _react2.default.createElement(
+	          'h2',
+	          { className: 'page-title' },
+	          'Tally'
+	        ),
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          { to: '/signup' },
+	          _react2.default.createElement(
+	            'button',
+	            { className: 'signup-button' },
+	            'Signup'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'span',
+	          { className: 'or' },
+	          '\u2014OR\u2014'
+	        ),
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          { to: '/login' },
+	          _react2.default.createElement(
+	            'button',
+	            { className: 'home-button' },
+	            'Login'
+	          )
+	        )
+	      );
+	    }
+	  }]);
 	
-	    _createClass(HomePage, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { className: 'home-page' },
-	                _react2.default.createElement(
-	                    'h2',
-	                    { className: 'page-title' },
-	                    'Tally'
-	                ),
-	                _react2.default.createElement(
-	                    _reactRouter.Link,
-	                    { to: '/signup' },
-	                    _react2.default.createElement(
-	                        'button',
-	                        { className: 'signup-button' },
-	                        'Signup'
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'span',
-	                    { className: 'or' },
-	                    '\u2014OR\u2014'
-	                ),
-	                _react2.default.createElement(
-	                    _reactRouter.Link,
-	                    { to: '/login' },
-	                    _react2.default.createElement(
-	                        'button',
-	                        { className: 'home-button' },
-	                        'Login'
-	                    )
-	                )
-	            );
-	        }
-	    }]);
-	
-	    return HomePage;
+	  return HomePage;
 	}(_react.Component);
 	
-	HomePage.propTypes = {
-	    className: _react.PropTypes.string
-	};
 	exports.default = HomePage;
 
 /***/ },
-/* 804 */
+/* 803 */
 /*!************************************!*\
   !*** ./src/components/NotFound.js ***!
   \************************************/
@@ -76179,7 +76093,7 @@
 	
 	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 636);
 	
-	var _DashboardPage = __webpack_require__(/*! ./DashboardPage */ 794);
+	var _DashboardPage = __webpack_require__(/*! ./DashboardPage */ 795);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
