@@ -13,12 +13,12 @@ html, body {
   min-height: 100%;
   position: relative; }
 
-.signup-page, .login-page {
+.signup-page, .login-logout-page {
   overflow: hidden;
   position: fixed;
   width: 100%; }
 
-.login-page {
+.login-logout-page {
   margin: 15vh 0; }
 
 button {

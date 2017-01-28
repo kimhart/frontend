@@ -1,31 +1,29 @@
 import React from 'react';
 import Relay from 'react-relay';
+import ReactDOM from 'react-dom';
 import RepBio from './RepBio';
-import Senators from './Senators';
-import Congresspeople from './Congresspeople';
-import AddressForm from './AddressForm';
 import { Grid, Row, Col, Clearfix } from 'react-bootstrap';
+import AddressForm from './AddressForm';
 import TallyScore from './TallyScore';
 import Footer from './Footer';
-import LoginPage from './LoginPage';
-
+import LoginPage from './LoginLogoutPage';
 let localStorageRef = JSON.parse(localStorage.getItem('user'));
 
-class DashboardPage extends React.Component {
 
+class DashboardPage extends React.Component {
   constructor(props) {
     super(props);
     if (localStorageRef) {
       this.state = {
-        user: localStorageRef
+        user: localStorageRef,
+        isLoggedIn: true
+      }
+    } else {
+      this.state = {
+        user: null,
+        isLoggedIn: false
       }
     }
-  }
-
-  componentWillUpdate() {
-    this.setState({
-      user: localStorageRef
-    })
   }
 
   render() {
@@ -33,7 +31,7 @@ class DashboardPage extends React.Component {
       <div className="main-dash">
         <Row>
           <Col md={12}>
-            <h2 className="page-title">Hey { this.state.user.first_name }!</h2>
+            <h2 className="page-title">Hey {this.state.user.first_name}</h2>
             <TallyScore/>
           </Col>
         </Row>
@@ -73,8 +71,6 @@ class DashboardPage extends React.Component {
                 <p className="match-score">112%</p>
                 <p className="with-me">matched with you</p>
               </div>
-              <Senators {...this.props} {...this.state} />
-              <Congresspeople {...this.props} {...this.state} />
             </div>
           </Col>
         </Row>

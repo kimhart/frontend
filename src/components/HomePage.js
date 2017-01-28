@@ -2,32 +2,33 @@ import React, { Component, PropTypes } from 'react';
 import Relay from 'react-relay';
 import ReactDOM from 'react-dom';
 import { Link, browserHistory } from 'react-router';
-
+import Logout from './Logout';
 let localStorageRef = JSON.parse(localStorage.getItem('user'));
 
-class HomePage extends Component {
 
+class HomePage extends Component {
     constructor(props) {
       super(props);
-      this.handleLogout = this.handleLogout.bind(this);
-      this.state = {
-        user: localStorageRef
+      if (localStorageRef) {
+        this.state = {
+          user: localStorageRef,
+          isLoggedIn: true
+        }
+      } else {
+        this.state = {
+          user: null,
+          isLoggedIn: false
+        }
       }
     }
 
-    handleLogout() {
-      localStorage.removeItem('user');
-      this.setState({
-        user: null
-      })
-    }
-
     render() {
-      if (this.state.user) {
+      const isLoggedIn = this.state.isLoggedIn;
+      if (isLoggedIn) {
         return (
           <div className="home-page">
-            <h2 className="page-title">You're logged in as { this.state.user.first_name }.</h2>
-            <button className="home-button" onClick={this.handleLogout}>Logout</button>
+            <h2 className="page-title">You're logged in as <br/> { this.state.user.first_name }</h2>
+            <Logout />
           </div>
         )
       }

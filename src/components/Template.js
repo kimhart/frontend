@@ -5,9 +5,13 @@ import { Router, Route, IndexRoute, IndexLink, Link, browserHistory, applyRouter
 import { Grid, Row, Col, Clearfix } from 'react-bootstrap';
 import Footer from './Footer';
 import useRelay from 'react-router-relay';
-import LoginPage from './LoginPage';
+import LoginPage from './LoginLogoutPage';
 
 class Template extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
 
   render() {
     return (

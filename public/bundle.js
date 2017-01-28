@@ -22050,19 +22050,19 @@
 	
 	var _DashboardPage2 = _interopRequireDefault(_DashboardPage);
 	
-	var _LoginPage = __webpack_require__(/*! ./components/LoginPage */ 794);
+	var _LoginLogoutPage = __webpack_require__(/*! ./components/LoginLogoutPage */ 794);
 	
-	var _LoginPage2 = _interopRequireDefault(_LoginPage);
+	var _LoginLogoutPage2 = _interopRequireDefault(_LoginLogoutPage);
 	
-	var _SignupPage = __webpack_require__(/*! ./components/SignupPage */ 801);
+	var _SignupPage = __webpack_require__(/*! ./components/SignupPage */ 803);
 	
 	var _SignupPage2 = _interopRequireDefault(_SignupPage);
 	
-	var _HomePage = __webpack_require__(/*! ./components/HomePage */ 802);
+	var _HomePage = __webpack_require__(/*! ./components/HomePage */ 804);
 	
 	var _HomePage2 = _interopRequireDefault(_HomePage);
 	
-	var _NotFound = __webpack_require__(/*! ./components/NotFound */ 803);
+	var _NotFound = __webpack_require__(/*! ./components/NotFound */ 805);
 	
 	var _NotFound2 = _interopRequireDefault(_NotFound);
 	
@@ -22116,7 +22116,7 @@
 	          _reactRouter.Route,
 	          { path: '/', component: _Template2.default, queries: RootQuery },
 	          _react2.default.createElement(_reactRouter.IndexRoute, { component: _HomePage2.default }),
-	          _react2.default.createElement(_reactRouter.Route, { path: 'login', component: _LoginPage2.default }),
+	          _react2.default.createElement(_reactRouter.Route, { path: 'login', component: _LoginLogoutPage2.default }),
 	          _react2.default.createElement(_reactRouter.Route, { path: 'signup', component: _SignupPage2.default }),
 	          _react2.default.createElement(_reactRouter.Route, { path: 'dashboard', component: _DashboardPage2.default, queries: RootQuery }),
 	          _react2.default.createElement(_reactRouter.Route, { path: '*', component: _NotFound2.default })
@@ -56296,9 +56296,9 @@
 	
 	var _reactRouterRelay2 = _interopRequireDefault(_reactRouterRelay);
 	
-	var _LoginPage = __webpack_require__(/*! ./LoginPage */ 794);
+	var _LoginLogoutPage = __webpack_require__(/*! ./LoginLogoutPage */ 794);
 	
-	var _LoginPage2 = _interopRequireDefault(_LoginPage);
+	var _LoginLogoutPage2 = _interopRequireDefault(_LoginLogoutPage);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -56311,10 +56311,10 @@
 	var Template = function (_React$Component) {
 	  _inherits(Template, _React$Component);
 	
-	  function Template() {
+	  function Template(props) {
 	    _classCallCheck(this, Template);
 	
-	    return _possibleConstructorReturn(this, (Template.__proto__ || Object.getPrototypeOf(Template)).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Template.__proto__ || Object.getPrototypeOf(Template)).call(this, props));
 	  }
 	
 	  _createClass(Template, [{
@@ -73921,9 +73921,9 @@
 
 /***/ },
 /* 794 */
-/*!*************************************!*\
-  !*** ./src/components/LoginPage.js ***!
-  \*************************************/
+/*!*******************************************!*\
+  !*** ./src/components/LoginLogoutPage.js ***!
+  \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73958,6 +73958,14 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
+	var _Login = __webpack_require__(/*! ./Login */ 801);
+	
+	var _Login2 = _interopRequireDefault(_Login);
+	
+	var _Logout = __webpack_require__(/*! ./Logout */ 802);
+	
+	var _Logout2 = _interopRequireDefault(_Logout);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -73966,51 +73974,51 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var LoginPage = function (_React$Component) {
-	  _inherits(LoginPage, _React$Component);
+	var localStorageRef = JSON.parse(localStorage.getItem('user'));
 	
-	  function LoginPage(props) {
-	    _classCallCheck(this, LoginPage);
+	var LoginLogoutPage = function (_React$Component) {
+	  _inherits(LoginLogoutPage, _React$Component);
 	
-	    var _this = _possibleConstructorReturn(this, (LoginPage.__proto__ || Object.getPrototypeOf(LoginPage)).call(this, props));
+	  function LoginLogoutPage(props) {
+	    _classCallCheck(this, LoginLogoutPage);
 	
-	    _this.handleSubmit = _this.handleSubmit.bind(_this);
-	    _this.state = {
-	      user: null
-	    };
+	    var _this = _possibleConstructorReturn(this, (LoginLogoutPage.__proto__ || Object.getPrototypeOf(LoginLogoutPage)).call(this, props));
+	
+	    _this.handleLogin = _this.handleLogin.bind(_this);
+	
+	    if (localStorageRef) {
+	      _this.state = {
+	        isLoggedIn: true,
+	        user: localStorageRef
+	      };
+	    } else {
+	      _this.state = {
+	        isLoggedIn: false,
+	        user: null
+	      };
+	    }
 	    return _this;
 	  }
 	
-	  _createClass(LoginPage, [{
-	    key: 'handleSubmit',
-	    value: function handleSubmit(event) {
-	      event.preventDefault();
-	      var that = this;
-	
-	      fetch('http://heroku-postgres-7720c2d1.herokuapp.com/login', {
-	        method: 'POST',
-	        body: JSON.stringify({
-	          email: _reactDom2.default.findDOMNode(this.refs.emailInput).value,
-	          password: _reactDom2.default.findDOMNode(this.refs.passwordInput).value
-	        })
-	      }).then(function (res) {
-	        return res.json();
-	      }).then(function (j) {
-	        if (j.results) {
-	          var currentUser = j.results[0];
-	          localStorage.setItem('user', JSON.stringify(currentUser));
-	          that.setState({
-	            user: currentUser
-	          });
-	          _reactRouter.browserHistory.push('/dashboard');
-	        } else {
-	          alert('Wrong username or password');
-	        }
+	  _createClass(LoginLogoutPage, [{
+	    key: 'handleLogin',
+	    value: function handleLogin(props) {
+	      localStorage.setItem('user', JSON.stringify(props));
+	      this.setState({
+	        user: localStorageRef,
+	        isLoggedIn: true
 	      });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var isLoggedIn = this.state.isLoggedIn;
+	      var userAction = null;
+	      if (isLoggedIn) {
+	        userAction = _react2.default.createElement(_Logout2.default, { handleLogout: this.handleLogout });
+	      } else {
+	        userAction = _react2.default.createElement(_Login2.default, { handleLogin: this.handleLogin });
+	      };
 	
 	      return _react2.default.createElement(
 	        'div',
@@ -74020,42 +74028,18 @@
 	          null,
 	          _react2.default.createElement(
 	            _reactBootstrap.Col,
-	            { md: 12, className: 'login-page' },
-	            _react2.default.createElement(
-	              'h2',
-	              { className: 'page-title' },
-	              'Log In'
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'form-container' },
-	              _react2.default.createElement(
-	                'form',
-	                { id: 'login-form', className: 'login-form', onSubmit: this.handleSubmit },
-	                _react2.default.createElement(
-	                  _reactBootstrap.FormGroup,
-	                  null,
-	                  _react2.default.createElement(_reactBootstrap.FormControl, { type: 'email', placeholder: 'Email', ref: 'emailInput', required: true }),
-	                  _react2.default.createElement(_reactBootstrap.FormControl, { type: 'password', placeholder: 'Password', ref: 'passwordInput', required: true }),
-	                  _react2.default.createElement(
-	                    'button',
-	                    { type: 'submit' },
-	                    'Go!'
-	                  )
-	                )
-	              )
-	            )
+	            { md: 12, className: 'login-logout-page' },
+	            userAction
 	          )
-	        ),
-	        _react2.default.createElement(_Footer2.default, null)
+	        )
 	      );
 	    }
 	  }]);
 	
-	  return LoginPage;
+	  return LoginLogoutPage;
 	}(_react2.default.Component);
 	
-	exports.default = LoginPage;
+	exports.default = LoginLogoutPage;
 
 /***/ },
 /* 795 */
@@ -74070,8 +74054,6 @@
 	  value: true
 	});
 	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(/*! react */ 1);
@@ -74082,23 +74064,19 @@
 	
 	var _reactRelay2 = _interopRequireDefault(_reactRelay);
 	
+	var _reactDom = __webpack_require__(/*! react-dom */ 32);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
 	var _RepBio = __webpack_require__(/*! ./RepBio */ 796);
 	
 	var _RepBio2 = _interopRequireDefault(_RepBio);
 	
-	var _Senators = __webpack_require__(/*! ./Senators */ 797);
-	
-	var _Senators2 = _interopRequireDefault(_Senators);
-	
-	var _Congresspeople = __webpack_require__(/*! ./Congresspeople */ 798);
-	
-	var _Congresspeople2 = _interopRequireDefault(_Congresspeople);
+	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 636);
 	
 	var _AddressForm = __webpack_require__(/*! ./AddressForm */ 799);
 	
 	var _AddressForm2 = _interopRequireDefault(_AddressForm);
-	
-	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 636);
 	
 	var _TallyScore = __webpack_require__(/*! ./TallyScore */ 800);
 	
@@ -74108,9 +74086,9 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _LoginPage = __webpack_require__(/*! ./LoginPage */ 794);
+	var _LoginLogoutPage = __webpack_require__(/*! ./LoginLogoutPage */ 794);
 	
-	var _LoginPage2 = _interopRequireDefault(_LoginPage);
+	var _LoginLogoutPage2 = _interopRequireDefault(_LoginLogoutPage);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -74132,20 +74110,19 @@
 	
 	    if (localStorageRef) {
 	      _this.state = {
-	        user: localStorageRef
+	        user: localStorageRef,
+	        isLoggedIn: true
+	      };
+	    } else {
+	      _this.state = {
+	        user: null,
+	        isLoggedIn: false
 	      };
 	    }
 	    return _this;
 	  }
 	
 	  _createClass(DashboardPage, [{
-	    key: 'componentWillUpdate',
-	    value: function componentWillUpdate() {
-	      this.setState({
-	        user: localStorageRef
-	      });
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -74161,8 +74138,7 @@
 	              'h2',
 	              { className: 'page-title' },
 	              'Hey ',
-	              this.state.user.first_name,
-	              '!'
+	              this.state.user.first_name
 	            ),
 	            _react2.default.createElement(_TallyScore2.default, null)
 	          )
@@ -74300,9 +74276,7 @@
 	                  { className: 'with-me' },
 	                  'matched with you'
 	                )
-	              ),
-	              _react2.default.createElement(_Senators2.default, _extends({}, this.props, this.state)),
-	              _react2.default.createElement(_Congresspeople2.default, _extends({}, this.props, this.state))
+	              )
 	            )
 	          )
 	        ),
@@ -74566,181 +74540,8 @@
 	exports.default = RepBio;
 
 /***/ },
-/* 797 */
-/*!************************************!*\
-  !*** ./src/components/Senators.js ***!
-  \************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRelay = __webpack_require__(/*! react-relay */ 179);
-	
-	var _reactRelay2 = _interopRequireDefault(_reactRelay);
-	
-	var _RepBio = __webpack_require__(/*! ./RepBio */ 796);
-	
-	var _RepBio2 = _interopRequireDefault(_RepBio);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Senators = function (_Component) {
-	  _inherits(Senators, _Component);
-	
-	  function Senators(props) {
-	    _classCallCheck(this, Senators);
-	
-	    var _this = _possibleConstructorReturn(this, (Senators.__proto__ || Object.getPrototypeOf(Senators)).call(this, props));
-	
-	    _this.getReps = function (reps) {
-	      return reps.map(function (rep, index) {
-	        return _react2.default.createElement(_RepBio2.default, { name: rep.name, bioID: rep.bioID, key: index });
-	      });
-	    };
-	
-	    if (props.zipcode) {
-	      _this.props.relay.setVariables({ zipcode: props.zipcode });
-	    }
-	    return _this;
-	  }
-	
-	  _createClass(Senators, [{
-	    key: 'componentWillUpdate',
-	    value: function componentWillUpdate(nextProps, nextState) {
-	      var currentZipcode = this.props.zipcode;
-	      var nextZipcode = nextProps.zipcode;
-	
-	      if (currentZipcode !== nextZipcode) {
-	        this.props.relay.setVariables({ zipcode: nextZipcode });
-	      }
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var senators = this.props.data.senators;
-	
-	      if (!senators) return null;
-	
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'three columns' },
-	        this.getReps(senators)
-	      );
-	    }
-	  }]);
-	
-	  return Senators;
-	}(_react.Component);
-	
-	Senators.propTypes = {
-	  className: _react.PropTypes.string
-	};
-	exports.default = Senators;
-
-/***/ },
-/* 798 */
-/*!******************************************!*\
-  !*** ./src/components/Congresspeople.js ***!
-  \******************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRelay = __webpack_require__(/*! react-relay */ 179);
-	
-	var _reactRelay2 = _interopRequireDefault(_reactRelay);
-	
-	var _RepBio = __webpack_require__(/*! ./RepBio */ 796);
-	
-	var _RepBio2 = _interopRequireDefault(_RepBio);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Congresspeople = function (_Component) {
-	  _inherits(Congresspeople, _Component);
-	
-	  function Congresspeople(props) {
-	    _classCallCheck(this, Congresspeople);
-	
-	    var _this = _possibleConstructorReturn(this, (Congresspeople.__proto__ || Object.getPrototypeOf(Congresspeople)).call(this, props));
-	
-	    _this.getReps = function (reps) {
-	      return reps.map(function (rep, index) {
-	        return _react2.default.createElement(_RepBio2.default, { name: rep.name, bioID: rep.bioID, key: index });
-	      });
-	    };
-	
-	    if (props.zipcode) {
-	      _this.props.relay.setVariables({ zipcode: props.zipcode });
-	    }
-	    return _this;
-	  }
-	
-	  _createClass(Congresspeople, [{
-	    key: 'componentWillUpdate',
-	    value: function componentWillUpdate(nextProps, nextState) {
-	      var currentZipcode = this.props.zipcode;
-	      var nextZipcode = nextProps.zipcode;
-	
-	      if (currentZipcode !== nextZipcode) {
-	        this.props.relay.setVariables({ zipcode: nextZipcode });
-	      }
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var congresspeople = this.props.data.congresspeople;
-	
-	      if (!congresspeople) return null;
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'three columns' },
-	        this.getReps(congresspeople)
-	      );
-	    }
-	  }]);
-	
-	  return Congresspeople;
-	}(_react.Component);
-	
-	Congresspeople.propTypes = {
-	  className: _react.PropTypes.string
-	};
-	exports.default = Congresspeople;
-
-/***/ },
+/* 797 */,
+/* 798 */,
 /* 799 */
 /*!***************************************!*\
   !*** ./src/components/AddressForm.js ***!
@@ -74914,6 +74715,208 @@
 
 /***/ },
 /* 801 */
+/*!*********************************!*\
+  !*** ./src/components/Login.js ***!
+  \*********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRelay = __webpack_require__(/*! react-relay */ 179);
+	
+	var _reactRelay2 = _interopRequireDefault(_reactRelay);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 32);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 475);
+	
+	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 636);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var localStorageRef = JSON.parse(localStorage.getItem('user'));
+	
+	var LoginPage = function (_React$Component) {
+	  _inherits(LoginPage, _React$Component);
+	
+	  function LoginPage(props) {
+	    _classCallCheck(this, LoginPage);
+	
+	    var _this2 = _possibleConstructorReturn(this, (LoginPage.__proto__ || Object.getPrototypeOf(LoginPage)).call(this, props));
+	
+	    _this2.handleSubmit = _this2.handleSubmit.bind(_this2);
+	    return _this2;
+	  }
+	
+	  _createClass(LoginPage, [{
+	    key: 'handleSubmit',
+	    value: function handleSubmit(e) {
+	      e.preventDefault();
+	      var _this = this;
+	      fetch('http://heroku-postgres-7720c2d1.herokuapp.com/login', {
+	        method: 'POST',
+	        body: JSON.stringify({
+	          email: _reactDom2.default.findDOMNode(this.refs.emailInput).value,
+	          password: _reactDom2.default.findDOMNode(this.refs.passwordInput).value
+	        })
+	      }).then(function (res) {
+	        return res.json();
+	      }).then(function (j) {
+	        if (j.results) {
+	          var currentUser = j.results[0];
+	          _this.props.handleLogin(currentUser);
+	          _reactRouter.browserHistory.push('/dashboard');
+	        } else {
+	          alert('Wrong username or password');
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'form-container' },
+	        _react2.default.createElement(
+	          'h2',
+	          { className: 'page-title' },
+	          'Log In'
+	        ),
+	        _react2.default.createElement(
+	          'form',
+	          { id: 'login-form', className: 'login-form', onSubmit: this.handleSubmit },
+	          _react2.default.createElement(
+	            _reactBootstrap.FormGroup,
+	            null,
+	            _react2.default.createElement(_reactBootstrap.FormControl, { type: 'email', placeholder: 'Email', ref: 'emailInput', required: true }),
+	            _react2.default.createElement(_reactBootstrap.FormControl, { type: 'password', placeholder: 'Password', ref: 'passwordInput', required: true }),
+	            _react2.default.createElement(
+	              'button',
+	              { type: 'submit' },
+	              'Go!'
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return LoginPage;
+	}(_react2.default.Component);
+	
+	exports.default = LoginPage;
+
+/***/ },
+/* 802 */
+/*!**********************************!*\
+  !*** ./src/components/Logout.js ***!
+  \**********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRelay = __webpack_require__(/*! react-relay */ 179);
+	
+	var _reactRelay2 = _interopRequireDefault(_reactRelay);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 32);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 475);
+	
+	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 636);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var localStorageRef = JSON.parse(localStorage.getItem('user'));
+	
+	var Logout = function (_React$Component) {
+	  _inherits(Logout, _React$Component);
+	
+	  function Logout(props) {
+	    _classCallCheck(this, Logout);
+	
+	    var _this = _possibleConstructorReturn(this, (Logout.__proto__ || Object.getPrototypeOf(Logout)).call(this, props));
+	
+	    _this.handleLogout = _this.handleLogout.bind(_this);
+	
+	    if (localStorageRef) {
+	      _this.state = {
+	        user: localStorageRef,
+	        isLoggedIn: true
+	      };
+	    } else {
+	      _this.state = {
+	        user: null,
+	        isLoggedIn: false
+	      };
+	    }
+	    return _this;
+	  }
+	
+	  _createClass(Logout, [{
+	    key: 'handleLogout',
+	    value: function handleLogout() {
+	      localStorage.removeItem('user');
+	      this.setState({
+	        user: null,
+	        isLoggedIn: false
+	      });
+	      _reactRouter.browserHistory.push('/login');
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'button',
+	        { className: 'home-button', onClick: this.handleLogout },
+	        'Logout'
+	      );
+	    }
+	  }]);
+	
+	  return Logout;
+	}(_react2.default.Component);
+	
+	exports.default = Logout;
+
+/***/ },
+/* 803 */
 /*!**************************************!*\
   !*** ./src/components/SignupPage.js ***!
   \**************************************/
@@ -75940,7 +75943,7 @@
 	exports.default = SignupPage;
 
 /***/ },
-/* 802 */
+/* 804 */
 /*!************************************!*\
   !*** ./src/components/HomePage.js ***!
   \************************************/
@@ -75968,6 +75971,10 @@
 	
 	var _reactRouter = __webpack_require__(/*! react-router */ 475);
 	
+	var _Logout = __webpack_require__(/*! ./Logout */ 802);
+	
+	var _Logout2 = _interopRequireDefault(_Logout);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -75986,25 +75993,25 @@
 	
 	    var _this = _possibleConstructorReturn(this, (HomePage.__proto__ || Object.getPrototypeOf(HomePage)).call(this, props));
 	
-	    _this.handleLogout = _this.handleLogout.bind(_this);
-	    _this.state = {
-	      user: localStorageRef
-	    };
+	    if (localStorageRef) {
+	      _this.state = {
+	        user: localStorageRef,
+	        isLoggedIn: true
+	      };
+	    } else {
+	      _this.state = {
+	        user: null,
+	        isLoggedIn: false
+	      };
+	    }
 	    return _this;
 	  }
 	
 	  _createClass(HomePage, [{
-	    key: 'handleLogout',
-	    value: function handleLogout() {
-	      localStorage.removeItem('user');
-	      this.setState({
-	        user: null
-	      });
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
-	      if (this.state.user) {
+	      var isLoggedIn = this.state.isLoggedIn;
+	      if (isLoggedIn) {
 	        return _react2.default.createElement(
 	          'div',
 	          { className: 'home-page' },
@@ -76012,14 +76019,11 @@
 	            'h2',
 	            { className: 'page-title' },
 	            'You\'re logged in as ',
-	            this.state.user.first_name,
-	            '.'
+	            _react2.default.createElement('br', null),
+	            ' ',
+	            this.state.user.first_name
 	          ),
-	          _react2.default.createElement(
-	            'button',
-	            { className: 'home-button', onClick: this.handleLogout },
-	            'Logout'
-	          )
+	          _react2.default.createElement(_Logout2.default, null)
 	        );
 	      }
 	      return _react2.default.createElement(
@@ -76063,7 +76067,7 @@
 	exports.default = HomePage;
 
 /***/ },
-/* 803 */
+/* 805 */
 /*!************************************!*\
   !*** ./src/components/NotFound.js ***!
   \************************************/
