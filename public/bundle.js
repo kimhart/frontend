@@ -22054,15 +22054,15 @@
 	
 	var _LoginLogoutPage2 = _interopRequireDefault(_LoginLogoutPage);
 	
-	var _SignupPage = __webpack_require__(/*! ./components/SignupPage */ 803);
+	var _SignupPage = __webpack_require__(/*! ./components/SignupPage */ 801);
 	
 	var _SignupPage2 = _interopRequireDefault(_SignupPage);
 	
-	var _HomePage = __webpack_require__(/*! ./components/HomePage */ 804);
+	var _HomePage = __webpack_require__(/*! ./components/HomePage */ 802);
 	
 	var _HomePage2 = _interopRequireDefault(_HomePage);
 	
-	var _NotFound = __webpack_require__(/*! ./components/NotFound */ 805);
+	var _NotFound = __webpack_require__(/*! ./components/NotFound */ 803);
 	
 	var _NotFound2 = _interopRequireDefault(_NotFound);
 	
@@ -56318,6 +56318,9 @@
 	  }
 	
 	  _createClass(Template, [{
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {}
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -73958,11 +73961,11 @@
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _Login = __webpack_require__(/*! ./Login */ 801);
+	var _Login = __webpack_require__(/*! ./Login */ 799);
 	
 	var _Login2 = _interopRequireDefault(_Login);
 	
-	var _Logout = __webpack_require__(/*! ./Logout */ 802);
+	var _Logout = __webpack_require__(/*! ./Logout */ 800);
 	
 	var _Logout2 = _interopRequireDefault(_Logout);
 	
@@ -74074,11 +74077,11 @@
 	
 	var _reactBootstrap = __webpack_require__(/*! react-bootstrap */ 636);
 	
-	var _AddressForm = __webpack_require__(/*! ./AddressForm */ 799);
+	var _AddressForm = __webpack_require__(/*! ./AddressForm */ 797);
 	
 	var _AddressForm2 = _interopRequireDefault(_AddressForm);
 	
-	var _TallyScore = __webpack_require__(/*! ./TallyScore */ 800);
+	var _TallyScore = __webpack_require__(/*! ./TallyScore */ 798);
 	
 	var _TallyScore2 = _interopRequireDefault(_TallyScore);
 	
@@ -74540,9 +74543,7 @@
 	exports.default = RepBio;
 
 /***/ },
-/* 797 */,
-/* 798 */,
-/* 799 */
+/* 797 */
 /*!***************************************!*\
   !*** ./src/components/AddressForm.js ***!
   \***************************************/
@@ -74603,7 +74604,7 @@
 	exports.default = AddressForm;
 
 /***/ },
-/* 800 */
+/* 798 */
 /*!**************************************!*\
   !*** ./src/components/TallyScore.js ***!
   \**************************************/
@@ -74714,7 +74715,7 @@
 	exports.default = TallyScore;
 
 /***/ },
-/* 801 */
+/* 799 */
 /*!*********************************!*\
   !*** ./src/components/Login.js ***!
   \*********************************/
@@ -74825,7 +74826,7 @@
 	exports.default = LoginPage;
 
 /***/ },
-/* 802 */
+/* 800 */
 /*!**********************************!*\
   !*** ./src/components/Logout.js ***!
   \**********************************/
@@ -74916,7 +74917,7 @@
 	exports.default = Logout;
 
 /***/ },
-/* 803 */
+/* 801 */
 /*!**************************************!*\
   !*** ./src/components/SignupPage.js ***!
   \**************************************/
@@ -75943,7 +75944,7 @@
 	exports.default = SignupPage;
 
 /***/ },
-/* 804 */
+/* 802 */
 /*!************************************!*\
   !*** ./src/components/HomePage.js ***!
   \************************************/
@@ -75971,7 +75972,7 @@
 	
 	var _reactRouter = __webpack_require__(/*! react-router */ 475);
 	
-	var _Logout = __webpack_require__(/*! ./Logout */ 802);
+	var _Logout = __webpack_require__(/*! ./Logout */ 800);
 	
 	var _Logout2 = _interopRequireDefault(_Logout);
 	
@@ -76067,7 +76068,7 @@
 	exports.default = HomePage;
 
 /***/ },
-/* 805 */
+/* 803 */
 /*!************************************!*\
   !*** ./src/components/NotFound.js ***!
   \************************************/

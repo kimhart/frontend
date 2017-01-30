@@ -13,6 +13,10 @@ class Template extends React.Component {
     super(props);
   }
 
+  componentWillReceiveProps(nextProps) {
+    
+  }
+
   render() {
     return (
       <Grid fluid={true} className="page-wrap"> 
