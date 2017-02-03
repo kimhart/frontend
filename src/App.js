@@ -27,9 +27,9 @@ class App extends React.Component {
       <Router history={browserHistory} render={applyRouterMiddleware(useRelay)} environment={Relay.Store}>
         <Route path="/" component={Template} queries={RootQuery}>
           <IndexRoute component={HomePage}/>
-          <Route path="login" component={LoginLogoutPage}/>
-          <Route path="signup" component={SignupPage} />
-          <Route path="dashboard" component={DashboardPage} queries={RootQuery} />
+          <Route path="/login" component={LoginLogoutPage}/>
+          <Route path="/signup" component={SignupPage} />
+          <Route path="/dashboard" component={DashboardPage} queries={RootQuery} />
           <Route path="*" component={NotFound} />
         </Route>
       </Router>
@@ -39,4 +39,3 @@ class App extends React.Component {
 }
 
 export default App;
-

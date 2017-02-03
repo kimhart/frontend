@@ -7,6 +7,7 @@ import DashboardPage from './DashboardPage';
 import Footer from './Footer';
 import Login from './Login';
 import Logout from './Logout';
+import { UserUtils } from '../utils/Utils';
 
 let localStorageRef = JSON.parse(localStorage.getItem('user'));
 
@@ -14,44 +15,28 @@ class LoginLogoutPage extends React.Component {
 
     constructor(props) {
       super(props);
-      this.handleLogin = this.handleLogin.bind(this);
-
-      if (localStorageRef) {
-        this.state = {
-          isLoggedIn: true,
-          user: localStorageRef
-        }
-      } else {
-        this.state = {
-          isLoggedIn: false,
-          user: null
-        }
-      } 
+      this.state = {};
     }
 
-    handleLogin(props) {
-      localStorage.setItem('user', JSON.stringify(props));
-      this.setState({ 
-        user: localStorageRef,
-        isLoggedIn: true 
-      });
+    handleLogin = (user) => {
+      if (!user) {
+        this.setState({ error: 'Please check your username and password.' });
+      }
+      else {
+        UserUtils.setUser(user);
+      }
     }
-
 
     render() {
-      const isLoggedIn = this.state.isLoggedIn;
-      let userAction = null;
-      if (isLoggedIn) {
-        userAction = <Logout handleLogout={this.handleLogout} />;
-      } else {
-        userAction = <Login handleLogin={this.handleLogin} />;
-      };
-
+      let { error } = this.state;
       return (
         <div>
           <Row>
             <Col md={12} className="login-logout-page">
-              {userAction}
+              <Login handleLogin={this.handleLogin} />
+              { error &&
+                <span className="login-page-error">{ error }</span>
+              }
             </Col>
           </Row>
         </div>

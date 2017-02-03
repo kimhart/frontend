@@ -7,31 +7,21 @@ import AddressForm from './AddressForm';
 import TallyScore from './TallyScore';
 import Footer from './Footer';
 import LoginPage from './LoginLogoutPage';
-let localStorageRef = JSON.parse(localStorage.getItem('user'));
-
+import { UserUtils } from '../utils/Utils';
 
 class DashboardPage extends React.Component {
   constructor(props) {
     super(props);
-    if (localStorageRef) {
-      this.state = {
-        user: localStorageRef,
-        isLoggedIn: true
-      }
-    } else {
-      this.state = {
-        user: null,
-        isLoggedIn: false
-      }
-    }
+    this.state = { user: UserUtils.getUser() };
   }
 
   render() {
+    let { user } = this.state;
     return (
       <div className="main-dash">
         <Row>
           <Col md={12}>
-            <h2 className="page-title">Hey {this.state.user.first_name}</h2>
+            <h2 className="page-title">Hey {user.first_name}</h2>
             <TallyScore/>
           </Col>
         </Row>

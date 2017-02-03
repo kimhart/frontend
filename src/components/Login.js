@@ -15,7 +15,6 @@ class LoginPage extends React.Component {
 
     handleSubmit(e) {
       e.preventDefault();
-      let _this = this;
       fetch('http://heroku-postgres-7720c2d1.herokuapp.com/login', {
         method: 'POST',
         body: JSON.stringify({
@@ -23,16 +22,16 @@ class LoginPage extends React.Component {
           password: ReactDOM.findDOMNode(this.refs.passwordInput).value
         })
       })
-      .then(function(res) {
+      .then((res) => {
         return res.json();
       })
-      .then(function(j) {
+      .then((j) => {
         if (j.results) {
           let currentUser = j.results[0];
-          _this.props.handleLogin(currentUser);
-          browserHistory.push('/dashboard');
+          this.props.handleLogin(currentUser);
+          browserHistory.push({ pathname: 'dashboard' });
         } else {
-          alert('Wrong username or password');
+          this.props.handleLogin(null);
         }
       });
     }
