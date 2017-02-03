@@ -9,14 +9,6 @@ import LoginPage from './LoginLogoutPage';
 
 class Template extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    
-  }
-
   render() {
     return (
       <Grid fluid={true} className="page-wrap"> 

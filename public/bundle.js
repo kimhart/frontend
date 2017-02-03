@@ -56311,16 +56311,13 @@
 	var Template = function (_React$Component) {
 	  _inherits(Template, _React$Component);
 	
-	  function Template(props) {
+	  function Template() {
 	    _classCallCheck(this, Template);
 	
-	    return _possibleConstructorReturn(this, (Template.__proto__ || Object.getPrototypeOf(Template)).call(this, props));
+	    return _possibleConstructorReturn(this, (Template.__proto__ || Object.getPrototypeOf(Template)).apply(this, arguments));
 	  }
 	
 	  _createClass(Template, [{
-	    key: 'componentWillReceiveProps',
-	    value: function componentWillReceiveProps(nextProps) {}
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
