@@ -15,3 +15,15 @@
     @media (max-width: 400px)  { @content; }
   }
 }
+
+@mixin min-width($device-width) {
+  @media screen and (min-width: $device-width) {
+    @content;
+  }
+}
+
+@mixin max-width($device-width) {
+  @media screen and (max-width: $device-width - 1) {
+    @content;
+  }
+}

@@ -17,30 +17,14 @@ class Template extends React.Component {
     this.state = { user: UserUtils.getUser() || null };
   }
 
-  componentWillUpdate(nextProps, nextState) {
-    let user = UserUtils.getUser();
-    let { user: prevUser } = this.state;
-    if (user && !prevUser) {
-      Object.assign(nextState, { user });
-    }
+  setUser = () => {
+    this.setState({ user: UserUtils.getUser() });
   }
 
   render() {
     const { user } = this.state;
     if (!user) {
-      return <LoginLogoutPage {...this.props} />
-      return (
-        <div className="home-page">
-          <h2 className="page-title">Tally</h2>
-          <Link to="/signup">
-            <button className="signup-button">Signup</button>
-          </Link>
-          <span className="or">—OR—</span>
-          <Link to="/login">
-            <button className="home-button">Login</button>
-          </Link>
-        </div>
-      )
+      return <LoginLogoutPage {...this.props} setUser={this.setUser} />
     }
     return (
       <Grid fluid={true} className="page-wrap">

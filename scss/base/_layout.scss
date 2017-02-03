@@ -7,7 +7,7 @@ html, body {
   background-color: white;
   overflow-y: hidden;
   padding-bottom: 30px;
-  @include breakpoint(baby-bear) { 
+  @include breakpoint(baby-bear) {
   }
 }
 
@@ -16,14 +16,18 @@ html, body {
   position: relative;
 }
 
-.signup-page, .login-logout-page {
+.signup-page,
+.login-logout-page {
   overflow: hidden;
   position: fixed;
   width: 100%;
 }
 
-.login-logout-page { 
-    margin: 15vh 0; 
+.login-logout-page {
+  margin: 15vh 0;
+  .form-control {
+    width: 300px;
+  }
 }
 
 button {

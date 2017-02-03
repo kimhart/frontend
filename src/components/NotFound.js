@@ -16,7 +16,7 @@ class NotFound extends React.Component {
               <h2>Whoops!<br/> That page doesn't exist.</h2>
               <span className="back">
                 <i className="material-icons">arrow_back&nbsp;</i>
-                <p><Link to="/dashboard">Return to dashboard</Link></p>
+                <p><Link to="/">Return to dashboard</Link></p>
               </span>
             </Col>
           </Row>
@@ -26,4 +26,3 @@ class NotFound extends React.Component {
 }
 
 export default NotFound;
-

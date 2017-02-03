@@ -31,14 +31,12 @@ class LoginLogoutPage extends React.Component {
       let { error } = this.state;
       return (
         <div>
-          <Row>
-            <Col md={12} className="login-logout-page">
-              <Login handleLogin={this.handleLogin} />
-              { error &&
-                <span className="login-page-error">{ error }</span>
-              }
-            </Col>
-          </Row>
+          <div className="login-logout-page">
+            <Login handleLogin={this.handleLogin} />
+            { error &&
+              <span className="login-page-error">{ error }</span>
+            }
+          </div>
         </div>
       );
     }

@@ -29,7 +29,6 @@ class LoginPage extends React.Component {
         if (j.results) {
           let currentUser = j.results[0];
           this.props.handleLogin(currentUser);
-          browserHistory.push({ pathname: 'dashboard' });
         } else {
           this.props.handleLogin(null);
         }
