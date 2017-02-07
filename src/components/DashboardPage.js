@@ -7,12 +7,24 @@ import AddressForm from './AddressForm';
 import TallyScore from './TallyScore';
 import Footer from './Footer';
 import LoginPage from './LoginLogoutPage';
+import RepInfoCluster from './reps/RepInfoCluster';
 import { UserUtils } from '../utils/Utils';
 
 class DashboardPage extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = { user: UserUtils.getUser() };
+  }
+
+  getRepInfoClusters = () => {
+    let { user } = this.props.data;
+    if (user && user.reps) {
+      return user.reps.map(rep => <RepInfoCluster key={rep.bioguide_id} {...rep} />);
+    }
+    else {
+      return null;
+    }
   }
 
   render() {
@@ -22,45 +34,14 @@ class DashboardPage extends React.Component {
         <Row>
           <Col md={12}>
             <h2 className="page-title">Hey {user.first_name}</h2>
-            <TallyScore/>
+            <TallyScore />
           </Col>
         </Row>
         <Row>
           <Col md={12} className="reps-display">
             <h2>Your Reps</h2>
             <div className="reps-list">
-              <div className="rep-info-cluster">
-                <img src="./img/bio_images/placeholder.png" className="bio-photo"/>
-                <p className="name">Kristin Gillibrand</p>
-                <p className="role">Senate (D)</p>
-                <p className="location">New York</p>
-                <p className="match-score">100%</p>
-                <p className="with-me">matched with you</p>
-              </div>
-              <div className="rep-info-cluster">
-                <img src="./img/bio_images/placeholder.png" className="bio-photo"/>
-                <p className="name">Snoop Dogg</p>
-                <p className="role">Senate (D)</p>
-                <p className="location">New York</p>
-                <p className="match-score">84%</p>
-                <p className="with-me">matched with you</p>
-              </div>
-              <div className="rep-info-cluster">
-                <img src="./img/bio_images/placeholder.png" className="bio-photo"/>
-                <p className="name">Chris Farley</p>
-                <p className="role">House (R)</p>
-                <p className="location">The Moon</p>
-                <p className="match-score">21%</p>
-                <p className="with-me">matched with you</p>
-              </div>
-              <div className="rep-info-cluster">
-                <img src="./img/bio_images/placeholder.png" className="bio-photo"/>
-                <p className="name">Ryan Gosling</p>
-                <p className="role">House (R)</p>
-                <p className="location">California</p>
-                <p className="match-score">112%</p>
-                <p className="with-me">matched with you</p>
-              </div>
+              { this.getRepInfoClusters() }
             </div>
           </Col>
         </Row>
@@ -121,12 +102,42 @@ class DashboardPage extends React.Component {
 
 export default Relay.createContainer(DashboardPage, {
   initialVariables: {
-    user: null
+    email: "alex@alexhubbard",
+    password: "alexalex"
   },
   fragments: {
     data: () => Relay.QL`
       fragment on Data {
         id
+        user(email: $email, password: $password) {
+          first_name
+          reps {
+            address
+            bio_text
+            bioguide_id
+            chamber
+            congress_url
+            district
+            facebook
+            leadership_position
+            name
+            party
+            phone
+            photo_url
+            served_until
+            state
+            twitter_handle
+            twitter_url
+            website
+            year_elected
+            memberships {
+              bioguide_id
+              committee
+              committee_leadership
+              subcommittee
+            }
+          }
+        }
       }
     `
   }
