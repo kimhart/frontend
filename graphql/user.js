@@ -68,7 +68,9 @@ export let getUserSchema = () => {
               let user = results[0];
               let { reps_data } = user;
               // NOTE/HACK: cleaning invalid json structures, need to refactor with @alexhubbard89
-              user.reps_data = reps_data.map((rep, index) => rep[`${index}`]);
+              user.reps_data = reps_data && reps_data.length
+              ? Object.keys(reps_data[0]).map(key => reps_data[0][key])
+              : [];
               resolve(user);
             }
             else {
