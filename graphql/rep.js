@@ -36,12 +36,22 @@ export let repType = new GraphQLObjectType({
   party: { type: GraphQLString, resolve: rep => rep.party },
   phone: { type: GraphQLString, resolve: rep => rep.phone },
   photo_url: { type: GraphQLString, resolve: rep => rep.photo_url },
-  // reps_membership: [ { '0': [Object], '1': [Object] } ],
+  memberships: { type: new GraphQLList(repMembershipType), resolve: rep => rep.reps_membership },
   served_until: { type: GraphQLString, resolve: rep => rep.served_until },
   state: { type: GraphQLString, resolve: rep => rep.state },
   twitter_handle: { type: GraphQLString, resolve: rep => rep.twitter_handle },
   twitter_url: { type: GraphQLString, resolve: rep => rep.twitter_url },
   website: { type: GraphQLString, resolve: rep => rep.website },
   year_elected: { type: GraphQLInt, resolve: rep => rep.year_elected },
+  })
+});
+
+let repMembershipType = new GraphQLObjectType({
+  name: "RepMembership",
+  fields: () => ({
+  bioguide_id: { type: GraphQLString, resolve: rep => rep.bioguide_id },
+  committee: { type: GraphQLString, resolve: rep => rep.committee },
+  committee_leadership: { type: GraphQLString, resolve: rep => rep.committee_leadership },
+  subcommittee: { type: GraphQLString, resolve: rep => rep.subcommittee },
   })
 });

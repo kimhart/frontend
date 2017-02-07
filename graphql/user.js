@@ -71,6 +71,12 @@ export let getUserSchema = () => {
               user.reps_data = reps_data && reps_data.length
               ? Object.keys(reps_data[0]).map(key => reps_data[0][key])
               : [];
+              user.reps_data.forEach(rep => {
+                let { reps_membership } = rep;
+                rep.reps_membership = reps_membership && reps_membership.length
+                ? Object.keys(reps_membership[0]).map(key => reps_membership[0][key])
+                : [];
+              })
               resolve(user);
             }
             else {
