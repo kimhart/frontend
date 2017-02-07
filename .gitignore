@@ -1,3 +1,4 @@
 node_modules/
-
+graphql/schema.json
+.DS_Store
 public/bundle.*
