@@ -20,24 +20,31 @@ import {
 
 import rp from 'request-promise';
 import config from './config';
+import { repType } from './rep';
 
 let userType = new GraphQLObjectType({
   name: "User",
   fields: () => ({
-    email: { type: GraphQLString, resolve: user => user.email },
-    password: { type: GraphQLString, resolve: user => user.password },
+    city: { type: GraphQLString, resolve: user => user.city },
+    district: { type: GraphQLString, resolve: user => user.district },
     first_name: { type: GraphQLString, resolve: user => user.first_name },
     last_name: { type: GraphQLString, resolve: user => user.last_name },
-    street: { type: GraphQLString, resolve: user => user.street },
-    zip_code: { type: GraphQLString, resolve: user => user.zipcode },
-    gender: { type: GraphQLString, resolve: user => user.gender },
-    dob: { type: GraphQLString, resolve: user => user.dob }
+    state_long: { type: GraphQLString, resolve: user => user.state_long },
+    state_short: { type: GraphQLString, resolve: user => user.state_short },
+    user_id: { type: GraphQLString, resolve: user => user.user_id },
+    reps: { type: new GraphQLList(repType), resolve: user => user.reps_data }
+    // email: { type: GraphQLString, resolve: user => user.email },
+    // password: { type: GraphQLString, resolve: user => user.password },
+    // street: { type: GraphQLString, resolve: user => user.street },
+    // zip_code: { type: GraphQLString, resolve: user => user.zipcode },
+    // gender: { type: GraphQLString, resolve: user => user.gender },
+    // dob: { type: GraphQLString, resolve: user => user.dob }
   })
 });
 
 export let getUserSchema = () => {
   return {
-    type: new GraphQLList(userType),
+    type: userType,
     args: {
       email: { type: GraphQLString },
       password: { type: GraphQLString }
@@ -57,8 +64,16 @@ export let getUserSchema = () => {
           })
           .then(data => {
             let { results } = data;
-            console.log({ file: 'user.js', results });
-            resolve(results);
+            if (results && !!results.length) {
+              let user = results[0];
+              let { reps_data } = user;
+              // NOTE/HACK: cleaning invalid json structures, need to refactor with @alexhubbard89
+              user.reps_data = reps_data.map((rep, index) => rep[`${index}`]);
+              resolve(user);
+            }
+            else {
+              resolve({ error: 'not found' });
+            }
           })
         });
       }
