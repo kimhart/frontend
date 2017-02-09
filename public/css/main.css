@@ -13,13 +13,16 @@ html, body {
   min-height: 100%;
   position: relative; }
 
-.signup-page, .login-logout-page {
+.signup-page,
+.login-logout-page {
   overflow: hidden;
   position: fixed;
   width: 100%; }
 
 .login-logout-page {
   margin: 15vh 0; }
+  .login-logout-page .form-control {
+    width: 300px; }
 
 button {
   font-size: 16px;
