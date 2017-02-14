@@ -14,17 +14,14 @@ class DashboardPage extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { user: UserUtils.getUser() };
+    let user = UserUtils.getUser();
+    this.state = { user };
+    props.relay.setVariables({ district: parseInt(user.district), state_long: user.state_long });
   }
 
   getRepInfoClusters = () => {
-    let { user } = this.props.data;
-    if (user && user.reps) {
-      return user.reps.map(rep => <RepInfoCluster key={rep.bioguide_id} {...rep} />);
-    }
-    else {
-      return null;
-    }
+    let { reps } = this.props.data;
+    return reps ? reps.map(rep => <RepInfoCluster {...this.props} key={rep.bioguide_id} {...rep} />) : null;
   }
 
   render() {
@@ -102,42 +99,34 @@ class DashboardPage extends React.Component {
 
 export default Relay.createContainer(DashboardPage, {
   initialVariables: {
-    email: null,
-    password: null
+    district: null,
+    state_long: null
   },
   fragments: {
     data: () => Relay.QL`
       fragment on Data {
         id
-        user(email: $email, password: $password) {
-          first_name
-          # reps {
-          #   address
-          #   bio_text
-          #   bioguide_id
-          #   chamber
-          #   congress_url
-          #   district
-          #   facebook
-          #   leadership_position
-          #   name
-          #   party
-          #   phone
-          #   photo_url
-          #   served_until
-          #   state
-          #   twitter_handle
-          #   twitter_url
-          #   website
-          #   year_elected
-          #   memberships {
-          #     bioguide_id
-          #     committee
-          #     committee_leadership
-          #     subcommittee
-          #   }
-          # }
+        reps(district: $district, state_long: $state_long) {
+          address
+          bio_text
+          bioguide_id
+          chamber
+          congress_url
+          district
+          facebook
+          leadership_position
+          name
+          party
+          phone
+          photo_url
+          served_until
+          state
+          twitter_handle
+          twitter_url
+          website
+          year_elected
         }
+        ${RepInfoCluster.getFragment('data')}
       }
     `
   }

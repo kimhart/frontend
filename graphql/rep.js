@@ -61,15 +61,16 @@ export let getRepMembershipSchema = () => {
     type: new GraphQLList(repMembershipType),
     args: {
       bioguide_id: { type: GraphQLString },
+      chamber: { type: GraphQLString },
     },
     resolve: (__, args) => {
-      let { bioguide_id } = args;
-      if (!!bioguide_id) {
+      let { bioguide_id, chamber } = args;
+      if (!!bioguide_id && !!chamber) {
         return new Promise((resolve, reject) => {
           rp({
             method: 'POST',
             uri: `${config.backend.uri}/committee_membership`,
-            body: { bioguide_id },
+            body: { bioguide_id, chamber },
             json: true
           })
           .catch(error => reject(error))

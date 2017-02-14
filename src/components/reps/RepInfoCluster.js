@@ -1,6 +1,13 @@
 import React from 'react';
+import Relay from 'react-relay';
 
 class RepInfoCluster extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {};
+    props.relay.setVariables({ bioguide_id: props.bioguide_id, chamber: props.chamber });
+  }
 
   getPhotoSource = () => {
     let { photo_url } = this.props;
@@ -11,8 +18,10 @@ class RepInfoCluster extends React.Component {
       return './img/bio_images/placeholder.png';
     }
   }
+
   render() {
-    let { name, chamber, state, photo_url } = this.props;
+    let { name, chamber, state, photo_url, bioguide_id, data } = this.props;
+    console.log({ data, bioguide_id });
     return (
       <div className="rep-info-cluster">
         <img src={this.getPhotoSource()} className="bio-photo"/>
@@ -27,4 +36,22 @@ class RepInfoCluster extends React.Component {
 
 }
 
-export default RepInfoCluster;
+export default Relay.createContainer(RepInfoCluster, {
+  initialVariables: {
+    bioguide_id: null,
+    chamber: null
+  },
+  fragments: {
+    data: () => Relay.QL`
+      fragment on Data {
+        id
+        memberships(bioguide_id: $bioguide_id, chamber: $chamber) {
+          bioguide_id
+          committee
+          committee_leadership
+          subcommittee
+        }
+      }
+    `
+  }
+});

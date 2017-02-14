@@ -27,7 +27,7 @@ let userType = new GraphQLObjectType({
   name: "User",
   fields: () => ({
     city: { type: GraphQLString, resolve: user => user.city },
-    district: { type: GraphQLString, resolve: user => user.district },
+    district: { type: GraphQLInt, resolve: user => user.district },
     first_name: { type: GraphQLString, resolve: user => user.first_name },
     last_name: { type: GraphQLString, resolve: user => user.last_name },
     state_long: { type: GraphQLString, resolve: user => user.state_long },
