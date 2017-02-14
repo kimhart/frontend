@@ -19,6 +19,7 @@ import {
 } from 'graphql-relay';
 
 import rp from 'request-promise';
+import _ from 'lodash';
 import config from './config';
 import { repType } from './rep';
 
@@ -41,6 +42,60 @@ let userType = new GraphQLObjectType({
     // gender: { type: GraphQLString, resolve: user => user.gender },
     // dob: { type: GraphQLString, resolve: user => user.dob }
   })
+});
+
+export let Login = mutationWithClientMutationId({
+  name: 'Login',
+  inputFields: {
+    clientMutationId: { type: GraphQLString, resolve: ({ clientMutationId }) => clientMutationId },
+    email: { type: GraphQLString, resolve: ({ email }) => email },
+    password: { type: GraphQLString, resolve: ({ password }) => password  }
+  },
+  outputFields: {
+    user: {
+      type: userType,
+      resolve: user => user,
+    }
+  },
+  mutateAndGetPayload: ({ email, password }) => {
+    return new Promise(function(resolve, reject) {
+      rp({
+        method: 'POST',
+        uri: `${config.backend.uri}/login`,
+        body: { email, password },
+        json: true
+      }).then(response => {
+        if (_.isEmpty(response)) {
+          resolve(null);
+        }
+        else {
+          let { results } = response;
+          if (results && !!results.length) {
+            let user = results[0];
+            let { reps_data } = user;
+            // NOTE/HACK: cleaning invalid json structures, need to refactor with @alexhubbard89
+            user.reps_data = reps_data && reps_data.length
+            ? Object.keys(reps_data[0]).map(key => reps_data[0][key])
+            : [];
+            user.reps_data.forEach(rep => {
+              let { reps_membership } = rep;
+              rep.reps_membership = reps_membership && reps_membership.length
+              ? Object.keys(reps_membership[0]).map(key => reps_membership[0][key])
+              : [];
+            })
+            resolve(user);
+          }
+          else {
+            console.log({ error: 'Error logging in' });
+            resolve({ error: 'Error logging in' });
+          }
+        }
+      })
+      .catch(err => {
+        resolve({ 'Error in favorites Graphql Request': err });
+      });
+    });
+  },
 });
 
 export let getUserSchema = () => {

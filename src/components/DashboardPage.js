@@ -102,8 +102,8 @@ class DashboardPage extends React.Component {
 
 export default Relay.createContainer(DashboardPage, {
   initialVariables: {
-    email: "alex@alexhubbard",
-    password: "alexalex"
+    email: null,
+    password: null
   },
   fragments: {
     data: () => Relay.QL`
@@ -111,32 +111,32 @@ export default Relay.createContainer(DashboardPage, {
         id
         user(email: $email, password: $password) {
           first_name
-          reps {
-            address
-            bio_text
-            bioguide_id
-            chamber
-            congress_url
-            district
-            facebook
-            leadership_position
-            name
-            party
-            phone
-            photo_url
-            served_until
-            state
-            twitter_handle
-            twitter_url
-            website
-            year_elected
-            memberships {
-              bioguide_id
-              committee
-              committee_leadership
-              subcommittee
-            }
-          }
+          # reps {
+          #   address
+          #   bio_text
+          #   bioguide_id
+          #   chamber
+          #   congress_url
+          #   district
+          #   facebook
+          #   leadership_position
+          #   name
+          #   party
+          #   phone
+          #   photo_url
+          #   served_until
+          #   state
+          #   twitter_handle
+          #   twitter_url
+          #   website
+          #   year_elected
+          #   memberships {
+          #     bioguide_id
+          #     committee
+          #     committee_leadership
+          #     subcommittee
+          #   }
+          # }
         }
       }
     `

@@ -73,7 +73,7 @@ export let getRepMembershipSchema = () => {
             json: true
           })
           .catch(error => reject(error))
-          .then(memberships => resolve(memberships));
+          .then(memberships => resolve(memberships.results));
         });
       }
       else {
@@ -101,7 +101,7 @@ export let getRepSchema = () => {
             json: true
           })
           .catch(error => reject(error))
-          .then(reps => resolve(reps));
+          .then(reps => resolve(reps.results));
         });
       }
       else {
