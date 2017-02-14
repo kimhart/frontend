@@ -32,7 +32,8 @@ let userType = new GraphQLObjectType({
     state_long: { type: GraphQLString, resolve: user => user.state_long },
     state_short: { type: GraphQLString, resolve: user => user.state_short },
     user_id: { type: GraphQLString, resolve: user => user.user_id },
-    reps: { type: new GraphQLList(repType), resolve: user => user.reps_data }
+    // reps: { type: new GraphQLList(repType), resolve: user => user.reps_data },
+    error: { type: GraphQLString, resolve: user => user.error },
     // email: { type: GraphQLString, resolve: user => user.email },
     // password: { type: GraphQLString, resolve: user => user.password },
     // street: { type: GraphQLString, resolve: user => user.street },
@@ -59,30 +60,8 @@ export let getUserSchema = () => {
             body: { email, password },
             json: true
           })
-          .catch(error => {
-            reject(error)
-          })
-          .then(data => {
-            let { results } = data;
-            if (results && !!results.length) {
-              let user = results[0];
-              let { reps_data } = user;
-              // NOTE/HACK: cleaning invalid json structures, need to refactor with @alexhubbard89
-              user.reps_data = reps_data && reps_data.length
-              ? Object.keys(reps_data[0]).map(key => reps_data[0][key])
-              : [];
-              user.reps_data.forEach(rep => {
-                let { reps_membership } = rep;
-                rep.reps_membership = reps_membership && reps_membership.length
-                ? Object.keys(reps_membership[0]).map(key => reps_membership[0][key])
-                : [];
-              })
-              resolve(user);
-            }
-            else {
-              resolve({ error: 'not found' });
-            }
-          })
+          .catch(error => reject(error))
+          .then(user => resolve(user));
         });
       }
       else {

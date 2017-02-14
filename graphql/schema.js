@@ -20,6 +20,7 @@ import {
 
 import rp from 'request-promise';
 import { getUserSchema } from './user';
+import { getRepSchema, getRepMembershipSchema } from './rep';
 
 let schema = (db) => {
   class Data {};
@@ -45,7 +46,9 @@ let schema = (db) => {
     name: "Data",
     fields: () => ({
       id: globalIdField("Data"),
-      user: getUserSchema()
+      user: getUserSchema(),
+      reps: getRepSchema(),
+      memberships: getRepMembershipSchema()
     }),
     interfaces: [nodeDefs.nodeInterface]
   });
