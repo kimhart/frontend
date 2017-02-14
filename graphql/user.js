@@ -64,35 +64,17 @@ export let Login = mutationWithClientMutationId({
         uri: `${config.backend.uri}/login`,
         body: { email, password },
         json: true
-      }).then(response => {
-        if (_.isEmpty(response)) {
-          resolve(null);
+      })
+      .catch(error => {
+        reject(error)
+      })
+      .then(user => {
+        if (!!user.user_id) {
+          resolve(user);
         }
         else {
-          let { results } = response;
-          if (results && !!results.length) {
-            let user = results[0];
-            let { reps_data } = user;
-            // NOTE/HACK: cleaning invalid json structures, need to refactor with @alexhubbard89
-            user.reps_data = reps_data && reps_data.length
-            ? Object.keys(reps_data[0]).map(key => reps_data[0][key])
-            : [];
-            user.reps_data.forEach(rep => {
-              let { reps_membership } = rep;
-              rep.reps_membership = reps_membership && reps_membership.length
-              ? Object.keys(reps_membership[0]).map(key => reps_membership[0][key])
-              : [];
-            })
-            resolve(user);
-          }
-          else {
-            console.log({ error: 'Error logging in' });
-            resolve({ error: 'Error logging in' });
-          }
+          resolve({ error: 'Please check your username and password.' });
         }
-      })
-      .catch(err => {
-        resolve({ 'Error in favorites Graphql Request': err });
       });
     });
   },

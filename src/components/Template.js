@@ -23,7 +23,7 @@ class Template extends React.Component {
   render() {
     const { user } = this.state;
     if (!user) {
-      return <Login {...this.props} setUser={this.setUser} />
+      return <Login {...this.props} update={this.setUser} />
     }
     return (
       <Grid fluid={true} className="page-wrap">

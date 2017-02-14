@@ -3,9 +3,8 @@ import Relay from 'react-relay';
 import ReactDOM from 'react-dom';
 import { Link, browserHistory } from 'react-router';
 import { Grid, Row, Col, Clearfix, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
-// import LoginMutation from './mutations/LoginMutation';
-
-let localStorageRef = JSON.parse(localStorage.getItem('user'));
+import LoginMutation from './mutations/LoginMutation';
+import { UserUtils } from '../utils/Utils';
 
 class LoginPage extends React.Component {
 
@@ -16,26 +15,35 @@ class LoginPage extends React.Component {
       }
     }
 
-    handleSubmit = (e) => {
-      console.log({ email: this._email.value, password: this._password.value });
-      // fetch('http://heroku-postgres-7720c2d1.herokuapp.com/login', {
-      //   method: 'POST',
-      //   body: {
-      //     email: ReactDOM.findDOMNode(this.refs.emailInput).value,
-      //     password: ReactDOM.findDOMNode(this.refs.passwordInput).value
-      //   }
-      // })
-      // .then((res) => {
-      //   return res.json();
-      // })
-      // .then((j) => {
-      //   if (j.results) {
-      //     let currentUser = j.results[0];
-      //     this.props.handleLogin(currentUser);
-      //   } else {
-      //     this.props.handleLogin(null);
-      //   }
-      // });
+    componentWillMount() {
+      window.addEventListener('keypress', this._handleEnter, false);
+    }
+
+    componentWillUnmount() {
+      window.removeEventListener('keypress', this._handleEnter, false);
+    }
+
+    _handleEnter = (e) => {
+      if (e.keyCode == 13) this._handleSubmit();
+    }
+
+    _handleSubmit = (e) => {
+      this.props.relay.commitUpdate(new LoginMutation({ user: this.props.data.user, email: this._email.value, password: this._password.value }), {
+        onFailure: (error) => {
+          console.error({ file: 'Login', error });
+        },
+        onSuccess: ({ Login: { user } }) => {
+          if (user.error) {
+            this.setState({
+              error: user.error
+            })
+          }
+          else {
+            UserUtils.setUser(user);
+            this.props.update();
+          }
+        }
+      });
     }
 
     render() {
@@ -48,7 +56,7 @@ class LoginPage extends React.Component {
               <div id="login-form" className="login-form">
                 <input type="email" placeholder="Email" required ref={(c) => this._email = c} />
                 <input type="password" placeholder="Password" required ref={(c) => this._password = c} />
-                <button type="button" onClick={this.handleSubmit}>Login</button>
+                <button type="button" onClick={this._handleSubmit}>Login</button>
               </div>
             </div>
             { error &&
@@ -61,11 +69,25 @@ class LoginPage extends React.Component {
 }
 
 export default Relay.createContainer(LoginPage, {
-  initialVariables: {},
+  initialVariables: {
+    email: null,
+    password: null
+  },
   fragments: {
     data: () => Relay.QL`
       fragment on Data {
         id
+        user {
+          city
+          district
+          first_name
+          last_name
+          state_long
+          state_short
+          user_id
+          error
+          ${LoginMutation.getFragment('user')}
+        }
       }
     `
   }

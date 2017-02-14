@@ -6,44 +6,23 @@ class LoginMutation extends Relay.Mutation {
 
   // fragments required for this mutation
   static fragments = {
-    Data: () => Relay.QL`
-      fragment on Data {
-        user {
-          first_name
-          reps {
-            address
-            bio_text
-            bioguide_id
-            chamber
-            congress_url
-            district
-            facebook
-            leadership_position
-            name
-            party
-            phone
-            photo_url
-            served_until
-            state
-            twitter_handle
-            twitter_url
-            website
-            year_elected
-            memberships {
-              bioguide_id
-              committee
-              committee_leadership
-              subcommittee
-            }
-          }
-        }
+    user: () => Relay.QL`
+      fragment on User {
+        city
+        district
+        first_name
+        last_name
+        state_long
+        state_short
+        user_id
+        error
       }
     `,
   };
 
   // translates props into useable variables
   getVariables() {
-    let { email, password } = this.props;
+    let { email, password, user } = this.props;
     return { email, password };
   }
 
@@ -53,56 +32,45 @@ class LoginMutation extends Relay.Mutation {
   }
 
   // this tells Relay what to do with the data when it's returned
-  // getConfigs() {
-  //   return [
-  //     {
-  //       type: 'REQUIRED_CHILDREN',
-  //       children: [
-  //         Relay.QL`
-  //           fragment on LoginPayload @relay(pattern: true) {
-  //             viewState {
-  //               _id
-  //               state
-  //             }
-  //           }
-  //         `
-  //       ]
-  //     }
-  //   ];
-  // }
+  getConfigs() {
+    return [{
+      type: 'REQUIRED_CHILDREN',
+      children: [
+        Relay.QL`
+          fragment on LoginPayload {
+            user {
+              city
+              district
+              first_name
+              last_name
+              state_long
+              state_short
+              user_id
+              error
+            }
+          }
+        `,
+      ],
+    }, {
+      type: 'FIELDS_CHANGE',
+      fieldIDs: {
+        user: this.props.user,
+      },
+    }];
+  }
 
   getFatQuery() {
-    let { email, password } = this.props;
     return  Relay.QL`
       fragment on LoginPayload @relay(pattern: true) {
         user {
+          city
+          district
           first_name
-          reps {
-            address
-            bio_text
-            bioguide_id
-            chamber
-            congress_url
-            district
-            facebook
-            leadership_position
-            name
-            party
-            phone
-            photo_url
-            served_until
-            state
-            twitter_handle
-            twitter_url
-            website
-            year_elected
-            memberships {
-              bioguide_id
-              committee
-              committee_leadership
-              subcommittee
-            }
-          }
+          last_name
+          state_long
+          state_short
+          user_id
+          error
         }
       }
     `
