@@ -9,8 +9,6 @@ import Login from './Login';
 import Logout from './Logout';
 import { UserUtils } from '../utils/Utils';
 
-let localStorageRef = JSON.parse(localStorage.getItem('user'));
-
 class LoginLogoutPage extends React.Component {
 
     constructor(props) {
@@ -18,28 +16,9 @@ class LoginLogoutPage extends React.Component {
       this.state = {};
     }
 
-    handleLogin = (user) => {
-      if (!user) {
-        this.setState({ error: 'Please check your username and password.' });
-      }
-      else {
-        UserUtils.setUser(user);
-      }
-    }
-
     render() {
-      let { error } = this.state;
       return (
-        <div>
-          <div className="login-logout-page">
-            <Login handleLogin={this.handleLogin} />
-            { error &&
-              <span className="login-page-error">{ error }</span>
-            }
-          </div>
-        </div>
+        <div/>
       );
     }
 }
-
-export default LoginLogoutPage;

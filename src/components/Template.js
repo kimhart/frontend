@@ -4,10 +4,9 @@ import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, IndexLink, Link, browserHistory, applyRouterMiddleware } from 'react-router';
 import { Grid, Row, Col, Clearfix } from 'react-bootstrap';
 import useRelay from 'react-router-relay';
-import LoginPage from './LoginLogoutPage';
 import Footer from './Footer';
 import Logout from './Logout';
-import LoginLogoutPage from './LoginLogoutPage';
+import Login from './Login';
 import { UserUtils } from '../utils/Utils';
 
 class Template extends React.Component {
@@ -24,7 +23,7 @@ class Template extends React.Component {
   render() {
     const { user } = this.state;
     if (!user) {
-      return <LoginLogoutPage {...this.props} setUser={this.setUser} />
+      return <Login {...this.props} update={this.setUser} />
     }
     return (
       <Grid fluid={true} className="page-wrap">
@@ -42,6 +41,7 @@ export default Relay.createContainer(Template, {
     data: () => Relay.QL`
       fragment on Data {
         id
+        ${Login.getFragment('data')}
       }
     `
   }
