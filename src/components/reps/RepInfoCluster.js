@@ -44,9 +44,9 @@ class RepInfoCluster extends React.Component {
     let query = { address, bio_text, bioguide_id, chamber, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected };
     let fullName = name.split(',').reverse().join().replace(/\,/g,' ');
     return (
-      <Link to={{ pathname: `/bios/${bioguide_id}`, query }}>
-        <div className="rep-info-cluster">
-          <img src={this.getPhotoSource()} className="bio-photo"/>
+      <Link to={{ pathname: `/bios/${bioguide_id}`, query }} style={{ textDecoration: 'none' }}>
+        <div className="cluster">
+          <div className="bio-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}}></div>
           <p className="name">{ fullName }</p>
           <p className="role">{ chamber.replace(/\b\w/g, l => l.toUpperCase()) } ({this.getShortParty()})</p>
           <p className="location">{ state }</p>

@@ -2,7 +2,6 @@ import React from 'react';
 import Relay from 'react-relay';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, IndexLink, Link, browserHistory, applyRouterMiddleware } from 'react-router';
-import { Grid, Row, Col, Clearfix } from 'react-bootstrap';
 import useRelay from 'react-router-relay';
 import Footer from './Footer';
 import Logout from './Logout';
@@ -26,11 +25,9 @@ class Template extends React.Component {
       return <Login {...this.props} update={this.setUser} />
     }
     return (
-      <Grid fluid={true} className="page-wrap">
-        <div className="page-content">
-          { this.props.children }
-        </div>
-      </Grid>
+      <div className="page-wrap">
+        { this.props.children }
+      </div>
     );
   }
 }
