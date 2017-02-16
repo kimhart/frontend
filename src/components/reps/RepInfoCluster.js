@@ -1,5 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
+import { Link } from 'react-router';
 
 class RepInfoCluster extends React.Component {
 
@@ -20,17 +21,19 @@ class RepInfoCluster extends React.Component {
   }
 
   render() {
-    let { name, chamber, state, photo_url, bioguide_id, data } = this.props;
-    console.log({ data, bioguide_id });
+    let { address, bio_text, bioguide_id, chamber, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected, data } = this.props
+    let query = { address, bio_text, bioguide_id, chamber, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected };
     return (
-      <div className="rep-info-cluster">
-        <img src={this.getPhotoSource()} className="bio-photo"/>
-        <p className="name">{ name }</p>
-        <p className="role">{ chamber }</p>
-        <p className="location">{ state }</p>
-        <p className="match-score">100%</p>
-        <p className="with-me">matched with you</p>
-      </div>
+      <Link to={{ pathname: `/bios/${bioguide_id}`, query }}>
+        <div className="rep-info-cluster">
+          <img src={this.getPhotoSource()} className="bio-photo"/>
+          <p className="name">{ name }</p>
+          <p className="role">{ chamber }</p>
+          <p className="location">{ state }</p>
+          <p className="match-score">100%</p>
+          <p className="with-me">matched with you</p>
+        </div>
+      </Link>
     );
   }
 
