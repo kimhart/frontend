@@ -1,15 +1,11 @@
 import React from 'react';
 import Relay from 'react-relay';
 import ReactDOM from 'react-dom';
-import RepBio from './RepBio';
-import { Grid, Row, Col, Clearfix } from 'react-bootstrap';
-import AddressForm from './AddressForm';
-import TallyScore from './TallyScore';
-import Footer from './Footer';
-import LoginPage from './LoginLogoutPage';
-import RepInfoCluster from './reps/RepInfoCluster';
-import { UserUtils } from '../utils/Utils';
-import ReportCard from './ReportCard';
+import Footer from './../Footer';
+import RepInfoCluster from './../reps/RepInfoCluster';
+import ReportCard from './../reps/ReportCard';
+import { UserUtils } from './../../utils/Utils';
+
 
 class DashboardPage extends React.Component {
 
@@ -34,26 +30,22 @@ class DashboardPage extends React.Component {
     let { user } = this.state;
     return (
       <div className="main-dash">
-        <Row>
-          <Col md={12}>
-            <h2 className="page-title">Hey {user.first_name}</h2>
-            <TallyScore />
-          </Col>
-        </Row>
-        <Row>
-          <Col md={12} className="reps-display">
-            <h2>Your Reps</h2>
-            <div className="reps-list">
-              { this.getRepInfoClusters() }
-            </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={12} className="scorecards-list">
-            <h2>Report Cards</h2>
-            { this.getReportCards() }
-          </Col>
-        </Row>
+        <h2 className="page-title">Hi {user.first_name}</h2>
+        <div className="tally-container">
+          <h1 className="tally-score">98</h1>
+        </div>
+        <div className="score-toggle">
+          <a href="#" className="active">Current</a> | <a href="#">Predictive</a>
+          <p className="toggle-description">Explainer copy goes here. Lorem ipsum lorem ipsum lorem ipsum lorem ipsum.</p>
+        </div>
+        <h3>Your Reps</h3>
+        <div className="rep-info-clusters">
+          { this.getRepInfoClusters() }
+        </div>
+        <div className="report-cards">
+        <h3>Score Breakdowns</h3>
+          { this.getReportCards() }
+        </div>
         <Footer />
       </div>
     );

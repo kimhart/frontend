@@ -1,80 +1,82 @@
-.reps-display {
-  h2 {
-    text-transform: uppercase;
-    margin-bottom: -25px;
+.rep-info-clusters {
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.cluster {
+  margin: 20px 0 40px 0;
+  .bio-photo {
+    height: 140px;
+    max-height: 140px;
+    border-radius: 70px;
+    margin: 20px 0 5px 0;
   }
-  .reps-list {
-    display: flex;
-    flex: 1;
-    justify-content: space-around;
-    font-size: 14px;
-    flex-wrap: wrap;
-    margin: 20px 0 40px 0;
-    .bio-photo {
-      max-width: 140px;
-      margin: 20px 0 5px 0;
+  p { 
+    margin: 0;
+    text-align: center;
+    &.name { 
+      font-weight: 500; 
     }
-    p { 
-      margin: 0;
-      text-align: center; 
-      &.name { 
-        font-weight: 500; 
-      }
-      &.match-score {
-        margin: 5px 0;
-        font-size: 28px;
-        color: $sky-blue;
-      }
-      &.with-me {
-        font-size: 16px;
-        margin-top: -15px;
-        color: $sky-blue;
-        text-align: center;
-        font-family: $bitter;
-        font-style: italic;
-      }
+    &.match-score {
+      margin: 5px 0;
+      font-size: 28px;
+      color: $sky-blue;
+    }
+    &.with-me {
+      font-size: 16px;
+      margin-top: -15px;
+      color: $sky-blue;
+      text-align: center;
+      font-family: $bitter;
+      font-style: italic;
     }
   }
 }
 
-.scorecards-list {
+.report-cards {
   background-color: $sky-blue;
   margin: 0;
   padding: 20px 15px 40px 15px;
-  h2 {
+  h3 {
     color: white;
     text-transform: uppercase;
     margin-top: 0;
   }
-  .scorecard {
+  .card {
     background-color: white;
     margin: 20px 0;
     border: 1px solid $medium-gray;
     border-radius: 4px;
     padding: 10px;
+    text-align: center;
     .name {
-      font-weight: 500;
+      font-weight: 400;
       font-size: 26px;
-      margin-top: 10px;
+      margin: 0;
     }
     .role {
-      text-align: center;
-      margin-top: -5px;
+      margin: 5px;
     }
-    .photo-grade-container {
+    .photo-container {
+      margin: 0 auto;
+      display: block;
+      width: 200px;
+      .bio-photo {
+        height: 200px;
+        border-radius: 100px;
+      }
+    }
+    .metrics-container {
       display: flex;
       justify-content: space-around;
       width: 100%;
       margin: 30px auto;
-      .photo-container {
+      .sliders {
         width: 50%;
-        .bio-photo {
-          width: 90%;
-          height: auto;
-          margin: 5px;
-        }
       }
-      .letter-grade-container {
+      .job-score {
         text-align: center;
         background-color: $light-green;
         border-radius: 4px;
