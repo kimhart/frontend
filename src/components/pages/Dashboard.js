@@ -1,7 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
 import ReactDOM from 'react-dom';
-import AddressForm from './../AddressForm';
 import Footer from './../Footer';
 import RepInfoCluster from './../reps/RepInfoCluster';
 import ReportCard from './../reps/ReportCard';

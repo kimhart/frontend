@@ -1,48 +1,57 @@
-div.form-container {
+.form-container {
   margin: 0 auto;
   display: block;
   width: 100%;
   text-align: center;
-  form.login-form, form.signup-form, form.address-form {
-     input, select, label {
-      width: 100%;
-      display: block;
-      margin: 10px auto;
-      text-align: left;
+  .login-form, .signup-form {
+     input, select {
+      border: 1px solid $light-gray;
+      border-radius: 5px;
+      padding: 5px;
+      margin: 5px 0;
+      box-sizing: border-box;
+      }
+      label, input, select {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+        text-align: left;
+        color: $medium-gray;
+        background-color: #FFF;
+        font-size: $paragraph-size;
+        font-weight: 300;
       }
       label {
-        margin-top: 20px;
+        color: $text-gray;
+        margin: 20px 0 10px 0;
       }
-      input:required:invalid, input:focus:invalid {
-        -moz-box-shadow: none;
-      }
-      div.dob-container {
+      .dob-container {
         width: 100%;
         margin: 0 auto;
         display: flex;
         justify-content: space-between;
-        select.dob-day, select.dob-month, select.dob-year {
+        .dob-day, .dob-month, .dob-year {
           width: 60% / 3;
         }
-        select.dob-month {
+        .dob-month {
           margin-right: 10px;
         }
-        select.dob-year {
+        .dob-year {
           margin-left: 10px;
         }
       }
-      button {
-      font-size: $paragraph-size;
-      font-weight: 60;
-      text-transform: uppercase;
-      background-color: $sky-blue;
-      border-radius: 3px;
-      padding: 10px;
-      color: #FFF;
-      border: none;
-      width: 100%;
-      display: block;
-      margin: 20px auto 50px;
+      button[type="submit"] {
+        font-size: $paragraph-size;
+        font-weight: 60;
+        text-transform: uppercase;
+        background-color: $sky-blue;
+        border-radius: 3px;
+        padding: 10px;
+        color: #FFF;
+        border: none;
+        width: 100%;
+        display: block;
+        margin: 20px auto 50px;
     }
   }
 }

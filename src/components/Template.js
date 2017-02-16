@@ -26,9 +26,7 @@ class Template extends React.Component {
     }
     return (
       <div className="page-wrap">
-        <div className="page-content">
-          { this.props.children }
-        </div>
+        { this.props.children }
       </div>
     );
   }

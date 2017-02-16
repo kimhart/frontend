@@ -1,46 +1,29 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,500i,700,700i");
+@import url("https://fonts.googleapis.com/css?family=Muli:300,400,400i,700");
 @import url("https://fonts.googleapis.com/css?family=Bitter");
-html, body {
+body, #app {
   background-color: white;
-  height: 100%; }
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  margin: 0; }
 
 .page-wrap {
-  background-color: white;
-  overflow-y: hidden;
-  padding-bottom: 30px; }
-
-.page-content {
-  min-height: 100%;
-  position: relative; }
-
-.signup-page,
-.login-logout-page {
-  overflow: hidden;
-  position: fixed;
-  width: 100%; }
-
-.login-logout-page {
-  margin: 15vh 0; }
-
-button {
-  font-size: 16px;
-  font-weight: 60;
-  text-transform: uppercase;
-  background-color: #81C7EA;
-  border-radius: 3px;
-  padding: 10px;
-  color: #FFF;
-  border: none;
+  height: 100%;
   width: 100%;
-  display: block;
-  margin: 20px auto 50px; }
+  overflow-y: hidden; }
+
+.signup-page {
+  width: 95%;
+  margin: 0 auto;
+  display: block; }
 
 h1, h2, h3, p, ul, li, a, label, input {
-  font-family: "Roboto", sans-serif;
+  font-family: "Muli", sans-serif;
   line-height: 1.5em; }
 
 p, li, a, label, input {
   font-size: 16px;
+  font-weight: 300;
   color: #373737; }
 
 h1, h2, h3 {
@@ -58,27 +41,11 @@ h2.page-title {
   width: 100%;
   display: block;
   text-align: center;
-  font-family: "Bitter", serif;
+  font-family: "Muli", sans-serif;
   color: #D95852; }
 
 h3 {
   font-size: 22px; }
-
-.home-page .page-title {
-  margin-top: 50%; }
-
-.home-page .home-button, .home-page .signup-button {
-  margin: 20px auto;
-  font-size: 18px;
-  width: 70%; }
-  .home-page .home-button a, .home-page .home-button a:hover, .home-page .home-button a:active, .home-page .signup-button a, .home-page .signup-button a:hover, .home-page .signup-button a:active {
-    color: #FFF; }
-
-.home-page .or {
-  margin: 0 auto;
-  display: block;
-  width: auto;
-  text-align: center; }
 
 .footer {
   width: 100%;
@@ -105,32 +72,41 @@ h3 {
           color: white;
           text-decoration: none; }
 
-div.form-container {
+.form-container {
   margin: 0 auto;
   display: block;
   width: 100%;
   text-align: center; }
-  div.form-container form.login-form input, div.form-container form.login-form select, div.form-container form.login-form label, div.form-container form.signup-form input, div.form-container form.signup-form select, div.form-container form.signup-form label, div.form-container form.address-form input, div.form-container form.address-form select, div.form-container form.address-form label {
-    width: 100%;
+  .form-container .login-form input, .form-container .login-form select, .form-container .signup-form input, .form-container .signup-form select {
+    border: 1px solid #D2D2D2;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px 0;
+    box-sizing: border-box; }
+  .form-container .login-form label, .form-container .login-form input, .form-container .login-form select, .form-container .signup-form label, .form-container .signup-form input, .form-container .signup-form select {
     display: block;
-    margin: 10px auto;
-    text-align: left; }
-  div.form-container form.login-form label, div.form-container form.signup-form label, div.form-container form.address-form label {
-    margin-top: 20px; }
-  div.form-container form.login-form input:required:invalid, div.form-container form.login-form input:focus:invalid, div.form-container form.signup-form input:required:invalid, div.form-container form.signup-form input:focus:invalid, div.form-container form.address-form input:required:invalid, div.form-container form.address-form input:focus:invalid {
-    -moz-box-shadow: none; }
-  div.form-container form.login-form div.dob-container, div.form-container form.signup-form div.dob-container, div.form-container form.address-form div.dob-container {
+    width: 100%;
+    margin: 10px 0;
+    text-align: left;
+    color: #B4B4B4;
+    background-color: #FFF;
+    font-size: 16px;
+    font-weight: 300; }
+  .form-container .login-form label, .form-container .signup-form label {
+    color: #373737;
+    margin: 20px 0 10px 0; }
+  .form-container .login-form .dob-container, .form-container .signup-form .dob-container {
     width: 100%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between; }
-    div.form-container form.login-form div.dob-container select.dob-day, div.form-container form.login-form div.dob-container select.dob-month, div.form-container form.login-form div.dob-container select.dob-year, div.form-container form.signup-form div.dob-container select.dob-day, div.form-container form.signup-form div.dob-container select.dob-month, div.form-container form.signup-form div.dob-container select.dob-year, div.form-container form.address-form div.dob-container select.dob-day, div.form-container form.address-form div.dob-container select.dob-month, div.form-container form.address-form div.dob-container select.dob-year {
+    .form-container .login-form .dob-container .dob-day, .form-container .login-form .dob-container .dob-month, .form-container .login-form .dob-container .dob-year, .form-container .signup-form .dob-container .dob-day, .form-container .signup-form .dob-container .dob-month, .form-container .signup-form .dob-container .dob-year {
       width: 60% / 3; }
-    div.form-container form.login-form div.dob-container select.dob-month, div.form-container form.signup-form div.dob-container select.dob-month, div.form-container form.address-form div.dob-container select.dob-month {
+    .form-container .login-form .dob-container .dob-month, .form-container .signup-form .dob-container .dob-month {
       margin-right: 10px; }
-    div.form-container form.login-form div.dob-container select.dob-year, div.form-container form.signup-form div.dob-container select.dob-year, div.form-container form.address-form div.dob-container select.dob-year {
+    .form-container .login-form .dob-container .dob-year, .form-container .signup-form .dob-container .dob-year {
       margin-left: 10px; }
-  div.form-container form.login-form button, div.form-container form.signup-form button, div.form-container form.address-form button {
+  .form-container .login-form button[type="submit"], .form-container .signup-form button[type="submit"] {
     font-size: 16px;
     font-weight: 60;
     text-transform: uppercase;
@@ -304,20 +280,15 @@ div.form-container {
     margin: 10px auto;
     width: 90%; }
 
-.not-found-page {
-  width: 100%; }
-  .not-found-page h2 {
-    margin-top: 40%;
-    color: #81C7EA; }
-  .not-found-page .back {
-    width: 100%;
-    text-align: center;
-    margin: 10px 0;
-    display: inline-flex;
-    justify-content: center;
-    vertical-align: middle; }
-    .not-found-page .back p, .not-found-page .back li, .not-found-page .back a {
-      font-size: 18px; }
-      .not-found-page .back p:hover, .not-found-page .back p:active, .not-found-page .back li:hover, .not-found-page .back li:active, .not-found-page .back a:hover, .not-found-page .back a:active {
-        text-decoration: none;
-        color: #373737; }
+.not-found-page .back {
+  width: 100%;
+  text-align: center;
+  margin: 10px 0;
+  display: inline-flex;
+  justify-content: center;
+  vertical-align: middle; }
+  .not-found-page .back p, .not-found-page .back li, .not-found-page .back a {
+    font-size: 18px; }
+    .not-found-page .back p:hover, .not-found-page .back p:active, .not-found-page .back li:hover, .not-found-page .back li:active, .not-found-page .back a:hover, .not-found-page .back a:active {
+      text-decoration: none;
+      color: #373737; }

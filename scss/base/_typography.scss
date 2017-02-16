@@ -1,10 +1,11 @@
 h1, h2, h3, p, ul, li, a, label, input {
- font-family: $roboto-font;
+ font-family: $muli-font;
  line-height: $standard-line-height;
 }
 
-p,  li, a, label, input {
+p,  li, a, label, input  {
   font-size: $paragraph-size;
+  font-weight: 300;
   color: $text-gray;
 }
 
@@ -26,7 +27,7 @@ h2.page-title {
   width: 100%;
   display: block;
   text-align: center;
-  font-family: $bitter;
+  font-family: $muli-font;
   color: $soft-red;
 }
 
