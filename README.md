@@ -11,5 +11,5 @@ Front End: React, GraphQL, Relay, Node.js
 * [Alex Hubbard](https://github.com/alexhubbard89) — Data Scientist / Back End Engineer / Founder
 * [Kim Hart](https://github.com/kimhart) — Front End Engineer / Co-Founder
 * [Ryano Taylor](https://github.com/ryanosaur) — Front End Engineer
-* Jesse Smith — UX Designer / Research Lead
+* [Jesse Smith](https://JesseLNSmith.com) — UX Designer / Research Lead
 * [Ian Bradley](http://ianbradley.tv/) — Designer
