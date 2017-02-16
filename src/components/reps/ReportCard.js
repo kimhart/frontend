@@ -37,8 +37,8 @@ class ReportCard extends React.Component {
     let fullName = name.split(',').reverse().join().replace(/\,/g,' ');
 
     return (
-      <div className="scorecard">
-        <h3 className="name">{ fullName }</h3>
+      <div className="card">
+        <p className="name">{ fullName }</p>
         <p className="role">{ chamber.replace(/\b\w/g, l => l.toUpperCase()) } ({this.getShortParty()}), { state }</p>
         <div className="badge-container">
           <i className="material-icons">verified_user</i>
@@ -47,14 +47,19 @@ class ReportCard extends React.Component {
           <i className="material-icons">whatshot</i>
           <i className="material-icons">star</i>
         </div>
-        <div className="photo-grade-container">
-          <div className="photo-container">
-            <img className="bio-photo" src={this.getPhotoSource()}/>
-          </div>
-          <div className="letter-grade-container">
+        <div className="photo-container">
+          <div className="bio-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}} />
+        </div>
+        <div className="metrics-container">
+          <div className="job-score">
             <p>Job Score</p>
             <p className="grade">A-</p>
             <p><i className="material-icons info-icon">help_outline</i></p>
+          </div>
+          <div className="sliders">
+            <p>Attendance</p>
+            <p>Participation</p>
+            <p>Efficacy</p>
           </div>
         </div>
         <div className="alignment-container">

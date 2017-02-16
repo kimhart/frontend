@@ -38,12 +38,12 @@ class DashboardPage extends React.Component {
           <a href="#" className="active">Current</a> | <a href="#">Predictive</a>
           <p className="toggle-description">Explainer copy goes here. Lorem ipsum lorem ipsum lorem ipsum lorem ipsum.</p>
         </div>
+        <h3>Your Reps</h3>
         <div className="rep-info-clusters">
-          <h3>Your Reps</h3>
           { this.getRepInfoClusters() }
         </div>
         <div className="report-cards">
-          <h3>Score Breakdowns</h3>
+        <h3>Score Breakdowns</h3>
           { this.getReportCards() }
         </div>
         <Footer />
