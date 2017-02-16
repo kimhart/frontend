@@ -1,18 +1,15 @@
 # Tally
 
-Tally is a political awareness app highlighting the roles and responsibilities of our district representatives in the US Senate and Congress. 
+Tally is a data-driven web app highlighting the professional actions of members of the US Senate & Congress. By objectively scoring representatives based on factors like voting habits, legislation records and leadership positions, Tally aims to promote more accountability for legislators and more accurate representation for their constituents.
 
-Tally aims to bring more accountability to our representatives and more power to the public through revealing how frequently reps show up to work and propose new legislation, documenting rep voting habits, and providing more effective ways to contact decision makers. 
-
-Tally is a stats-driven, objective source of aggregated public information. We hope it brings more transparency to the political system and helps citizens feel more involved in today's chaotic political climate.
-
-### Tech Stack
-Tally is built with React, GraphQL and Relay with a Python API and a SQL database for both users and government data.
-
-Check out the Python code [here](https://github.com/alexhubbard89/reps_app).
+### Tech
+Front End: React, GraphQL, Relay, Node.js
+[API](https://github.com/alexhubbard89/reps_app): Python (Flask), PostgresSQL
 
 ### Team
 
-* Front End Engineer — [Kim Hart](https://github.com/kimhart)
-* Data Scientist / Python Developer — [Alex Hubbard](https://github.com/alexhubbard89)
-* UX Designer / Research Lead — Jesse Smith
+* [Alex Hubbard](https://github.com/alexhubbard89) — Data Scientist / Back End Engineer / Founder
+* [Kim Hart](https://github.com/kimhart) — Front End Engineer / Co-Founder
+* [Ryano Taylor](https://github.com/ryanosaur) — Front End Engineer
+* Jesse Smith — UX Designer / Research Lead
+* [Ian Bradley](http://ianbradley.tv/) — Designer
