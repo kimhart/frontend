@@ -9,7 +9,7 @@ class AddressForm extends Component {
   constructor(props) {
     super(props);
   }
-
+  
     render() {
       return (
         <form className="address-form">

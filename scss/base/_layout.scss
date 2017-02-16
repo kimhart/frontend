@@ -7,8 +7,6 @@ html, body {
   background-color: white;
   overflow-y: hidden;
   padding-bottom: 30px;
-  @include breakpoint(baby-bear) {
-  }
 }
 
 .page-content {
@@ -25,9 +23,6 @@ html, body {
 
 .login-logout-page {
   margin: 15vh 0;
-  .form-control {
-    width: 300px;
-  }
 }
 
 button {

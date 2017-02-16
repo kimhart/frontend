@@ -21,8 +21,6 @@ html, body {
 
 .login-logout-page {
   margin: 15vh 0; }
-  .login-logout-page .form-control {
-    width: 300px; }
 
 button {
   font-size: 16px;

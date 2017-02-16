@@ -20,15 +20,35 @@ class RepInfoCluster extends React.Component {
     }
   }
 
+  getShortParty = () => {
+    let { party } = this.props;
+    let shortParty;
+    if (party === 'Republican') {
+      shortParty = 'R';
+    } else if (party === 'Democratic') {
+      shortParty = 'D';
+    } else if (party === 'Independent') {
+      shortParty = 'I';
+    } else if (party === 'Independent Democrat') {
+      shortParty = 'ID';
+    } else if (party === 'Independent Republican') {
+      shortParty = 'IR';
+    } else {
+      shortParty = party;
+    }
+    return shortParty;
+  }
+
   render() {
     let { address, bio_text, bioguide_id, chamber, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected, data } = this.props
     let query = { address, bio_text, bioguide_id, chamber, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected };
+    let fullName = name.split(',').reverse().join().replace(/\,/g,' ');
     return (
       <Link to={{ pathname: `/bios/${bioguide_id}`, query }}>
         <div className="rep-info-cluster">
           <img src={this.getPhotoSource()} className="bio-photo"/>
-          <p className="name">{ name }</p>
-          <p className="role">{ chamber }</p>
+          <p className="name">{ fullName }</p>
+          <p className="role">{ chamber.replace(/\b\w/g, l => l.toUpperCase()) } ({this.getShortParty()})</p>
           <p className="location">{ state }</p>
           <p className="match-score">100%</p>
           <p className="with-me">matched with you</p>
