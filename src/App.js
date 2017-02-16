@@ -7,6 +7,7 @@ import Template from './components/Template';
 import DashboardPage from './components/DashboardPage';
 import LoginLogoutPage from './components/LoginLogoutPage';
 import SignupPage from './components/SignupPage';
+import RepBio from './components/RepBio';
 import HomePage from './components/HomePage';
 import NotFound from './components/NotFound';
 
@@ -27,7 +28,7 @@ class App extends React.Component {
       <Router history={browserHistory} render={applyRouterMiddleware(useRelay)} environment={Relay.Store}>
         <Route path="/" component={Template} queries={RootQuery}>
           <IndexRoute component={DashboardPage} queries={RootQuery} />
-          <Route path="/bios/:bioguide_id" component={DashboardPage} queries={RootQuery} />
+          <Route path="/bios/:bioguide_id" component={RepBio} />
           <Route path="/signup" component={SignupPage} />
           <Route path="*" component={NotFound} />
         </Route>

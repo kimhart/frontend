@@ -21,9 +21,10 @@ class RepInfoCluster extends React.Component {
   }
 
   render() {
-    let { name, chamber, state, photo_url, bioguide_id, data } = this.props;
+    let { address, bio_text, bioguide_id, chamber, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected, data } = this.props
+    let query = { address, bio_text, bioguide_id, chamber, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected };
     return (
-      <Link to={{ pathname: `/bios/${bioguide_id}` }}>
+      <Link to={{ pathname: `/bios/${bioguide_id}`, query }}>
         <div className="rep-info-cluster">
           <img src={this.getPhotoSource()} className="bio-photo"/>
           <p className="name">{ name }</p>
