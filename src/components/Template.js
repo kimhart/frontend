@@ -5,8 +5,10 @@ import { Router, Route, IndexRoute, IndexLink, Link, browserHistory, applyRouter
 import useRelay from 'react-router-relay';
 import Footer from './Footer';
 import Logout from './Logout';
-import Login from './Login';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 import { UserUtils } from '../utils/Utils';
+
 
 class Template extends React.Component {
 
@@ -22,13 +24,16 @@ class Template extends React.Component {
   render() {
     const { user } = this.state;
     if (!user) {
-      return <Login {...this.props} update={this.setUser} />
+      if (this.props.location.pathname === "/signup") {
+        return <Signup />
+      } return <Login {...this.props} update={this.setUser} />
+    } else {
+      return (
+        <div className="page-wrap">
+          { this.props.children }
+        </div>
+      );
     }
-    return (
-      <div className="page-wrap">
-        { this.props.children }
-      </div>
-    );
   }
 }
 

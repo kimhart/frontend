@@ -1,10 +1,15 @@
 # Tally
 
-Tally is a data-driven web app highlighting the professional actions of members of the US Senate & Congress. By objectively scoring representatives based on factors like voting habits, legislation records and leadership positions, Tally aims to promote more accountability for legislators and more accurate representation for their constituents.
+### Mission Statement
+Tally aims to provide all people with an effortless and fresh way to connect with their elected officials and review legislation that affects their district.
+
+We strive to create a reliable, impartial and straightforward experience that encourages confidence in voters and accountability in representatives. 
+
+Ultimately, the Tally community will be comprised of users who are dedicated to establishing a stronger understanding of the political system and inspired to lead meaningful civic action.
 
 ### Tech
-Front End: React, GraphQL, Relay, Node.js
-[API](https://github.com/alexhubbard89/reps_app): Python (Flask), PostgresSQL
+* Front End: React, GraphQL, Relay, Node.js
+* [API](https://github.com/alexhubbard89/reps_app): Python (Flask), PostgresSQL
 
 ### Team
 

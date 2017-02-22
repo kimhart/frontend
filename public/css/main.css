@@ -12,7 +12,7 @@ body, #app {
   width: 100%;
   overflow-y: hidden; }
 
-.signup-page {
+.signup-page, .login-page {
   width: 95%;
   margin: 0 auto;
   display: block; }
@@ -48,6 +48,12 @@ h3 {
   font-size: 22px;
   text-transform: uppercase;
   margin-bottom: 5px; }
+
+.standard-link {
+  text-decoration: none;
+  font-weight: 500;
+  color: #D95852;
+  font-size: 18px; }
 
 .footer {
   width: 100%;
@@ -90,7 +96,7 @@ h3 {
     width: 100%;
     margin: 10px 0;
     text-align: left;
-    color: #B4B4B4;
+    color: #373737;
     background-color: #FFF;
     font-size: 16px;
     font-weight: 300; }
@@ -108,18 +114,6 @@ h3 {
       margin-right: 10px; }
     .form-container .login-form .dob-container .dob-year, .form-container .signup-form .dob-container .dob-year {
       margin-left: 10px; }
-  .form-container .login-form button[type="submit"], .form-container .signup-form button[type="submit"] {
-    font-size: 16px;
-    font-weight: 60;
-    text-transform: uppercase;
-    background-color: #81C7EA;
-    border-radius: 3px;
-    padding: 10px;
-    color: #FFF;
-    border: none;
-    width: 100%;
-    display: block;
-    margin: 20px auto 50px; }
 
 .rep-info-clusters {
   display: flex;
@@ -296,3 +290,16 @@ h3 {
     .not-found-page .back p:hover, .not-found-page .back p:active, .not-found-page .back li:hover, .not-found-page .back li:active, .not-found-page .back a:hover, .not-found-page .back a:active {
       text-decoration: none;
       color: #373737; }
+
+button {
+  font-size: 16px;
+  font-weight: 60;
+  text-transform: uppercase;
+  background-color: #81C7EA;
+  border-radius: 3px;
+  padding: 10px;
+  color: #FFF;
+  border: none;
+  width: 100%;
+  display: block;
+  margin: 20px auto 50px; }
