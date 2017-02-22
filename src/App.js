@@ -8,6 +8,7 @@ import Dashboard from './components/pages/Dashboard';
 import Signup from './components/pages/Signup';
 import RepBio from './components/pages/RepBio';
 import NotFound from './components/pages/NotFound';
+import Login from './components/pages/Login';
 
 let RootQuery = {
   data: (Component) => Relay.QL`
@@ -28,6 +29,7 @@ class App extends React.Component {
           <IndexRoute component={Dashboard} queries={RootQuery} />
           <Route path="/bios/:bioguide_id" component={RepBio} />
           <Route path="/signup" component={Signup} />
+          <Route path="/login" component={Login} />
           <Route path="*" component={NotFound} />
         </Route>
       </Router>

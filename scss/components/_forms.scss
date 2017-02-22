@@ -16,7 +16,7 @@
         width: 100%;
         margin: 10px 0;
         text-align: left;
-        color: $medium-gray;
+        color: $text-gray;
         background-color: #FFF;
         font-size: $paragraph-size;
         font-weight: 300;
@@ -40,19 +40,6 @@
           margin-left: 10px;
         }
       }
-      button[type="submit"] {
-        font-size: $paragraph-size;
-        font-weight: 60;
-        text-transform: uppercase;
-        background-color: $sky-blue;
-        border-radius: 3px;
-        padding: 10px;
-        color: #FFF;
-        border: none;
-        width: 100%;
-        display: block;
-        margin: 20px auto 50px;
-    }
   }
 }
 
