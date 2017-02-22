@@ -3,10 +3,11 @@ import Relay from 'react-relay';
 import ReactDOM from 'react-dom';
 import { Link, browserHistory } from 'react-router';
 import { Grid, Row, Col, Clearfix, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
-import LoginMutation from './mutations/LoginMutation';
-import { UserUtils } from '../utils/Utils';
+import LoginMutation from './../mutations/LoginMutation';
+import { UserUtils } from '../../utils/Utils';
+import Signup from './Signup';
 
-class LoginPage extends React.Component {
+class Login extends React.Component {
 
     constructor(props) {
       super(props);
@@ -50,7 +51,7 @@ class LoginPage extends React.Component {
       let { error } = this.state;
       return (
         <div>
-          <div className="login-logout-page">
+          <div className="login-page">
             <div className="form-container">
               <h2 className="page-title">Log In</h2>
               <div id="login-form" className="login-form">
@@ -58,6 +59,8 @@ class LoginPage extends React.Component {
                 <input type="password" placeholder="Password" required ref={(c) => this._password = c} />
                 <button type="button" onClick={this._handleSubmit}>Login</button>
               </div>
+              <p>— OR —</p>
+              <Link className="standard-link" to="/signup">Create an Account</Link>
             </div>
             { error &&
               <span className="login-page-error">{ error }</span>
@@ -68,7 +71,7 @@ class LoginPage extends React.Component {
     }
 }
 
-export default Relay.createContainer(LoginPage, {
+export default Relay.createContainer(Login, {
   initialVariables: {
     email: null,
     password: null

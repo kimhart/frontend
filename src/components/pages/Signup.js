@@ -4,7 +4,6 @@ import Relay from 'react-relay';
 import { Link, browserHistory } from 'react-router';
 import Footer from './../Footer';
 
-
 class Signup extends React.Component {
 
     constructor(props) {
@@ -58,10 +57,10 @@ class Signup extends React.Component {
           'Access-Control-Allow-Origin': '*'
         },
         success: function(response, textStatus, xhr) {
-          if (response.result === true) {
+          if (response.results === true) {
             browserHistory.push('/login');
           } else {
-            alert("That username already exists in our system.")
+            alert("Something went wrong");
           }
         },
         error: function(xhr, textStatus, error) {
@@ -73,7 +72,7 @@ class Signup extends React.Component {
     render() {
       return (
         <div className="signup-page">
-          <h2 className="page-title">Create an Account</h2>
+          <h2 className="page-title">Sign Up</h2>
           <div className="form-container">
             <form className="signup-form" onChange={this.handleChange} onSubmit={this.handleSubmit}>
               <input type="email" placeholder="Email" ref="emailInput" required />

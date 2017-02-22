@@ -36,3 +36,10 @@ h3 {
   text-transform: uppercase;
   margin-bottom: 5px;
 }
+
+.standard-link {
+  text-decoration: none;
+  font-weight: 500;
+  color: $soft-red;
+  font-size: 18px;
+}
