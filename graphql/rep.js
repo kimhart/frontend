@@ -25,6 +25,7 @@ export let repType = new GraphQLObjectType({
   name: "Rep",
   fields: () => ({
     address: { type: GraphQLString, resolve: rep => rep.address },
+    attendance: { type: new GraphQLList(repAttendanceType), resolve: rep => rep.attendance },
     bio_text: { type: GraphQLString, resolve: rep => rep.bio_text },
     bioguide_id: { type: GraphQLString, resolve: rep => rep.bioguide_id },
     chamber: { type: GraphQLString, resolve: rep => rep.chamber },
@@ -36,7 +37,7 @@ export let repType = new GraphQLObjectType({
     party: { type: GraphQLString, resolve: rep => rep.party },
     phone: { type: GraphQLString, resolve: rep => rep.phone },
     photo_url: { type: GraphQLString, resolve: rep => rep.photo_url },
-    memberships: { type: new GraphQLList(repMembershipType), resolve: rep => rep.reps_membership },
+    memberships: { type: new GraphQLList(repMembershipType), resolve: rep => rep.memberships },
     served_until: { type: GraphQLString, resolve: rep => rep.served_until },
     state: { type: GraphQLString, resolve: rep => rep.state },
     twitter_handle: { type: GraphQLString, resolve: rep => rep.twitter_handle },
@@ -55,6 +56,15 @@ let repMembershipType = new GraphQLObjectType({
     subcommittee: { type: GraphQLString, resolve: rep => rep.subcommittee },
   })
 });
+
+let repAttendanceType = new GraphQLObjectType({
+  name: "RepAttendance",
+  fields: () => ({
+    days_at_work: { type: GraphQLInt, resolve: rep => rep.days_at_work },
+    percent_at_work: { type: GraphQLInt, resolve: rep => rep.percent_at_work },
+    total_work_days: { type: GraphQLInt, resolve: rep => rep.total_work_days},
+  })
+})
 
 export let getRepMembershipSchema = () => {
   return {
@@ -75,6 +85,34 @@ export let getRepMembershipSchema = () => {
           })
           .catch(error => reject(error))
           .then(memberships => resolve(memberships.results));
+        });
+      }
+      else {
+        return null;
+      }
+    }
+  }
+}
+
+export let getRepAttendanceSchema = () => {
+  return {
+    type: new GraphQLList(repAttendanceType),
+    args: {
+      bioguide_id: { type: GraphQLString },
+      chamber: { type: GraphQLString }
+    },
+    resolve: (__, args) => {
+      let { bioguide_id, chamber } = args;
+      if (!!bioguide_id && !!chamber) {
+        return new Promise((resolve, reject) => {
+          rp({
+            method: 'POST',
+            uri: `${config.backend.uri}/attendance`,
+            body: { bioguide_id, chamber },
+            json: true
+          })
+          .catch(error => reject(error))
+          .then(attendance => resolve(attendance));
         });
       }
       else {
@@ -111,3 +149,5 @@ export let getRepSchema = () => {
     }
   }
 }
+
+
