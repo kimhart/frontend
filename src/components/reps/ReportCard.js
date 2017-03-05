@@ -1,6 +1,14 @@
 import React from 'react';
+import Relay from 'react-relay';
+import Attendance from './Attendance';
 
 class ReportCard extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {};
+    props.relay.setVariables({ bioguide_id: props.bioguide_id, chamber: props.chamber });
+  }
 
   getPhotoSource = () => {
     let { photo_url } = this.props;
@@ -31,6 +39,17 @@ class ReportCard extends React.Component {
     return shortParty;
   }
 
+  getMemberships = () => {
+    let { memberships } = this.props.data;
+    return memberships ? memberships.map((membership, index) => <p key={index}>{membership.committee}</p>) : null;
+  }
+
+  getAttendance = () => {
+    let { attendance } = this.props.data;
+    console.log(this.props.data);
+    return attendance ? attendance.map(attendance => <p className="days-at-work"> {attendance.days_at_work} </p>) : null;
+  }
+
   render() {
     let { address, bio_text, bioguide_id, chamber, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected, data } = this.props
     let query = { address, bio_text, bioguide_id, chamber, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected };
@@ -40,6 +59,7 @@ class ReportCard extends React.Component {
       <div className="card">
         <p className="name">{ fullName }</p>
         <p className="role">{ chamber.replace(/\b\w/g, l => l.toUpperCase()) } ({this.getShortParty()}), { state }</p>
+        {this.getMemberships()}
         <div className="badge-container">
           <i className="material-icons">verified_user</i>
           <i className="material-icons">monetization_on</i>
@@ -57,7 +77,7 @@ class ReportCard extends React.Component {
             <p><i className="material-icons info-icon">help_outline</i></p>
           </div>
           <div className="sliders">
-            <p>Attendance</p>
+            {this.getAttendance()}
             <p>Participation</p>
             <p>Efficacy</p>
           </div>
@@ -90,4 +110,22 @@ class ReportCard extends React.Component {
   }
 }
 
-export default ReportCard;
+export default Relay.createContainer(ReportCard, {
+  initialVariables: {
+    bioguide_id: null,
+    chamber: null
+  },
+  fragments: {
+    data: () => Relay.QL`
+    fragment on Data {
+      id
+      memberships(bioguide_id: $bioguide_id, chamber: $chamber) {
+        bioguide_id
+        committee
+        committee_leadership
+        subcommittee
+      }
+    }
+  `
+  }
+});

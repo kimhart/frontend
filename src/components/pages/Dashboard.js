@@ -23,11 +23,12 @@ class DashboardPage extends React.Component {
 
   getReportCards = () => {
     let { reps } = this.props.data;
-    return reps ? reps.map(rep => <ReportCard key={`reportcard_${rep.bioguide_id}`} {...rep} />) : null;
+    return reps ? reps.map(rep => <ReportCard {...this.props}  key={`reportcard_${rep.bioguide_id}`} {...rep} />) : null;
   }
 
   render() {
     let { user } = this.state;
+
     return (
       <div className="main-dash">
         <h2 className="page-title">Hi {user.first_name}</h2>
@@ -81,7 +82,7 @@ export default Relay.createContainer(DashboardPage, {
           website
           year_elected
         }
-        ${RepInfoCluster.getFragment('data')}
+        ${ReportCard.getFragment('data')}
       }
     `
   }

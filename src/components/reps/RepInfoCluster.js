@@ -43,12 +43,14 @@ class RepInfoCluster extends React.Component {
     let { address, bio_text, bioguide_id, chamber, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected, data } = this.props
     let query = { address, bio_text, bioguide_id, chamber, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected };
     let fullName = name.split(',').reverse().join().replace(/\,/g,' ');
+
     return (
       <Link to={{ pathname: `/bios/${bioguide_id}`, query }} style={{ textDecoration: 'none' }}>
         <div className="cluster">
           <div className="bio-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}}></div>
           <p className="name">{ fullName }</p>
           <p className="role">{ chamber.replace(/\b\w/g, l => l.toUpperCase()) } ({this.getShortParty()})</p>
+          <p className="leadership">{ this.leadership_position }</p>
           <p className="location">{ state }</p>
           <p className="match-score">100%</p>
           <p className="with-me">matched with you</p>
@@ -68,12 +70,6 @@ export default Relay.createContainer(RepInfoCluster, {
     data: () => Relay.QL`
       fragment on Data {
         id
-        memberships(bioguide_id: $bioguide_id, chamber: $chamber) {
-          bioguide_id
-          committee
-          committee_leadership
-          subcommittee
-        }
       }
     `
   }
