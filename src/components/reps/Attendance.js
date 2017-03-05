@@ -10,7 +10,7 @@ class Attendance extends React.Component {
   }
 
   render() {
-    let attendance = this.props.data.attendance;
+    let { attendance } = this.props.data;
     return (
       <p className="days-at-work">Attendance: {attendance ? attendance.days_at_work : null} </p>
     );
