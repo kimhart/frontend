@@ -44,12 +44,6 @@ class ReportCard extends React.Component {
     return memberships ? memberships.map((membership, index) => <p key={index}>{membership.committee}</p>) : null;
   }
 
-  getAttendance = () => {
-    let { attendance } = this.props.data;
-    console.log(this.props.data);
-    return attendance ? attendance.map(attendance => <p className="days-at-work"> {attendance.days_at_work} </p>) : null;
-  }
-
   render() {
     let { address, bio_text, bioguide_id, chamber, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected, data } = this.props
     let query = { address, bio_text, bioguide_id, chamber, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected };
@@ -77,7 +71,7 @@ class ReportCard extends React.Component {
             <p><i className="material-icons info-icon">help_outline</i></p>
           </div>
           <div className="sliders">
-            {this.getAttendance()}
+            <Attendance {...this.props} />
             <p>Participation</p>
             <p>Efficacy</p>
           </div>
@@ -125,6 +119,7 @@ export default Relay.createContainer(ReportCard, {
         committee_leadership
         subcommittee
       }
+      ${Attendance.getFragment('data')}
     }
   `
   }

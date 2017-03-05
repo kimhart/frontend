@@ -7,12 +7,12 @@ class Attendance extends React.Component {
     super(props);
     this.state = {};
     props.relay.setVariables({ bioguide_id: props.bioguide_id, chamber: props.chamber });
-    console.log(this.props)
   }
 
   render() {
+    let attendance = this.props.data.attendance;
     return (
-        <p>Attendance:</p>
+      <p className="days-at-work">Attendance: {attendance.days_at_work} </p>
     );
   }
 }
