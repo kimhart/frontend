@@ -1,7 +1,7 @@
 import React from 'react';
 import Relay from 'react-relay';
 
-class Attendance extends React.Component {
+class Participation extends React.Component {
 
   constructor(props) {
     super(props);
@@ -10,14 +10,14 @@ class Attendance extends React.Component {
   }
 
   render() {
-    let { attendance } = this.props.data;
+    let { participation } = this.props.data;
     return (
-      <p className="days-at-work">Attendance (total days at work): {attendance ? attendance.days_at_work : null} </p>
+      <p className="rep-votes">Participation (total votes): {participation ? participation.rep_votes : null} </p>
     );
   }
 }
 
-export default Relay.createContainer(Attendance, {
+export default Relay.createContainer(Participation, {
   initialVariables: {
     bioguide_id: null,
     congress: null,
@@ -26,10 +26,11 @@ export default Relay.createContainer(Attendance, {
   fragments: {
     data: () => Relay.QL`
     fragment on Data {
-      attendance(bioguide_id: $bioguide_id, congress: $congress, chamber: $chamber) {
-        days_at_work
-        percent_at_work
-        total_work_days
+      participation(bioguide_id: $bioguide_id, congress: $congress, chamber: $chamber) {
+        bioguide_id
+        percent_votes
+        rep_votes
+        total_votes
       }
     }
   `
