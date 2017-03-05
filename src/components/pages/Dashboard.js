@@ -35,10 +35,6 @@ class DashboardPage extends React.Component {
         <div className="tally-container">
           <h1 className="tally-score">98</h1>
         </div>
-        <div className="score-toggle">
-          <a href="#" className="active">Current</a> | <a href="#">Predictive</a>
-          <p className="toggle-description">Explainer copy goes here. Lorem ipsum lorem ipsum lorem ipsum lorem ipsum.</p>
-        </div>
         <h3>Your Reps</h3>
         <div className="rep-info-clusters">
           { this.getRepInfoClusters() }

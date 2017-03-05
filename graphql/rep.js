@@ -96,7 +96,7 @@ export let getRepMembershipSchema = () => {
 
 export let getRepAttendanceSchema = () => {
   return {
-    type: new GraphQLList(repAttendanceType),
+    type: repAttendanceType,
     args: {
       bioguide_id: { type: GraphQLString },
       chamber: { type: GraphQLString }
