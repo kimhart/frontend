@@ -1,6 +1,8 @@
 import React from 'react';
 import Relay from 'react-relay';
 import Attendance from './Attendance';
+import Participation from './Participation';
+import Efficacy from './Efficacy';
 
 class ReportCard extends React.Component {
 
@@ -45,8 +47,8 @@ class ReportCard extends React.Component {
   }
 
   render() {
-    let { address, bio_text, bioguide_id, chamber, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected, data } = this.props
-    let query = { address, bio_text, bioguide_id, chamber, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected };
+    let { address, bio_text, bioguide_id, chamber, congress, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected, data } = this.props
+    let query = { address, bio_text, bioguide_id, chamber, congress, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected };
     let fullName = name.split(',').reverse().join().replace(/\,/g,' ');
 
     return (
@@ -73,8 +75,8 @@ class ReportCard extends React.Component {
           </div>
           <div className="sliders">
             <Attendance {...this.props} />
-            <p>Participation</p>
-            <p>Efficacy</p>
+            <Participation {...this.props} />
+            <Efficacy {...this.props} />
           </div>
         </div>
         <div className="alignment-container">
@@ -121,6 +123,8 @@ export default Relay.createContainer(ReportCard, {
         subcommittee
       }
       ${Attendance.getFragment('data')}
+      ${Participation.getFragment('data')}
+      ${Efficacy.getFragment('data')}
     }
   `
   }

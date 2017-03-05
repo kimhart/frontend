@@ -2,6 +2,7 @@ import {
   GraphQLSchema,
   GraphQLObjectType,
   GraphQLInt,
+  GraphQLFloat,
   GraphQLString,
   GraphQLList,
   GraphQLNonNull,
@@ -31,9 +32,11 @@ export let repType = new GraphQLObjectType({
     chamber: { type: GraphQLString, resolve: rep => rep.chamber },
     congress_url: { type: GraphQLString, resolve: rep => rep.congress_url },
     district: { type: GraphQLInt, resolve: rep => rep.district },
+    efficacy: { type: new GraphQLList(repEfficacyType), resolve: rep => rep.efficacy },
     facebook: { type: GraphQLString, resolve: rep => rep.facebook },
     leadership_position: { type: GraphQLString, resolve: rep => rep.leadership_position },
     name: { type: GraphQLString, resolve: rep => rep.name },
+    participation: { type: new GraphQLList(repParticipationType), resolve: rep => rep.participation },
     party: { type: GraphQLString, resolve: rep => rep.party },
     phone: { type: GraphQLString, resolve: rep => rep.phone },
     photo_url: { type: GraphQLString, resolve: rep => rep.photo_url },
@@ -61,8 +64,28 @@ let repAttendanceType = new GraphQLObjectType({
   name: "RepAttendance",
   fields: () => ({
     days_at_work: { type: GraphQLInt, resolve: rep => rep.days_at_work },
-    percent_at_work: { type: GraphQLInt, resolve: rep => rep.percent_at_work },
+    percent_at_work: { type: GraphQLFloat, resolve: rep => rep.percent_at_work },
     total_work_days: { type: GraphQLInt, resolve: rep => rep.total_work_days},
+  })
+})
+
+let repParticipationType = new GraphQLObjectType({
+  name: "RepParticipation",
+  fields: () => ({
+    bioguide_id: { type: GraphQLString, resolve: rep => rep.bioguide_id },
+    percent_votes: { type: GraphQLFloat, resolve: rep => rep.percent_votes },
+    rep_votes: { type: GraphQLInt, resolve: rep => rep.rep_votes},
+    total_votes: { type: GraphQLInt, resolve: rep => rep.total_votes}
+  })
+})
+
+let repEfficacyType = new GraphQLObjectType({
+  name: "RepEfficacy",
+  fields: () => ({
+    bioguide_id: { type: GraphQLString, resolve: rep => rep.bioguide_id },
+    max_sponsor: { type: GraphQLInt, resolve: rep => rep.max_sponsor },
+    rep_sponsor: { type: GraphQLInt, resolve: rep => rep.rep_sponsor},
+    sponsor_percent: { type: GraphQLFloat, resolve: rep => rep.sponsor_percent}
   })
 })
 
@@ -99,11 +122,12 @@ export let getRepAttendanceSchema = () => {
     type: repAttendanceType,
     args: {
       bioguide_id: { type: GraphQLString },
+      congress: { type: GraphQLString },
       chamber: { type: GraphQLString }
     },
     resolve: (__, args) => {
-      let { bioguide_id, chamber } = args;
-      if (!!bioguide_id && !!chamber) {
+      let { bioguide_id, congress, chamber } = args;
+      if (!!bioguide_id && !!congress && !!chamber) {
         return new Promise((resolve, reject) => {
           rp({
             method: 'POST',
@@ -121,6 +145,64 @@ export let getRepAttendanceSchema = () => {
     }
   }
 }
+
+export let getRepParticipationSchema = () => {
+  return {
+    type: repParticipationType,
+    args: {
+      bioguide_id: { type: GraphQLString },
+      congress: { type: GraphQLString },
+      chamber: { type: GraphQLString }
+    },
+    resolve: (__, args) => {
+      let { bioguide_id, congress, chamber } = args;
+      if (!!bioguide_id && !!congress && !!chamber) {
+        return new Promise((resolve, reject) => {
+          rp({
+            method: 'POST',
+            uri: `${config.backend.uri}/participation`,
+            body: { bioguide_id, congress, chamber },
+            json: true
+          })
+          .catch(error => reject(error))
+          .then(participation => resolve(participation));
+        });
+      }
+      else {
+        return null;
+      }
+    }
+  }
+}
+
+export let getRepEfficacySchema = () => {
+  return {
+    type: repEfficacyType,
+    args: {
+      bioguide_id: { type: GraphQLString },
+      congress: { type: GraphQLString }
+    },
+    resolve: (__, args) => {
+      let { bioguide_id, congress } = args;
+      if (!!bioguide_id && !!congress) {
+        return new Promise((resolve, reject) => {
+          rp({
+            method: 'POST',
+            uri: `${config.backend.uri}/efficacy`,
+            body: { bioguide_id, congress },
+            json: true
+          })
+          .catch(error => reject(error))
+          .then(efficacy => resolve(efficacy));
+        });
+      }
+      else {
+        return null;
+      }
+    }
+  }
+}
+
 
 export let getRepSchema = () => {
   return {
