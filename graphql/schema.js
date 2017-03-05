@@ -49,7 +49,7 @@ let schema = (db) => {
       user: getUserSchema(),
       reps: getRepSchema(),
       memberships: getRepMembershipSchema(),
-      attendance: getRepAttendanceSchema(),
+      attendance: getRepAttendanceSchema()
     }),
     interfaces: [nodeDefs.nodeInterface]
   });

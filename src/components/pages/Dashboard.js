@@ -82,7 +82,6 @@ export default Relay.createContainer(DashboardPage, {
           website
           year_elected
         }
-        ${RepInfoCluster.getFragment('data')}
         ${ReportCard.getFragment('data')}
       }
     `

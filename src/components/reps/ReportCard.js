@@ -1,5 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
+import Attendance from './Attendance';
 
 class ReportCard extends React.Component {
 
@@ -40,12 +41,12 @@ class ReportCard extends React.Component {
 
   getMemberships = () => {
     let { memberships } = this.props.data;
-    return memberships ? memberships.map((membership, index) => <p key={index} {...membership}>{membership.committee}</p>) : null;
+    return memberships ? memberships.map((membership, index) => <p key={index}>{membership.committee}</p>) : null;
   }
 
   getAttendance = () => {
     let { attendance } = this.props.data;
-    console.log(this.props.data)
+    console.log(this.props.data);
     return attendance ? attendance.map(attendance => <p className="days-at-work"> {attendance.days_at_work} </p>) : null;
   }
 
@@ -76,7 +77,7 @@ class ReportCard extends React.Component {
             <p><i className="material-icons info-icon">help_outline</i></p>
           </div>
           <div className="sliders">
-            <p>Attendance: {this.getAttendance()}</p>
+            {this.getAttendance()}
             <p>Participation</p>
             <p>Efficacy</p>
           </div>
@@ -116,20 +117,15 @@ export default Relay.createContainer(ReportCard, {
   },
   fragments: {
     data: () => Relay.QL`
-      fragment on Data {
-        id
-        attendance(bioguide_id: $bioguide_id, chamber: $chamber) {
-          days_at_work
-          percent_at_work
-          total_work_days
-        }
-        memberships(bioguide_id: $bioguide_id, chamber: $chamber) {
-          bioguide_id
-          committee
-          committee_leadership
-          subcommittee
-        }
+    fragment on Data {
+      id
+      memberships(bioguide_id: $bioguide_id, chamber: $chamber) {
+        bioguide_id
+        committee
+        committee_leadership
+        subcommittee
       }
-    `
+    }
+  `
   }
 });

@@ -70,12 +70,6 @@ export default Relay.createContainer(RepInfoCluster, {
     data: () => Relay.QL`
       fragment on Data {
         id
-        memberships(bioguide_id: $bioguide_id, chamber: $chamber) {
-          bioguide_id
-          committee
-          committee_leadership
-          subcommittee
-        }
       }
     `
   }
