@@ -51,7 +51,8 @@ class ReportCard extends React.Component {
 
     return (
       <div className="card">
-        <p className="name">{ fullName }</p>
+        <p className="name">{fullName}</p>
+        <p className="leadership">{leadership_position}</p>
         <p className="role">{ chamber.replace(/\b\w/g, l => l.toUpperCase()) } ({this.getShortParty()}), { state }</p>
         {this.getMemberships()}
         <div className="badge-container">
