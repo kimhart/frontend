@@ -65,9 +65,6 @@ class ReportCard extends React.Component {
             <ul> {this.getMemberships()} </ul>
         </div>
         <div className="metrics-container">
-          <div className="job-score">
-            <p className="grade">A-</p>
-          </div>
           <div className="sliders">
             <Attendance {...this.props} />
             <Participation {...this.props} />

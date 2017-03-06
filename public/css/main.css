@@ -181,32 +181,46 @@ h3 {
       .report-cards .card .photo-container .bio-photo {
         height: 200px;
         border-radius: 100px; }
-    .report-cards .card .metrics-container {
-      display: flex;
-      justify-content: space-around;
-      width: 100%;
-      margin: 30px auto; }
-      .report-cards .card .metrics-container .sliders {
-        width: 70%; }
-      .report-cards .card .metrics-container .job-score {
-        text-align: center;
+    .report-cards .card .metrics-container .sliders {
+      width: 100%; }
+      .report-cards .card .metrics-container .sliders .slider-container .slider-labels {
+        width: 94%;
+        margin: 0 auto;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #A3BE4B;
-        border-radius: 4px;
-        width: 30%;
-        box-sizing: border-box; }
-        .report-cards .card .metrics-container .job-score p {
+        justify-content: space-between; }
+        .report-cards .card .metrics-container .sliders .slider-container .slider-labels p {
+          font-size: 14px;
+          margin-bottom: 0; }
+      .report-cards .card .metrics-container .sliders .slider-container .slider-body {
+        border-radius: 8px;
+        background-color: #FFF;
+        width: 95%;
+        margin: 0 auto;
+        border: 1px solid #B4B4B4;
+        overflow: hidden; }
+      .report-cards .card .metrics-container .sliders .slider-container .slider-bar {
+        border-radius-top-left: 8px;
+        border-radius-bottom-left: 8px;
+        height: 1em; }
+    .report-cards .card .metrics-container .job-score {
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #93db76;
+      border-radius: 4px;
+      width: 30%;
+      box-sizing: border-box; }
+      .report-cards .card .metrics-container .job-score p {
+        color: white;
+        text-transform: uppercase;
+        margin: 15px 0 -20px 0;
+        font-size: 16px; }
+        .report-cards .card .metrics-container .job-score p.grade {
+          font-size: 60px;
+          margin: -20px;
           color: white;
-          text-transform: uppercase;
-          margin: 15px 0 -20px 0;
-          font-size: 16px; }
-          .report-cards .card .metrics-container .job-score p.grade {
-            font-size: 60px;
-            margin: -20px;
-            color: white;
-            text-align: center; }
+          text-align: center; }
     .report-cards .card .alignment-container h3 {
       font-size: 18px;
       margin: 40px 0 0 0;
