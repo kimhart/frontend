@@ -48,12 +48,9 @@ class RepInfoCluster extends React.Component {
       <Link to={{ pathname: `/bios/${bioguide_id}`, query }} style={{ textDecoration: 'none' }}>
         <div className="cluster">
           <div className="bio-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}}></div>
-          <p className="name">{ fullName }</p>
-          <p className="role">{ chamber.replace(/\b\w/g, l => l.toUpperCase()) } ({this.getShortParty()})</p>
-          <p className="leadership">{ this.leadership_position }</p>
-          <p className="location">{ state }</p>
-          <p className="match-score">100%</p>
-          <p className="with-me">matched with you</p>
+          <p className="name">{fullName}</p>
+          <p className="role">{chamber.replace(/\b\w/g, l => l.toUpperCase()) } ({this.getShortParty()})</p>
+          <p className="location">{state}</p>
         </div>
       </Link>
     );

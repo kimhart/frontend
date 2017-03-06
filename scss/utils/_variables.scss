@@ -1,12 +1,10 @@
 // GOOGLE FONTS
 // ----------------------------------------------
-@import url('https://fonts.googleapis.com/css?family=Muli:300,400,400i,700');
-@import url('https://fonts.googleapis.com/css?family=Bitter');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i');
 
 // TYPOGRAPHY
 // ----------------------------------------------
-$muli-font: 'Muli', sans-serif;
-$bitter: 'Bitter', serif;
+$brand-font: 'Roboto', sans-serif;
 
 $logo-size: 26px;
 $paragraph-size: 16px;
@@ -19,7 +17,7 @@ $standard-h3: 22px;
 // BRAND COLORS
 // ----------------------------------------------
 $soft-red: #D95852;
-$light-green: #A3BE4B;
+$light-green: #93db76;
 $cornflower-blue: #5898D8;
 $sky-blue: #81C7EA;
 $white: #FFF;

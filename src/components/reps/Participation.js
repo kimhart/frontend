@@ -9,10 +9,46 @@ class Participation extends React.Component {
     props.relay.setVariables({ bioguide_id: props.bioguide_id, congress: "current", chamber: props.chamber });
   }
 
-  render() {
+  getStyles = () => {
     let { participation } = this.props.data;
+    const percentVotes = participation ? (participation.percent_votes * 100) : null;
+    let color;
+    let darkerColor;
+
+    if (percentVotes < 50) {
+      color = '#D95852';
+      darkerColor = '#D05350';
+    } else if (percentVotes > 50 && percentVotes < 75) {
+      color = '#f4c542';
+      darkerColor = '#D9AF3B';
+    } else if (percentVotes > 75) {
+      color = '#93db76';
+      darkerColor = '#89CB71';
+    };
+
+    let sliderStyle = {
+      background: `linear-gradient(${darkerColor}, ${color}, ${darkerColor})`,
+      width: `${percentVotes}%`
+    };
+
+    return sliderStyle;
+  }
+
+  render() {
+    const { participation } = this.props.data;
+    const repVotes = participation ? participation.rep_votes : null;
+    const totalVotes = participation ? participation.total_votes : null;
+
     return (
-      <p className="rep-votes">Participation (total votes): {participation ? participation.rep_votes : null} </p>
+      <div className="slider-container">
+        <div className="slider-labels">
+          <p>Participation:</p>
+          <p>{repVotes}/{totalVotes} votes</p>
+        </div>
+        <div className="slider-body">
+          <div className="slider-bar" style={this.getStyles()}></div>
+        </div>
+      </div>
     );
   }
 }

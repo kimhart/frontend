@@ -1,5 +1,5 @@
-h1, h2, h3, p, ul, li, a, label, input {
- font-family: $muli-font;
+h1, h2, h3, h4, p, ul, li, a, label, input {
+ font-family: $brand-font;
  line-height: $standard-line-height;
 }
 
@@ -9,7 +9,11 @@ p,  li, a, label, input  {
   color: $text-gray;
 }
 
-h1, h2, h3 {
+a {
+  cursor: pointer;
+}
+
+h1, h2, h3, h4 {
   text-align: center;
 }
 
@@ -27,7 +31,7 @@ h2.page-title {
   width: 100%;
   display: block;
   text-align: center;
-  font-family: $muli-font;
+  font-family: $brand-font;
   color: $soft-red;
 }
 
