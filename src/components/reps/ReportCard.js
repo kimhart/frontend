@@ -1,5 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
+import { Link } from 'react-router';
 import Attendance from './Attendance';
 import Participation from './Participation';
 import Efficacy from './Efficacy';
@@ -43,7 +44,7 @@ class ReportCard extends React.Component {
 
   getMemberships = () => {
     let { memberships } = this.props.data;
-    return memberships ? memberships.map((membership, index) => <p key={index}>{membership.committee}</p>) : null;
+    return memberships ? memberships.map((membership, index) => <li key={index}>{membership.committee}</li>) : null;
   }
 
   render() {
@@ -54,24 +55,18 @@ class ReportCard extends React.Component {
     return (
       <div className="card">
         <p className="name">{fullName}</p>
-        <p className="leadership">{leadership_position}</p>
         <p className="role">{ chamber.replace(/\b\w/g, l => l.toUpperCase()) } ({this.getShortParty()}), { state }</p>
-        {this.getMemberships()}
-        <div className="badge-container">
-          <i className="material-icons">verified_user</i>
-          <i className="material-icons">monetization_on</i>
-          <i className="material-icons">public</i>
-          <i className="material-icons">whatshot</i>
-          <i className="material-icons">star</i>
-        </div>
+        { leadership_position !== "None" && <p className="leadership">{leadership_position}</p> }
         <div className="photo-container">
           <div className="bio-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}} />
         </div>
+        <div className="memberships">
+          <h4>Memberships:</h4>
+            <ul> {this.getMemberships()} </ul>
+        </div>
         <div className="metrics-container">
           <div className="job-score">
-            <p>Job Score</p>
             <p className="grade">A-</p>
-            <p><i className="material-icons info-icon">help_outline</i></p>
           </div>
           <div className="sliders">
             <Attendance {...this.props} />
@@ -81,26 +76,11 @@ class ReportCard extends React.Component {
         </div>
         <div className="alignment-container">
           <h3>Voting Alignment</h3>
-          <div className="alignment-breakdown">
-            <div className="percentages">
-              <p>You</p>
-              <img src="./img/parties/you.png"/>
-              <p className="alignment-score">66%</p>
-            </div>
-            <div className="percentages">
-              <p>Democrats</p>
-              <img src="./img/parties/democrat.png"/>
-              <p className="alignment-score">98%</p>
-            </div>
-            <div className="percentages">
-              <p>Republicans</p>
-              <img src="./img/parties/republican.jpeg"/>
-              <p className="alignment-score">35%</p>
-            </div>
-          </div>
         </div>
         <div className="learn-more">
-          <button className="view-rep-btn">More</button>
+          <Link to={{ pathname: `/bios/${bioguide_id}`, query }} style={{ textDecoration: 'none' }}>
+            <button className="view-rep-btn">More</button>
+          </Link>
         </div>
       </div>
       );

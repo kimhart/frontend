@@ -1,16 +1,18 @@
 .rep-info-clusters {
   display: flex;
-  flex: 1;
+  flex-grow: 1;
   justify-content: space-around;
   flex-wrap: wrap;
+  margin-bottom: 30px;
 }
 
 .cluster {
-  margin: 20px 0 40px 0;
+  min-width: 140px;
   .bio-photo {
     height: 140px;
     max-height: 140px;
     border-radius: 70px;
+    border: 4px solid $sky-blue;
     margin: 20px 0 5px 0;
   }
   p { 
@@ -23,14 +25,6 @@
       margin: 5px 0;
       font-size: 28px;
       color: $sky-blue;
-    }
-    &.with-me {
-      font-size: 16px;
-      margin-top: -15px;
-      color: $sky-blue;
-      text-align: center;
-      font-family: $bitter;
-      font-style: italic;
     }
   }
 }
@@ -58,6 +52,17 @@
     }
     .role {
       margin: 5px;
+      font-weight: 500;
+    }
+    .memberships {
+      h4 {
+        text-align: left;
+        margin: 5px;
+      }
+      ul {
+        text-align: left;
+        padding-left: 20px;
+      }
     }
     .photo-container {
       margin: 0 auto;
@@ -74,43 +79,29 @@
       width: 100%;
       margin: 30px auto;
       .sliders {
-        width: 50%;
+        width: 70%;
       }
       .job-score {
         text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         background-color: $light-green;
         border-radius: 4px;
-        width: 50%;
+        width: 30%;
         box-sizing: border-box;
-        .info-icon {
-          float: right;
-          color: white;
-          padding: 0 5px 5px 0;
-          margin: -15px 0 0 0;
-        }
         p {
           color: white;
           text-transform: uppercase;
           margin: 15px 0 -20px 0;
-          font-size: 18px;
+          font-size: 16px;
           &.grade {
-            font-size: 80px;
+            font-size: 60px;
             margin: -20px;
             color: white;
             text-align: center;
           }
         }
-      }
-    }
-    .badge-container {
-      margin: 10px auto;
-      display: flex;
-      flex: 1;
-      justify-content: center;
-      i {
-        font-size: 32px;
-        color: $medium-gray;
-        padding: 5px;
       }
     }
     .alignment-container {
@@ -119,30 +110,6 @@
         margin: 40px 0 0 0;
         text-transform: uppercase;
         color: $text-gray;
-      }
-      .alignment-breakdown {
-        margin: 20px auto;
-        display: flex;
-        justify-content: space-between;
-        .percentages {
-          margin-top: -10px;
-          width: 33.33%;
-          text-align: center;
-          p {
-            font-weight: 500;
-            font-size: 13px;
-            width: 100%;
-            margin: 0 auto;
-            &.alignment-score {
-              font-size: 26px;
-              padding-top: 10px;
-              color: $sky-blue;
-            }
-          }
-          img {
-            max-width: 60%;
-          }
-        }
       }
     }
     .learn-more {

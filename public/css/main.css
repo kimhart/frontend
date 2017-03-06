@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Muli:300,400,400i,700");
-@import url("https://fonts.googleapis.com/css?family=Bitter");
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i");
 body, #app {
   background-color: white;
   height: 100%;
@@ -17,8 +16,8 @@ body, #app {
   margin: 0 auto;
   display: block; }
 
-h1, h2, h3, p, ul, li, a, label, input {
-  font-family: "Muli", sans-serif;
+h1, h2, h3, h4, p, ul, li, a, label, input {
+  font-family: "Roboto", sans-serif;
   line-height: 1.5em; }
 
 p, li, a, label, input {
@@ -26,7 +25,10 @@ p, li, a, label, input {
   font-weight: 300;
   color: #373737; }
 
-h1, h2, h3 {
+a {
+  cursor: pointer; }
+
+h1, h2, h3, h4 {
   text-align: center; }
 
 h1 {
@@ -41,7 +43,7 @@ h2.page-title {
   width: 100%;
   display: block;
   text-align: center;
-  font-family: "Muli", sans-serif;
+  font-family: "Roboto", sans-serif;
   color: #D95852; }
 
 h3 {
@@ -121,16 +123,18 @@ h3 {
 
 .rep-info-clusters {
   display: flex;
-  flex: 1;
+  flex-grow: 1;
   justify-content: space-around;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  margin-bottom: 30px; }
 
 .cluster {
-  margin: 20px 0 40px 0; }
+  min-width: 140px; }
   .cluster .bio-photo {
     height: 140px;
     max-height: 140px;
     border-radius: 70px;
+    border: 4px solid #81C7EA;
     margin: 20px 0 5px 0; }
   .cluster p {
     margin: 0;
@@ -141,13 +145,6 @@ h3 {
       margin: 5px 0;
       font-size: 28px;
       color: #81C7EA; }
-    .cluster p.with-me {
-      font-size: 16px;
-      margin-top: -15px;
-      color: #81C7EA;
-      text-align: center;
-      font-family: "Bitter", serif;
-      font-style: italic; }
 
 .report-cards {
   background-color: #81C7EA;
@@ -169,7 +166,14 @@ h3 {
       font-size: 26px;
       margin: 0; }
     .report-cards .card .role {
+      margin: 5px;
+      font-weight: 500; }
+    .report-cards .card .memberships h4 {
+      text-align: left;
       margin: 5px; }
+    .report-cards .card .memberships ul {
+      text-align: left;
+      padding-left: 20px; }
     .report-cards .card .photo-container {
       margin: 0 auto;
       display: block;
@@ -183,61 +187,31 @@ h3 {
       width: 100%;
       margin: 30px auto; }
       .report-cards .card .metrics-container .sliders {
-        width: 50%; }
+        width: 70%; }
       .report-cards .card .metrics-container .job-score {
         text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         background-color: #A3BE4B;
         border-radius: 4px;
-        width: 50%;
+        width: 30%;
         box-sizing: border-box; }
-        .report-cards .card .metrics-container .job-score .info-icon {
-          float: right;
-          color: white;
-          padding: 0 5px 5px 0;
-          margin: -15px 0 0 0; }
         .report-cards .card .metrics-container .job-score p {
           color: white;
           text-transform: uppercase;
           margin: 15px 0 -20px 0;
-          font-size: 18px; }
+          font-size: 16px; }
           .report-cards .card .metrics-container .job-score p.grade {
-            font-size: 80px;
+            font-size: 60px;
             margin: -20px;
             color: white;
             text-align: center; }
-    .report-cards .card .badge-container {
-      margin: 10px auto;
-      display: flex;
-      flex: 1;
-      justify-content: center; }
-      .report-cards .card .badge-container i {
-        font-size: 32px;
-        color: #B4B4B4;
-        padding: 5px; }
     .report-cards .card .alignment-container h3 {
       font-size: 18px;
       margin: 40px 0 0 0;
       text-transform: uppercase;
       color: #373737; }
-    .report-cards .card .alignment-container .alignment-breakdown {
-      margin: 20px auto;
-      display: flex;
-      justify-content: space-between; }
-      .report-cards .card .alignment-container .alignment-breakdown .percentages {
-        margin-top: -10px;
-        width: 33.33%;
-        text-align: center; }
-        .report-cards .card .alignment-container .alignment-breakdown .percentages p {
-          font-weight: 500;
-          font-size: 13px;
-          width: 100%;
-          margin: 0 auto; }
-          .report-cards .card .alignment-container .alignment-breakdown .percentages p.alignment-score {
-            font-size: 26px;
-            padding-top: 10px;
-            color: #81C7EA; }
-        .report-cards .card .alignment-container .alignment-breakdown .percentages img {
-          max-width: 60%; }
     .report-cards .card .learn-more .view-rep-btn {
       background-color: #81C7EA;
       text-transform: uppercase;
