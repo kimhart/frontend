@@ -1,14 +1,14 @@
-import fs from 'fs';
-import express from 'express';
-import path from 'path';
-import moment from 'moment';
-import bodyParser from 'body-parser';
-import GraphQLHTTP from 'express-graphql'
-import {graphql} from 'graphql';
-import {introspectionQuery} from 'graphql/utilities';
-import SchemaExporter from './utilities/SchemaExporter';
-import Schema from './graphql/schema'
-import config from './graphql/config';
+const fs = require('fs');
+const express = require('express');
+const path = require('path');
+const moment = require('moment');
+const bodyParser = require('body-parser');
+const GraphQLHTTP = require('express-graphql');
+const {graphql} = require('graphql');
+const {introspectionQuery} = require('graphql/utilities');
+const SchemaExporter = require('./utilities/SchemaExporter');
+const Schema = require('./graphql/schema');
+const config = require('./graphql/config');
 let { port, logs: { dateFormat } } = config.app;
 
 const app = express();
