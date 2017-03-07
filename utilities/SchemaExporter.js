@@ -1,6 +1,6 @@
-import fs from 'fs';
-import {graphql} from 'graphql';
-import {introspectionQuery} from 'graphql/utilities';
+const fs = require('fs');
+const {graphql} = require('graphql');
+const {introspectionQuery} = require('graphql/utilities');
 
 export default (schema) => {
   var generateSchemaJson = async () => await graphql(schema, introspectionQuery);
