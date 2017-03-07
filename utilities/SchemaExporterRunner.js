@@ -1,4 +1,4 @@
-import config from '../config/config';
-import Schema from '../graphql/schema'
-import SchemaExporter from './SchemaExporter';
+const config = require('../config/config');
+const Schema = require('../graphql/schema');
+const SchemaExporter = require('./SchemaExporter');
 SchemaExporter(Schema(config));
