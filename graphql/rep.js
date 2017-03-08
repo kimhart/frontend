@@ -203,6 +203,48 @@ export let getRepEfficacySchema = () => {
   }
 }
 
+export let getRepListByZipcodeSchema = () => {
+  return {
+    type: new GraphQLList(repType),
+    args: {
+      zip_code: { type: GraphQLString }
+    },
+    resolve: (__, args) => {
+      let { zip_code } = args;
+      if (!!zip_code) {
+        return new Promise((resolve, reject) => {
+          rp({
+            method: 'POST',
+            uri: `${config.backend.uri}/reps_by_zip`,
+            body: { zip_code },
+            json: true
+          })
+          .catch(error => reject(error))
+          .then(reps => resolve(reps.results));
+        });
+      } else {
+        return null;
+      }
+    }
+  }
+}
+
+export let getRepListSchema = () => {
+  return {
+    type: new GraphQLList(repType),
+    resolve: (__, args) => {
+      return new Promise((resolve, reject) => {
+        rp({
+          method: 'POST',
+          uri: `${config.backend.uri}/list_reps`,
+          json: true
+        })
+        .catch(error => reject(error))
+        .then(reps => resolve(reps.results));
+      });
+    }
+  }
+}
 
 export let getRepSchema = () => {
   return {
@@ -231,5 +273,3 @@ export let getRepSchema = () => {
     }
   }
 }
-
-
