@@ -20,7 +20,7 @@ import {
 
 import rp from 'request-promise';
 import { getUserSchema, Login } from './user';
-import { getRepSchema, getRepMembershipSchema, getRepAttendanceSchema, getRepParticipationSchema, getRepEfficacySchema } from './rep';
+import { getRepListSchema, getRepSchema, getRepMembershipSchema, getRepAttendanceSchema, getRepParticipationSchema, getRepEfficacySchema } from './rep';
 
 let schema = (db) => {
   class Data {};
@@ -48,6 +48,7 @@ let schema = (db) => {
       id: globalIdField("Data"),
       user: getUserSchema(),
       reps: getRepSchema(),
+      reps_list: getRepListSchema(),
       memberships: getRepMembershipSchema(),
       attendance: getRepAttendanceSchema(),
       participation: getRepParticipationSchema(),

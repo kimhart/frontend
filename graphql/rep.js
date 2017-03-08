@@ -204,6 +204,24 @@ export let getRepEfficacySchema = () => {
 }
 
 
+export let getRepListSchema = () => {
+  return {
+    type: new GraphQLList(repType),
+    resolve: (__, args) => {
+      return new Promise((resolve, reject) => {
+        rp({
+          method: 'POST',
+          uri: `${config.backend.uri}/list_reps`,
+          body: {},
+          json: true
+        })
+        .catch(error => reject(error))
+        .then(reps => resolve(reps.results));
+      });
+    }
+  }
+}
+
 export let getRepSchema = () => {
   return {
     type: new GraphQLList(repType),
@@ -231,5 +249,3 @@ export let getRepSchema = () => {
     }
   }
 }
-
-
