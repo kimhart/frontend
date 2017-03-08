@@ -18,7 +18,7 @@ let config = {
   production: {
     ...common,
     app: {
-      port: 80,
+      port: process.env.PORT,
       logs: {
         dateFormat: 'YYYY/MM/DD hh:mm:ss'
       }
