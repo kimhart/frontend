@@ -2,7 +2,6 @@ import React from 'react';
 import Relay from 'react-relay';
 import ReactDOM from 'react-dom';
 import { Link, browserHistory } from 'react-router';
-import { Grid, Row, Col, Clearfix, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import LoginMutation from './../mutations/LoginMutation';
 import { UserUtils } from '../../utils/Utils';
 import Signup from './Signup';

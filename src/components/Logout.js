@@ -2,7 +2,6 @@ import React from 'react';
 import Relay from 'react-relay';
 import ReactDOM from 'react-dom';
 import { Link, browserHistory } from 'react-router';
-import { Grid, Row, Col, Clearfix, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 let localStorageRef = JSON.parse(localStorage.getItem('user'));
 
 
@@ -26,7 +25,7 @@ class Logout extends React.Component {
 
     handleLogout() {
       localStorage.removeItem('user');
-      this.setState({ 
+      this.setState({
         user: null,
         isLoggedIn: false
       });
