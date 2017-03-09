@@ -301,3 +301,16 @@ button {
 
 .signup-page .signup-part-two {
   margin-top: 10vh; }
+
+.bio-container .bio-header {
+  text-align: center;
+  margin: 0 auto; }
+  .bio-container .bio-header .bio-photo {
+    margin: 0 auto;
+    max-width: 200px;
+    height: 200px;
+    border-radius: 100px; }
+
+.bio-container .bio-body .bio-text {
+  font-size: 16px;
+  padding: 20px; }

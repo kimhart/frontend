@@ -41,6 +41,7 @@ export let repType = new GraphQLObjectType({
     phone: { type: GraphQLString, resolve: rep => rep.phone },
     photo_url: { type: GraphQLString, resolve: rep => rep.photo_url },
     memberships: { type: new GraphQLList(repMembershipType), resolve: rep => rep.memberships },
+    membership_stats: { type: new GraphQLList(repMembershipStatsType), resolve: rep => rep.membership_stats },
     served_until: { type: GraphQLString, resolve: rep => rep.served_until },
     state: { type: GraphQLString, resolve: rep => rep.state },
     twitter_handle: { type: GraphQLString, resolve: rep => rep.twitter_handle },
@@ -59,6 +60,16 @@ let repMembershipType = new GraphQLObjectType({
     subcommittee: { type: GraphQLString, resolve: rep => rep.subcommittee },
   })
 });
+
+let repMembershipStatsType = new GraphQLObjectType({
+  name: "RepMembershipStats",
+  fields: () => ({
+    bioguide_id: { type: GraphQLString, resolve: rep => rep.bioguide_id },
+    num_committees: { type: GraphQLInt, resolve: rep => rep.num_committees },
+    max_committees: { type: GraphQLInt, resolve: rep => rep.max_committees},
+    percent: { type: GraphQLFloat, resolve: rep => rep.percent}
+  })
+})
 
 let repAttendanceType = new GraphQLObjectType({
   name: "RepAttendance",
@@ -88,6 +99,13 @@ let repEfficacyType = new GraphQLObjectType({
     sponsor_percent: { type: GraphQLFloat, resolve: rep => rep.sponsor_percent}
   })
 })
+
+// let repPolicyAreasType = new GraphQLObjectType({
+//   name: "RepPolicyAreas",
+//   fields: () => ({
+//     policy_area: { type: GraphQLString, resolve: rep => rep.policy_area }
+//   })
+// })
 
 export let getRepMembershipSchema = () => {
   return {
@@ -202,6 +220,61 @@ export let getRepEfficacySchema = () => {
     }
   }
 }
+
+export let getRepMembershipStatsSchema = () => {
+  return {
+    type: repMembershipStatsType,
+    args: {
+      bioguide_id: { type: GraphQLString },
+      chamber: { type: GraphQLString }
+    },
+    resolve: (__, args) => {
+      let { bioguide_id, chamber } = args;
+      if (!!bioguide_id && !!chamber) {
+        return new Promise((resolve, reject) => {
+          rp({
+            method: 'POST',
+            uri: `${config.backend.uri}/membership_stats`,
+            body: { bioguide_id, chamber },
+            json: true
+          })
+          .catch(error => reject(error))
+          .then(membership_stats => resolve(membership_stats));
+        });
+      }
+      else {
+        return null;
+      }
+    }
+  }
+}
+
+// export let getRepPolicyAreasSchema = () => {
+//   return {
+//     type: repPolicyAreasType,
+//     args: {
+//       bioguide_id: { type: GraphQLString }
+//     },
+//     resolve: (__, args) => {
+//       let { bioguide_id } = args;
+//       if (!!bioguide_id) {
+//         return new Promise((resolve, reject) => {
+//           rp({
+//             method: 'POST',
+//             uri: `${config.backend.uri}/policy_areas`,
+//             body: { bioguide_id },
+//             json: true
+//           })
+//           .catch(error => reject(error))
+//           .then(efficacy => resolve(policy_areas.results));
+//         });
+//       }
+//       else {
+//         return null;
+//       }
+//     }
+//   }
+// }
 
 export let getRepListByZipcodeSchema = () => {
   return {

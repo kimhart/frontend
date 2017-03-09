@@ -4,6 +4,9 @@ import { Link } from 'react-router';
 import Attendance from './Attendance';
 import Participation from './Participation';
 import Efficacy from './Efficacy';
+import MembershipStats from './MembershipStats';
+import PolicyAreas from './PolicyAreas';
+
 
 class ReportCard extends React.Component {
 
@@ -42,9 +45,16 @@ class ReportCard extends React.Component {
     return shortParty;
   }
 
-  getMemberships = () => {
-    let { memberships } = this.props.data;
-    return memberships ? memberships.map((membership, index) => <li key={index}>{membership.committee}</li>) : null;
+  // THIS WILL BE REPURPOSED TO THE BIO PAGES
+  // getMemberships = () => {
+  //   let { memberships } = this.props.data;
+  //   return memberships ? memberships.map((membership, index) => <li key={index}>{membership.committee}</li>) : null;
+  // }
+
+  getFirstName = () => {
+    let fullName = this.props.name.split(',').reverse().join().replace(/\,/g,' ');
+    let lastName = this.props.name.split(',')[0];
+    return lastName;
   }
 
   render() {
@@ -60,19 +70,17 @@ class ReportCard extends React.Component {
         <div className="photo-container">
           <div className="bio-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}} />
         </div>
-        <div className="memberships">
-          <h4>Memberships:</h4>
-            <ul> {this.getMemberships()} </ul>
-        </div>
         <div className="metrics-container">
           <div className="sliders">
+            <h4>What's their track record?</h4>
             <Attendance {...this.props} />
             <Participation {...this.props} />
+            <h4>How do they stack up?</h4>
+            <p>{this.getFirstName()}'s contributions compared to the max contributions by other reps:</p>
             <Efficacy {...this.props} />
+            <MembershipStats {...this.props} />
+            {/* <PolicyAreas {...this.props} /> */}
           </div>
-        </div>
-        <div className="alignment-container">
-          <h3>Voting Alignment</h3>
         </div>
         <div className="learn-more">
           <Link to={{ pathname: `/bios/${bioguide_id}`, query }} style={{ textDecoration: 'none' }}>
@@ -102,6 +110,7 @@ export default Relay.createContainer(ReportCard, {
       ${Attendance.getFragment('data')}
       ${Participation.getFragment('data')}
       ${Efficacy.getFragment('data')}
+      ${MembershipStats.getFragment('data')}
     }
   `
   }
