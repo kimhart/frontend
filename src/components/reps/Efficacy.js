@@ -43,7 +43,7 @@ class Efficacy extends React.Component {
       <div className="slider-container">
         <div className="slider-labels">
           <p>Bills Created: {repSponsors}</p>
-          <p>Max by one rep: {maxSponsors}</p>
+          <p>Max: {maxSponsors}</p>
         </div>
         <div className="slider-body">
           <div className="slider-bar" style={this.getStyles()}></div>
