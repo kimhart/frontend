@@ -48,6 +48,7 @@ class ReportCard extends React.Component {
   // THIS WILL BE REPURPOSED TO THE BIO PAGES
   // getMemberships = () => {
   //   let { memberships } = this.props.data;
+  //   console.log(memberships)
   //   return memberships ? memberships.map((membership, index) => <li key={index}>{membership.committee}</li>) : null;
   // }
 
@@ -79,7 +80,7 @@ class ReportCard extends React.Component {
             <p>{this.getFirstName()}'s contributions compared to the max contributions by other reps:</p>
             <Efficacy {...this.props} />
             <MembershipStats {...this.props} />
-            {/* <PolicyAreas {...this.props} /> */}
+            <PolicyAreas {...this.props} />
           </div>
         </div>
         <div className="learn-more">
@@ -111,6 +112,7 @@ export default Relay.createContainer(ReportCard, {
       ${Participation.getFragment('data')}
       ${Efficacy.getFragment('data')}
       ${MembershipStats.getFragment('data')}
+      ${PolicyAreas.getFragment('data')}
     }
   `
   }
