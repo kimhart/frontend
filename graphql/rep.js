@@ -330,7 +330,7 @@ export let getRepSchema = () => {
     },
     resolve: (__, args) => {
       let { district, state_long } = args;
-      if (!!district && !!state_long) {
+      if (!isNaN(district) && !!state_long) {
         return new Promise((resolve, reject) => {
           rp({
             method: 'POST',

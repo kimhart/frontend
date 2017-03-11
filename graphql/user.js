@@ -33,14 +33,7 @@ let userType = new GraphQLObjectType({
     state_long: { type: GraphQLString, resolve: user => user.state_long },
     state_short: { type: GraphQLString, resolve: user => user.state_short },
     user_id: { type: GraphQLString, resolve: user => user.user_id },
-    // reps: { type: new GraphQLList(repType), resolve: user => user.reps_data },
     error: { type: GraphQLString, resolve: user => user.error },
-    // email: { type: GraphQLString, resolve: user => user.email },
-    // password: { type: GraphQLString, resolve: user => user.password },
-    // street: { type: GraphQLString, resolve: user => user.street },
-    // zip_code: { type: GraphQLString, resolve: user => user.zipcode },
-    // gender: { type: GraphQLString, resolve: user => user.gender },
-    // dob: { type: GraphQLString, resolve: user => user.dob }
   })
 });
 
