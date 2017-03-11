@@ -28,7 +28,6 @@ class DashboardPage extends React.Component {
 
   render() {
     let { user } = this.state;
-
     return (
       <div className="main-dash">
         <h2 className="page-title">Hi {user.first_name}</h2>
@@ -37,11 +36,11 @@ class DashboardPage extends React.Component {
         </div>
         <h3>Your Reps</h3>
         <div className="rep-info-clusters">
-          { this.getRepInfoClusters() }
+          {this.getRepInfoClusters()}
         </div>
         <div className="report-cards">
         <h3>Score Breakdowns</h3>
-          { this.getReportCards() }
+          {this.getReportCards()}
         </div>
         <Footer />
       </div>
