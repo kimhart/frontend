@@ -16,6 +16,6 @@ Ultimately, the Tally community will be comprised of users who are dedicated to 
 * [Alex Hubbard](https://github.com/alexhubbard89) — Data Scientist / Back End Engineer / Founder
 * [Kim Hart](https://github.com/kimhart) — Front End Engineer / Co-Founder
 * [Ryano Taylor](https://github.com/ryanosaur) — Front End Engineer
-* [Mattan Ingram](https://mattaningram.com/) — Product Designer
+* [Mattan Ingram](http://mattaningram.com/) — Product Designer
 * [Jesse Smith](https://JesseLNSmith.com) — UX Designer
 * [Ian Bradley](http://ianbradley.tv/) — Designer
