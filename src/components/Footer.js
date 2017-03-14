@@ -8,11 +8,12 @@ class Footer extends React.Component {
 
   render() {
     return (
-     <footer className="footer">
-        <div className="navbar row">
-          <ul className="nav-list">
-            <li><Link to="/"><i className="material-icons">home</i></Link></li>
-          </ul>
+      <footer className="footer">
+        <div className="nav active">
+          <Link to="/">Reps</Link>
+        </div>
+        <div className="nav">
+          <Link to="#">Ranks</Link>
         </div>
       </footer>
     );

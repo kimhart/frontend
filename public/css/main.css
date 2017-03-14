@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700,700i");
 body, #app {
   background-color: #FFF;
   height: 100%;
@@ -18,18 +18,18 @@ body, #app {
 
 h1, h2, h3, h4, p, ul, li, a, label, input {
   font-family: "Roboto", sans-serif, "Arial", sans-serif;
-  color: #6D6D6D; }
+  color: #6E6E6E; }
 
 p, li, a, label, input {
   font-size: 16px;
   font-weight: 300;
-  color: #6D6D6D; }
+  color: #6E6E6E; }
 
 h1, h2, h3, h4 {
   text-align: center; }
 
 h2 {
-  color: #D95852;
+  color: #FF605B;
   margin: 20px auto;
   width: 100%;
   display: block; }
@@ -39,37 +39,41 @@ h2 {
 
 h3.headline {
   font-size: 24px;
-  color: #D95852;
+  color: #FF605B;
   margin: 5px; }
 
 .error {
-  color: #D95852;
-  font-weight: 500; }
+  color: #FF605B;
+  font-weight: 400; }
 
 .footer {
   width: 100%;
-  position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 50px;
-  position: fixed; }
-  .footer .navbar {
-    background-color: #D95852; }
-    .footer .navbar ul.nav-list {
-      padding-left: 0;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      list-style-type: none;
-      height: 50px;
-      margin: 0; }
-      .footer .navbar ul.nav-list li {
-        padding: 0 10px;
-        text-transform: uppercase; }
-        .footer .navbar ul.nav-list li a {
-          color: white;
-          text-decoration: none; }
+  height: 60px;
+  position: fixed;
+  display: flex;
+  text-align: center;
+  -webkit-box-shadow: 0 -1px 10px 1px #D2D2D2;
+  box-shadow: 0 -1px 10px 1px #D2D2D2; }
+  .footer .nav {
+    height: 100%;
+    width: 50%;
+    background-color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .footer .nav a {
+      color: #ff7975;
+      text-decoration: none;
+      text-transform: none;
+      font-size: 18px; }
+    .footer .nav.active {
+      background-color: #ff7975; }
+      .footer .nav.active a {
+        color: #FFF;
+        font-weight: 400; }
 
 .form-container {
   margin: 0 auto;
@@ -87,12 +91,12 @@ h3.headline {
     width: 100%;
     margin: 10px 0;
     text-align: left;
-    color: #6D6D6D;
+    color: #6E6E6E;
     background-color: #FFF;
     font-size: 16px;
     font-weight: 300; }
   .form-container .login-form label, .form-container .signup-form label {
-    color: #6D6D6D;
+    color: #6E6E6E;
     margin: 20px 0 10px 0; }
   .form-container .login-form .dob-container, .form-container .signup-form .dob-container {
     width: 100%;
@@ -203,7 +207,7 @@ p.your-district {
         background-color: #FFF;
         width: 95%;
         margin: 0 auto;
-        border: 1px solid #6D6D6D;
+        border: 1px solid #6E6E6E;
         overflow: hidden; }
       .report-cards .card .metrics-container .sliders .slider-container .slider-bar {
         border-radius-top-left: 8px;
@@ -232,7 +236,7 @@ p.your-district {
       font-size: 18px;
       margin: 40px 0 0 0;
       text-transform: uppercase;
-      color: #6D6D6D; }
+      color: #6E6E6E; }
     .report-cards .card .learn-more .view-rep-btn {
       background-color: #81C7EA;
       text-transform: uppercase;
@@ -255,7 +259,7 @@ p.your-district {
     font-size: 18px; }
     .not-found-page .back p:hover, .not-found-page .back p:active, .not-found-page .back li:hover, .not-found-page .back li:active, .not-found-page .back a:hover, .not-found-page .back a:active {
       text-decoration: none;
-      color: #6D6D6D; }
+      color: #6E6E6E; }
 
 button {
   font-size: 18px;
