@@ -20,23 +20,13 @@ class RepInfoCluster extends React.Component {
     }
   }
 
-  getShortParty = () => {
+  formatParty = () => {
     let { party } = this.props;
-    let shortParty;
-    if (party === 'Republican') {
-      shortParty = 'R';
-    } else if (party === 'Democratic') {
-      shortParty = 'D';
-    } else if (party === 'Independent') {
-      shortParty = 'I';
-    } else if (party === 'Independent Democrat') {
-      shortParty = 'ID';
-    } else if (party === 'Independent Republican') {
-      shortParty = 'IR';
-    } else {
-      shortParty = party;
-    }
-    return shortParty;
+    let dem;
+    if (party === 'Democratic') {
+      dem = 'Democrat';
+      return dem;
+    } return party;
   }
 
   render() {
@@ -45,12 +35,13 @@ class RepInfoCluster extends React.Component {
     let fullName = name.split(',').reverse().join().replace(/\,/g,' ');
 
     return (
-      <Link to={{ pathname: `/bios/${bioguide_id}`, query }} style={{ textDecoration: 'none' }}>
+      <Link className="cluster-link" to={{ pathname: `/bios/${bioguide_id}`, query }} style={{ textDecoration: 'none' }}>
         <div className="cluster">
-          <div className="bio-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}}></div>
-          <p className="name">{fullName}</p>
-          <p className="role">{chamber.replace(/\b\w/g, l => l.toUpperCase()) } ({this.getShortParty()})</p>
-          <p className="location">{state}</p>
+          <div className="headshot" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`, width: '140px'}}></div>
+          <div className="name-and-position">
+            <p className="name">{fullName}</p>
+            <p className="role">{chamber.replace(/\b\w/g, l => l.toUpperCase())} {this.formatParty()}</p>
+          </div>
         </div>
       </Link>
     );

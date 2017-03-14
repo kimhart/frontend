@@ -30,16 +30,13 @@ class DashboardPage extends React.Component {
     let { user } = this.state;
     return (
       <div className="main-dash">
-        <h2 className="page-title">Hi {user.first_name}</h2>
-        <div className="tally-container">
-          <h1 className="tally-score">98</h1>
-        </div>
-        <h3>Your Reps</h3>
+        <h2 className="greeting">Welcome {user.first_name}</h2>
+        <p className="your-district">You're in Congressional District {user.district}</p>
+        <h3 className="headline">Your Representatives</h3>
         <div className="rep-info-clusters">
           {this.getRepInfoClusters()}
         </div>
         <div className="report-cards">
-        <h3>Score Breakdowns</h3>
           {this.getReportCards()}
         </div>
         <Footer />
