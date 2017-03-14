@@ -12,7 +12,7 @@
   }
 }
 
-p.your-district {
+.your-district {
   font-size: 14px;
   text-align: center;
   margin: 0 auto 20px auto;
@@ -25,14 +25,15 @@ p.your-district {
   align-content: center;
   align-items: center;
   width: 100%;
-  .cluster-link {
-    width: 95%;
-    margin: 0 auto;
-    display: block;
-  }
 }
 
-.cluster {
+.rep-info-cluster-wrap {
+  position: relative;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.rep-info-cluster {
   display: flex;
   justify-content: flex-start;
   align-content: center;
@@ -43,35 +44,43 @@ p.your-district {
   box-shadow: 0 0 25px 1px $light-gray;
   border-radius: 15px;
   padding: 12px;
-  .headshot {
-    flex-grow: 1;
-    min-width: 110px;
-    min-height: 110px;
-    max-width: 110px;
-    max-height: 110px;
-    border-radius: 55px;
-    -webkit-box-shadow: 0 3px 15px 3px $sky-blue;
-    box-shadow: 0 3px 15px 3px $sky-blue;
+  &:active {
+    box-shadow: 0 0 25px 1px $teal-green;
+    -webkit-box-shadow: 0 0 25px 1px $teal-green;
   }
-  .name-and-position {
-    font-size: 14px;
-    flex: 1;
-    padding: 30px;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    .name {
-      color: $sky-blue;
-      font-weight: 700;
-      margin: 0;
-    }
-    .role {
-      margin: 0;
-      font-weight: 300;
-      font-size: 14px;
-    }
-  }
+}
+
+.rep-info-headshot {
+  flex-grow: 1;
+  min-width: 110px;
+  min-height: 110px;
+  max-width: 110px;
+  max-height: 110px;
+  border-radius: 55px;
+  -webkit-box-shadow: 0 3px 15px 3px $sky-blue;
+  box-shadow: 0 3px 15px 3px $sky-blue;
+}
+
+.rep-info-details {
+  font-size: 14px;
+  flex: 1;
+  padding: 30px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.rep-info-name {
+  color: $sky-blue;
+  font-weight: 700;
+  margin: 0;
+}
+
+.rep-info-role {
+  margin: 0;
+  font-weight: 300;
+  font-size: 14px;
 }
 
 .report-cards {
@@ -136,7 +145,7 @@ p.your-district {
           .slider-bar {
             border-radius-top-left: 8px;
             border-radius-bottom-left: 8px;
-            height: 1em;        
+            height: 1em;
           }
         }
       }
@@ -145,7 +154,7 @@ p.your-district {
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: $light-green;
+        background-color: $teal-green;
         border-radius: 4px;
         width: 30%;
         box-sizing: border-box;
@@ -186,7 +195,3 @@ p.your-district {
     }
   }
 }
-
-
-
-

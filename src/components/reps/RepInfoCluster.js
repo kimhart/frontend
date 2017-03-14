@@ -32,15 +32,15 @@ class RepInfoCluster extends React.Component {
     let fullName = name.split(',').reverse().join().replace(/\,/g,' ');
 
     return (
-      <Link className="cluster-link" to={{ pathname: `/bios/${bioguide_id}`, query }} style={{ textDecoration: 'none' }}>
-        <div className="cluster">
-          <div className="headshot" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`, width: '140px'}}></div>
-          <div className="name-and-position">
-            <p className="name">{fullName}</p>
-            <p className="role">{chamber.replace(/\b\w/g, l => l.toUpperCase())} {this.formatParty()}</p>
+      <div className="rep-info-cluster-wrap">
+        <div className="rep-info-cluster">
+          <div className="rep-info-headshot" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`, width: '140px'}}></div>
+          <div className="rep-info-details">
+            <p className="rep-info-name">{fullName}</p>
+            <p className="rep-info-role">{chamber.replace(/\b\w/g, l => l.toUpperCase())} {this.formatParty()}</p>
           </div>
         </div>
-      </Link>
+      </div>
     );
   }
 
