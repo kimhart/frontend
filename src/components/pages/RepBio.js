@@ -12,14 +12,12 @@ class RepBio extends Component {
     }
   }
 
-  formatDemocrat = (party) => {
-    let partyId;
+  formatParty = (party) => {
+    let dem;
     if (party === 'Democratic') {
-      partyId = 'Democrat';
-    } else {
-      partId = party;
-    }
-    return partyId;
+      dem = 'Democrat';
+      return dem;
+    } return party;
   }
 
   render() {
@@ -31,7 +29,7 @@ class RepBio extends Component {
       <div className="bio-container">
         <section className="bio-header">
           <h2 className="page-title">{fullName}</h2>
-          <h4 className="party">{this.formatDemocrat(party)}</h4>
+          <h4 className="party">{this.formatParty(party)}</h4>
           <h4 className="position">{chamber.replace(/\b\w/g, l => l.toUpperCase())}, {state}</h4>
           <div className="bio-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}}></div>
         </section>

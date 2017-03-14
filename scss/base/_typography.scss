@@ -1,54 +1,37 @@
 h1, h2, h3, h4, p, ul, li, a, label, input {
- font-family: $brand-font;
- line-height: $standard-line-height;
+ font-family: $brand-font, 'Arial', sans-serif;
+ color: $text-gray;
 }
 
 p,  li, a, label, input  {
-  font-size: $paragraph-size;
+  font-size: $standard-paragraph;
   font-weight: 300;
   color: $text-gray;
-}
-
-a {
-  cursor: pointer;
 }
 
 h1, h2, h3, h4 {
   text-align: center;
 }
 
-h1 {
-  font-size: $standard-h1;
-}
-
 h2 {
-  font-size: $standard-h2;
-}
-
-h2.page-title {
-  font-size: 30px;
-  margin: 10px auto;
+  color: $soft-red;
+  margin: 20px auto;
   width: 100%;
   display: block;
-  text-align: center;
-  font-family: $brand-font;
-  color: $soft-red;
+  &.page-title {
+    margin-bottom: 0;
+    font-size: $standard-h2;
+  }
 }
 
-h3 {
+h3.headline {
   font-size: $standard-h3;
-  text-transform: uppercase;
-  margin-bottom: 5px;
-}
-
-.standard-link {
-  text-decoration: none;
-  font-weight: 500;
   color: $soft-red;
-  font-size: 18px;
+  margin: 20px auto 5px auto;
 }
 
 .error {
   color: $soft-red;
-  font-weight: 500;
+  font-weight: 400;
+  text-align: center;
 }
