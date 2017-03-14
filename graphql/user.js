@@ -66,7 +66,7 @@ export let Login = mutationWithClientMutationId({
           resolve(user);
         }
         else {
-          resolve({ error: 'Please check your username and password.' });
+          resolve({ error: 'Double check your username and password.' });
         }
       });
     });
