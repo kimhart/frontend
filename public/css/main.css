@@ -151,7 +151,8 @@ h3.headline {
   -webkit-box-shadow: 0 0 25px 1px #DCDCDD;
   box-shadow: 0 0 25px 1px #DCDCDD;
   border-radius: 15px;
-  padding: 12px; }
+  padding: 12px;
+  cursor: pointer; }
   .rep-info-cluster:active {
     box-shadow: 0 0 25px 1px #47E5BC;
     -webkit-box-shadow: 0 0 25px 1px #47E5BC; }
@@ -185,89 +186,97 @@ h3.headline {
   font-weight: 300;
   font-size: 14px; }
 
-.report-cards {
+.report-card-wrap {
   margin: 0;
   padding: 20px 15px 40px 15px; }
-  .report-cards .card {
-    margin: 20px 0;
-    text-align: center; }
-    .report-cards .card .name {
-      font-weight: 400;
-      font-size: 26px;
-      margin: 0; }
-    .report-cards .card .role {
-      margin: 5px;
-      font-weight: 500; }
-    .report-cards .card .memberships h4 {
-      text-align: left;
-      margin: 5px; }
-    .report-cards .card .memberships ul {
-      text-align: left;
-      padding-left: 20px; }
-    .report-cards .card .photo-container {
-      margin: 0 auto;
-      display: block;
-      width: 200px; }
-      .report-cards .card .photo-container .bio-photo {
-        height: 200px;
-        border-radius: 100px; }
-    .report-cards .card .metrics-container .sliders {
-      width: 100%; }
-      .report-cards .card .metrics-container .sliders .slider-container .slider-labels {
-        width: 94%;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between; }
-        .report-cards .card .metrics-container .sliders .slider-container .slider-labels p {
-          font-size: 14px;
-          margin-bottom: 0; }
-        .report-cards .card .metrics-container .sliders .slider-container .slider-labels ul {
-          text-align: left; }
-      .report-cards .card .metrics-container .sliders .slider-container .slider-body {
-        border-radius: 8px;
-        background-color: #FFF;
-        width: 95%;
-        margin: 0 auto;
-        border: 1px solid #444545;
-        overflow: hidden; }
-      .report-cards .card .metrics-container .sliders .slider-container .slider-bar {
-        border-radius-top-left: 8px;
-        border-radius-bottom-left: 8px;
-        height: 1em; }
-    .report-cards .card .metrics-container .job-score {
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #47E5BC;
-      border-radius: 4px;
-      width: 30%;
-      box-sizing: border-box; }
-      .report-cards .card .metrics-container .job-score p {
-        color: white;
-        text-transform: uppercase;
-        margin: 15px 0 -20px 0;
-        font-size: 16px; }
-        .report-cards .card .metrics-container .job-score p.grade {
-          font-size: 60px;
-          margin: -20px;
-          color: white;
-          text-align: center; }
-    .report-cards .card .alignment-container h3 {
-      font-size: 18px;
-      margin: 40px 0 0 0;
-      text-transform: uppercase;
-      color: #444545; }
-    .report-cards .card .learn-more .view-rep-btn {
-      background-color: #92e8ff;
-      text-transform: uppercase;
-      font-size: 18px;
+
+.report-card {
+  margin: 20px 0;
+  text-align: center; }
+  .report-card .memberships h4 {
+    text-align: left;
+    margin: 5px; }
+  .report-card .memberships ul {
+    text-align: left;
+    padding-left: 20px; }
+  .report-card .alignment-container h3 {
+    font-size: 18px;
+    margin: 40px 0 0 0;
+    text-transform: uppercase;
+    color: #444545; }
+
+.report-card-name {
+  font-weight: 400;
+  font-size: 26px;
+  margin: 0; }
+
+.report-card-role {
+  margin: 5px;
+  font-weight: 500; }
+
+.report-card-photo-wrap {
+  margin: 0 auto;
+  display: block;
+  width: 200px; }
+
+.report-card-photo {
+  height: 200px;
+  border-radius: 100px; }
+
+.report-card-metrics-wrap .sliders {
+  width: 100%; }
+  .report-card-metrics-wrap .sliders .slider-container .slider-labels {
+    width: 94%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; }
+    .report-card-metrics-wrap .sliders .slider-container .slider-labels p {
+      font-size: 14px;
+      margin-bottom: 0; }
+    .report-card-metrics-wrap .sliders .slider-container .slider-labels ul {
+      text-align: left; }
+  .report-card-metrics-wrap .sliders .slider-container .slider-body {
+    border-radius: 8px;
+    background-color: #FFF;
+    width: 95%;
+    margin: 0 auto;
+    border: 1px solid #444545;
+    overflow: hidden; }
+  .report-card-metrics-wrap .sliders .slider-container .slider-bar {
+    border-radius-top-left: 8px;
+    border-radius-bottom-left: 8px;
+    height: 1em; }
+
+.report-card-metrics-wrap .job-score {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #47E5BC;
+  border-radius: 4px;
+  width: 30%;
+  box-sizing: border-box; }
+  .report-card-metrics-wrap .job-score p {
+    color: white;
+    text-transform: uppercase;
+    margin: 15px 0 -20px 0;
+    font-size: 16px; }
+    .report-card-metrics-wrap .job-score p.grade {
+      font-size: 60px;
+      margin: -20px;
       color: white;
-      width: 90%;
-      margin: 20px auto 10px auto;
-      display: block;
-      border: none;
-      border-radius: 4px; }
+      text-align: center; }
+
+.report-card-learn-more .view-rep-btn {
+  background-color: #92e8ff;
+  text-transform: uppercase;
+  font-size: 18px;
+  color: white;
+  width: 90%;
+  margin: 20px auto 10px auto;
+  display: block;
+  border: none;
+  border-radius: 4px; }
 
 .not-found-page .back {
   width: 100%;

@@ -44,6 +44,7 @@
   box-shadow: 0 0 25px 1px $light-gray;
   border-radius: 15px;
   padding: 12px;
+  cursor: pointer;
   &:active {
     box-shadow: 0 0 25px 1px $teal-green;
     -webkit-box-shadow: 0 0 25px 1px $teal-green;
@@ -83,115 +84,122 @@
   font-size: 14px;
 }
 
-.report-cards {
+.report-card-wrap {
   margin: 0;
   padding: 20px 15px 40px 15px;
-  .card {
-    margin: 20px 0;
-    text-align: center;
-    .name {
-      font-weight: 400;
-      font-size: 26px;
-      margin: 0;
-    }
-    .role {
+}
+
+.report-card {
+  margin: 20px 0;
+  text-align: center;
+  .memberships {
+    h4 {
+      text-align: left;
       margin: 5px;
-      font-weight: 500;
     }
-    .memberships {
-      h4 {
-        text-align: left;
-        margin: 5px;
-      }
-      ul {
-        text-align: left;
-        padding-left: 20px;
-      }
+    ul {
+      text-align: left;
+      padding-left: 20px;
     }
-    .photo-container {
-      margin: 0 auto;
-      display: block;
-      width: 200px;
-      .bio-photo {
-        height: 200px;
-        border-radius: 100px;
-      }
+  }
+  .alignment-container {
+    h3 {
+      font-size: 18px;
+      margin: 40px 0 0 0;
+      text-transform: uppercase;
+      color: $text-gray;
     }
-    .metrics-container {
-      .sliders {
-        width: 100%;
-        .slider-container {
-          .slider-labels {
-            p {
-              font-size: 14px;
-              margin-bottom: 0;
-            }
-            ul {
-              text-align: left;
-            }
-            width: 94%;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-          }
-          .slider-body {
-            border-radius: 8px;
-            background-color: #FFF;
-            width: 95%;
-            margin: 0 auto;
-            border: 1px solid $text-gray;
-            overflow: hidden;
-          }
-          .slider-bar {
-            border-radius-top-left: 8px;
-            border-radius-bottom-left: 8px;
-            height: 1em;
-          }
-        }
-      }
-      .job-score {
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: $teal-green;
-        border-radius: 4px;
-        width: 30%;
-        box-sizing: border-box;
+  }
+}
+
+.report-card-name {
+  font-weight: 400;
+  font-size: 26px;
+  margin: 0;
+}
+
+.report-card-role {
+  margin: 5px;
+  font-weight: 500;
+}
+
+.report-card-photo-wrap {
+  margin: 0 auto;
+  display: block;
+  width: 200px;
+}
+
+.report-card-photo {
+  height: 200px;
+  border-radius: 100px;
+}
+
+.report-card-metrics-wrap {
+  .sliders {
+    width: 100%;
+    .slider-container {
+      .slider-labels {
         p {
-          color: white;
-          text-transform: uppercase;
-          margin: 15px 0 -20px 0;
-          font-size: 16px;
-          &.grade {
-            font-size: 60px;
-            margin: -20px;
-            color: white;
-            text-align: center;
-          }
+          font-size: 14px;
+          margin-bottom: 0;
         }
+        ul {
+          text-align: left;
+        }
+        width: 94%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+      }
+      .slider-body {
+        border-radius: 8px;
+        background-color: #FFF;
+        width: 95%;
+        margin: 0 auto;
+        border: 1px solid $text-gray;
+        overflow: hidden;
+      }
+      .slider-bar {
+        border-radius-top-left: 8px;
+        border-radius-bottom-left: 8px;
+        height: 1em;
       }
     }
-    .alignment-container {
-      h3 {
-        font-size: 18px;
-        margin: 40px 0 0 0;
-        text-transform: uppercase;
-        color: $text-gray;
-      }
-    }
-    .learn-more {
-      .view-rep-btn {
-        background-color: $sky-blue;
-        text-transform: uppercase;
-        font-size: 18px;
+  }
+  .job-score {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $teal-green;
+    border-radius: 4px;
+    width: 30%;
+    box-sizing: border-box;
+    p {
+      color: white;
+      text-transform: uppercase;
+      margin: 15px 0 -20px 0;
+      font-size: 16px;
+      &.grade {
+        font-size: 60px;
+        margin: -20px;
         color: white;
-        width: 90%;
-        margin: 20px auto 10px auto;
-        display: block;
-        border: none;
-        border-radius: 4px;
+        text-align: center;
       }
     }
+  }
+}
+
+.report-card-learn-more {
+  .view-rep-btn {
+    background-color: $sky-blue;
+    text-transform: uppercase;
+    font-size: 18px;
+    color: white;
+    width: 90%;
+    margin: 20px auto 10px auto;
+    display: block;
+    border: none;
+    border-radius: 4px;
   }
 }

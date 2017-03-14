@@ -44,7 +44,7 @@ class DashboardPage extends React.Component {
         <p className="your-district">{user.state_long} Congressional District {this.getDistrict()}</p>
         <div className="rep-info-clusters">
           {this.getRepInfoClusters()}
-          {/* {this.getReportCards()} */}
+          {this.getReportCards()}
         </div>
         <Footer />
       </div>

@@ -64,16 +64,16 @@ class ReportCard extends React.Component {
     let fullName = name.split(',').reverse().join().replace(/\,/g,' ');
 
     return (
-      <div className="card">
-        <p className="name">{fullName}</p>
-        <p className="role">{ chamber.replace(/\b\w/g, l => l.toUpperCase()) } ({this.getShortParty()}), { state }</p>
+      <div className="report-card">
+        <p className="report-card-name">{fullName}</p>
+        <p className="report-card-role">{ chamber.replace(/\b\w/g, l => l.toUpperCase()) } ({this.getShortParty()}), { state }</p>
         { leadership_position !== "None" && <p className="leadership">{leadership_position}</p> }
-        <div className="photo-container">
-          <div className="bio-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}} />
+        <div className="report-card-photo-wrap">
+          <div className="report-card-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}} />
         </div>
-        <div className="metrics-container">
+        <div className="report-card-metrics-wrap">
           <div className="sliders">
-            <h4>What's their track record?</h4>
+            <h4 className="report-card-track-record-title">What's their track record?</h4>
             <Attendance {...this.props} />
             <Participation {...this.props} />
             <h4>How do they stack up?</h4>
@@ -83,7 +83,7 @@ class ReportCard extends React.Component {
             <PolicyAreas {...this.props} />
           </div>
         </div>
-        <div className="learn-more">
+        <div className="report-card-learn-more">
           <Link to={{ pathname: `/bios/${bioguide_id}`, query }} style={{ textDecoration: 'none' }}>
             <button className="view-rep-btn">More</button>
           </Link>
