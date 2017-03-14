@@ -26,13 +26,22 @@ class DashboardPage extends React.Component {
     return reps ? reps.map(rep => <ReportCard {...this.props}  key={`reportcard_${rep.bioguide_id}`} {...rep} />) : null;
   }
 
+  getDistrict = () => {
+    let { user } = this.state;
+    if (user.district === 0) {
+      return 'At Large';
+    } return user.district;
+  }
+
   render() {
     let { user } = this.state;
     return (
       <div className="main-dash">
-        <h2 className="greeting">Welcome {user.first_name}</h2>
-        <p className="your-district">You're in Congressional District {user.district}</p>
+        <div className="greeting-banner">
+          <h2 className="greeting">Welcome {user.first_name}</h2>
+        </div>
         <h3 className="headline">Your Representatives</h3>
+        <p className="your-district">{user.state_long} Congressional District {this.getDistrict()}</p>
         <div className="rep-info-clusters">
           {this.getRepInfoClusters()}
         </div>

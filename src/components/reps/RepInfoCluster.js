@@ -14,10 +14,7 @@ class RepInfoCluster extends React.Component {
     let { photo_url } = this.props;
     if (!!photo_url && photo_url.toLowerCase() !== 'none') {
       return `https://www.${photo_url}`;
-    }
-    else {
-      return './img/bio_images/placeholder.png';
-    }
+    } return './img/bio_images/placeholder.png';
   }
 
   formatParty = () => {
