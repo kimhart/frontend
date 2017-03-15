@@ -26,31 +26,7 @@ class ReportCard extends React.Component {
     }
   }
 
-  getShortParty = () => {
-    let { party } = this.props;
-    let shortParty;
-    if (party === 'Republican') {
-      shortParty = 'R';
-    } else if (party === 'Democratic') {
-      shortParty = 'D';
-    } else if (party === 'Independent') {
-      shortParty = 'I';
-    } else if (party === 'Independent Democrat') {
-      shortParty = 'ID';
-    } else if (party === 'Independent Republican') {
-      shortParty = 'IR';
-    } else {
-      shortParty = party;
-    }
-    return shortParty;
-  }
-
-  // THIS WILL BE REPURPOSED TO THE BIO PAGES
-  // getMemberships = () => {
-  //   let { memberships } = this.props.data;
-  //   console.log(memberships)
-  //   return memberships ? memberships.map((membership, index) => <li key={index}>{membership.committee}</li>) : null;
-  // }
+  formatParty = (party) => party === 'Democratic' ? 'Democrat' : party;
 
   getFirstName = () => {
     let fullName = this.props.name.split(',').reverse().join().replace(/\,/g,' ');
@@ -59,8 +35,8 @@ class ReportCard extends React.Component {
   }
 
   render() {
-    let { address, bio_text, bioguide_id, chamber, congress, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected, data } = this.props
-    let query = { address, bio_text, bioguide_id, chamber, congress, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected };
+    let { address, bio_text, bioguide_id, chamber, congress, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected, data } = this.props;
+    let query = { address, bio_text, bioguide_id, chamber, congress, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected, data };
     let fullName = name.split(',').reverse().join().replace(/\,/g,' ');
 
     return (
@@ -105,12 +81,6 @@ export default Relay.createContainer(ReportCard, {
     data: () => Relay.QL`
     fragment on Data {
       id
-      memberships(bioguide_id: $bioguide_id, chamber: $chamber) {
-        bioguide_id
-        committee
-        committee_leadership
-        subcommittee
-      }
       ${Attendance.getFragment('data')}
       ${Participation.getFragment('data')}
       ${Efficacy.getFragment('data')}

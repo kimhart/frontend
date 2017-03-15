@@ -58,7 +58,7 @@ let repMembershipType = new GraphQLObjectType({
     bioguide_id: { type: GraphQLString, resolve: rep => rep.bioguide_id },
     committee: { type: GraphQLString, resolve: rep => rep.committee },
     committee_leadership: { type: GraphQLString, resolve: rep => rep.committee_leadership },
-    subcommittee: { type: GraphQLString, resolve: rep => rep.subcommittee },
+    subcommittee: { type: GraphQLString, resolve: rep => rep.subcommittee }
   })
 });
 

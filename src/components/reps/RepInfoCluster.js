@@ -17,14 +17,7 @@ class RepInfoCluster extends React.Component {
     } return './img/bio_images/placeholder.png';
   }
 
-  formatParty = () => {
-    let { party } = this.props;
-    let dem;
-    if (party === 'Democratic') {
-      dem = 'Democrat';
-      return dem;
-    } return party;
-  }
+  formatParty = (party) => party === 'Democratic' ? 'Democrat' : party;
 
   render() {
     let { name, chamber, onClick } = this.props;
