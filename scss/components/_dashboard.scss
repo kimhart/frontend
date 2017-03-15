@@ -45,10 +45,10 @@
   border-radius: 15px;
   padding: 12px;
   // cursor: pointer;
-  transition: box-shadow 0.2s ease-in-out;
+  transition: box-shadow 0.1s ease-in-out;
   &:active {
-    box-shadow: 0 0 25px 1px $teal-green;
-    -webkit-box-shadow: 0 0 25px 1px $teal-green;
+    box-shadow: 0 0 25px 1px $sky-blue;
+    -webkit-box-shadow: 0 0 25px 1px $sky-blue;
   }
 }
 
