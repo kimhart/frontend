@@ -12,18 +12,28 @@ class DashboardPage extends React.Component {
   constructor(props) {
     super(props);
     let user = UserUtils.getUser();
-    this.state = { user };
+    this.state = {
+      user,
+      activeReportCard: null
+    };
     props.relay.setVariables({ district: parseInt(user.district), state_long: user.state_long });
   }
 
   getRepInfoClusters = () => {
     let { reps } = this.props.data;
-    return reps ? reps.map(rep => <RepInfoCluster {...this.props} key={`repinfocluster_${rep.bioguide_id}`} {...rep} />) : null;
+    return reps ? reps.map(rep => <RepInfoCluster {...this.props} key={`repinfocluster_${rep.bioguide_id}`} {...rep} onClick={() => this.setState({ activeReportCard: rep.bioguide_id })}/>) : null;
   }
 
   getReportCards = () => {
     let { reps } = this.props.data;
     return reps ? reps.map(rep => <ReportCard {...this.props}  key={`reportcard_${rep.bioguide_id}`} {...rep} />) : null;
+  }
+
+  getActiveReportCard = () => {
+    let { activeReportCard } = this.state;
+    let { reps } = this.props.data;
+    let rep = reps && activeReportCard ? reps.find(({ bioguide_id }) => bioguide_id === activeReportCard) : null;
+    return rep ? <ReportCard {...this.props} {...rep} key={`reportcard_${rep.bioguide_id}`} close={() => this.setState({ activeReportCard: null })} /> : null;
   }
 
   getDistrict = () => {
@@ -44,9 +54,7 @@ class DashboardPage extends React.Component {
         <p className="your-district">{user.state_long} Congressional District {this.getDistrict()}</p>
         <div className="rep-info-clusters">
           {this.getRepInfoClusters()}
-        </div>
-        <div className="report-cards">
-          {this.getReportCards()}
+          {this.getActiveReportCard()}
         </div>
         <Footer />
       </div>

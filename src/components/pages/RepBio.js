@@ -24,7 +24,6 @@ class RepBio extends Component {
 
   getMemberships = () => {
     let { memberships } = this.props.data;
-    console.log(this.props)
     return memberships ? memberships.map((membership, index) => <li key={index}>{membership.committee}</li>) : null;
   }
 

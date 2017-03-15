@@ -12,7 +12,7 @@
   }
 }
 
-p.your-district {
+.your-district {
   font-size: 14px;
   text-align: center;
   margin: 0 auto 20px auto;
@@ -25,14 +25,15 @@ p.your-district {
   align-content: center;
   align-items: center;
   width: 100%;
-  .cluster-link {
-    width: 95%;
-    margin: 0 auto;
-    display: block;
-  }
 }
 
-.cluster {
+.rep-info-cluster-wrap {
+  position: relative;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.rep-info-cluster {
   display: flex;
   justify-content: flex-start;
   align-content: center;
@@ -43,149 +44,197 @@ p.your-district {
   box-shadow: 0 0 25px 1px $light-gray;
   border-radius: 15px;
   padding: 12px;
-  .headshot {
-    flex-grow: 1;
-    min-width: 110px;
-    min-height: 110px;
-    max-width: 110px;
-    max-height: 110px;
-    border-radius: 55px;
-    -webkit-box-shadow: 0 3px 15px 3px $sky-blue;
-    box-shadow: 0 3px 15px 3px $sky-blue;
+  // cursor: pointer;
+  transition: box-shadow 0.1s ease-in-out;
+  &:active {
+    box-shadow: 0 0 25px 1px $sky-blue;
+    -webkit-box-shadow: 0 0 25px 1px $sky-blue;
   }
-  .name-and-position {
-    font-size: 14px;
-    flex: 1;
-    padding: 30px;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    .name {
-      color: $sky-blue;
-      font-weight: 700;
-      margin: 0;
+}
+
+.rep-info-headshot {
+  flex-grow: 1;
+  min-width: 110px;
+  min-height: 110px;
+  max-width: 110px;
+  max-height: 110px;
+  border-radius: 55px;
+  -webkit-box-shadow: 0 3px 15px 3px $sky-blue;
+  box-shadow: 0 3px 15px 3px $sky-blue;
+}
+
+.rep-info-details {
+  font-size: 14px;
+  flex: 1;
+  padding: 30px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.rep-info-name {
+  color: $sky-blue;
+  font-weight: 700;
+  margin: 0;
+}
+
+.rep-info-role {
+  margin: 0;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.report-card-wrap {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background-color: white;
+  margin: 50px 30px 80px 30px;
+  padding: 0 15px;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0 0 25px 1px $light-gray;
+  box-shadow: 0 0 25px 1px $light-gray;
+  border-radius: 15px;
+}
+
+.report-card {
+  margin: 20px 0;
+  text-align: center;
+  .memberships {
+    h4 {
+      text-align: left;
+      margin: 5px;
     }
-    .role {
-      margin: 0;
-      font-weight: 300;
-      font-size: 14px;
+    ul {
+      text-align: left;
+      padding-left: 20px;
+    }
+  }
+  .alignment-container {
+    h3 {
+      font-size: 18px;
+      margin: 40px 0 0 0;
+      text-transform: uppercase;
+      color: $text-gray;
     }
   }
 }
 
-.report-cards {
+.report-card-name {
+  font-weight: 400;
+  font-size: 26px;
   margin: 0;
-  padding: 20px 15px 40px 15px;
-  .card {
-    margin: 20px 0;
-    text-align: center;
-    .name {
-      font-weight: 400;
-      font-size: 26px;
-      margin: 0;
-    }
-    .role {
-      margin: 5px;
-      font-weight: 500;
-    }
-    .memberships {
-      h4 {
-        text-align: left;
-        margin: 5px;
+}
+
+.report-card-role {
+  margin: 5px;
+  font-weight: 500;
+}
+
+.report-card-photo-wrap {
+  margin: 0 auto;
+  display: block;
+  width: 200px;
+  height: 40px;
+  position: relative;
+}
+
+.report-card-close {
+  position: absolute;
+  top: -30px;
+  right: -70px;
+  background-color: $sky-blue;
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  // HACK: temporary
+  p {
+    margin: 0;
+    margin-top: 5px;
+    color: white;
+  }
+}
+
+.report-card-photo {
+  position: absolute;
+  top: -75px;
+  left: 50px;
+  height: 100px;
+  width: 100px;
+  border-radius: 100px;
+  -webkit-box-shadow: 0 3px 15px 3px $sky-blue;
+  box-shadow: 0 3px 15px 3px $sky-blue;
+}
+
+.report-card-metrics-wrap {
+  // NOTE: seems to not be being used?
+  // .job-score {
+  //   text-align: center;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   background-color: $teal-green;
+  //   border-radius: 4px;
+  //   width: 30%;
+  //   box-sizing: border-box;
+  //   p {
+  //     color: white;
+  //     text-transform: uppercase;
+  //     margin: 15px 0 -20px 0;
+  //     font-size: 16px;
+  //     &.grade {
+  //       font-size: 60px;
+  //       margin: -20px;
+  //       color: white;
+  //       text-align: center;
+  //     }
+  //   }
+  // }
+}
+
+.report-card-sliders {
+  width: 100%;
+  .slider-container {
+    .slider-labels {
+      p {
+        font-size: 14px;
+        margin-bottom: 0;
       }
       ul {
         text-align: left;
-        padding-left: 20px;
       }
-    }
-    .photo-container {
+      width: 94%;
       margin: 0 auto;
-      display: block;
-      width: 200px;
-      .bio-photo {
-        height: 200px;
-        border-radius: 100px;
-      }
+      display: flex;
+      justify-content: space-between;
     }
-    .metrics-container {
-      .sliders {
-        width: 100%;
-        .slider-container {
-          .slider-labels {
-            p {
-              font-size: 14px;
-              margin-bottom: 0;
-            }
-            ul {
-              text-align: left;
-            }
-            width: 94%;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-          }
-          .slider-body {
-            border-radius: 8px;
-            background-color: #FFF;
-            width: 95%;
-            margin: 0 auto;
-            border: 1px solid $text-gray;
-            overflow: hidden;
-          }
-          .slider-bar {
-            border-radius-top-left: 8px;
-            border-radius-bottom-left: 8px;
-            height: 1em;        
-          }
-        }
-      }
-      .job-score {
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 4px;
-        width: 30%;
-        box-sizing: border-box;
-        p {
-          color: white;
-          text-transform: uppercase;
-          margin: 15px 0 -20px 0;
-          font-size: 16px;
-          &.grade {
-            font-size: 60px;
-            margin: -20px;
-            color: white;
-            text-align: center;
-          }
-        }
-      }
+    .slider-body {
+      border-radius: 8px;
+      background-color: #FFF;
+      width: 95%;
+      margin: 0 auto;
+      border: 1px solid $text-gray;
+      overflow: hidden;
     }
-    .alignment-container {
-      h3 {
-        font-size: 18px;
-        margin: 40px 0 0 0;
-        text-transform: uppercase;
-        color: $text-gray;
-      }
-    }
-    .learn-more {
-      .view-rep-btn {
-        background-color: $sky-blue;
-        text-transform: uppercase;
-        font-size: 18px;
-        color: white;
-        width: 90%;
-        margin: 20px auto 10px auto;
-        display: block;
-        border: none;
-        border-radius: 4px;
-      }
+    .slider-bar {
+      border-radius-top-left: 8px;
+      border-radius-bottom-left: 8px;
+      height: 1em;
     }
   }
 }
 
-
-
-
+.report-card-learn-more {
+  .view-rep-btn {
+    background-color: $sky-blue;
+    text-transform: uppercase;
+    font-size: 18px;
+    color: white;
+    width: 90%;
+    margin: 20px auto 10px auto;
+    display: block;
+    border: none;
+    border-radius: 4px;
+  }
+}

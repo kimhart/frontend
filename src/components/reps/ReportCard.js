@@ -40,32 +40,35 @@ class ReportCard extends React.Component {
     let fullName = name.split(',').reverse().join().replace(/\,/g,' ');
 
     return (
-      <div className="card">
-        <p className="name">{fullName}</p>
-        <p className="role">{chamber.replace(/\b\w/g, l => l.toUpperCase()) } {this.formatParty(party)}</p>
-        { leadership_position !== "None" && <p className="leadership">{leadership_position}</p> }
-        <div className="photo-container">
-          <div className="bio-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}} />
-        </div>
-        <div className="metrics-container">
-          <div className="sliders">
-            <h4>What's their track record?</h4>
-            <Attendance {...this.props} />
-            <Participation {...this.props} />
-            <h4>How do they stack up?</h4>
-            <p>{this.getFirstName()}'s contributions compared to the max contributions by other reps:</p>
-            <Efficacy {...this.props} />
-            <MembershipStats {...this.props} />
-            <PolicyAreas {...this.props} />
+      <div className="report-card-wrap">
+        <div className="report-card">
+          <div className="report-card-photo-wrap">
+            <div className="report-card-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}} />
+            <div className="report-card-close" onClick={() => this.props.close()}><p>x</p></div>
+          </div>
+          <p className="report-card-name">{fullName}</p>
+          <p className="report-card-role">{ chamber.replace(/\b\w/g, l => l.toUpperCase()) } ({this.getShortParty()}), { state }</p>
+          { leadership_position !== "None" && <p className="leadership">{leadership_position}</p> }
+          <div className="report-card-metrics-wrap">
+            <div className="report-card-sliders">
+              <h4 className="report-card-section-title">What's their track record?</h4>
+              <Attendance {...this.props} />
+              <Participation {...this.props} />
+              <h4 className="report-card-section-title">How do they stack up?</h4>
+              <p>{this.getFirstName()}'s contributions compared to the max contributions by other reps:</p>
+              <Efficacy {...this.props} />
+              <MembershipStats {...this.props} />
+              <PolicyAreas {...this.props} />
+            </div>
+          </div>
+          <div className="report-card-learn-more">
+            <Link to={{ pathname: `/bios/${bioguide_id}`, query }} style={{ textDecoration: 'none' }}>
+              <button className="view-rep-btn">More</button>
+            </Link>
           </div>
         </div>
-        <div className="learn-more">
-          <Link to={{ pathname: `/bios/${bioguide_id}`, query }} style={{ textDecoration: 'none' }}>
-            <button className="view-rep-btn">More</button>
-          </Link>
-        </div>
       </div>
-      );
+    );
   }
 }
 
