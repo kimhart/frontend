@@ -86,8 +86,16 @@
 }
 
 .report-card-wrap {
-  margin: 0;
-  padding: 20px 15px 40px 15px;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background-color: white;
+  margin: 50px 30px 80px 30px;
+  padding: 0 15px;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0 0 25px 1px $light-gray;
+  box-shadow: 0 0 25px 1px $light-gray;
+  border-radius: 15px;
 }
 
 .report-card {
@@ -128,11 +136,35 @@
   margin: 0 auto;
   display: block;
   width: 200px;
+  height: 40px;
+  position: relative;
+}
+
+.report-card-close {
+  position: absolute;
+  top: -30px;
+  right: -70px;
+  background-color: $sky-blue;
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  // HACK: temporary
+  p {
+    margin: 0;
+    margin-top: 5px;
+    color: white;
+  }
 }
 
 .report-card-photo {
-  height: 200px;
+  position: absolute;
+  top: -75px;
+  left: 50px;
+  height: 100px;
+  width: 100px;
   border-radius: 100px;
+  -webkit-box-shadow: 0 3px 15px 3px $sky-blue;
+  box-shadow: 0 3px 15px 3px $sky-blue;
 }
 
 .report-card-metrics-wrap {
