@@ -44,7 +44,8 @@
   box-shadow: 0 0 25px 1px $light-gray;
   border-radius: 15px;
   padding: 12px;
-  cursor: pointer;
+  // cursor: pointer;
+  transition: box-shadow 0.2s ease-in-out;
   &:active {
     box-shadow: 0 0 25px 1px $teal-green;
     -webkit-box-shadow: 0 0 25px 1px $teal-green;
@@ -135,57 +136,59 @@
 }
 
 .report-card-metrics-wrap {
-  .sliders {
-    width: 100%;
-    .slider-container {
-      .slider-labels {
-        p {
-          font-size: 14px;
-          margin-bottom: 0;
-        }
-        ul {
-          text-align: left;
-        }
-        width: 94%;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
+  // NOTE: seems to not be being used?
+  // .job-score {
+  //   text-align: center;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   background-color: $teal-green;
+  //   border-radius: 4px;
+  //   width: 30%;
+  //   box-sizing: border-box;
+  //   p {
+  //     color: white;
+  //     text-transform: uppercase;
+  //     margin: 15px 0 -20px 0;
+  //     font-size: 16px;
+  //     &.grade {
+  //       font-size: 60px;
+  //       margin: -20px;
+  //       color: white;
+  //       text-align: center;
+  //     }
+  //   }
+  // }
+}
+
+.report-card-sliders {
+  width: 100%;
+  .slider-container {
+    .slider-labels {
+      p {
+        font-size: 14px;
+        margin-bottom: 0;
       }
-      .slider-body {
-        border-radius: 8px;
-        background-color: #FFF;
-        width: 95%;
-        margin: 0 auto;
-        border: 1px solid $text-gray;
-        overflow: hidden;
+      ul {
+        text-align: left;
       }
-      .slider-bar {
-        border-radius-top-left: 8px;
-        border-radius-bottom-left: 8px;
-        height: 1em;
-      }
+      width: 94%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
     }
-  }
-  .job-score {
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $teal-green;
-    border-radius: 4px;
-    width: 30%;
-    box-sizing: border-box;
-    p {
-      color: white;
-      text-transform: uppercase;
-      margin: 15px 0 -20px 0;
-      font-size: 16px;
-      &.grade {
-        font-size: 60px;
-        margin: -20px;
-        color: white;
-        text-align: center;
-      }
+    .slider-body {
+      border-radius: 8px;
+      background-color: #FFF;
+      width: 95%;
+      margin: 0 auto;
+      border: 1px solid $text-gray;
+      overflow: hidden;
+    }
+    .slider-bar {
+      border-radius-top-left: 8px;
+      border-radius-bottom-left: 8px;
+      height: 1em;
     }
   }
 }

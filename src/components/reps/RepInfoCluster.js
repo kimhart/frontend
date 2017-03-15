@@ -27,12 +27,12 @@ class RepInfoCluster extends React.Component {
   }
 
   render() {
-    let { address, bio_text, bioguide_id, chamber, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected, data } = this.props;
-    let query = { address, bio_text, bioguide_id, chamber, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected };
-    let fullName = name.split(',').reverse().join().replace(/\,/g,' ');
+    let { name, chamber, onClick } = this.props;
+    // NOTE: null checking
+    let fullName = name ? name.split(',').reverse().join().replace(/\,/g,' ') : 'John Doe';
 
     return (
-      <div className="rep-info-cluster-wrap">
+      <div className="rep-info-cluster-wrap" onClick={onClick}>
         <div className="rep-info-cluster">
           <div className="rep-info-headshot" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`, width: '140px'}}></div>
           <div className="rep-info-details">

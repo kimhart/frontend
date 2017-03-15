@@ -72,11 +72,11 @@ class ReportCard extends React.Component {
           <div className="report-card-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}} />
         </div>
         <div className="report-card-metrics-wrap">
-          <div className="sliders">
-            <h4 className="report-card-track-record-title">What's their track record?</h4>
+          <div className="report-card-sliders">
+            <h4 className="report-card-section-title">What's their track record?</h4>
             <Attendance {...this.props} />
             <Participation {...this.props} />
-            <h4>How do they stack up?</h4>
+            <h4 className="report-card-section-title">How do they stack up?</h4>
             <p>{this.getFirstName()}'s contributions compared to the max contributions by other reps:</p>
             <Efficacy {...this.props} />
             <MembershipStats {...this.props} />

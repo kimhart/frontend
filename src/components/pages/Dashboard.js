@@ -26,6 +26,10 @@ class DashboardPage extends React.Component {
     return reps ? reps.map(rep => <ReportCard {...this.props}  key={`reportcard_${rep.bioguide_id}`} {...rep} />) : null;
   }
 
+  getReportCard = () => {
+    return this.getReportCards();
+  }
+
   getDistrict = () => {
     let { user } = this.state;
     if (user.district === 0) {
@@ -44,7 +48,7 @@ class DashboardPage extends React.Component {
         <p className="your-district">{user.state_long} Congressional District {this.getDistrict()}</p>
         <div className="rep-info-clusters">
           {this.getRepInfoClusters()}
-          {this.getReportCards()}
+          {this.getReportCard()}
         </div>
         <Footer />
       </div>
