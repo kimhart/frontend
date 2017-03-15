@@ -123,7 +123,7 @@ h3.headline {
     padding: 10px;
     box-sizing: border-box; }
 
-p.your-district {
+.your-district {
   font-size: 14px;
   text-align: center;
   margin: 0 auto 20px auto; }
@@ -135,12 +135,13 @@ p.your-district {
   align-content: center;
   align-items: center;
   width: 100%; }
-  .rep-info-clusters .cluster-link {
-    width: 95%;
-    margin: 0 auto;
-    display: block; }
 
-.cluster {
+.rep-info-cluster-wrap {
+  position: relative;
+  width: 95%;
+  margin: 0 auto; }
+
+.rep-info-cluster {
   display: flex;
   justify-content: flex-start;
   align-content: center;
@@ -150,115 +151,121 @@ p.your-district {
   -webkit-box-shadow: 0 0 25px 1px #DCDCDD;
   box-shadow: 0 0 25px 1px #DCDCDD;
   border-radius: 15px;
-  padding: 12px; }
-  .cluster .headshot {
-    flex-grow: 1;
-    min-width: 110px;
-    min-height: 110px;
-    max-width: 110px;
-    max-height: 110px;
-    border-radius: 55px;
-    -webkit-box-shadow: 0 3px 15px 3px #92e8ff;
-    box-shadow: 0 3px 15px 3px #92e8ff; }
-  .cluster .name-and-position {
-    font-size: 14px;
-    flex: 1;
-    padding: 30px;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; }
-    .cluster .name-and-position .name {
-      color: #92e8ff;
-      font-weight: 700;
-      margin: 0; }
-    .cluster .name-and-position .role {
-      margin: 0;
-      font-weight: 300;
-      font-size: 14px; }
+  padding: 12px;
+  transition: box-shadow 0.1s ease-in-out; }
+  .rep-info-cluster:active {
+    box-shadow: 0 0 25px 1px #92e8ff;
+    -webkit-box-shadow: 0 0 25px 1px #92e8ff; }
 
-.report-cards {
+.rep-info-headshot {
+  flex-grow: 1;
+  min-width: 110px;
+  min-height: 110px;
+  max-width: 110px;
+  max-height: 110px;
+  border-radius: 55px;
+  -webkit-box-shadow: 0 3px 15px 3px #92e8ff;
+  box-shadow: 0 3px 15px 3px #92e8ff; }
+
+.rep-info-details {
+  font-size: 14px;
+  flex: 1;
+  padding: 30px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
+.rep-info-name {
+  color: #92e8ff;
+  font-weight: 700;
+  margin: 0; }
+
+.rep-info-role {
   margin: 0;
-  padding: 20px 15px 40px 15px; }
-  .report-cards .card {
-    margin: 20px 0;
-    text-align: center; }
-    .report-cards .card .name {
-      font-weight: 400;
-      font-size: 26px;
-      margin: 0; }
-    .report-cards .card .role {
-      margin: 5px;
-      font-weight: 500; }
-    .report-cards .card .memberships h4 {
-      text-align: left;
-      margin: 5px; }
-    .report-cards .card .memberships ul {
-      text-align: left;
-      padding-left: 20px; }
-    .report-cards .card .photo-container {
-      margin: 0 auto;
-      display: block;
-      width: 200px; }
-      .report-cards .card .photo-container .bio-photo {
-        height: 200px;
-        border-radius: 100px; }
-    .report-cards .card .metrics-container .sliders {
-      width: 100%; }
-      .report-cards .card .metrics-container .sliders .slider-container .slider-labels {
-        width: 94%;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between; }
-        .report-cards .card .metrics-container .sliders .slider-container .slider-labels p {
-          font-size: 14px;
-          margin-bottom: 0; }
-        .report-cards .card .metrics-container .sliders .slider-container .slider-labels ul {
-          text-align: left; }
-      .report-cards .card .metrics-container .sliders .slider-container .slider-body {
-        border-radius: 8px;
-        background-color: #FFF;
-        width: 95%;
-        margin: 0 auto;
-        border: 1px solid #444545;
-        overflow: hidden; }
-      .report-cards .card .metrics-container .sliders .slider-container .slider-bar {
-        border-radius-top-left: 8px;
-        border-radius-bottom-left: 8px;
-        height: 1em; }
-    .report-cards .card .metrics-container .job-score {
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 4px;
-      width: 30%;
-      box-sizing: border-box; }
-      .report-cards .card .metrics-container .job-score p {
-        color: white;
-        text-transform: uppercase;
-        margin: 15px 0 -20px 0;
-        font-size: 16px; }
-        .report-cards .card .metrics-container .job-score p.grade {
-          font-size: 60px;
-          margin: -20px;
-          color: white;
-          text-align: center; }
-    .report-cards .card .alignment-container h3 {
-      font-size: 18px;
-      margin: 40px 0 0 0;
-      text-transform: uppercase;
-      color: #444545; }
-    .report-cards .card .learn-more .view-rep-btn {
-      background-color: #92e8ff;
-      text-transform: uppercase;
-      font-size: 18px;
-      color: white;
-      width: 90%;
-      margin: 20px auto 10px auto;
-      display: block;
-      border: none;
-      border-radius: 4px; }
+  font-weight: 300;
+  font-size: 14px; }
+
+.report-card-wrap {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background-color: white;
+  margin: 50px 30px 80px 30px;
+  padding: 0 15px;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0 0 25px 1px #DCDCDD;
+  box-shadow: 0 0 25px 1px #DCDCDD;
+  border-radius: 15px; }
+
+.report-card-name {
+  font-weight: 400;
+  font-size: 26px;
+  margin: 0; }
+
+.report-card-role {
+  margin: 5px;
+  font-weight: 500; }
+
+.report-card-photo-wrap {
+  margin: 0 auto;
+  display: block;
+  width: 200px;
+  height: 40px;
+  position: relative; }
+
+.report-card-close {
+  position: absolute;
+  top: -30px;
+  right: -70px;
+  background-color: #92e8ff;
+  width: 30px;
+  height: 30px;
+  border-radius: 30px; }
+  .report-card-close p {
+    margin: 0;
+    margin-top: 5px;
+    color: white; }
+
+.report-card-photo {
+  position: absolute;
+  top: -75px;
+  left: 50px;
+  height: 100px;
+  width: 100px;
+  border-radius: 100px;
+  -webkit-box-shadow: 0 3px 15px 3px #92e8ff;
+  box-shadow: 0 3px 15px 3px #92e8ff; }
+
+.report-card-sliders {
+  width: 100%; }
+  .report-card-sliders .slider-container .slider-labels p {
+    font-size: 14px;
+    margin-bottom: 0; }
+  .report-card-sliders .slider-container .slider-labels ul {
+    text-align: left; }
+  .report-card-sliders .slider-container .slider-body {
+    border-radius: 8px;
+    background-color: #FFF;
+    width: 95%;
+    margin: 0 auto;
+    border: 1px solid #444545;
+    overflow: hidden; }
+  .report-card-sliders .slider-container .slider-bar {
+    border-radius-top-left: 8px;
+    border-radius-bottom-left: 8px;
+    height: 1em; }
+
+.report-card-learn-more .view-rep-btn {
+  background-color: #92e8ff;
+  text-transform: uppercase;
+  font-size: 18px;
+  color: white;
+  width: 90%;
+  margin: 20px auto 10px auto;
+  display: block;
+  border: none;
+  border-radius: 4px; }
 
 .not-found-page .back {
   width: 100%;
