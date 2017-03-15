@@ -17,14 +17,7 @@ class RepInfoCluster extends React.Component {
     } return './img/bio_images/placeholder.png';
   }
 
-  formatParty = () => {
-    let { party } = this.props;
-    let dem;
-    if (party === 'Democratic') {
-      dem = 'Democrat';
-      return dem;
-    } return party;
-  }
+  formatParty = (party) => party === 'Democratic' ? 'Democrat' : party;
 
   render() {
     let { address, bio_text, bioguide_id, chamber, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected, data } = this.props;
@@ -37,7 +30,7 @@ class RepInfoCluster extends React.Component {
           <div className="headshot" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`, width: '140px'}}></div>
           <div className="name-and-position">
             <p className="name">{fullName}</p>
-            <p className="role">{chamber.replace(/\b\w/g, l => l.toUpperCase())} {this.formatParty()}</p>
+            <p className="role">{chamber.replace(/\b\w/g, l => l.toUpperCase())} {this.formatParty(party)}</p>
           </div>
         </div>
       </Link>
