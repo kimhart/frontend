@@ -321,6 +321,33 @@ export let getRepListSchema = () => {
   }
 }
 
+export let getRepSearchSchema = () => {
+  return {
+    type: new GraphQLList(repType),
+    args: {
+      search_term: { type: GraphQLString },
+    },
+    resolve: (__, args) => {
+      let { search_term } = args;
+      if (search_term) {
+        return new Promise((resolve, reject) => {
+          rp({
+            method: 'POST',
+            uri: `${config.backend.uri}/search`,
+            body: { search_term },
+            json: true
+          })
+          .catch(error => reject(error))
+          .then(reps => resolve(reps.results));
+        });
+      }
+      else {
+        return [];
+      }
+    }
+  }
+}
+
 export let getRepSchema = () => {
   return {
     type: new GraphQLList(repType),
