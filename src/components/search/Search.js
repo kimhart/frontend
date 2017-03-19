@@ -28,11 +28,12 @@ class Search extends React.Component {
 
   getResultItems = (results) => {
     return results.map((result, i) => {
-      let { photo_url, name } = result;
+      let { photo_url, name, state } = result;
       return (
         <li key={`${name}${i}`} className="search-result-list-item">
           <img className="search-result-list-item-photo" src={`http://${photo_url}`} />
-          <span className="search-result-list-item-name">{ name }</span>
+          <div className="search-result-list-item-name">{ name }</div>
+          <div className="search-result-list-item-state">{ state }</div>
         </li>
       );
     })
