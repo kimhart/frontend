@@ -1,26 +1,133 @@
 .rank-wrap {
   width: 100%;
+  background-color: #FFF;
+}
+
+.rank-controls-wrap {
+  width: 100%;
+  background-color: $blue;
+}
+
+.rank-category-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  .rank-category-item {
+    color: #FFF;
+    cursor: pointer;
+    opacity: .6;
+    flex: 1;
+    margin: 20px;
+    font-size: 24px;
+    text-align: center;
+    font-weight: 300;
+    &.active {
+      font-weight: 500;
+      opacity: 1;
+    }
+  }
+}
+
+.rank-category-explainer-wrap {
+  width: auto;
+  margin: 0 25px;
+  display: block;
+  .rank-category-explainer-copy {
+    color: #FFF;
+    font-size: 16px;
+    line-height: 1.3em;
+    margin: 0;
+    text-align: center;
+  }
 }
 
 .rank-toggle-wrap {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  flex: 1;
+  justify-content: space-between;
+  margin-top: 20px;
+  .rank-toggle-chamber {
+    color: #FFF;
+    cursor: pointer;
+    background-color: $blue;
+    font-weight: 300;
+    padding: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    flex: 1;
+    text-align: center;
+    font-size: 16px;
+    margin: 10px 10px 0 10px;
+    &.active {
+      color: $blue;
+      background-color: #FFF;
+      font-weight: 600;
+      position: relative;
+      top: 2px;
+    }
+  }
+}
+
+.rank-list-wrap {
+  background-color: #FFF;
+  margin-bottom: 100px;
 }
 
 .rep-rank-cluster-wrap {
   display: flex;
   justify-content: flex-start;
-  margin: 20px;
+  align-items: center;
+  align-content: center;
+  margin: 30px 10px;
 }
 
 .rep-rank-headshot {
+  min-width: 50px;
+  min-height: 50px;
+  max-width: 50px;
+  max-height: 50px;
+  border-radius: 25px;
   flex-grow: 1;
-  min-width: 60px;
-  min-height: 60px;
-  max-width: 60px;
-  max-height: 60px;
-  border-radius: 30px;
+  margin-right: 10px;
 }
+
+.rep-rank-stack {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.rep-rank-stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.rep-rank-name, .rep-rank-metrics {
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.rep-rank-metrics {
+  font-weight: 300;
+  padding-right: 2px;
+}
+
+.rep-rank-stats-bar {
+  background-color: lighten($teal-green, 35%);
+  border-radius: 8px;
+  height: 1em;
+  width: 100%;
+}
+
+.rep-rank-stats-fill {
+  height: 100%;
+  border-radius: 8px;
+}
+
+
 

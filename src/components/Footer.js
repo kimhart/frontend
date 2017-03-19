@@ -19,7 +19,7 @@ class Footer extends React.Component {
         <div className={`footer-nav ${!this.getActiveTab() ? ' active' : ''}`}>
           <Link to="/">Reps</Link>
         </div>
-        <div className={`nav ${this.getActiveTab() === 'rank' ? ' active' : ''}`}>
+        <div className={`footer-nav ${this.getActiveTab() === 'rank' ? ' active' : ''}`}>
           <Link to="/rank">Rank</Link>
         </div>
         <div className={`footer-nav ${this.getActiveTab() === 'explore' ? ' active' : ''}`}>
