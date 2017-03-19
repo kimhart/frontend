@@ -14,9 +14,12 @@ class RepRankCluster extends React.Component {
     } return './img/bio_images/placeholder.png';
   }
 
+  // this will eventually have to include all possible parties
+  getShortParty = (party) => party === 'Democratic' ? '(D)' : '(R)';
+
   render() {
 
-    let { name } = this.props;
+    let { name, party } = this.props;
     let fullName = name ? name.split(',').reverse().join().replace(/\,/g,' ') : 'John Doe';
 
     return (
@@ -24,7 +27,7 @@ class RepRankCluster extends React.Component {
         <div className="rep-rank-headshot" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`, width: '140px'}}>
         </div>
         <div className="rep-rank-stats">
-          <p className="rep-rank-name">{fullName}</p>
+          <p className="rep-rank-name">{fullName} {this.getShortParty(party)}</p>
         </div>
       </div>
     );

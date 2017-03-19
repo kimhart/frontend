@@ -1,12 +1,74 @@
 .rank-wrap {
   width: 100%;
+  background-color: #FFF;
+}
+
+.rank-controls-wrap {
+  width: 100%;
+  background-color: $blue;
+}
+
+.rank-category-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  .rank-category-item {
+    color: #FFF;
+    opacity: .6;
+    flex: 1;
+    margin: 20px;
+    font-size: 24px;
+    text-align: center;
+    font-weight: 300;
+    &.active {
+      font-weight: 500;
+      opacity: 1;
+    }
+  }
+}
+
+.rank-category-explainer-wrap {
+  width: auto;
+  margin: 0 25px;
+  display: block;
+  .rank-category-explainer-copy {
+    color: #FFF;
+    font-size: 14px;
+    line-height: 1.3em;
+    margin: 0;
+    text-align: center;
+  }
 }
 
 .rank-toggle-wrap {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  flex: 1;
+  justify-content: space-between;
+  margin-top: 20px;
+  .rank-toggle-chamber {
+    color: #FFF;
+    background-color: $blue;
+    font-weight: 300;
+    padding: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    flex: 1;
+    text-align: center;
+    font-size: 16px;
+    margin: 10px 10px 0 10px;
+    &.active {
+      color: $blue;
+      background-color: #FFF;
+      font-weight: 600;
+      position: relative;
+      top: 2px;
+    }
+  }
+}
+
+.rank-list-wrap {
+  background-color: #FFF;
 }
 
 .rep-rank-cluster-wrap {
