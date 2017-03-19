@@ -73,7 +73,7 @@ let rankEfficacyType = new GraphQLObjectType({
 
 export let rankAttendanceSchema = () => {
   return {
-    type: rankAttendanceType,
+    type: new GraphQLList(rankAttendanceType),
     args: {
       chamber: { type: GraphQLString }
     },
@@ -88,7 +88,7 @@ export let rankAttendanceSchema = () => {
             json: true
           })
           .catch(error => reject(error))
-          .then(rank_attendance => resolve(rank_attendance));
+          .then(rank_attendance => resolve(rank_attendance.results));
         });
       }
       else {
@@ -100,7 +100,7 @@ export let rankAttendanceSchema = () => {
 
 export let rankParticipationSchema = () => {
   return {
-    type: rankParticipationType,
+    type: new GraphQLList(rankParticipationType),
     args: {
       chamber: { type: GraphQLString }
     },
@@ -115,7 +115,7 @@ export let rankParticipationSchema = () => {
             json: true
           })
           .catch(error => reject(error))
-          .then(rank_participation => resolve(rank_participation));
+          .then(rank_participation => resolve(rank_participation.results));
         });
       }
       else {
@@ -127,7 +127,7 @@ export let rankParticipationSchema = () => {
 
 export let rankEfficacySchema = () => {
   return {
-    type: rankEfficacyType,
+    type: new GraphQLList(rankEfficacyType),
     args: {
       chamber: { type: GraphQLString }
     },
@@ -142,7 +142,7 @@ export let rankEfficacySchema = () => {
             json: true
           })
           .catch(error => reject(error))
-          .then(rank_efficacy => resolve(rank_efficacy));
+          .then(rank_efficacy => resolve(rank_efficacy.results));
         });
       }
       else {

@@ -7,7 +7,7 @@ class Ranks extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    props.relay.setVariables({ chamber: 'senate' });
+    props.relay.setVariables({ chamber: 'house' });
   }
 
   getPhotoSource = () => {
@@ -17,11 +17,25 @@ class Ranks extends Component {
     } return '/img/bio_images/placeholder.png';
   }
 
+  // toggleChamber = () => {
+  //   if (this.props.relay.variables.chamber === 'house') {
+  //     this.props.relay.setVariables({
+  //       chamber: 'senate'
+  //     });
+  //   } else {
+  //     this.props.relay.setVariables({
+  //       chamber: 'house'
+  //     });
+  //   }
+  // }
+
   render() {
     console.log(this.props.data)
     return (
       <div className="ranks-wrap">
         <h2>Hello</h2>
+        <p onClick={() => this.props.relay.setVariables({ chamber: 'senate' })}>Senate</p>
+        <p onClick={() => this.props.relay.setVariables({ chamber: 'house' })}>Senate</p>
       </div>
     );
   }
@@ -58,6 +72,18 @@ export default Relay.createContainer(Ranks, {
         rank
         state
         max_sponsor
+      }
+      rank_participation(chamber: $chamber) {
+        bioguide_id
+        district
+        name
+        party
+        percent_votes
+        photo_url
+        rank
+        rep_votes
+        state
+        total_votes
       }
     }
   `
