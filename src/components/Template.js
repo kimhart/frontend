@@ -9,7 +9,6 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import { UserUtils } from '../utils/Utils';
 
-
 class Template extends React.Component {
 
   constructor(props) {
@@ -31,6 +30,7 @@ class Template extends React.Component {
       return (
         <div className="page-wrap">
           { this.props.children }
+          <Footer />
         </div>
       );
     }
