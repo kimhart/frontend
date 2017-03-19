@@ -311,6 +311,9 @@ button {
   font-size: 16px;
   padding: 20px; }
 
+.search-wrap {
+  margin-top: 60px; }
+
 .search-input-text {
   background: #0074c9;
   width: 100%;
