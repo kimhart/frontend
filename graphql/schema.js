@@ -20,8 +20,23 @@ import {
 
 import rp from 'request-promise';
 import { getUserSchema, Login } from './user';
+<<<<<<< HEAD
 import { getRepListSchema, getRepListByZipcodeSchema, getRepSchema, getRepMembershipSchema, getRepMembershipStatsSchema, getRepAttendanceSchema, getRepParticipationSchema, getRepEfficacySchema, getRepPolicyAreasSchema } from './rep';
 import { rankAttendanceSchema, rankParticipationSchema, rankEfficacySchema  } from './rank';
+=======
+import {
+  getRepListSchema,
+  getRepListByZipcodeSchema,
+  getRepSchema,
+  getRepMembershipSchema,
+  getRepMembershipStatsSchema,
+  getRepAttendanceSchema,
+  getRepParticipationSchema,
+  getRepEfficacySchema,
+  getRepPolicyAreasSchema,
+  getRepSearchSchema,
+} from './rep';
+>>>>>>> d0b5ab990b15c26f20013662a5bc60c45d9c833c
 
 let schema = (db) => {
   class Data {};
@@ -57,9 +72,13 @@ let schema = (db) => {
       participation: getRepParticipationSchema(),
       policy_areas: getRepPolicyAreasSchema(),
       efficacy: getRepEfficacySchema(),
+<<<<<<< HEAD
       rank_attendance: rankAttendanceSchema(),
       rank_participation: rankParticipationSchema(),
       rank_efficacy: rankEfficacySchema()
+=======
+      search: getRepSearchSchema(),
+>>>>>>> d0b5ab990b15c26f20013662a5bc60c45d9c833c
     }),
     interfaces: [nodeDefs.nodeInterface]
   });
