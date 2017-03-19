@@ -1,41 +1,36 @@
 import React, { Component, PropTypes } from 'react';
 import Relay from 'react-relay';
 import { Link } from 'react-router';
+import RepRankCluster from '../rank/RepRankCluster';
 
 class Ranks extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      attendance: 'active',
+      participation: 'hidden',
+      efficacy: 'hidden'
+    };
     props.relay.setVariables({ chamber: 'house' });
   }
 
-  getPhotoSource = () => {
-    let { photo_url } = this.props.location.query;
-    if (!!photo_url && photo_url.toLowerCase() !== 'none') {
-      return `https://www.${photo_url}`;
-    } return '/img/bio_images/placeholder.png';
+  getRank = () => {
+    let { rank_participation, rank_efficacy, rank_attendance } = this.props.data;
+    if (this.state.attendance === 'active') {
+      return rank_participation ? rank_participation.map(rep => <RepRankCluster {...this.props} key={rep.bioguide_id} {...rep} />) : null;
+    }
   }
-
-  // toggleChamber = () => {
-  //   if (this.props.relay.variables.chamber === 'house') {
-  //     this.props.relay.setVariables({
-  //       chamber: 'senate'
-  //     });
-  //   } else {
-  //     this.props.relay.setVariables({
-  //       chamber: 'house'
-  //     });
-  //   }
-  // }
 
   render() {
     console.log(this.props.data)
     return (
-      <div className="ranks-wrap">
-        <h2>Hello</h2>
-        <p onClick={() => this.props.relay.setVariables({ chamber: 'senate' })}>Senate</p>
-        <p onClick={() => this.props.relay.setVariables({ chamber: 'house' })}>Senate</p>
+      <div className="rank-wrap">
+        <div className="rank-toggle-wrap">
+          <p onClick={() => this.props.relay.setVariables({ chamber: 'senate' })}>Senate</p>
+          <p onClick={() => this.props.relay.setVariables({ chamber: 'house' })}>House</p>
+        </div>
+        {this.getRank()}
       </div>
     );
   }

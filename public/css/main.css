@@ -324,3 +324,25 @@ button {
   position: fixed;
   top: 0;
   left: 0; }
+
+.rank-wrap {
+  width: 100%; }
+
+.rank-toggle-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex: 1; }
+
+.rep-rank-cluster-wrap {
+  display: flex;
+  justify-content: flex-start;
+  margin: 20px; }
+
+.rep-rank-headshot {
+  flex-grow: 1;
+  min-width: 60px;
+  min-height: 60px;
+  max-width: 60px;
+  max-height: 60px;
+  border-radius: 30px; }

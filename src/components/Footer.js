@@ -20,7 +20,7 @@ class Footer extends React.Component {
           <Link to="/">Reps</Link>
         </div>
         <div className={`nav ${this.getActiveTab() === 'rank' ? ' active' : ''}`}>
-          <Link to="/">Rank</Link>
+          <Link to="/rank">Rank</Link>
         </div>
         <div className={`nav ${this.getActiveTab() === 'explore' ? ' active' : ''}`}>
           <Link to="/">Explore</Link>
