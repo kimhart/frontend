@@ -58,23 +58,22 @@ h3.headline {
   text-align: center;
   -webkit-box-shadow: 0 -1px 10px 1px #DCDCDD;
   box-shadow: 0 -1px 10px 1px #DCDCDD; }
-  .footer .nav {
-    height: 100%;
-    width: 50%;
-    background-color: #FFF;
-    display: flex;
-    align-items: center;
-    justify-content: center; }
-    .footer .nav a {
-      color: #ff6b70;
-      text-decoration: none;
-      text-transform: none;
-      font-size: 18px; }
-    .footer .nav.active {
-      background-color: #ff6b70; }
-      .footer .nav.active a {
-        color: #FFF;
-        font-weight: 400; }
+
+.footer-nav {
+  height: 100%;
+  width: 50%;
+  background-color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .footer-nav a {
+    color: #122C34;
+    text-decoration: none;
+    text-transform: none;
+    font-size: 18px; }
+  .footer-nav.active a {
+    color: #FF5158;
+    font-weight: 400; }
 
 .form-container {
   margin: 0 auto;
