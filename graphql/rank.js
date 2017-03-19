@@ -28,6 +28,7 @@ let rankAttendanceType = new GraphQLObjectType({
   fields: () => ({
     bioguide_id: { type: GraphQLString, resolve: rep => rep.bioguide_id },
     district: { type: GraphQLInt, resolve: rep => rep.district },
+    days_at_work: { type: GraphQLInt, resolve: rep => rep.days_at_work},
     name: { type: GraphQLString, resolve: rep => rep.name},
     party: { type: GraphQLString, resolve: rep => rep.party},
     percent_at_work: { type: GraphQLFloat, resolve: rep => rep.percent_at_work},

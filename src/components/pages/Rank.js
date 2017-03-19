@@ -8,9 +8,9 @@ class Rank extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      attendance: 'active',
+      attendance: 'hidden',
       participation: 'hidden',
-      efficacy: 'hidden'
+      efficacy: 'active'
     };
     props.relay.setVariables({ chamber: 'house' });
   }
@@ -18,9 +18,9 @@ class Rank extends Component {
   getRankList = () => {
     let { attendance, participation, efficacy } = this.state;
     let { rank_attendance, rank_participation, rank_efficacy } = this.props.data;
-    if (attendance === 'active') return rank_attendance ? rank_attendance.map(rep => <RepRankCluster {...this.props} key={rep.bioguide_id} {...rep} />) : null;
-    if (participation === 'active') return rank_participation ? rank_participation.map(rep => <RepRankCluster {...this.props} key={rep.bioguide_id} {...rep} />) : null;
-    if (efficacy === 'active') return rank_efficacy ? rank_efficacy.map(rep => <RepRankCluster {...this.props} key={rep.bioguide_id} {...rep} />) : null;
+    if (attendance === 'active') return rank_attendance ? rank_attendance.map(rep => <RepRankCluster category="attendance" {...this.props} key={rep.bioguide_id} {...rep} />) : null;
+    if (participation === 'active') return rank_participation ? rank_participation.map(rep => <RepRankCluster category="participation" {...this.props} key={rep.bioguide_id} {...rep} />) : null;
+    if (efficacy === 'active') return rank_efficacy ? rank_efficacy.map(rep => <RepRankCluster category="efficacy" {...this.props} key={rep.bioguide_id} {...rep} />) : null;
     return false;
   }
 
@@ -41,9 +41,9 @@ class Rank extends Component {
 
   getExplainerCopy = () => {
     let { attendance, participation, efficacy } = this.state;
-    if (attendance === 'active') return 'How many days each rep has shown up to work out of total days this term.';
-    if (participation === 'active') return 'How many votes each rep has cast out of total votes held this term.';
-    if (efficacy === 'active') return 'How many bills each rep has created in comparison to the max by any one rep this term.';
+    if (attendance === 'active') return "Days at work compared to the total work days this term.";
+    if (participation === 'active') return "Votes cast compared to the total votes held this term.";
+    if (efficacy === 'active') return "Bills created compared to the most bills created by a single rep this term.";
     return false;
   }
 
@@ -53,9 +53,9 @@ class Rank extends Component {
       <div className="rank-wrap">
         <div className="rank-controls-wrap">
           <div className="rank-category-wrap">
-            <p className={`rank-category-item ${this.getActiveCategory() === 'votes' ? ' active' : ''}`} onClick={() => this.setState({ attendance: 'hidden', participation: 'active', efficacy: 'hidden' })}>Votes</p>
-            <p className={`rank-category-item ${this.getActiveCategory() === 'attendance' ? ' active' : ''}`} onClick={() => this.setState({ attendance: 'active', participation: 'hidden', efficacy: 'hidden' })}>Attendance</p>
             <p className={`rank-category-item ${this.getActiveCategory() === 'bills' ? ' active' : ''}`} onClick={() => this.setState({ attendance: 'hidden', participation: 'hidden', efficacy: 'active' })}>Bills</p>
+            <p className={`rank-category-item ${this.getActiveCategory() === 'attendance' ? ' active' : ''}`} onClick={() => this.setState({ attendance: 'active', participation: 'hidden', efficacy: 'hidden' })}>Attendance</p>
+            <p className={`rank-category-item ${this.getActiveCategory() === 'votes' ? ' active' : ''}`} onClick={() => this.setState({ attendance: 'hidden', participation: 'active', efficacy: 'hidden' })}>Votes</p>
           </div>
           <div className="rank-category-explainer-wrap">
             <p className="rank-category-explainer-copy">{this.getExplainerCopy()}</p>
@@ -84,6 +84,7 @@ export default Relay.createContainer(Rank, {
       id
       rank_attendance(chamber: $chamber) {
         bioguide_id
+        days_at_work
         district
         name
         party
