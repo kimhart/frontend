@@ -21,6 +21,7 @@ import {
 import rp from 'request-promise';
 import { getUserSchema, Login } from './user';
 import { getRepListSchema, getRepListByZipcodeSchema, getRepSchema, getRepMembershipSchema, getRepMembershipStatsSchema, getRepAttendanceSchema, getRepParticipationSchema, getRepEfficacySchema, getRepPolicyAreasSchema } from './rep';
+import { rankAttendanceSchema, rankParticipationSchema, rankEfficacySchema  } from './rank';
 
 let schema = (db) => {
   class Data {};
@@ -56,6 +57,9 @@ let schema = (db) => {
       participation: getRepParticipationSchema(),
       policy_areas: getRepPolicyAreasSchema(),
       efficacy: getRepEfficacySchema(),
+      rank_attendance: rankAttendanceSchema(),
+      rank_participation: rankParticipationSchema(),
+      rank_efficacy: rankEfficacySchema()
     }),
     interfaces: [nodeDefs.nodeInterface]
   });

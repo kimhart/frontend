@@ -18,6 +18,7 @@ app.use(bodyParser.json({limit: '2mb'}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', express.static('public'));
 app.use('/bios/:bioguide_id', express.static('public'));
+app.use('/rank', express.static('public'));
 
 app.use('/graphql', GraphQLHTTP({
   schema,
