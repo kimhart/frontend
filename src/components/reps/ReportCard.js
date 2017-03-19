@@ -47,7 +47,7 @@ class ReportCard extends React.Component {
             <div className="report-card-close" onClick={() => this.props.close()}><p>x</p></div>
           </div>
           <p className="report-card-name">{fullName}</p>
-          <p className="report-card-role">{ chamber.replace(/\b\w/g, l => l.toUpperCase()) } ({this.getShortParty()}), { state }</p>
+          <p className="report-card-role">{ chamber.replace(/\b\w/g, l => l.toUpperCase()) } ({this.formatParty(party)}), { state }</p>
           { leadership_position !== "None" && <p className="leadership">{leadership_position}</p> }
           <div className="report-card-metrics-wrap">
             <div className="report-card-sliders">

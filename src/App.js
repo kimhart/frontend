@@ -10,6 +10,7 @@ import RepBio from './components/pages/RepBio';
 import Rank from './components/pages/Rank';
 import NotFound from './components/pages/NotFound';
 import Login from './components/pages/Login';
+import Search from './components/search/Search';
 
 let RootQuery = {
   data: (Component) => Relay.QL`
@@ -32,6 +33,7 @@ class App extends React.Component {
           <Route path="/rank" component={Rank} queries={RootQuery}/>
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
+          <Route path="/search" component={Search} queries={RootQuery} />
           <Route path="*" component={NotFound} />
         </Route>
       </Router>

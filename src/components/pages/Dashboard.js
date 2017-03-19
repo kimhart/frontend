@@ -1,7 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
 import ReactDOM from 'react-dom';
-import Footer from './../Footer';
 import RepInfoCluster from './../reps/RepInfoCluster';
 import ReportCard from './../reps/ReportCard';
 import { UserUtils } from './../../utils/Utils';
@@ -56,7 +55,6 @@ class DashboardPage extends React.Component {
           {this.getRepInfoClusters()}
           {this.getActiveReportCard()}
         </div>
-        <Footer />
       </div>
     );
   }

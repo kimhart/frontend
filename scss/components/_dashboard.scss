@@ -1,5 +1,5 @@
 .greeting-banner {
-  background-color: $sky-blue;
+  background-color: $blue-light;
   margin: 0;
   width: 100%;
   h2.greeting {
@@ -47,8 +47,8 @@
   // cursor: pointer;
   transition: box-shadow 0.1s ease-in-out;
   &:active {
-    box-shadow: 0 0 25px 1px $sky-blue;
-    -webkit-box-shadow: 0 0 25px 1px $sky-blue;
+    box-shadow: 0 0 25px 1px $blue-light;
+    -webkit-box-shadow: 0 0 25px 1px $blue-light;
   }
 }
 
@@ -59,8 +59,8 @@
   max-width: 110px;
   max-height: 110px;
   border-radius: 55px;
-  -webkit-box-shadow: 0 3px 15px 3px $sky-blue;
-  box-shadow: 0 3px 15px 3px $sky-blue;
+  -webkit-box-shadow: 0 3px 15px 3px $blue-light;
+  box-shadow: 0 3px 15px 3px $blue-light;
 }
 
 .rep-info-details {
@@ -74,7 +74,7 @@
 }
 
 .rep-info-name {
-  color: $sky-blue;
+  color: $blue-light;
   font-weight: 700;
   margin: 0;
 }
@@ -121,7 +121,7 @@
   position: absolute;
   top: -30px;
   right: -70px;
-  background-color: $sky-blue;
+  background-color: $blue-light;
   width: 30px;
   height: 30px;
   border-radius: 30px;
@@ -140,8 +140,8 @@
   height: 100px;
   width: 100px;
   border-radius: 100px;
-  -webkit-box-shadow: 0 3px 15px 3px $sky-blue;
-  box-shadow: 0 3px 15px 3px $sky-blue;
+  -webkit-box-shadow: 0 3px 15px 3px $blue-light;
+  box-shadow: 0 3px 15px 3px $blue-light;
 }
 
 .report-card-metrics-wrap {
@@ -200,7 +200,7 @@
 
 .report-card-learn-more {
   .view-rep-btn {
-    background-color: $sky-blue;
+    background-color: $blue-light;
     text-transform: uppercase;
     font-size: 18px;
     color: white;
