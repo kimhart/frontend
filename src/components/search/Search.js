@@ -17,12 +17,16 @@ class Search extends React.Component {
   getResults = (chamber) => {
     let { search } = this.props.data;
     search = search.filter(({ chamber: this_chamber }) => this_chamber === chamber);
-    if (!search.length && (!this.searchBox || (this.searchBox && !this.searchBox.value))) return <span>Search for reps in the text box above.</span>
-    if (!search.length && this.searchBox && this.searchBox.value) return <span>No results.</span>
+    let capitalizedChamber = chamber.charAt(0).toUpperCase() + chamber.slice(1);
+    if (!search.length && (!this.searchBox || (this.searchBox && !this.searchBox.value))) return <p className="search-result-prompt">Try searching for a rep, a district,<br/> a state, or a ZIP code.</p>
+    if (!search.length && this.searchBox && this.searchBox.value) return <p className="search-result-error">No results.</p>
     return (
-      <ul className="search-result-list">
-        { this.getResultItems(search) }
-      </ul>
+      <div className="search-result-section">
+        <h3 className="search-result-section-title">{capitalizedChamber}</h3>
+        <ul className="search-result-list">
+          { this.getResultItems(search) }
+        </ul>
+      </div>
     );
   }
 
@@ -42,15 +46,12 @@ class Search extends React.Component {
   render() {
     return (
       <div className="search-wrap">
-        <input type="text" className="search-input-text" id="search-input-text" ref={c => this.searchBox = c} onChange={this.handleSearch} />
-        <div className="search-result-section">
-          <h3 className="search-result-section-title">Senate</h3>
-          { this.getResults('senate') }
+        <div className="search-bar">
+          <input type="text" className="search-input-text" id="search-input-text" ref={c => this.searchBox = c} onChange={this.handleSearch} />
+          <img className="search-input-icon" src="./img/search.svg" />
         </div>
-        <div className="search-result-section">
-          <h3 className="search-result-section-title">House</h3>
-          { this.getResults('house') }
-        </div>
+        { this.getResults('senate') }
+        { this.getResults('house') }
       </div>
     );
   }
