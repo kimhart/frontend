@@ -20,6 +20,13 @@ import {
 
 import rp from 'request-promise';
 import { getUserSchema, Login } from './user';
+
+import { 
+  rankAttendanceSchema, 
+  rankParticipationSchema, 
+  rankEfficacySchema 
+} from './rank';
+
 import {
   getRepListSchema,
   getRepListByZipcodeSchema,
@@ -67,7 +74,10 @@ let schema = (db) => {
       participation: getRepParticipationSchema(),
       policy_areas: getRepPolicyAreasSchema(),
       efficacy: getRepEfficacySchema(),
-      search: getRepSearchSchema(),
+      rank_attendance: rankAttendanceSchema(),
+      rank_participation: rankParticipationSchema(),
+      rank_efficacy: rankEfficacySchema(),
+      search: getRepSearchSchema()
     }),
     interfaces: [nodeDefs.nodeInterface]
   });
