@@ -3,7 +3,7 @@
 ### About
 2018 midterm elections are around the corner. Do your Senators & Congresspeople deserve your vote?
 
-We've gathered and scored your reps' attendance, sponsored legislation, voting record, and ideology trends — dating all the way back to 1989.<br> Tally is journalism-free, so you can spend less time sifting through headlines and focus on metrics that matter.
+We've gathered and scored your reps' attendance, sponsored legislation, voting record, and ideology trends — dating all the way back to 1989. Tally is journalism-free, so you can spend less time sifting through headlines and focus on metrics that matter.
 
 
 ### Mission Statement

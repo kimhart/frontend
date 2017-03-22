@@ -65,6 +65,12 @@ class Rank extends Component {
     isLoading(true);
   }
 
+  getRankDirection = () => {
+    // on load its best to worst
+    // get the copy and display 
+  }
+
+
   render() {
     return (
       <div className="rank-wrap">
@@ -83,6 +89,7 @@ class Rank extends Component {
           </div>
         </div>
         <div className="rank-list-wrap">
+          <p className="rank-list-ranked-direction">Ranked <span className="rank-list-ranked-direction-toggle">{this.getRankDirection()}</span></p>
           {this.getRankList()}
         </div>
       </div>
