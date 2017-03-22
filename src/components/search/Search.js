@@ -36,14 +36,20 @@ class Search extends React.Component {
     );
   }
 
+  getPhotoSource = (photo_url) => {
+    if (!!photo_url && photo_url.toLowerCase() !== 'none') {
+      return `https://www.${photo_url}`;
+    } return './img/bio_images/placeholder.png';
+  }
+
   getResultItems = (results) => {
     return results.map((result, i) => {
       let { photo_url, name, state } = result;
+      let fullName = name.split(',').reverse().join().replace(/\,/g,' ');
       return (
         <li key={`${name}${i}`} className="search-result-list-item">
-          <img className="search-result-list-item-photo" src={`http://${photo_url}`} />
-          <div className="search-result-list-item-name">{ name }</div>
-          <div className="search-result-list-item-state">{ state }</div>
+          <div className="search-result-list-item-photo" style={{ background: `url(${this.getPhotoSource(photo_url)}) no-repeat center 10% / cover`}} />
+          <div className="search-result-list-item-name">{ fullName }</div>
         </li>
       );
     })
