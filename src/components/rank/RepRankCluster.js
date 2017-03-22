@@ -27,13 +27,15 @@ class RepRankCluster extends React.Component {
 
   render() {
 
-    let { name, party, state, category, days_at_work, total_work_days, percent_at_work, rep_sponsor, sponsor_percent, max_sponsor, percent_votes, rep_votes, total_votes } = this.props;
+    let { name, party, state, category, days_at_work, total_work_days, percent_at_work, rep_sponsor, sponsor_percent, max_sponsor, percent_votes, rep_votes, total_votes, rank } = this.props;
+    console.log(rank);
     let fullName = name ? name.split(',').reverse().join().replace(/\,/g,' ') : 'John Doe';
     let attendanceMetrics = category === 'attendance'  ? `${days_at_work}/${total_work_days}` : null;
     let participationMetrics = category === 'participation' ? `${rep_votes}/${total_votes}` : null;
     let efficacyMetrics = category === 'efficacy' ? `${rep_sponsor}/${max_sponsor}` : null;
     return (
       <div className="rep-rank-cluster-wrap">
+        <p className="rep-rank-number">{rank}.</p>
         <div className="rep-rank-headshot" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}}>
         </div>
         <div className="rep-rank-stack">

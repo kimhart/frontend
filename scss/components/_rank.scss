@@ -74,12 +74,23 @@
   margin-bottom: 100px;
 }
 
+.rank-list-ranked-direction {
+  text-align: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.rank-list-ranked-direction-toggle {
+  color: $bright-red;
+  font-weight: 600;
+}
+
 .rep-rank-cluster-wrap {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   align-content: center;
-  margin: 30px 10px;
+  margin: 20px 10px;
 }
 
 .rep-rank-headshot {
@@ -129,5 +140,11 @@
   border-radius: 8px;
 }
 
+.rep-rank-number {
+  font-size: 18px;
+  padding: 10px 10px 10px 0;
+  font-weight: 600;
+  color: $blue;
+}
 
 
