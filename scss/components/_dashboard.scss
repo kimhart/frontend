@@ -1,7 +1,10 @@
 .greeting-banner {
-  background-color: $blue-light;
+  background-color: $blue;
   margin: 0;
   width: 100%;
+  height: 55px;
+  display: flex;
+  align-items: center;
   h2.greeting {
     font-size: 20px;
     font-weight: 500;
@@ -31,6 +34,9 @@
   position: relative;
   width: 95%;
   margin: 0 auto;
+  &:last-child {
+    margin-bottom: 50px;
+  }
 }
 
 .rep-info-cluster {
@@ -38,35 +44,35 @@
   justify-content: flex-start;
   align-content: center;
   align-items: center;
-  margin: 10px;
+  margin: 10px 10px 10px 30px;
   box-sizing: border-box;
-  -webkit-box-shadow: 0 0 25px 1px $light-gray;
-  box-shadow: 0 0 25px 1px $light-gray;
+  border: 1px solid $blue;
   border-radius: 15px;
   padding: 12px;
+  height: 120px;
   // cursor: pointer;
-  transition: box-shadow 0.1s ease-in-out;
+  transition: box-shadow 0.1s linear;
   &:active {
-    box-shadow: 0 0 25px 1px $blue-light;
-    -webkit-box-shadow: 0 0 25px 1px $blue-light;
+    box-shadow: 0 0 25px 1px $blue;
+    -webkit-box-shadow: 0 0 25px 1px $blue;
   }
 }
 
 .rep-info-headshot {
+  position: absolute;
+  left: 0px;
   flex-grow: 1;
-  min-width: 110px;
-  min-height: 110px;
-  max-width: 110px;
-  max-height: 110px;
+  min-width: 80px;
+  min-height: 80px;
+  max-width: 80px;
+  max-height: 80px;
   border-radius: 55px;
-  -webkit-box-shadow: 0 3px 15px 3px $blue-light;
-  box-shadow: 0 3px 15px 3px $blue-light;
 }
 
 .rep-info-details {
   font-size: 14px;
   flex: 1;
-  padding: 30px;
+  padding-left: 50px;
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -74,7 +80,7 @@
 }
 
 .rep-info-name {
-  color: $blue-light;
+  color: $blue;
   font-weight: 700;
   margin: 0;
 }
@@ -93,8 +99,6 @@
   margin: 50px 30px 80px 30px;
   padding: 0 15px;
   box-sizing: border-box;
-  -webkit-box-shadow: 0 0 25px 1px $light-gray;
-  box-shadow: 0 0 25px 1px $light-gray;
   border-radius: 15px;
 }
 
@@ -121,7 +125,7 @@
   position: absolute;
   top: -30px;
   right: -70px;
-  background-color: $blue-light;
+  background-color: $blue;
   width: 30px;
   height: 30px;
   border-radius: 30px;
@@ -140,8 +144,6 @@
   height: 100px;
   width: 100px;
   border-radius: 100px;
-  -webkit-box-shadow: 0 3px 15px 3px $blue-light;
-  box-shadow: 0 3px 15px 3px $blue-light;
 }
 
 .report-card-metrics-wrap {
@@ -200,7 +202,7 @@
 
 .report-card-learn-more {
   .view-rep-btn {
-    background-color: $blue-light;
+    background-color: $blue;
     text-transform: uppercase;
     font-size: 18px;
     color: white;
