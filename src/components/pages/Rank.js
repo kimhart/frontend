@@ -68,6 +68,7 @@ class Rank extends Component {
   getRankDirection = () => {
     // on load its best to worst
     // get the copy and display 
+    return " best to worst";
   }
 
 
