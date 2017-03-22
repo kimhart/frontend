@@ -1,21 +1,35 @@
 # Tally
 
+### About
+2018 midterm elections are around the corner. Do your Senators & Congresspeople deserve your vote?
+
+We've gathered and scored your reps' attendance, sponsored legislation, voting record, and ideology trends — dating all the way back to 1989.<br> Tally is journalism-free, so you can spend less time sifting through headlines and focus on metrics that matter.
+
+
 ### Mission Statement
-Tally aims to provide all people with an effortless and fresh way to connect with their elected officials and review legislation that affects their district.
+Tally aims to provide all people with a simple and fresh way to connect with their elected officials and review legislation that affects their district.</p>
 
-We strive to create a reliable, impartial and straightforward experience that encourages confidence in voters and accountability in representatives. 
+Our data is directly collected from public records on [Congress.gov](https://congress.gov/) and [Senate.gov](https://www.senate.gov/"). We are not affiliated with a specific party and place utmost importance on remaining impartial in our data collection and scoring algorithms. Through this presentation of unbiased data, we hope to encourage confidence in voters and accountability in representatives.
 
-Ultimately, the Tally community will be comprised of users who are dedicated to establishing a stronger understanding of the political system and inspired to lead meaningful civic action.
+Ultimately, the Tally community will consist of users who wish to lead meaningful civic action and become better-informed citizens.
 
-### Tech
-* Front End: React, GraphQL, Relay, Node.js
-* [API](https://github.com/alexhubbard89/reps_app): Python (Flask), PostgresSQL
+
+### Stack
+* React
+* GraphQL
+* Relay
+* Sass
+* Webpack
+* Node.js
+* Python
+* PostgresSQL
+* API [here](https://github.com/alexhubbard89/reps_app)
+
 
 ### Team
-
-* [Alex Hubbard](https://github.com/alexhubbard89) — Data Scientist / Back End Engineer / Founder
-* [Kim Hart](https://github.com/kimhart) — Front End Engineer / Co-Founder
+* [Alex Hubbard](https://github.com/alexhubbard89) — Founder/ Data Scientist / Back End Engineer
+* [Kim Hart](https://github.com/kimhart) — Co-Founder / Front End Engineer
 * [Ryano Taylor](https://github.com/ryanosaur) — Front End Engineer
 * [Mattan Ingram](http://mattaningram.com/) — Product Designer
 * [Jesse Smith](https://JesseLNSmith.com) — UX Designer
-* [Ian Bradley](http://ianbradley.tv/) — Designer
+
