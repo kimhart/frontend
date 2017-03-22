@@ -19,9 +19,10 @@
   margin: 0;
   border: 0;
   box-sizing: border-box;
-  font-weight: 500;
-  font-size: 18px;
   width: 100%;
+  padding-left: 15px;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .search-input-icon {
@@ -32,13 +33,11 @@
   padding: 14px;
 }
 
-.search-result-section {
-  padding: 20px;
-}
-
 .search-result-section-title {
   text-align: left;
   color: $blue;
+  font-size: 20px;
+  padding: 40px 0 10px 20px
 }
 
 .search-result-error {
@@ -59,10 +58,49 @@
   color: $text-gray;
 }
 
-.search-result-list {
+ul.search-result-list {
   list-style-type: none;
-  padding-left: none;
+  padding: 0;
+  width: 100%;
 }
+
+.search-result-list-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-top: 1px solid $light-gray;
+  padding: 10px;
+}
+
+.search-result-list-item:last-of-type {
+  box-shadow: 2px 2px 8px $light-gray;
+}
+
+.search-result-list-item-photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  margin-left: 10px;
+}
+
+.search-result-list-item-name {
+  font-weight: 600;
+  padding: 20px;
+  font-size: 18px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
