@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Relay from 'react-relay';
 import { Link } from 'react-router';
 import RepRankCluster from '../rank/RepRankCluster';
+import { isLoading } from '../../utils/Utils';
 
 class Rank extends Component {
 
@@ -12,7 +13,12 @@ class Rank extends Component {
       participation: 'hidden',
       efficacy: 'active'
     };
-    props.relay.setVariables({ chamber: 'house' });
+    props.relay.setVariables({ chamber: 'house' }, ({ aborted, done, error }) => {
+      if (aborted || done || error) {
+        isLoading(false);
+      }
+    });
+    isLoading(true);
   }
 
   getRankList = () => {
@@ -33,10 +39,13 @@ class Rank extends Component {
   }
 
   getActiveChamber = () => {
-    let { chamber } = this.props.relay.variables;
-    if (chamber === 'house') return 'house';
-    if (chamber === 'senate') return 'senate';
-    return false;
+    let { pendingVariables, variables } = this.props.relay;
+    if (pendingVariables && pendingVariables.chamber) {
+      return pendingVariables.chamber;
+    }
+    else {
+      return variables.chamber;
+    }
   }
 
   getExplainerCopy = () => {
@@ -47,8 +56,16 @@ class Rank extends Component {
     return false;
   }
 
+  selectChamber = (chamber) => {
+    this.props.relay.setVariables({ chamber }, ({ aborted, done, error }) => {
+      if (aborted || done || error) {
+        isLoading(false);
+      }
+    });
+    isLoading(true);
+  }
+
   render() {
-    console.log(this.props.data)
     return (
       <div className="rank-wrap">
         <div className="rank-controls-wrap">
@@ -61,8 +78,8 @@ class Rank extends Component {
             <p className="rank-category-explainer-copy">{this.getExplainerCopy()}</p>
           </div>
           <div className="rank-toggle-wrap">
-            <p className={`rank-toggle-chamber ${this.getActiveChamber() === 'house' ? ' active' : ''}`} onClick={() => this.props.relay.setVariables({ chamber: 'house' })}>House</p>
-            <p className={`rank-toggle-chamber ${this.getActiveChamber() === 'senate' ? ' active' : ''}`} onClick={() => this.props.relay.setVariables({ chamber: 'senate' })}>Senate</p>
+            <p className={`rank-toggle-chamber ${this.getActiveChamber() === 'house' ? ' active' : ''}`} onClick={() => this.selectChamber('house')}>House</p>
+            <p className={`rank-toggle-chamber ${this.getActiveChamber() === 'senate' ? ' active' : ''}`} onClick={() => this.selectChamber('senate')}>Senate</p>
           </div>
         </div>
         <div className="rank-list-wrap">
@@ -122,4 +139,3 @@ export default Relay.createContainer(Rank, {
   `
   }
 });
-

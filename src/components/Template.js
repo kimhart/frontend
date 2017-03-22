@@ -7,6 +7,7 @@ import Footer from './Footer';
 import Logout from './Logout';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Loading from './loading/Loading';
 import { UserUtils } from '../utils/Utils';
 
 class Template extends React.Component {
@@ -29,6 +30,7 @@ class Template extends React.Component {
     } else {
       return (
         <div className="page-wrap">
+          <Loading />
           { this.props.children }
           <Footer />
         </div>

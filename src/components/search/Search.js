@@ -1,6 +1,7 @@
 import React from 'react';
 import Relay from 'react-relay';
 import _ from 'lodash';
+import { isLoading } from '../../utils/Utils';
 
 class Search extends React.Component {
 
@@ -11,7 +12,12 @@ class Search extends React.Component {
   handleSearch = _.debounce(() => {
     this.props.relay.setVariables({
       search_term: this.searchBox.value
+    }, ({ aborted, done, error }) => {
+      if (aborted || done || error) {
+        isLoading(false);
+      }
     });
+    isLoading(true);
   }, 300);
 
   getResults = (chamber) => {
