@@ -22,7 +22,6 @@ class RepRankCluster extends React.Component {
     if (category === 'attendance') return percent_at_work * 100;
     if (category === 'participation') return percent_votes * 100;
     if (category === 'efficacy') return sponsor_percent * 100;
-    console.log(percent_at_work, percent_votes, sponsor_percent)
     return false;
   }
 
