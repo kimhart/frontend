@@ -6,7 +6,7 @@ import Participation from './Participation';
 import Efficacy from './Efficacy';
 import MembershipStats from './MembershipStats';
 import PolicyAreas from './PolicyAreas';
-
+import ModalCard from '../cards/ModalCard';
 
 class ReportCard extends React.Component {
 
@@ -40,34 +40,32 @@ class ReportCard extends React.Component {
     let fullName = name.split(',').reverse().join().replace(/\,/g,' ');
 
     return (
-      <div className="report-card-wrap">
-        <div className="report-card">
-          <div className="report-card-photo-wrap">
-            <div className="report-card-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}} />
-            <div className="report-card-close" onClick={() => this.props.close()}><p>x</p></div>
-          </div>
-          <p className="report-card-name">{fullName}</p>
-          <p className="report-card-role">{ chamber.replace(/\b\w/g, l => l.toUpperCase()) } ({this.formatParty(party)}), { state }</p>
-          { leadership_position !== "None" && <p className="leadership">{leadership_position}</p> }
-          <div className="report-card-metrics-wrap">
-            <div className="report-card-sliders">
-              <h4 className="report-card-section-title">What's their track record?</h4>
-              <Attendance {...this.props} />
-              <Participation {...this.props} />
-              <h4 className="report-card-section-title">How do they stack up?</h4>
-              <p>{this.getFirstName()}'s contributions compared to the max contributions by other reps:</p>
-              <Efficacy {...this.props} />
-              <MembershipStats {...this.props} />
-              <PolicyAreas {...this.props} />
-            </div>
-          </div>
-          <div className="report-card-learn-more">
-            <Link to={{ pathname: `/bios/${bioguide_id}`, query }} style={{ textDecoration: 'none' }}>
-              <button className="view-rep-btn">More</button>
-            </Link>
+      <ModalCard active={this.props.active}> this.props.close()}>
+        <div className="report-card-photo-wrap">
+          <div className="report-card-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}} />
+          <div className="report-card-close" onClick={() => this.props.close()}><p>x</p></div>
+        </div>
+        <p className="report-card-name">{fullName}</p>
+        <p className="report-card-role">{ chamber.replace(/\b\w/g, l => l.toUpperCase()) } ({this.formatParty(party)}), { state }</p>
+        { leadership_position !== "None" && <p className="leadership">{leadership_position}</p> }
+        <div className="report-card-metrics-wrap">
+          <div className="report-card-sliders">
+            <h4 className="report-card-section-title">What's their track record?</h4>
+            <Attendance {...this.props} />
+            <Participation {...this.props} />
+            <h4 className="report-card-section-title">How do they stack up?</h4>
+            <p>{this.getFirstName()}'s contributions compared to the max contributions by other reps:</p>
+            <Efficacy {...this.props} />
+            <MembershipStats {...this.props} />
+            <PolicyAreas {...this.props} />
           </div>
         </div>
-      </div>
+        <div className="report-card-learn-more">
+          <Link to={{ pathname: `/bios/${bioguide_id}`, query }} style={{ textDecoration: 'none' }}>
+            <button className="view-rep-btn">More</button>
+          </Link>
+        </div>
+      </ModalCard>
     );
   }
 }

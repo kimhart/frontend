@@ -1,0 +1,26 @@
+.modal-card-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  transition: opacity 0.3s ease-in-out;
+  background: transparentize($white, .3);
+  z-index: $z-modal;
+  &.active {
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.modal-card {
+  position: relative;
+  margin: 80px 10px;
+  background: $white;
+  border: 1px solid $text-gray;
+  border-radius: 8px;
+  box-shadow: 0 0 25px 1px $light-gray;
+  -webkit-box-shadow: 0 0 25px 1px $light-gray;
+}
