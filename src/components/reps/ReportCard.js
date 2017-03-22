@@ -40,7 +40,7 @@ class ReportCard extends React.Component {
     let fullName = name.split(',').reverse().join().replace(/\,/g,' ');
 
     return (
-      <ModalCard active={this.props.active}> this.props.close()}>
+      <ModalCard active={this.props.active}>
         <div className="report-card-photo-wrap">
           <div className="report-card-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}} />
           <div className="report-card-close" onClick={() => this.props.close()}><p>x</p></div>
