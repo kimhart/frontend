@@ -35,7 +35,6 @@ class RepRankCluster extends React.Component {
     let efficacyMetrics = category === 'efficacy' ? `${rep_sponsor}/${max_sponsor}` : null;
     return (
       <div className="rep-rank-cluster-wrap">
-        <p className="rep-rank-number">{rank}.</p>
         <div className="rep-rank-headshot" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}}>
         </div>
         <div className="rep-rank-stack">
