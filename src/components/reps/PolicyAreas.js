@@ -10,7 +10,7 @@ class PolicyAreas extends React.Component {
   }
 
   getPolicyAreas= () => {
-    const policyAreas = this.props.data.policy_areas;    
+    const policyAreas = this.props.data.policy_areas;
     return policyAreas ? policyAreas.map((policyArea, index) => <li key={index}>{policyArea.policy_area}: {Math.round(policyArea.percent * 100)}%</li>) : null;
   }
 
@@ -19,7 +19,6 @@ class PolicyAreas extends React.Component {
     return (
       <div className="slider-container comparison">
         <div className="slider-labels">
-          <h4>Policies of interest:</h4>
           <ul className="policy-areas">
             {this.getPolicyAreas()}
           </ul>

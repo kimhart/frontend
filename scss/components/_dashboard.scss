@@ -103,14 +103,23 @@
 }
 
 .report-card-name {
+  text-align: center;
   font-weight: 400;
   font-size: 26px;
-  margin: 0;
+  margin: 5px 15px;
+  color: $white;
 }
 
 .report-card-role {
-  margin: 5px;
-  font-weight: 500;
+  text-align: center;
+  margin: 5px 15px;
+  color: $white;
+}
+
+.report-card-leadership {
+  text-align: center;
+  margin: 5px 15px;
+  color: $white;
 }
 
 .report-card-photo-wrap {
@@ -121,55 +130,40 @@
   position: relative;
 }
 
+.report-card-section-title {
+  color: $soft-red;
+}
+
 .report-card-close {
   position: absolute;
-  top: -30px;
+  top: -10px;
   right: -70px;
-  background-color: $blue;
-  width: 30px;
-  height: 30px;
+  background-color: $white;
+  width: 40px;
+  height: 40px;
   border-radius: 30px;
-  // HACK: temporary
-  p {
-    margin: 0;
-    margin-top: 5px;
-    color: white;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $light-gray;
 }
 
 .report-card-photo {
   position: absolute;
-  top: -75px;
+  top: -65px;
   left: 50px;
   height: 100px;
   width: 100px;
   border-radius: 100px;
 }
 
-.report-card-metrics-wrap {
-  // NOTE: seems to not be being used?
-  // .job-score {
-  //   text-align: center;
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: center;
-  //   background-color: $teal-green;
-  //   border-radius: 4px;
-  //   width: 30%;
-  //   box-sizing: border-box;
-  //   p {
-  //     color: white;
-  //     text-transform: uppercase;
-  //     margin: 15px 0 -20px 0;
-  //     font-size: 16px;
-  //     &.grade {
-  //       font-size: 60px;
-  //       margin: -20px;
-  //       color: white;
-  //       text-align: center;
-  //     }
-  //   }
-  // }
+.report-card-header-wrap {
+  display: flex;
+  flex-direction: column;
+  background: $blue;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding-bottom: 15px;
 }
 
 .report-card-sliders {

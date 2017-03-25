@@ -1,9 +1,9 @@
-h1, h2, h3, h4, p, ul, li, a, label, input {
+h1, h2, h3, h4, p, ul, li, a, label, input, span {
  font-family: $brand-font, 'Arial', sans-serif;
  color: $text-gray;
 }
 
-p,  li, a, label, input  {
+p,  li, a, label, input, span {
   font-size: $standard-paragraph;
   font-weight: 300;
   color: $text-gray;
