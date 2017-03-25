@@ -61,11 +61,6 @@ class ReportCard extends React.Component {
           <h4 className="report-card-section-title">Policies</h4>
           <PolicyAreas {...this.props} />
         </div>
-        <div className="report-card-learn-more">
-          <Link to={{ pathname: `/bios/${bioguide_id}`, query }} style={{ textDecoration: 'none' }}>
-            <button className="view-rep-btn">More</button>
-          </Link>
-        </div>
       </div>
     );
   }
