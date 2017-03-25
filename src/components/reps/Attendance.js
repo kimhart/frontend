@@ -1,5 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
+import BasicDonutChart from '../charts/BasicDonutChart';
 
 class Attendance extends React.Component {
 
@@ -41,13 +42,7 @@ class Attendance extends React.Component {
 
     return (
       <div className="slider-container">
-        <div className="slider-labels">
-          <p>Attendance:</p>
-          <p>{daysAtWork}/{totalWorkDays} days</p>
-        </div>
-        <div className="slider-body">
-          <div className="slider-bar" style={this.getStyles()}></div>
-        </div>
+        <BasicDonutChart value={daysAtWork || 0} max={totalWorkDays || 150} height={150} width={150} label="Attendance" />
       </div>
     );
   }

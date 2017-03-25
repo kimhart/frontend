@@ -174,29 +174,24 @@
 
 .report-card-sliders {
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   .slider-container {
-    .slider-labels {
-      p {
-        font-size: 14px;
-        margin-bottom: 0;
-      }
-      ul {
-        text-align: left;
-      }
-    }
-    .slider-body {
-      border-radius: 8px;
-      background-color: #FFF;
-      width: 95%;
-      margin: 0 auto;
-      border: 1px solid $text-gray;
-      overflow: hidden;
-    }
-    .slider-bar {
-      border-radius-top-left: 8px;
-      border-radius-bottom-left: 8px;
-      height: 1em;
-    }
+    display: inline-block;
+  }
+  .slider-body {
+    border-radius: 8px;
+    background-color: #FFF;
+    width: 95%;
+    margin: 0 auto;
+    border: 1px solid $text-gray;
+    overflow: hidden;
+  }
+  .slider-bar {
+    border-radius-top-left: 8px;
+    border-radius-bottom-left: 8px;
+    height: 1em;
   }
 }
 

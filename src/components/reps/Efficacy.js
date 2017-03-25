@@ -1,5 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
+import BasicDonutChart from '../charts/BasicDonutChart';
 
 class Efficacy extends React.Component {
 
@@ -41,13 +42,7 @@ class Efficacy extends React.Component {
 
     return (
       <div className="slider-container">
-        <div className="slider-labels">
-          <p>Bills Created: {repSponsors}</p>
-          <p>Max: {maxSponsors}</p>
-        </div>
-        <div className="slider-body">
-          <div className="slider-bar" style={this.getStyles()}></div>
-        </div>
+        <BasicDonutChart value={repSponsors || 0} max={maxSponsors || 100} height={150} width={150} label="Bills" />
       </div>
     );
   }
