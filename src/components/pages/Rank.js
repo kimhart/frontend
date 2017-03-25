@@ -24,10 +24,33 @@ class Rank extends Component {
   getRankList = () => {
     let { attendance, participation, efficacy } = this.state;
     let { rank_attendance, rank_participation, rank_efficacy } = this.props.data;
-    if (attendance === 'active') return rank_attendance ? rank_attendance.map(rep => <RepRankCluster category="attendance" {...this.props} key={rep.bioguide_id} {...rep} />) : null;
-    if (participation === 'active') return rank_participation ? rank_participation.map(rep => <RepRankCluster category="participation" {...this.props} key={rep.bioguide_id} {...rep} />) : null;
-    if (efficacy === 'active') return rank_efficacy ? rank_efficacy.map(rep => <RepRankCluster category="efficacy" {...this.props} key={rep.bioguide_id} {...rep} />) : null;
+    if (attendance === 'active') return this.getResults({ category: 'attendance', data: rank_attendance });
+    if (participation === 'active') return this.getResults({ category: 'participation', data: rank_participation });
+    if (efficacy === 'active') return this.getResults({ category: 'efficacy', data: rank_efficacy });
     return false;
+  }
+
+  getResults = ({ category, data }) => {
+    if (!data) return null;
+    let rankDict = {};
+    data.forEach(datum => {
+      let { rank } = datum;
+      if (!rankDict[rank]) {
+        rankDict[rank] = [datum];
+      }
+      else {
+        rankDict[rank].push(datum);
+      }
+    })
+    return Object.keys(rankDict).map(key => {
+      let reps = rankDict[key];
+      return (
+        <div>
+          <p className="rep-rank-number">{key}.</p>
+          { reps.map(rep => <RepRankCluster category={category} {...this.props} key={rep.bioguide_id} {...rep} />) }
+        </div>
+      );
+    });
   }
 
   getActiveCategory = () => {
@@ -67,7 +90,7 @@ class Rank extends Component {
 
   getRankDirection = () => {
     // on load its best to worst
-    // get the copy and display 
+    // get the copy and display
     return " best to worst";
   }
 
