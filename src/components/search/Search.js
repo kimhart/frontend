@@ -2,6 +2,7 @@ import React from 'react';
 import Relay from 'react-relay';
 import _ from 'lodash';
 import { isLoading } from '../../utils/Utils';
+import SearchResult from './SearchResult';
 
 class Search extends React.Component {
 
@@ -36,21 +37,11 @@ class Search extends React.Component {
     );
   }
 
-  getPhotoSource = (photo_url) => {
-    if (!!photo_url && photo_url.toLowerCase() !== 'none') {
-      return `https://www.${photo_url}`;
-    } return './img/bio_images/placeholder.png';
-  }
-
   getResultItems = (results) => {
     return results.map((result, i) => {
       let { photo_url, name, state } = result;
-      let fullName = name.split(',').reverse().join().replace(/\,/g,' ');
       return (
-        <li key={`${name}${i}`} className="search-result-list-item">
-          <div className="search-result-list-item-photo" style={{ background: `url(${this.getPhotoSource(photo_url)}) no-repeat center 10% / cover`}} />
-          <div className="search-result-list-item-name">{ fullName }</div>
-        </li>
+        <SearchResult {...this.props} key={`${name}${i}`} {...result} />
       );
     })
   }
@@ -87,6 +78,7 @@ export default Relay.createContainer(Search, {
         state
         photo_url
       }
+      ${SearchResult.getFragment('data')}
     }
   `
   }
