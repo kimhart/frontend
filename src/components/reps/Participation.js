@@ -1,5 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
+import BasicDonutChart from '../charts/BasicDonutChart';
 
 class Participation extends React.Component {
 
@@ -41,13 +42,7 @@ class Participation extends React.Component {
 
     return (
       <div className="slider-container">
-        <div className="slider-labels">
-          <p>Participation:</p>
-          <p>{repVotes}/{totalVotes} votes</p>
-        </div>
-        <div className="slider-body">
-          <div className="slider-bar" style={this.getStyles()}></div>
-        </div>
+        <BasicDonutChart value={repVotes || 0} max={totalVotes || 100} height={150} width={150} label="Votes" />
       </div>
     );
   }

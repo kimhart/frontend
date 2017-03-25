@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import RepInfoCluster from './../reps/RepInfoCluster';
 import ReportCard from './../reps/ReportCard';
 import { UserUtils } from './../../utils/Utils';
-
+import Modal from 'react-modal';
 
 class DashboardPage extends React.Component {
 
@@ -26,7 +26,15 @@ class DashboardPage extends React.Component {
   getReportCards = () => {
     let { activeReportCard } = this.state;
     let { reps } = this.props.data;
-    return reps ? reps.map(rep => <ReportCard {...this.props} {...rep} key={`reportcard_${rep.bioguide_id}`} active={rep.bioguide_id === activeReportCard} close={() => this.setState({ activeReportCard: null })} />) : null;
+    return reps
+    ? reps.map(rep => {
+      return (
+        <Modal key={`reportcard_${rep.bioguide_id}`} contentLabel={`${rep.name} modal`} className={`modal-card`} isOpen={rep.bioguide_id === activeReportCard} style={{ overflowY: 'scroll' }}>
+          <ReportCard {...this.props} {...rep} close={() => this.setState({ activeReportCard: null })} />
+        </Modal>
+      );
+    })
+    : null;
   }
 
   getActiveReportCard = () => {
