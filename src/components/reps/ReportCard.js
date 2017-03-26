@@ -52,29 +52,17 @@ class ReportCard extends React.Component {
   getCardContent = () => {
     let { contact, bio } = this.state;
     if (contact || bio) {
-      let { phone, twitter_handle, facebook, address } = this.props;
-      let buttons = { contact, bio };
-      console.log(this.props);
-      let buttonContent = {
-        contact: (
-          <ul className="report-card-contact-list">
-            <li className="report-card-contact-list-item">
-              <span className="report-card-contact-list-item-text">{ phone }</span>
+      let { phone, twitter_handle, facebook, address, bio_text } = this.props;
+      let list = contact ? [ phone, twitter_handle, facebook, address ] : [ bio_text ];
+      return (
+        <ul className="report-card-contact-list">
+          { list.map((item, index) => (
+            <li className="report-card-contact-list-item" key={`${item}${index}`}>
+              <span className="report-card-contact-list-item-text">{ item }</span>
             </li>
-            <li className="report-card-contact-list-item">
-              <span className="report-card-contact-list-item-text">{ twitter_handle }</span>
-            </li>
-            <li className="report-card-contact-list-item">
-              <span className="report-card-contact-list-item-text">{ facebook }</span>
-            </li>
-            <li className="report-card-contact-list-item">
-              <span className="report-card-contact-list-item-text">{ address }</span>
-            </li>
-          </ul>
-        ),
-        bio: 'bio',
-      }
-      return buttonContent[Object.keys(buttons).find(key => buttons[key])];
+          ))}
+        </ul>
+      );
     }
 
     return (
