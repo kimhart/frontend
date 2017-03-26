@@ -6,7 +6,7 @@ import Participation from './Participation';
 import Efficacy from './Efficacy';
 import MembershipStats from './MembershipStats';
 import PolicyAreas from './PolicyAreas';
-import ModalCard from '../cards/ModalCard';
+import { IconClose } from '../icons/Icons';
 
 class ReportCard extends React.Component {
 
@@ -40,32 +40,28 @@ class ReportCard extends React.Component {
     let fullName = name.split(',').reverse().join().replace(/\,/g,' ');
 
     return (
-      <ModalCard active={this.props.active}>
-        <div className="report-card-photo-wrap">
-          <div className="report-card-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}} />
-          <div className="report-card-close" onClick={() => this.props.close()}><p>x</p></div>
+      <div className="report-card-info">
+        <div className="report-card-header-wrap">
+          <div className="report-card-photo-wrap">
+            <div className="report-card-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}} />
+            <div className="report-card-close" onClick={() => this.props.close()}><IconClose width={15} height={15} stroke="#4990E2" strokeWidth="2" /></div>
+          </div>
+          <span className="report-card-name">{ fullName }</span>
+          <span className="report-card-role">{ state } &bull; { chamber.replace(/\b\w/g, l => l.toUpperCase()) } &bull; {this.formatParty(party)}</span>
+          { leadership_position !== "None" && <span className="report-card-leadership">{leadership_position}</span> }
         </div>
-        <p className="report-card-name">{fullName}</p>
-        <p className="report-card-role">{ chamber.replace(/\b\w/g, l => l.toUpperCase()) } ({this.formatParty(party)}), { state }</p>
-        { leadership_position !== "None" && <p className="leadership">{leadership_position}</p> }
         <div className="report-card-metrics-wrap">
+          <h4 className="report-card-section-title">Participation Scores</h4>
           <div className="report-card-sliders">
-            <h4 className="report-card-section-title">What's their track record?</h4>
             <Attendance {...this.props} />
             <Participation {...this.props} />
-            <h4 className="report-card-section-title">How do they stack up?</h4>
-            <p>{this.getFirstName()}'s contributions compared to the max contributions by other reps:</p>
             <Efficacy {...this.props} />
             <MembershipStats {...this.props} />
-            <PolicyAreas {...this.props} />
           </div>
+          <h4 className="report-card-section-title">Policies</h4>
+          <PolicyAreas {...this.props} />
         </div>
-        <div className="report-card-learn-more">
-          <Link to={{ pathname: `/bios/${bioguide_id}`, query }} style={{ textDecoration: 'none' }}>
-            <button className="view-rep-btn">More</button>
-          </Link>
-        </div>
-      </ModalCard>
+      </div>
     );
   }
 }
