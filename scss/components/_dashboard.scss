@@ -233,7 +233,13 @@
   list-style: none;
   padding: 20px;
   border-bottom: 1px solid $light-gray;
+  text-transform: capitalize;
   &:last-child {
     border-bottom: 0;
   }
+}
+
+.report-card-bio-list-item {
+  padding: 10px;
+  text-transform: capitalize;
 }

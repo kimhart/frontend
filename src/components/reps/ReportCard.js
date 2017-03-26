@@ -53,14 +53,15 @@ class ReportCard extends React.Component {
     let { contact, bio } = this.state;
     if (contact || bio) {
       let { phone, twitter_handle, facebook, address, bio_text } = this.props;
-      let list = contact ? [ phone, twitter_handle, facebook, address ] : [ bio_text ];
+      let list = contact ? [ phone, twitter_handle, facebook, address ] : bio_text.split('; ');
       return (
-        <ul className="report-card-contact-list">
-          { list.map((item, index) => (
-            <li className="report-card-contact-list-item" key={`${item}${index}`}>
-              <span className="report-card-contact-list-item-text">{ item }</span>
-            </li>
-          ))}
+        <ul className={`report-card-${contact ? 'contact' : 'bio'}-list`}>
+          { list.map((item, index) => !['none', '#facebook'].includes(item.toLowerCase())
+            ? (<li className={`report-card-${contact ? 'contact' : 'bio'}-list-item`} key={`${item}${index}`}>
+                <span className="report-card-contact-list-item-text">{ item }</span>
+              </li>)
+            : null
+          )}
         </ul>
       );
     }
