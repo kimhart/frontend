@@ -36,3 +36,25 @@ h3.headline {
   font-weight: 400;
   text-align: center;
 }
+
+.question-mark-circle {
+  background-color: lighten($blue-gray, 10%);
+  width: 28px;
+  height: 28px;
+  margin: 0 0 0 8px;
+  box-sizing: border-box;
+  border-radius: 14px;
+  display: inline-flex;
+  justify-content: center;
+  align-content: center;
+  .question-mark {
+    color: #FFF;
+    font-weight: 700;
+    font-size: 18px;
+    align-self: center;
+  }
+}
+
+
+
+

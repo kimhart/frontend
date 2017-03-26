@@ -59,7 +59,7 @@ class ReportCard extends React.Component {
           </div>
         </div>
         <div className="report-card-metrics-wrap">
-          <h4 className="report-card-section-title">Participation Scores</h4>
+          <h4 className="report-card-section-title">Participation Scores<span className="question-mark-circle"><p className="question-mark">?</p></span></h4>
           <div className="report-card-sliders">
             <Attendance {...this.props} />
             <Participation {...this.props} />
