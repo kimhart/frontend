@@ -9,9 +9,9 @@ class Rank extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      attendance: 'hidden',
-      participation: 'hidden',
-      efficacy: 'active'
+      attendance: false,
+      participation: false,
+      efficacy: true
     };
     props.relay.setVariables({ chamber: 'house' }, ({ aborted, done, error }) => {
       if (aborted || done || error) {
@@ -24,17 +24,20 @@ class Rank extends Component {
   getRankList = () => {
     let { attendance, participation, efficacy } = this.state;
     let { rank_attendance, rank_participation, rank_efficacy } = this.props.data;
-    if (attendance === 'active') return rank_attendance ? rank_attendance.map(rep => <RepRankCluster category="attendance" {...this.props} key={rep.bioguide_id} {...rep} />) : null;
-    if (participation === 'active') return rank_participation ? rank_participation.map(rep => <RepRankCluster category="participation" {...this.props} key={rep.bioguide_id} {...rep} />) : null;
-    if (efficacy === 'active') return rank_efficacy ? rank_efficacy.map(rep => <RepRankCluster category="efficacy" {...this.props} key={rep.bioguide_id} {...rep} />) : null;
+    if (attendance) return rank_attendance ? rank_attendance.map(rep => 
+      <RepRankCluster category="attendance" {...this.props} {...rep} key={rep.bioguide_id} />) : null;
+    if (participation) return rank_participation ? rank_participation.map(rep => 
+      <RepRankCluster category="participation" {...this.props} {...rep} key={rep.bioguide_id} />) : null;
+    if (efficacy) return rank_efficacy ? rank_efficacy.map(rep => 
+      <RepRankCluster category="efficacy" {...this.props} {...rep} key={rep.bioguide_id} />) : null;
     return false;
   }
 
   getActiveCategory = () => {
     let { attendance, participation, efficacy } = this.state;
-    if (attendance === 'active') return 'attendance';
-    if (participation === 'active') return 'votes';
-    if (efficacy === 'active') return 'bills';
+    if (attendance) return 'attendance';
+    if (participation) return 'votes';
+    if (efficacy) return 'bills';
     return false;
   }
 
@@ -42,17 +45,16 @@ class Rank extends Component {
     let { pendingVariables, variables } = this.props.relay;
     if (pendingVariables && pendingVariables.chamber) {
       return pendingVariables.chamber;
-    }
-    else {
+    } else {
       return variables.chamber;
     }
   }
 
   getExplainerCopy = () => {
     let { attendance, participation, efficacy } = this.state;
-    if (attendance === 'active') return "Days at work compared to the total work days this term.";
-    if (participation === 'active') return "Votes cast compared to the total votes held this term.";
-    if (efficacy === 'active') return "Bills created compared to the most bills created by a single rep this term.";
+    if (attendance) return 'Days at work compared to the total work days this term.';
+    if (participation) return 'Votes cast compared to the total votes held this term.';
+    if (efficacy) return 'Bills created compared to the most bills created by a single rep this term.';
     return false;
   }
 
@@ -65,32 +67,24 @@ class Rank extends Component {
     isLoading(true);
   }
 
-  getRankDirection = () => {
-    // on load its best to worst
-    // get the copy and display 
-    return " best to worst";
-  }
-
-
   render() {
     return (
       <div className="rank-wrap">
         <div className="rank-controls-wrap">
           <div className="rank-category-wrap">
-            <p className={`rank-category-item ${this.getActiveCategory() === 'bills' ? ' active' : ''}`} onClick={() => this.setState({ attendance: 'hidden', participation: 'hidden', efficacy: 'active' })}>Bills</p>
-            <p className={`rank-category-item ${this.getActiveCategory() === 'attendance' ? ' active' : ''}`} onClick={() => this.setState({ attendance: 'active', participation: 'hidden', efficacy: 'hidden' })}>Attendance</p>
-            <p className={`rank-category-item ${this.getActiveCategory() === 'votes' ? ' active' : ''}`} onClick={() => this.setState({ attendance: 'hidden', participation: 'active', efficacy: 'hidden' })}>Votes</p>
+            <p className={`rank-category-item ${this.getActiveCategory() === 'bills' ? 'active' : ''}`} onClick={() => this.setState({ attendance: false, participation: false, efficacy: true })}>Bills</p>
+            <p className={`rank-category-item ${this.getActiveCategory() === 'attendance' ? 'active' : ''}`} onClick={() => this.setState({ attendance: true, participation: false, efficacy: false })}>Attendance</p>
+            <p className={`rank-category-item ${this.getActiveCategory() === 'votes' ? 'active' : ''}`} onClick={() => this.setState({ attendance: false, participation: true, efficacy: false })}>Votes</p>
           </div>
           <div className="rank-category-explainer-wrap">
             <p className="rank-category-explainer-copy">{this.getExplainerCopy()}</p>
           </div>
           <div className="rank-toggle-wrap">
-            <p className={`rank-toggle-chamber ${this.getActiveChamber() === 'house' ? ' active' : ''}`} onClick={() => this.selectChamber('house')}>House</p>
-            <p className={`rank-toggle-chamber ${this.getActiveChamber() === 'senate' ? ' active' : ''}`} onClick={() => this.selectChamber('senate')}>Senate</p>
+            <p className={`rank-toggle-chamber ${this.getActiveChamber() === 'house' ? 'active' : ''}`} onClick={() => this.selectChamber('house')}>House</p>
+            <p className={`rank-toggle-chamber ${this.getActiveChamber() === 'senate' ? 'active' : ''}`} onClick={() => this.selectChamber('senate')}>Senate</p>
           </div>
         </div>
         <div className="rank-list-wrap">
-          <p className="rank-list-ranked-direction">Ranked <span className="rank-list-ranked-direction-toggle">{this.getRankDirection()}</span></p>
           {this.getRankList()}
         </div>
       </div>

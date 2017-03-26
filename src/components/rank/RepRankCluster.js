@@ -11,11 +11,20 @@ class RepRankCluster extends React.Component {
     let { photo_url } = this.props;
     if (!!photo_url && photo_url.toLowerCase() !== 'none') {
       return `https://www.${photo_url}`;
-    } return './img/bio_images/placeholder.png';
+    } else {
+      return './img/bio_images/placeholder.png';
+    }
   }
 
-  // these will eventually have to include all possible parties
-  getShortParty = (party) => party === 'Democratic' ? '(D)' : '(R)';
+  getOrdinal = (n) => {
+    if ((parseFloat(n) == parseInt(n)) && !isNaN(n)) {
+      let s = ['th','st','nd','rd'],
+      v = n % 100;
+      return n + (s[(v-20)%10] || s[v] || s[0]);
+    } else {
+      return n;
+    } 
+  }
 
   getBarFill = (category) => {
     let { percent_at_work, percent_votes, sponsor_percent } = this.props;
@@ -25,30 +34,35 @@ class RepRankCluster extends React.Component {
     return false;
   }
 
+  getShortParty = (party) => party === 'Democratic' ? '(D)' : '(R)';
+
+
   render() {
 
     let { name, party, state, category, days_at_work, total_work_days, percent_at_work, rep_sponsor, sponsor_percent, max_sponsor, percent_votes, rep_votes, total_votes, rank } = this.props;
-    console.log(rank);
     let fullName = name ? name.split(',').reverse().join().replace(/\,/g,' ') : 'John Doe';
     let attendanceMetrics = category === 'attendance'  ? `${days_at_work}/${total_work_days}` : null;
     let participationMetrics = category === 'participation' ? `${rep_votes}/${total_votes}` : null;
     let efficacyMetrics = category === 'efficacy' ? `${rep_sponsor}/${max_sponsor}` : null;
     return (
-      <div className="rep-rank-cluster-wrap">
-        <p className="rep-rank-number">{rank}.</p>
-        <div className="rep-rank-headshot" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}}>
+      <div className="rep-rank-list-wrap">
+        <div className="rep-rank-number-wrap">
+          <p className="rep-rank-number">{this.getOrdinal(rank)}</p>
         </div>
-        <div className="rep-rank-stack">
-          <div className="rep-rank-stats">
-            <p className="rep-rank-name">{fullName} {this.getShortParty(party)}</p>
-            <p className="rep-rank-metrics">
-              {attendanceMetrics}
-              {participationMetrics}
-              {efficacyMetrics}
-            </p>
-          </div>
-          <div className="rep-rank-stats-bar">
-            <div className="rep-rank-stats-fill" style={{ backgroundColor: '#47E5BC', width: `${this.getBarFill(category)}%`}}></div>
+        <div className="rep-rank-cluster-wrap">
+          <div className="rep-rank-headshot" style={{background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}}></div>
+          <div className="rep-rank-stack">
+            <div className="rep-rank-stats">
+              <p className="rep-rank-name">{fullName} {this.getShortParty(party)}, {state}</p>
+              <p className="rep-rank-metrics">
+                {attendanceMetrics}
+                {participationMetrics}
+                {efficacyMetrics}
+              </p>
+            </div>
+            <div className="rep-rank-stats-bar">
+              <div className="rep-rank-stats-fill" style={{ backgroundColor: '#47E5BC', width: `${this.getBarFill(category)}%`}}></div>
+            </div>
           </div>
         </div>
       </div>
