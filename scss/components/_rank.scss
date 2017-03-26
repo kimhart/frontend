@@ -77,7 +77,8 @@
 .rank-list-ranked-direction {
   text-align: center;
   width: 100%;
-  padding: 20px;
+  padding: 10px 20px;
+  box-sizing: border-box;
 }
 
 .rank-list-ranked-direction-toggle {
@@ -86,6 +87,14 @@
 }
 
 .rep-rank-cluster-wrap {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  margin: 20px 10px;
+}
+
+.rep-rank-cluster {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -140,11 +149,37 @@
   border-radius: 8px;
 }
 
+.rep-rank-number-wrap {
+  border-top: 1px solid $light-gray;
+}
+
 .rep-rank-number {
   font-size: 18px;
-  padding: 10px 10px 10px 0;
+  padding: 0 10px;
   font-weight: 600;
   color: $blue;
 }
+
+.rank-filter-wrap {
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px;
+  box-sizing: border-box;
+  margin-top: 20px;
+}
+
+.filter, .sort {
+  border: 1px solid $blue;
+  color: $blue;
+  font-size: 14px;
+  box-shadow: 0 0 2px $blue-gray;
+  background-color: #FFF;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  flex-grow: 1;
+}
+
+
 
 
