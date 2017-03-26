@@ -82,7 +82,9 @@ export default Relay.createContainer(DashboardPage, {
           district
           facebook
           leadership_position
+          letter_grade
           name
+          number_grade
           party
           phone
           photo_url
