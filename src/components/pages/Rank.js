@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Relay from 'react-relay';
 import { Link } from 'react-router';
 import RepRankCluster from '../rank/RepRankCluster';
+import Search from '../search/Search';
 import { isLoading } from '../../utils/Utils';
 
 class Rank extends Component {
@@ -44,6 +45,7 @@ class Rank extends Component {
     })
     return Object.keys(rankDict).map(key => {
       let reps = rankDict[key];
+      let { attendance, participation, efficacy } = this.state;
       return (
         <div>
           <p className="rep-rank-number">{key}.</p>
@@ -103,6 +105,10 @@ class Rank extends Component {
             <p className={`rank-toggle-chamber ${this.getActiveChamber() === 'house' ? 'active' : ''}`} onClick={() => this.selectChamber('house')}>House</p>
             <p className={`rank-toggle-chamber ${this.getActiveChamber() === 'senate' ? 'active' : ''}`} onClick={() => this.selectChamber('senate')}>Senate</p>
           </div>
+        </div>
+        <div className="rank-filter-wrap">
+          <button className="sort">Sort</button>
+          <button className="filter">Filter</button>
         </div>
         <div className="rank-list-wrap">
           {this.getRankList()}

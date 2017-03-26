@@ -160,7 +160,25 @@
   color: $blue;
 }
 
+.rank-filter-wrap {
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px;
+  box-sizing: border-box;
+  margin-top: 20px;
+}
 
+.filter, .sort {
+  border: 1px solid $blue;
+  color: $blue;
+  font-size: 14px;
+  box-shadow: 0 0 2px $blue-gray;
+  background-color: #FFF;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  flex-grow: 1;
+}
 
 
 
