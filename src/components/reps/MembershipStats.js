@@ -10,29 +10,6 @@ class MembershipStats extends React.Component {
     props.relay.setVariables({ bioguide_id: props.bioguide_id, chamber: props.chamber });
   }
 
-  getStyles = () => {
-    let membershipStats = this.props.data.membership_stats;
-    const membershipPercent = membershipStats ? (membershipStats.percent * 100) : null;
-    let color;
-    let darkerColor;
-
-    if ( membershipPercent < 50) {
-      color = ' #D95852';
-      darkerColor = '#D05350';
-    } else if ( membershipPercent > 50 &&  membershipPercent < 75) {
-      color = '#f4c542';
-      darkerColor = '#D9AF3B';
-    } else if ( membershipPercent > 75) {
-      color = '#93db76';
-      darkerColor = '#89CB71';
-    };
-    let sliderStyle = {
-      background: `linear-gradient(${darkerColor}, ${color}, ${darkerColor})`,
-      width: `${membershipPercent}%`
-    };
-    return sliderStyle;
-  }
-
   render() {
     const membershipStats = this.props.data.membership_stats;
     const numCommittees = membershipStats ? membershipStats.num_committees : null;

@@ -49,6 +49,14 @@ class ReportCard extends React.Component {
           <span className="report-card-name">{ fullName }</span>
           <span className="report-card-role">{ state } &bull; { chamber.replace(/\b\w/g, l => l.toUpperCase()) } &bull; {this.formatParty(party)}</span>
           { leadership_position !== "None" && <span className="report-card-leadership">{leadership_position}</span> }
+          <div className="report-card-buttons-wrap">
+            <button className="contact-btn">Contact</button>
+            <button className="bio-btn">Bio</button>
+          </div>
+          <div className="card-toggle-wrap">
+            <p className="card-toggle-stats active">Stats</p>
+            <p className="card-toggle-stats">Beliefs</p>
+          </div>
         </div>
         <div className="report-card-metrics-wrap">
           <h4 className="report-card-section-title">Participation Scores</h4>

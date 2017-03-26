@@ -20,7 +20,7 @@ class RepInfoCluster extends React.Component {
   formatParty = (party) => party === 'Democratic' ? 'Democrat' : party;
 
   render() {
-    let { name, chamber, party, onClick } = this.props;
+    let { name, chamber, party, letter_grade, onClick } = this.props;
     // NOTE: null checking
     let fullName = name ? name.split(',').reverse().join().replace(/\,/g,' ') : 'John Doe';
 
@@ -31,6 +31,9 @@ class RepInfoCluster extends React.Component {
           <div className="rep-info-details">
             <p className="rep-info-name">{fullName}</p>
             <p className="rep-info-role">{chamber.replace(/\b\w/g, l => l.toUpperCase())} {this.formatParty(party)}</p>
+          </div>
+          <div className="rep-letter-grade-wrap">
+            <p className="rep-letter-grade">{letter_grade}</p>
           </div>
         </div>
       </div>

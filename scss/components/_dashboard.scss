@@ -50,10 +50,12 @@
   border-radius: 15px;
   padding: 12px;
   height: 120px;
-  // cursor: pointer;
+  cursor: pointer;
   transition: box-shadow 0.1s linear;
+  box-shadow: 0 0 10px 3px lighten($blue-gray, 20%);
+  -webkit-box-shadow: 0 0 10px 3px lighten($blue-gray, 20%);
   &:active {
-    box-shadow: 0 0 25px 1px $blue;
+    box-shadow: 0 0 10px 3px $blue;
     -webkit-box-shadow: 0 0 25px 1px $blue;
   }
 }
@@ -132,6 +134,7 @@
 
 .report-card-section-title {
   color: $soft-red;
+  font-size: 20px;
 }
 
 .report-card-close {
@@ -163,7 +166,6 @@
   background: $blue;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-  padding-bottom: 15px;
 }
 
 .report-card-sliders {
@@ -201,4 +203,23 @@
     border: none;
     border-radius: 4px;
   }
+}
+
+.rep-letter-grade-wrap {
+  width: 50px;
+  height: 50px;
+  border: 3px solid $blue;
+  box-sizing: border-box;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  flex-shrink: 1;
+}
+
+.rep-letter-grade {
+  font-size: 26px;
+  color: $blue;
+  font-weight: 400;
 }
