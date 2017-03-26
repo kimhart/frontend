@@ -39,7 +39,7 @@ class RepRankCluster extends React.Component {
         <div className="rep-rank-headshot" style={{background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}}></div>
         <div className="rep-rank-stack">
           <div className="rep-rank-stats">
-            <p className="rep-rank-name">{fullName} {this.getShortParty(party)}, {state}</p>
+            <p className="rep-rank-name">{fullName} {this.getShortParty(party)}</p>
             <p className="rep-rank-metrics">
               {attendanceMetrics}
               {participationMetrics}
