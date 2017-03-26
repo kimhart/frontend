@@ -223,3 +223,17 @@
   color: $blue;
   font-weight: 400;
 }
+
+.report-card-contact-list {
+  margin: 0;
+  padding: 0;
+}
+
+.report-card-contact-list-item {
+  list-style: none;
+  padding: 20px;
+  border-bottom: 1px solid $light-gray;
+  &:last-child {
+    border-bottom: 0;
+  }
+}
