@@ -10,31 +10,6 @@ class Attendance extends React.Component {
     props.relay.setVariables({ bioguide_id: props.bioguide_id, congress: "current", chamber: props.chamber });
   }
 
-  getStyles = () => {
-    let { attendance } = this.props.data;
-    const atWorkPercent = attendance ? (attendance.percent_at_work * 100) : null;
-    let color;
-    let darkerColor;
-
-    if (atWorkPercent < 50) {
-      color = ' #D95852';
-      darkerColor = '#D05350';
-    } else if (atWorkPercent > 50 && atWorkPercent < 75) {
-      color = '#f4c542';
-      darkerColor = '#D9AF3B';
-    } else if (atWorkPercent > 75) {
-      color = '#93db76';
-      darkerColor = '#89CB71';
-    };
-
-    let sliderStyle = {
-      background: `linear-gradient(${darkerColor}, ${color}, ${darkerColor})`,
-      width: `${atWorkPercent}%`
-    };
-
-    return sliderStyle;
-  }
-
   render() {
     const { attendance } = this.props.data;
     const daysAtWork = attendance ? attendance.days_at_work : null;
