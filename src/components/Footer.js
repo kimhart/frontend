@@ -2,7 +2,7 @@ import React from 'react';
 import Relay from 'react-relay';
 import { Router, Route, IndexRoute, IndexLink, Link, browserHistory, applyRouterMiddleware } from 'react-router';
 import useRelay from 'react-router-relay';
-
+import { UserUtils } from '../utils/Utils';
 
 class Footer extends React.Component {
 
@@ -11,6 +11,11 @@ class Footer extends React.Component {
     if (location.href.includes('rank')) return 'rank';
     if (location.href.includes('explore')) return 'explore';
     return false;
+  }
+
+  logOut = () => {
+    UserUtils.logOut();
+    this.props.update();
   }
 
   render() {
@@ -28,8 +33,8 @@ class Footer extends React.Component {
         <div className={`footer-nav ${this.getActiveTab() === 'search' ? ' active' : ''}`}>
           <Link to="/search">Search</Link>
         </div>
-        <div className={`footer-nav ${this.getActiveTab() === 'more' ? ' active' : ''}`}>
-          <Link to="/search">More</Link>
+        <div className={`footer-nav ${this.getActiveTab() === 'more' ? ' active' : ''}`} onClick={() => this.logOut()}>
+          <Link to="/" style={{ pointerEvents: 'none' }}>Logout</Link>
         </div>
       </footer>
     );
