@@ -23,7 +23,7 @@ class BasicDonutChart extends React.Component {
     .attr('transform', `translate(${width / 2},${height / 2})`);
 
     let g = svg.selectAll('.arc')
-    .data(pie([{ value: max - value, background: true }, { value, background: false }]))
+    .data(pie([{ value, background: false }, { value: max - value, background: true }]))
     .enter().append('g')
     .attr('class', ({ data }) => {
       return `arc ${data.background ? 'background' : 'value'}`

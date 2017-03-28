@@ -10,7 +10,7 @@ class DashboardPage extends React.Component {
 
   constructor(props) {
     super(props);
-    let user = UserUtils.getUser();
+    let { user } = props;
     this.state = {
       user,
       activeReportCard: null

@@ -12,7 +12,11 @@ class ReportCard extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      contact: false,
+      bio: false,
+      tab: 'stats'
+    };
     props.relay.setVariables({ bioguide_id: props.bioguide_id, chamber: props.chamber });
   }
 
@@ -34,9 +38,52 @@ class ReportCard extends React.Component {
     return lastName;
   }
 
+  getMetricsTabs = () => {
+    let { tab, contact, bio } = this.state;
+    if (contact || bio) return null;
+    return (
+      <div className="card-toggle-wrap">
+        <p className={`card-toggle-stats${tab == 'stats' ? ' active' : ''}`} onClick={() => this.setState({ tab: 'stats' })}>Stats</p>
+        <p className={`card-toggle-stats${tab == 'beliefs' ? ' active' : ''}`} onClick={() => this.setState({ tab: 'beliefs' })}>Beliefs</p>
+      </div>
+    );
+  }
+
+  getCardContent = () => {
+    let { contact, bio } = this.state;
+    if (contact || bio) {
+      let { phone, twitter_handle, facebook, address, bio_text } = this.props;
+      let list = contact ? [ phone, twitter_handle, facebook, address ] : bio_text.split('; ');
+      return (
+        <ul className={`report-card-${contact ? 'contact' : 'bio'}-list`}>
+          { list.map((item, index) => !['none', '#facebook'].includes(item.toLowerCase())
+            ? (<li className={`report-card-${contact ? 'contact' : 'bio'}-list-item`} key={`${item}${index}`}>
+                <span className="report-card-contact-list-item-text">{ item }</span>
+              </li>)
+            : null
+          )}
+        </ul>
+      );
+    }
+
+    return (
+      <div className="report-card-metrics-wrap">
+        <h4 className="report-card-section-title">Participation Scores<span className="question-mark-circle"><p className="question-mark">?</p></span></h4>
+        <div className="report-card-sliders">
+          <Attendance {...this.props} />
+          <Participation {...this.props} />
+          <Efficacy {...this.props} />
+          <MembershipStats {...this.props} />
+        </div>
+        <h4 className="report-card-section-title">Policies</h4>
+        <PolicyAreas {...this.props} />
+      </div>
+    );
+  }
+
   render() {
-    let { address, bio_text, bioguide_id, chamber, congress, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected, data } = this.props;
-    let query = { address, bio_text, bioguide_id, chamber, congress, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected, data };
+    let { bioguide_id, chamber, leadership_position, name, party, state, data } = this.props;
+    let { tab, contact, bio } = this.state;
     let fullName = name.split(',').reverse().join().replace(/\,/g,' ');
 
     return (
@@ -50,25 +97,12 @@ class ReportCard extends React.Component {
           <span className="report-card-role">{ state } &bull; { chamber.replace(/\b\w/g, l => l.toUpperCase()) } &bull; {this.formatParty(party)}</span>
           { leadership_position !== "None" && <span className="report-card-leadership">{leadership_position}</span> }
           <div className="report-card-buttons-wrap">
-            <button className="contact-btn">Contact</button>
-            <button className="bio-btn">Bio</button>
+            <button className={`contact-btn${contact ? ' active' : ''}`} onClick={() => this.setState({ contact: !contact, bio: false })}>Contact</button>
+            <button className={`bio-btn${bio ? ' active' : ''}`} onClick={() => this.setState({ bio: !bio, contact: false })}>Bio</button>
           </div>
-          <div className="card-toggle-wrap">
-            <p className="card-toggle-stats active">Stats</p>
-            <p className="card-toggle-stats">Beliefs</p>
-          </div>
+          { this.getMetricsTabs() }
         </div>
-        <div className="report-card-metrics-wrap">
-          <h4 className="report-card-section-title">Participation Scores<span className="question-mark-circle"><p className="question-mark">?</p></span></h4>
-          <div className="report-card-sliders">
-            <Attendance {...this.props} />
-            <Participation {...this.props} />
-            <Efficacy {...this.props} />
-            <MembershipStats {...this.props} />
-          </div>
-          <h4 className="report-card-section-title">Policies</h4>
-          <PolicyAreas {...this.props} />
-        </div>
+        { this.getCardContent() }
       </div>
     );
   }
