@@ -50,7 +50,7 @@ class Search extends React.Component {
     return (
       <div className="search-wrap">
         <div className="search-bar">
-          <input type="text" className="search-input-text" id="search-input-text" ref={c => this.searchBox = c} onChange={this.handleSearch} />
+          <input type="text" className="search-input-text" placeholder="Search" id="search-input-text" ref={c => this.searchBox = c} onChange={this.handleSearch} />
           <img className="search-input-icon" src="./img/search.svg" />
         </div>
         { this.getResults('senate') }
