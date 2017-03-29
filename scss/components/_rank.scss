@@ -168,17 +168,43 @@
   margin-top: 20px;
 }
 
-.filter, .sort {
-  border: 1px solid $blue;
-  color: $blue;
-  font-size: 14px;
-  box-shadow: 0 0 2px $blue-gray;
-  background-color: #FFF;
+.filter-input-text {
+  background: #FFF;
+  color: #5E6F77;
+  margin: 0;
+  border: 1px solid #5E6F77;
   border-radius: 5px;
   padding: 5px;
-  margin: 5px;
-  flex-grow: 1;
+  box-sizing: border-box;
+  width: 98%;
+  font-size: 16px;
+  position: relative;
 }
+
+.filter-input-icon {
+  position: absolute;
+  right: 10px;
+  width: 20px;
+  padding: 5px;
+  fill: $blue;
+}
+
+.rank-sort-wrap {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  .rank-sort-btn {
+    border: 1px solid $blue;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #FFF;
+    color: $blue;
+    width: 25%;
+    margin: 0 10px;
+  }
+}
+
 
 
 

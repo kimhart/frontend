@@ -56,12 +56,12 @@ class Login extends React.Component {
               <div id="login-form" className="login-form">
                 <input type="email" placeholder="Email" required ref={(c) => this._email = c} />
                 <input type="password" placeholder="Password" required ref={(c) => this._password = c} />
-                <button type="button" onClick={this._handleSubmit}>Login</button>
+                <button className="login-btn" type="button" onClick={this._handleSubmit}>Login</button>
               </div>
               { error &&
                 <p className="error">{ error }</p>
               }
-              <Link className="standard-link" to="/signup">Create an Account</Link>
+              <Link className="standard-link signup-link" to="/signup">Create an Account</Link>
             </div>
           </div>
         </div>

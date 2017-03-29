@@ -89,6 +89,10 @@ class Rank extends Component {
     isLoading(true);
   }
 
+  sortRank = () => {
+
+  }
+
   render() {
     return (
       <div className="rank-wrap">
@@ -106,10 +110,15 @@ class Rank extends Component {
             <p className={`rank-toggle-chamber ${this.getActiveChamber() === 'senate' ? 'active' : ''}`} onClick={() => this.selectChamber('senate')}>Senate</p>
           </div>
         </div>
-        <div className="rank-filter-wrap">
-          <button className="sort">Sort</button>
-          <button className="filter">Filter</button>
+        <div className="rank-sort-wrap">
+          <button className="rank-sort-btn" onClick={this.sortRank()}>Sort</button>
         </div>
+        {/* search functionality???
+        <div className="rank-filter-wrap">
+          <input type="text" className="filter-input-text" placeholder="Find someone" />
+          <img className="filter-input-icon" src="./img/icon-filter.svg" />
+        </div>
+        */}
         <div className="rank-list-wrap">
           {this.getRankList()}
         </div>

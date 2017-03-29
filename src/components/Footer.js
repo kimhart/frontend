@@ -33,7 +33,7 @@ class Footer extends React.Component {
         <div className={`footer-nav ${this.getActiveTab() === 'search' ? ' active' : ''}`}>
           <Link to="/search">Search</Link>
         </div>
-        <div className={`footer-nav ${this.getActiveTab() === 'more' ? ' active' : ''}`} onClick={() => this.logOut()}>
+        <div className={`footer-nav ${this.getActiveTab() === 'logout' ? ' active' : ''}`} onClick={() => this.logOut()}>
           <Link to="/" style={{ pointerEvents: 'none' }}>Logout</Link>
         </div>
       </footer>
