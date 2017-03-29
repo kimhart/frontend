@@ -28,9 +28,6 @@ class Footer extends React.Component {
         <div className={`footer-nav ${this.getActiveTab() === 'search' ? ' active' : ''}`}>
           <Link to="/search">Search</Link>
         </div>
-        <div className={`footer-nav ${this.getActiveTab() === 'more' ? ' active' : ''}`}>
-          <Link to="/search">More</Link>
-        </div>
       </footer>
     );
   }
