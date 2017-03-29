@@ -3,6 +3,8 @@ import Relay from 'react-relay';
 import { Router, Route, IndexRoute, IndexLink, Link, browserHistory, applyRouterMiddleware } from 'react-router';
 import useRelay from 'react-router-relay';
 import { UserUtils } from '../utils/Utils';
+import Scroll from 'react-scroll';
+const scroll = Scroll.animateScroll;
 
 class Footer extends React.Component {
 
@@ -18,6 +20,10 @@ class Footer extends React.Component {
     this.props.update();
   }
 
+  scrollToTop = () => {
+    scroll.scrollToTop();
+  }
+
   render() {
     return (
       <footer className="footer">
@@ -25,7 +31,7 @@ class Footer extends React.Component {
           <Link to="/">Reps</Link>
         </div>
         <div className={`footer-nav ${this.getActiveTab() === 'rank' ? ' active' : ''}`}>
-          <Link to="/rank">Rank</Link>
+          <Link to="/rank" onClick={this.scrollToTop()}>Rank</Link>
         </div>
         <div className={`footer-nav ${this.getActiveTab() === 'analyze' ? ' active' : ''}`}>
           <Link to="/">Analyze</Link>
