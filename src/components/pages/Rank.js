@@ -111,7 +111,7 @@ class Rank extends Component {
           </div>
         </div>
         <div className="rank-sort-wrap">
-          <button className="rank-sort-btn" onClick={this.sortRank()}>Sort B to W</button>
+          <button className="rank-sort-btn" onClick={this.sortRank()}>Sort</button>
         </div>
         {/* search functionality???
         <div className="rank-filter-wrap">

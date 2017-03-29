@@ -1,0 +1,32 @@
+.login-page, .signup-page {
+  height: 70vh;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  h2 {
+    margin: 20px 0;
+  }
+  .form-container {
+    width: 90%;
+    margin: 0 auto;
+    display: block;
+    font-size: 18px;
+  }
+}
+
+.login-btn {
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: $blue-light;
+  border-radius: 3px;
+  padding: 15px 10px;
+  color: #FFF;
+  border: none;
+  width: 100%;
+  display: block;
+  margin: 20px auto 50px;
+} 
