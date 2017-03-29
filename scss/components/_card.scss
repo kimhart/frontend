@@ -35,8 +35,8 @@
 }
 
 .contact-btn, .bio-btn {
-  border: 1px solid #FFF;
-  color: #FFF;
+  border: 1px solid $white;
+  color: $white;
   font-size: 14px;
   background-color: transparent;
   border-radius: 10px;
@@ -44,6 +44,10 @@
   margin: 20px 5px;
   box-sizing: border-box;
   width: 50%;
+  &.active {
+    background: $white;
+    color: $blue;
+  }
 }
 
 .basic-donut-chart-middle {

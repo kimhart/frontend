@@ -19,12 +19,12 @@ import {
 } from 'graphql-relay';
 
 import rp from 'request-promise';
-import { getUserSchema, Login } from './user';
+import { getUserSchema, Signup, Login } from './user';
 
-import { 
-  rankAttendanceSchema, 
-  rankParticipationSchema, 
-  rankEfficacySchema 
+import {
+  rankAttendanceSchema,
+  rankParticipationSchema,
+  rankEfficacySchema
 } from './rank';
 
 import {
@@ -96,7 +96,8 @@ let schema = (db) => {
     mutation: new GraphQLObjectType({
       name: "Mutation",
       fields: () => ({
-        Login
+        Login,
+        Signup
       })
     })
   });

@@ -14,25 +14,43 @@ class Template extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { user: UserUtils.getUser() || null };
+    let user_id = UserUtils.getUserId();
+    props.relay.setVariables({ user_id: this.isValidUserId(user_id) ? `${user_id}` : null }, ({ done, error, aborted }) => {
+      if (done || error || aborted) {
+        this.setState({ done: true });
+      }
+    });
+  }
+
+  isValidUserId = (user_id) => {
+    return !!user_id || user_id === 0;
   }
 
   setUser = () => {
-    this.setState({ user: UserUtils.getUser() });
+    let user_id = UserUtils.getUserId();
+    this.props.relay.setVariables({ user_id: this.isValidUserId(user_id) ? `${user_id}` : null }, ({ done, error, aborted }) => {
+      if (done || error || aborted) {
+        this.setState({ done: !this.state.done });
+      }
+    });
   }
 
   render() {
-    const { user } = this.state;
+    let { user } = this.props.data;
+    if (user && user.user_id === "null" && !this.isValidUserId(UserUtils.getUserId())) {
+      user = null;
+    }
     if (!user) {
       if (this.props.location.pathname === "/signup") {
-        return <Signup />
-      } return <Login {...this.props} update={this.setUser} />
+        return <Signup {...this.props} update={() => this.setUser()} />
+      } return <Login {...this.props} update={() => this.setUser()} />
     } else {
+      const childrenWithUser = React.Children.map(this.props.children, (child) => React.cloneElement(child, { user }));
       return (
         <div className="page-wrap">
           <Loading />
-          { this.props.children }
-          <Footer />
+          { childrenWithUser }
+          <Footer update={() => this.setUser()} />
         </div>
       );
     }
@@ -40,12 +58,25 @@ class Template extends React.Component {
 }
 
 export default Relay.createContainer(Template, {
-  initialVariables: {},
+  initialVariables: {
+    user_id: null
+  },
   fragments: {
     data: () => Relay.QL`
       fragment on Data {
         id
+        user(user_id: $user_id) {
+          city
+          district
+          first_name
+          last_name
+          state_long
+          state_short
+          user_id
+          error
+        }
         ${Login.getFragment('data')}
+        ${Signup.getFragment('data')}
       }
     `
   }

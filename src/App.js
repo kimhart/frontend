@@ -31,7 +31,7 @@ class App extends React.Component {
           <IndexRoute component={Dashboard} queries={RootQuery} />
           <Route path="/bios/:bioguide_id" component={RepBio} queries={RootQuery}/>
           <Route path="/rank" component={Rank} queries={RootQuery}/>
-          <Route path="/signup" component={Signup} />
+          <Route path="/signup" component={Signup} queries={RootQuery}/>
           <Route path="/login" component={Login} />
           <Route path="/search" component={Search} queries={RootQuery} />
           <Route path="*" component={NotFound} />
