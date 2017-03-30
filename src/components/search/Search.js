@@ -23,6 +23,7 @@ class Search extends React.Component {
 
   getResults = (chamber) => {
     let { search } = this.props.data;
+    console.log(search)
     search = search.filter(({ chamber: this_chamber }) => this_chamber === chamber);
     let capitalizedChamber = chamber.charAt(0).toUpperCase() + chamber.slice(1);
     if (!search.length && (!this.searchBox || (this.searchBox && !this.searchBox.value))) return <p className="search-result-prompt">Try searching for a rep, a district,<br/> a state, or a ZIP code.</p>
@@ -73,6 +74,8 @@ export default Relay.createContainer(Search, {
         bioguide_id
         chamber
         district
+        letter_grade
+        leadership_position
         name
         party
         state
