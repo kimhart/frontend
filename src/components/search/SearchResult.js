@@ -22,7 +22,6 @@ class SearchResult extends React.Component {
     let { photo_url, bioguide_id, name } = this.props;
     let { active } = this.state;
     let fullName = name.split(',').reverse().join().replace(/\,/g,' ');
-    console.log(this.props);
     return (
       <li className="search-result-list-item" onClick={() => this.setState({ active: true })}>
         <div className="search-result-list-item-photo" style={{ background: `url(${this.getPhotoSource(photo_url)}) no-repeat center 10% / cover`}} />
