@@ -11,6 +11,7 @@ const IconClose = ({ stroke, strokeWidth, height, width }) => {
       <path d="M18,0 L0,18" stroke={stroke} strokeWidth={strokeWidth} strokeLinecap="round"></path>
     </svg>
   );
+  
 };
 
 export default IconClose;

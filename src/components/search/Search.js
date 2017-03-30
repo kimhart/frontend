@@ -73,6 +73,8 @@ export default Relay.createContainer(Search, {
         bioguide_id
         chamber
         district
+        letter_grade
+        leadership_position
         name
         party
         state
