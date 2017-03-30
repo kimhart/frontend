@@ -89,7 +89,9 @@ class ReportCard extends React.Component {
         <div className="report-card-header-wrap">
           <div className="report-card-photo-wrap">
             <div className="report-card-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}} />
-            <div className="report-card-close" onClick={() => this.props.close()}><IconClose width={15} height={15} stroke="#4990E2" strokeWidth="2" /></div>
+            <div className="report-card-close" onClick={() => this.props.close()}>
+              <IconClose width={15} height={15} stroke="#4990E2" strokeWidth="2" />
+            </div>
           </div>
           <span className="report-card-name">{ fullName }</span>
           <span className="report-card-role">
