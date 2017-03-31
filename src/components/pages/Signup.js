@@ -80,8 +80,9 @@ class Signup extends React.Component {
     render() {
       let { passwordsConfirmed, error } = this.state;
       return (
-        <div className="signup-page">
-          <div className="form-container">
+        <div className="signup-page-wrap">
+          <Link to="/">Home</Link>
+          <div className="signup-page">
             <form className="signup-form" onSubmit={this.handleSubmit}>
               <p className="error">{error}</p>
               { !passwordsConfirmed &&

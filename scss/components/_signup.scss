@@ -1,18 +1,35 @@
 .signup-page {
-  .signup-part-one {
-    margin-top: 20vh;
+  height: 70vh;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  h2 {
+    margin: 20px 0;
   }
+}
 
-  .signup-part-two {
-    margin-top: 10vh;
-  }
+.signup-form {
+  width: 90%;
+  margin: 0 auto;
+  display: auto;
+}
+
+.signup-part-one {
+  margin-top: 20vh;
+}
+
+.signup-part-two {
+  margin-top: 10vh;
 }
 
 #progress-signup, .signup-btn {
   font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
-  background-color: $blue-light;
+  background-color: $blue;
   border-radius: 3px;
   padding: 15px 10px;
   color: #FFF;

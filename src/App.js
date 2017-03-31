@@ -11,6 +11,7 @@ import Rank from './components/pages/Rank';
 import NotFound from './components/pages/NotFound';
 import Login from './components/pages/Login';
 import Search from './components/search/Search';
+import AppLoading from './components/pages/AppLoading';
 
 let RootQuery = {
   data: (Component) => Relay.QL`
