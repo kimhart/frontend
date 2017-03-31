@@ -18,3 +18,34 @@ body, #app {
   margin: 0 auto;
   display: block;
 }
+
+.app-loading-wrap {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  position: fixed;
+  background-color: #FFF;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+.app-loading-message {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 80px;
+}
+
+.tally-logo {
+  width: 50%;
+  height: auto;
+  .logo-shade{fill:#970005;}
+  .logo-red-stripe{fill:#ED1C24;}
+  .logo-white-stripe, .logo-checkmark{fill:#FFFFFF;}
+  .logo-blue-rectangle{fill:#4990E2;}
+}
