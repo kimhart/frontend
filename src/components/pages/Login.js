@@ -90,7 +90,7 @@ class Login extends React.Component {
             <div className="home-mission-content">
               <h3>Mission</h3>
               <p>Tally aims to provide all people with a simple and fresh way to connect with their elected officials and review legislation that affects their district.</p>
-              <p>Our data is directly collected from public records on <a class="gov-sites" target="_blank" href="https://congress.gov/">Congress.gov</a> and <a class="gov-sites" target="_blank" href="https://www.senate.gov/">Senate.gov</a>. We are not affiliated with a specific party and place utmost importance on remaining impartial in our data collection and scoring algorithms. Through this presentation of unbiased data, we hope to encourage confidence in voters and accountability in representatives.</p>
+              <p>Our data is directly collected from public records on <a className="gov-sites" target="_blank" href="https://congress.gov/">Congress.gov</a> and <a className="gov-sites" target="_blank" href="https://www.senate.gov/">Senate.gov</a>. We are not affiliated with a specific party and place utmost importance on remaining impartial in our data collection and scoring algorithms. Through this presentation of unbiased data, we hope to encourage confidence in voters and accountability in representatives.</p>
              </div>
           </section>
           <section className="home-section home-contact">
