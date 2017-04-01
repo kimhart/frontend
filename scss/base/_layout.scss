@@ -1,5 +1,9 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
 body, #app {
-  background-color: #FFF;
+  background-color: white;
   height: 100%;
   width: 100%;
   max-width: 100%;
@@ -13,7 +17,7 @@ body, #app {
 .page-wrap {
   height: 100%;
   width: 100%;
-  overflow-y: hidden;
+  // overflow-y: hidden;
 }
 
 .signup-page, .login-page {

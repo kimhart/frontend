@@ -27,7 +27,7 @@ class RepInfoCluster extends React.Component {
     return (
       <div className="rep-info-cluster-wrap" onClick={onClick}>
         <div className="rep-info-cluster">
-          <div className="rep-info-headshot" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`, width: '140px'}}></div>
+          <div className="rep-info-headshot" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover` }}></div>
           <div className="rep-info-details">
             <p className="rep-info-name">{fullName}</p>
             <p className="rep-info-role">{chamber.replace(/\b\w/g, l => l.toUpperCase())} {this.formatParty(party)}</p>
