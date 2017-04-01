@@ -88,8 +88,6 @@ class Signup extends React.Component {
               { !passwordsConfirmed &&
                 <div className="signup-part-one" onChange={this.handleEmailPassword}>
                   <h2 className="page-title">Sign Up</h2>
-                  <input id="first-name" type="text" placeholder="First Name" ref="firstNameInput" required />
-                  <input id="last-name" type="text" placeholder="Last Name" ref="lastNameInput" required />
                   <input id="email" type="email" placeholder="Email" ref="emailInput" required  />
                   <input id="password" type="password" placeholder="Password" ref="passwordInput" required />
                   <input id="password-match" type="password" placeholder="Confirm Password" ref="passwordConfirm" required />
@@ -99,6 +97,9 @@ class Signup extends React.Component {
               { passwordsConfirmed &&
                 <div className="signup-part-two" onChange={this.handleDemographics}>
                   <h2 className="page-title">Tell Us About You</h2>
+                  <h3 className="signup-help-us">and help us find your district</h3>
+                  <input id="first-name" type="text" placeholder="First Name" ref="firstNameInput" required />
+                  <input id="last-name" type="text" placeholder="Last Name" ref="lastNameInput" required />
                   <input id="address" type="text" placeholder="Street Address" ref="streetInput" required />
                   <input id="zip" type="text" placeholder="ZIP code" ref="zipcodeInput" required />
                   <button className="signup-btn" type="submit">Go!</button>
