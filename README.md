@@ -1,11 +1,12 @@
 # Tally
 
 ### Running Locally
-
-For devving: open 3 terminal tabs in the root `frontend` directory, and run:
+Open 3 terminal tabs in the root `frontend` directory, and run:
 
 `nodemon`
+
 `webpack -wd`
+
 `npm run watch-css`
 
 Alternatively, run `npm install`, followed by `npm start`.
