@@ -1,9 +1,9 @@
-h1, h2, h3, h4, p, ul, li, a, label, input {
+h1, h2, h3, h4, p, ul, li, a, label, input, span {
  font-family: $brand-font, 'Arial', sans-serif;
  color: $text-gray;
 }
 
-p,  li, a, label, input  {
+p,  li, a, label, input, span {
   font-size: $standard-paragraph;
   font-weight: 300;
   color: $text-gray;
@@ -36,3 +36,32 @@ h3.headline {
   font-weight: 400;
   text-align: center;
 }
+
+.question-mark-circle {
+  background-color: lighten($blue-gray, 10%);
+  width: 28px;
+  height: 28px;
+  margin: 0 0 0 8px;
+  box-sizing: border-box;
+  border-radius: 14px;
+  display: inline-flex;
+  justify-content: center;
+  align-content: center;
+  .question-mark {
+    color: #FFF;
+    font-weight: 700;
+    font-size: 18px;
+    align-self: center;
+  }
+}
+
+.welcome-to-tally {
+  font-size: 26px;
+  margin: 40px;
+  color: $blue;
+  text-align: center;
+}
+
+
+
+

@@ -6,13 +6,17 @@ import Participation from './Participation';
 import Efficacy from './Efficacy';
 import MembershipStats from './MembershipStats';
 import PolicyAreas from './PolicyAreas';
-import ModalCard from '../cards/ModalCard';
+import { IconClose } from '../icons/Icons';
 
 class ReportCard extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      contact: false,
+      bio: false,
+      tab: 'stats'
+    };
     props.relay.setVariables({ bioguide_id: props.bioguide_id, chamber: props.chamber });
   }
 
@@ -34,38 +38,77 @@ class ReportCard extends React.Component {
     return lastName;
   }
 
-  render() {
-    let { address, bio_text, bioguide_id, chamber, congress, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected, data } = this.props;
-    let query = { address, bio_text, bioguide_id, chamber, congress, congress_url, district, facebook, leadership_position, name, party, phone, photo_url, served_until, state, twitter_handle, twitter_url, website, year_elected, data };
-    let fullName = name.split(',').reverse().join().replace(/\,/g,' ');
-
+  getMetricsTabs = () => {
+    let { tab, contact, bio } = this.state;
+    if (contact || bio) return null;
     return (
-      <ModalCard active={this.props.active}>
-        <div className="report-card-photo-wrap">
-          <div className="report-card-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}} />
-          <div className="report-card-close" onClick={() => this.props.close()}><p>x</p></div>
+      <div className="card-toggle-wrap">
+        <p className={`card-toggle-stats${tab == 'stats' ? ' active' : ''}`} onClick={() => this.setState({ tab: 'stats' })}>Stats</p>
+        <p className={`card-toggle-stats${tab == 'beliefs' ? ' active' : ''}`} onClick={() => this.setState({ tab: 'beliefs' })}>Beliefs</p>
+      </div>
+    );
+  }
+
+  getCardContent = () => {
+    let { contact, bio } = this.state;
+    if (contact || bio) {
+      let { phone, twitter_handle, facebook, address, bio_text } = this.props;
+      let list = contact ? [ phone, twitter_handle, facebook, address ] : bio_text.split('; ');
+      return (
+        <ul className={`report-card-${contact ? 'contact' : 'bio'}-list`}>
+          { list.map((item, index) => !['none', '#facebook'].includes(item.toLowerCase())
+            ? (<li className={`report-card-${contact ? 'contact' : 'bio'}-list-item`} key={`${item}${index}`}>
+                <span className="report-card-contact-list-item-text">{ item }</span>
+              </li>)
+            : null
+          )}
+        </ul>
+      );
+    }
+    return (
+      <div className="report-card-metrics-wrap">
+        <h4 className="report-card-section-title">Participation Scores<span className="question-mark-circle"><p className="question-mark">?</p></span></h4>
+        <div className="report-card-sliders">
+          <Attendance {...this.props} />
+          <Participation {...this.props} />
+          <Efficacy {...this.props} />
+          <MembershipStats {...this.props} />
         </div>
-        <p className="report-card-name">{fullName}</p>
-        <p className="report-card-role">{ chamber.replace(/\b\w/g, l => l.toUpperCase()) } ({this.formatParty(party)}), { state }</p>
-        { leadership_position !== "None" && <p className="leadership">{leadership_position}</p> }
-        <div className="report-card-metrics-wrap">
-          <div className="report-card-sliders">
-            <h4 className="report-card-section-title">What's their track record?</h4>
-            <Attendance {...this.props} />
-            <Participation {...this.props} />
-            <h4 className="report-card-section-title">How do they stack up?</h4>
-            <p>{this.getFirstName()}'s contributions compared to the max contributions by other reps:</p>
-            <Efficacy {...this.props} />
-            <MembershipStats {...this.props} />
-            <PolicyAreas {...this.props} />
+        <h4 className="report-card-section-title">Policies</h4>
+        <PolicyAreas {...this.props} />
+      </div>
+    );
+  }
+
+  render() {
+    let { bioguide_id, district, chamber, letter_grade, leadership_position, name, party, state, data } = this.props;
+    let { tab, contact, bio } = this.state;
+    let fullName = name.split(',').reverse().join().replace(/\,/g,' ');
+    return (
+      <div className="report-card-info">
+        <div className="report-card-header-wrap">
+          <div className="report-card-photo-wrap">
+            <div className="report-card-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}} />
+            <div className="report-card-close" onClick={() => this.props.close()}>
+              <IconClose width={15} height={15} stroke="#4990E2" strokeWidth="2" />
+            </div>
           </div>
+          <span className="report-card-name">{ fullName }</span>
+          <span className="report-card-role">
+          { this.formatParty(party) } &bull; { chamber.replace(/\b\w/g, l => l.toUpperCase()) } &bull; { state } { chamber === 'house' && <span>&bull; District {district}</span> }
+          </span>
+          { leadership_position !== "None" && <span className="report-card-leadership">{ leadership_position }</span> }
+          <div className="report-card-grade-wrap">
+            <span className="report-card-grade">{ letter_grade }</span>
+          </div>
+          <div className="report-card-buttons-wrap">
+            <button className={`contact-btn${contact ? ' active' : ''}`} onClick={() => this.setState({ contact: !contact, bio: false })}>Contact</button>
+            <button className={`bio-btn${bio ? ' active' : ''}`} onClick={() => this.setState({ bio: !bio, contact: false })}>Bio</button>
+          </div>
+          { this.getMetricsTabs() }
         </div>
-        <div className="report-card-learn-more">
-          <Link to={{ pathname: `/bios/${bioguide_id}`, query }} style={{ textDecoration: 'none' }}>
-            <button className="view-rep-btn">More</button>
-          </Link>
-        </div>
-      </ModalCard>
+        { this.getCardContent() }
+      </div>
     );
   }
 }

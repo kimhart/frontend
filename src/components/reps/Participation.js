@@ -1,5 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
+import BasicDonutChart from '../charts/BasicDonutChart';
 
 class Participation extends React.Component {
 
@@ -9,31 +10,6 @@ class Participation extends React.Component {
     props.relay.setVariables({ bioguide_id: props.bioguide_id, congress: "current", chamber: props.chamber });
   }
 
-  getStyles = () => {
-    let { participation } = this.props.data;
-    const percentVotes = participation ? (participation.percent_votes * 100) : null;
-    let color;
-    let darkerColor;
-
-    if (percentVotes < 50) {
-      color = '#D95852';
-      darkerColor = '#D05350';
-    } else if (percentVotes > 50 && percentVotes < 75) {
-      color = '#f4c542';
-      darkerColor = '#D9AF3B';
-    } else if (percentVotes > 75) {
-      color = '#93db76';
-      darkerColor = '#89CB71';
-    };
-
-    let sliderStyle = {
-      background: `linear-gradient(${darkerColor}, ${color}, ${darkerColor})`,
-      width: `${percentVotes}%`
-    };
-
-    return sliderStyle;
-  }
-
   render() {
     const { participation } = this.props.data;
     const repVotes = participation ? participation.rep_votes : null;
@@ -41,13 +17,7 @@ class Participation extends React.Component {
 
     return (
       <div className="slider-container">
-        <div className="slider-labels">
-          <p>Participation:</p>
-          <p>{repVotes}/{totalVotes} votes</p>
-        </div>
-        <div className="slider-body">
-          <div className="slider-bar" style={this.getStyles()}></div>
-        </div>
+        <BasicDonutChart value={repVotes || 0} max={totalVotes || 100} height={150} width={150} label="Votes" />
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
+import BasicDonutChart from '../charts/BasicDonutChart';
 
 class MembershipStats extends React.Component {
 
@@ -9,29 +10,6 @@ class MembershipStats extends React.Component {
     props.relay.setVariables({ bioguide_id: props.bioguide_id, chamber: props.chamber });
   }
 
-  getStyles = () => {
-    let membershipStats = this.props.data.membership_stats;
-    const membershipPercent = membershipStats ? (membershipStats.percent * 100) : null;
-    let color;
-    let darkerColor;
-
-    if ( membershipPercent < 50) {
-      color = ' #D95852';
-      darkerColor = '#D05350';
-    } else if ( membershipPercent > 50 &&  membershipPercent < 75) {
-      color = '#f4c542';
-      darkerColor = '#D9AF3B';
-    } else if ( membershipPercent > 75) {
-      color = '#93db76';
-      darkerColor = '#89CB71';
-    };
-    let sliderStyle = {
-      background: `linear-gradient(${darkerColor}, ${color}, ${darkerColor})`,
-      width: `${membershipPercent}%`
-    };
-    return sliderStyle;
-  }
-
   render() {
     const membershipStats = this.props.data.membership_stats;
     const numCommittees = membershipStats ? membershipStats.num_committees : null;
@@ -39,13 +17,7 @@ class MembershipStats extends React.Component {
 
     return (
       <div className="slider-container comparison">
-         <div className="slider-labels">
-          <p>Committee Memberships: {numCommittees}</p>
-          <p>Max: {maxCommittees}</p>
-        </div>
-        <div className="slider-body">
-          <div className="slider-bar" style={this.getStyles()}></div>
-        </div>
+        <BasicDonutChart value={numCommittees || 0} max={maxCommittees || 100} height={150} width={150} label="Committees" />
       </div>
     );
   }

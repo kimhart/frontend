@@ -77,7 +77,8 @@
 .rank-list-ranked-direction {
   text-align: center;
   width: 100%;
-  padding: 20px;
+  padding: 10px 20px;
+  box-sizing: border-box;
 }
 
 .rank-list-ranked-direction-toggle {
@@ -86,6 +87,14 @@
 }
 
 .rep-rank-cluster-wrap {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  margin: 20px 10px;
+}
+
+.rep-rank-cluster {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -140,11 +149,63 @@
   border-radius: 8px;
 }
 
+.rep-rank-number-wrap {
+  border-top: 1px solid $light-gray;
+}
+
 .rep-rank-number {
   font-size: 18px;
-  padding: 10px 10px 10px 0;
+  padding: 0 10px;
   font-weight: 600;
   color: $blue;
 }
+
+.rank-filter-wrap {
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px;
+  box-sizing: border-box;
+  margin-top: 20px;
+}
+
+.filter-input-text {
+  background: #FFF;
+  color: #5E6F77;
+  margin: 0;
+  border: 1px solid #5E6F77;
+  border-radius: 5px;
+  padding: 5px;
+  box-sizing: border-box;
+  width: 98%;
+  font-size: 16px;
+  position: relative;
+}
+
+.filter-input-icon {
+  position: absolute;
+  right: 10px;
+  width: 20px;
+  padding: 5px;
+  fill: $blue;
+}
+
+.rank-sort-wrap {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  .rank-sort-btn {
+    border: 1px solid $blue;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #FFF;
+    color: $blue;
+    width: 25%;
+    margin: 0 10px;
+  }
+}
+
+
+
 
 

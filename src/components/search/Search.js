@@ -2,6 +2,7 @@ import React from 'react';
 import Relay from 'react-relay';
 import _ from 'lodash';
 import { isLoading } from '../../utils/Utils';
+import SearchResult from './SearchResult';
 
 class Search extends React.Component {
 
@@ -36,21 +37,11 @@ class Search extends React.Component {
     );
   }
 
-  getPhotoSource = (photo_url) => {
-    if (!!photo_url && photo_url.toLowerCase() !== 'none') {
-      return `https://www.${photo_url}`;
-    } return './img/bio_images/placeholder.png';
-  }
-
   getResultItems = (results) => {
     return results.map((result, i) => {
       let { photo_url, name, state } = result;
-      let fullName = name.split(',').reverse().join().replace(/\,/g,' ');
       return (
-        <li key={`${name}${i}`} className="search-result-list-item">
-          <div className="search-result-list-item-photo" style={{ background: `url(${this.getPhotoSource(photo_url)}) no-repeat center 10% / cover`}} />
-          <div className="search-result-list-item-name">{ fullName }</div>
-        </li>
+        <SearchResult {...this.props} key={`${name}${i}`} {...result} />
       );
     })
   }
@@ -59,7 +50,7 @@ class Search extends React.Component {
     return (
       <div className="search-wrap">
         <div className="search-bar">
-          <input type="text" className="search-input-text" id="search-input-text" ref={c => this.searchBox = c} onChange={this.handleSearch} />
+          <input type="text" className="search-input-text" placeholder="Search" id="search-input-text" ref={c => this.searchBox = c} onChange={this.handleSearch} />
           <img className="search-input-icon" src="./img/search.svg" />
         </div>
         { this.getResults('senate') }
@@ -82,11 +73,14 @@ export default Relay.createContainer(Search, {
         bioguide_id
         chamber
         district
+        letter_grade
+        leadership_position
         name
         party
         state
         photo_url
       }
+      ${SearchResult.getFragment('data')}
     }
   `
   }
