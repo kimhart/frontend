@@ -31,8 +31,9 @@ class BasicDonutChart extends React.Component {
 
     g.append('path')
     .attr('d', arc)
-    .style('fill', ({ data }) => {
-      return data.background ? '#DCDCDD' : '#41EAD4';
+    .style('fill', '#41EAD4')
+    .style('opacity', ({ data }) => {
+      return data.background ? '0.2' : '1';
     })
     // .transition()
     // .ease(d3.easeElastic)

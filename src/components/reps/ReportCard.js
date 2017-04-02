@@ -67,7 +67,10 @@ class ReportCard extends React.Component {
     }
     return (
       <div className="rep-card-metrics-wrap">
-        <h4 className="rep-card-section-title">Participation Scores<span className="question-mark-circle"><p className="question-mark">?</p></span></h4>
+        <h4 className="rep-card-section-title">
+          Participation Scores
+          <span className="control-button question-mark-circle">?</span>
+        </h4>
         <div className="rep-card-sliders">
           <Attendance {...this.props} />
           <Participation {...this.props} />
