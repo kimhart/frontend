@@ -46,9 +46,9 @@
   padding: 15px;
   cursor: pointer;
   transition: box-shadow 0.1s linear;
-  box-shadow: 0 5px 10px transparentize($blue, .65);
+  box-shadow: 0 5px 10px transparentize($blue, .75);
   &:hover {
-    box-shadow: 0 8px 10px transparentize($blue, .65);
+    box-shadow: 0 8px 10px transparentize($blue, .75);
   }
   &:active {
     box-shadow: 0 2px 4px $blue;

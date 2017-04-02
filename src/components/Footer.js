@@ -30,27 +30,35 @@ class Footer extends React.Component {
 
   render() {
     return (
-      <footer className="footer">
-        <div className={`footer-nav ${!this.getActiveTab() ? ' active' : ''}`}>
-          <Link to="/"><IconReps /></Link>
-          <Link to="/">Reps</Link>
-        </div>
-        <div className={`footer-nav ${this.getActiveTab() === 'rank' ? ' active' : ''}`}>
-          <Link to="/rank"><IconRank /></Link>
-          <Link to="/rank" onClick={this.scrollToTop()}>Rank</Link>
-        </div>
-        <div className={`footer-nav ${this.getActiveTab() === 'analyze' ? ' active' : ''}`}>
-          <Link to="/"><IconAnalyze /></Link>
-          <Link to="/">Analyze</Link>
-        </div>
-        <div className={`footer-nav ${this.getActiveTab() === 'search' ? ' active' : ''}`}>
-          <Link to="/search"><IconSearch /></Link>
-          <Link to="/search">Search</Link>
-        </div>
-        <div className={`footer-nav ${this.getActiveTab() === 'logout' ? ' active' : ''}`} onClick={() => this.logOut()}>
-          <Link to="/" style={{ pointerEvents: 'none' }}>Logout</Link>
-        </div>
-      </footer>
+      <nav className="nav-bar">
+        <Link to="/" className={`nav-bar-tab ${!this.getActiveTab() ? ' active' : ''}`}>
+          <span className="nav-bar-tab_icon">
+            <IconReps fill="black" />
+          </span>
+          <span className="nav-bar-tab_title">Reps</span>
+        </Link>
+        <Link to="/rank" className={`nav-bar-tab ${this.getActiveTab() === 'rank' ? ' active' : ''}`} onClick={this.scrollToTop()}>
+          <span className="nav-bar-tab_icon">
+            <IconRank fill="black" />
+          </span>
+          <span className="nav-bar-tab_title" onClick={this.scrollToTop()}>Rank</span>
+        </Link>
+        <Link to="/" className={`nav-bar-tab ${this.getActiveTab() === 'analyze' ? ' active' : ''}`}>
+          <span className="nav-bar-tab_icon">
+            <IconAnalyze fill="black" />
+          </span>
+          <span className="nav-bar-tab_title">Analyze</span>
+        </Link>
+        <Link to="/search" className={`nav-bar-tab ${this.getActiveTab() === 'search' ? ' active' : ''}`}>
+          <span className="nav-bar-tab_icon">
+            <IconSearch fill="black" />
+          </span>
+          <span className="nav-bar-tab_title">Search</span>
+        </Link>
+        <Link to="/" className={`nav-bar-tab ${this.getActiveTab() === 'logout' ? ' active' : ''}`} onClick={() => this.logOut()}>
+          <span className="nav-bar-tab_title" style={{ pointerEvents: 'none' }}>Logout</span>
+        </Link>
+      </nav>
     );
   }
 }

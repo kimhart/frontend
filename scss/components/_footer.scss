@@ -1,55 +1,45 @@
-.footer {
-  width: 100%;
-  left: 0; right: 0; bottom: 0;
+.nav-bar {
   height: 60px;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
   position: fixed;
-  bottom: -1px;
   display: flex;
+  justify-content: center;
   text-align: center;
-  border-top: 1px solid $light-gray;
-  margin-top: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,.15);
 }
 
-.footer-nav {
+.nav-bar-tab {
   height: 100%;
   flex: 1;
   cursor: pointer;
-  background-color: #FFF;
   display: flex;
   align-items: center;
   align-content: center;
   justify-content: center;
   flex-direction: column;
-  svg {
-    path {
-      fill: $text-gray;
-    }
-  }
-  .icon-rank {
-    padding: 5px 0;
-  }
-  a {
-    color: $dark-gray;
-    text-decoration: none;
-    text-transform: none;
-    font-size: 14px;
-  }
+  color: black;
+  font-size: 14px;
+  text-decoration: none;
+  opacity: 0.5;
   &.active {
-    a {
-      color: $soft-red;
-      font-weight: 400;
-    }
+    opacity: 1;
+    color: $soft-red;
     svg {
       path {
-      fill: $soft-red;
+        fill: $soft-red;
+      }
     }
-  }
   }
 }
 
-
-
-
-
-
-
+.nav-bar-tab_icon {
+  height: 24px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

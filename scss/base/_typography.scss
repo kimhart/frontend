@@ -1,12 +1,11 @@
-h1, h2, h3, h4, p, ul, li, a, label, input, span {
- font-family: $brand-font, 'Arial', sans-serif;
- color: $text-gray;
+html, body {
+  font-family: $brand-font, 'Arial', sans-serif;
+  color: $text-gray;
+  font-size: $standard-paragraph;
 }
 
-p,  li, a, label, input, span {
-  font-size: $standard-paragraph;
+p, li, a, label, input, span {
   font-weight: 300;
-  color: $text-gray;
 }
 
 h1, h2, h3, h4 {
@@ -61,7 +60,3 @@ h3.headline {
   color: $blue;
   text-align: center;
 }
-
-
-
-
