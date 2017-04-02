@@ -57,9 +57,9 @@ class Rank extends Component {
 
   getActiveCategory = () => {
     let { attendance, participation, efficacy } = this.state;
-    if (attendance) return 'attendance';
-    if (participation) return 'votes';
-    if (efficacy) return 'bills';
+    if (attendance) return 'Attendance';
+    if (participation) return 'Votes';
+    if (efficacy) return 'Bills';
     return false;
   }
 
@@ -72,11 +72,23 @@ class Rank extends Component {
     }
   }
 
+  getDropDown = () => {
+    const dropdown = this.refs.dropdown;
+    console.log(dropdown)
+
+  }
+
   getExplainerCopy = () => {
     let { attendance, participation, efficacy } = this.state;
-    if (attendance) return 'Days at work compared to the total work days this term.';
-    if (participation) return 'Votes cast compared to the total votes held this term.';
-    if (efficacy) return 'Bills created compared to the most bills created by a single rep this term.';
+    let { rank_attendance, rank_participation, rank_efficacy } = this.props.data;
+    let total_work_days  = rank_attendance ? rank_attendance[0].total_work_days : null;
+    let total_votes = rank_participation ? rank_participation[0].total_votes : null;
+    let max_sponsor = rank_efficacy ? rank_efficacy[0].max_sponsor : null;
+    let chamber = this.getActiveChamber();
+    let Chamber = chamber ? chamber.charAt(0).toUpperCase() + chamber.slice(1) : chamber;
+    if (attendance) return `This page ranks ${Chamber} reps by how many days of work they've attended out of the ${total_work_days} work days in this term. Reps who share a rank position are listed alphabetically within their category.`;
+    if (participation) return `This page ranks ${Chamber} reps by how many votes they've cast out of the ${total_votes} votes held this term. Reps who share a rank position are listed alphabetically within their category.`;
+    if (efficacy) return  `This page ranks ${Chamber} reps by how many bills they've sponsored compared to the highest amount sponsored by a single rep (${max_sponsor}). Reps who share a rank position are listed alphabetically within their category.`;
     return false;
   }
 
@@ -89,21 +101,19 @@ class Rank extends Component {
     isLoading(true);
   }
 
-  sortRank = () => {
-
-  }
-
   render() {
     return (
       <div className="rank-wrap">
         <div className="rank-controls-wrap">
           <div className="rank-category-wrap">
-            <p className={`rank-category-item ${this.getActiveCategory() === 'bills' ? 'active' : ''}`} onClick={() => this.setState({ attendance: false, participation: false, efficacy: true })}>Bills</p>
-            <p className={`rank-category-item ${this.getActiveCategory() === 'attendance' ? 'active' : ''}`} onClick={() => this.setState({ attendance: true, participation: false, efficacy: false })}>Attendance</p>
-            <p className={`rank-category-item ${this.getActiveCategory() === 'votes' ? 'active' : ''}`} onClick={() => this.setState({ attendance: false, participation: true, efficacy: false })}>Votes</p>
-          </div>
-          <div className="rank-category-explainer-wrap">
-            <p className="rank-category-explainer-copy">{this.getExplainerCopy()}</p>
+            <div className="rank-category-name">
+              <p>{this.getActiveCategory()}</p>
+            </div>
+            <div className="rank-category-dropdown" ref="dropdown" onClick={this.getDropDown()}>
+              <p className={`rank-category-item ${this.getActiveCategory() === 'Bills' ? 'active' : ''}`} onClick={() => this.setState({ attendance: false, participation: false, efficacy: true })}>Bills</p>
+              <p className={`rank-category-item ${this.getActiveCategory() === 'Attendance' ? 'active' : ''}`} onClick={() => this.setState({ attendance: true, participation: false, efficacy: false })}>Attendance</p>
+              <p className={`rank-category-item ${this.getActiveCategory() === 'Votes' ? 'active' : ''}`} onClick={() => this.setState({ attendance: false, participation: true, efficacy: false })}>Votes</p>
+            </div>
           </div>
           <div className="rank-toggle-wrap">
             <p className={`rank-toggle-chamber ${this.getActiveChamber() === 'house' ? 'active' : ''}`} onClick={() => this.selectChamber('house')}>House</p>
@@ -111,17 +121,16 @@ class Rank extends Component {
           </div>
         </div>
         <div className="rank-sort-wrap">
-          <button className="rank-sort-btn" onClick={this.sortRank()}>Sort</button>
         </div>
         {/* search functionality???
         <div className="rank-filter-wrap">
           <input type="text" className="filter-input-text" placeholder="Find someone" />
           <img className="filter-input-icon" src="./img/icon-filter.svg" />
         </div>
-        */}
+        
         <div className="rank-list-wrap">
           {this.getRankList()}
-        </div>
+        </div>*/}
       </div>
     );
   }
