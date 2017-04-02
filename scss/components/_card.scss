@@ -1,34 +1,126 @@
-.modal-card-wrap {
-  position: fixed;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  width: 0;
-  height: 0;
-  transition: opacity 0.3s ease-in-out;
-  background: transparentize($white, .3);
-  z-index: $z-modal;
-  &.active {
-    opacity: 1;
-    width: 100%;
-    height: 100%;
+.rep-card-wrap {
+  margin: 60px 20px;
+  background: $white;
+  border-radius: 15px;
+  box-shadow: 0 5px 25px rgba(0,0,0,.35);
+  position: relative;
+}
+
+.rep-card-header-wrap {
+  display: flex;
+  flex-direction: column;
+  background: $blue;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.rep-card-close {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.rep-card-photo {
+  margin: 0 auto;
+  margin-top: -50px;
+  height: 100px;
+  width: 100px;
+  border-radius: 100%;
+}
+
+.rep-card-name {
+  text-align: center;
+  font-weight: 400;
+  font-size: 26px;
+  margin: 5px 15px;
+  color: $white;
+}
+
+.rep-card-role {
+  text-align: center;
+  margin: 5px 15px;
+  color: $white;
+  span {
+    color: $white;
   }
 }
 
-.modal-card {
-  margin: 80px 20px;
-  background: $white;
-  border: 1px solid $light-gray;
-  border-radius: 8px;
-  box-shadow: 0 0 25px 1px $light-gray;
-  -webkit-box-shadow: 0 0 25px 1px $light-gray;
+.rep-card-leadership {
+  text-align: center;
+  margin: 5px 15px;
+  color: $white;
 }
 
-.ReactModal__Overlay.ReactModal__Overlay--after-open {
-  overflow-y: scroll !important;
+.rep-card-section-title {
+  color: $soft-red;
+  font-size: 20px;
 }
 
-.report-card-buttons-wrap {
+.rep-card-sliders {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .slider-container {
+    display: inline-block;
+  }
+  .slider-body {
+    border-radius: 8px;
+    background-color: #FFF;
+    width: 95%;
+    margin: 0 auto;
+    border: 1px solid $text-gray;
+    overflow: hidden;
+  }
+  .slider-bar {
+    border-radius-top-left: 8px;
+    border-radius-bottom-left: 8px;
+    height: 1em;
+  }
+}
+
+.rep-card-learn-more {
+  .view-rep-btn {
+    background-color: $blue;
+    text-transform: uppercase;
+    font-size: 18px;
+    color: white;
+    width: 90%;
+    margin: 20px auto 10px auto;
+    display: block;
+    border: none;
+    border-radius: 4px;
+  }
+}
+
+.rep-card-contact-list {
+  margin: 0;
+  padding: 0;
+}
+
+.rep-card-contact-list-item {
+  list-style: none;
+  padding: 20px;
+  border-bottom: 1px solid $light-gray;
+  text-transform: capitalize;
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.rep-card-bio-list-item {
+  padding: 10px;
+  text-transform: capitalize;
+}
+
+.rep-card-buttons-wrap {
   width: 70%;
   display: flex;
   margin: 0 auto;
@@ -85,7 +177,7 @@
   }
 }
 
-.report-card-grade-wrap {
+.rep-card-grade-wrap {
   width: 50px;
   height: 50px;
   align-self: center;
@@ -99,7 +191,7 @@
   flex-shrink: 1;
 }
 
-.report-card-grade {
+.rep-card-grade {
   font-size: 26px;
   color: #FFF;
   font-weight: 400;

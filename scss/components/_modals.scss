@@ -1,0 +1,8 @@
+.ReactModal__Overlay {
+  z-index: 1000;
+}
+
+.ReactModal__Overlay.ReactModal__Overlay--after-open {
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
