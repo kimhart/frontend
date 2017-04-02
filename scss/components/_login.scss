@@ -1,178 +1,140 @@
 .home-page-wrap {
   margin: 0;
   padding: 0;
-  background-color: #FFF;
-}
-
-.home-login {
-  width: 90%;
-  margin: 0 auto;
-  display: block;
-  position: relative;
-  p {
-    text-align: center;
-  }
-  .login-form {
-    width: 90%;
-    margin: 0 auto;
-    display: block;
-    input {
-      width: 100%;
-    }
-    .login-btn {
-      font-size: 18px;
-      font-weight: 500;
-      background-color: $soft-red;
-      border: none;
-      border-radius: 3px;
-      padding: 15px 10px;
-      color: #FFF;
-      width: 100%;
-      display: block;
-      margin: 20px auto;
-    }
-  }
-  .create-account {
-    margin: 30px auto;
-  }
+  background-color: white;
 }
 
 .home-section {
-  padding: 20px 0 0 0;
   width: 100%;
   height: auto;
+  padding: 20px;
   box-sizing: border-box;
-  p {
-    font-weight: 300;
-  }
-  h3 {
-    font-weight: 600;
-    font-size: 22px;
-    text-transform: uppercase;
+  position: relative;
+}
+
+.section-arrow {
+  &:after {
+   content:'';
+   position: absolute;
+   left: 0;
+   top: 100%;
+   z-index: 10;
+   right: 0;
+   margin: 0 auto;
+   width: 0;
+   height: 0;
+   border-top: solid 20px white;
+   border-left: solid 20px transparent;
+   border-right: solid 20px transparent;
   }
 }
+
+.home-section-title {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 1.3em;
+  margin: 20px 0;
+}
+
+.home-section-content {
+  width: 700px;
+  max-width: 100%;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+}
+
+.section-white {
+  h3, p, a {
+    color: white;
+  }
+}
+
+//LOGIN FORM
+
+.home-login {
+  width: 400px;
+  max-width: 100%;
+  margin: 0 auto;
+  display: block;
+  position: relative;
+}
+
+.login-btn {
+  font-size: 18px;
+  font-weight: 500;
+  background-color: $soft-red;
+  border: none;
+  border-radius: 3px;
+  padding: 15px 10px;
+  color: white;
+  width: 100%;
+  display: block;
+  margin: 20px auto;
+}
+
+.create-account {
+  margin: 30px auto;
+  text-align: center;
+}
+
+//ABOUT
 
 .home-about {
   background-color: $blue;
-  padding: 10px;
-  position: relative;
   font-weight: 300;
-  h3, p {
-    color: #FFF;
-  }
-  h3 {
-    margin-top: 10px;
-  }
-  .home-about-content {
-    width: 88%;
-    margin: 0 auto;
-    display: block;
-    text-align: center;
-  }
   &:after {
-   content:'';
-   position: absolute;
-   left: 0;
-   top: 98%;
-   right: 0;
-   margin: 0 auto;
-   width: 0;
-   height: 0;
    border-top: solid 20px $blue;
-   border-left: solid 20px transparent;
-   border-right: solid 20px transparent;
+  }
+  .home-section-title {
+    margin-top: 0;
   }
 }
 
-.home-team {
-  padding: 10px;
-  position: relative;
-  .home-team-content {
-    width: 90%;
-    margin: 0 auto;
-    display: block;
-    text-align: center;
-  }
-  .team-list {
-    list-style-type: none;
-    padding-left: 0;
-    padding-bottom: 30px;
-    p {
-      color: $blue;
-      text-transform: uppercase;
-      margin-bottom: 0;
-      font-weight: 400;
-    }
-    .team-title {
-      color: $text-gray;
-      text-transform: regular;
-      font-weight: 400;
-    } 
-  }
-  &:after {
-   content:'';
-   position: absolute;
-   left: 0;
-   top: 99%;
-   z-index: 999;
-   right: 0;
-   margin: 0 auto;
-   width: 0;
-   height: 0;
-   border-top: solid 20px #FFF;
-   border-left: solid 20px transparent;
-   border-right: solid 20px transparent;
+//TEAM
+
+.team-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.team-list-item {
+  &:not(:last-child) {
+    margin-bottom: 20px;
   }
 }
+
+.team-name {
+  color: $blue;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  font-weight: 400;
+  display: block;
+}
+
+.team-title {
+  text-transform: regular;
+  font-weight: 400;
+  display: block;
+}
+
+//MISSION
 
 .home-mission {
   background-color: $soft-red;
   padding-bottom: 20px;
-  position: relative;
-  h3, p, a {
-    color: #FFF;
-    font-weight: 300;
-  }
-  .home-mission-content {
-    width: 86%;
-    margin: 0 auto;
-    display: block;
-    text-align: center;
-  }
   &:after {
-   content:'';
-   position: absolute;
-   left: 0;
-   top: 99%;
-   right: 0;
-   margin: 0 auto;
-   width: 0;
-   height: 0;
    border-top: solid 20px $soft-red;
-   border-left: solid 20px transparent;
-   border-right: solid 20px transparent;
   }
 }
+
+//CONTACT
 
 .home-contact {
-  background-color: #FFF;
+  background-color: white;
   padding-bottom: 20px;
-  h3, p, a {
-    color: $text-gray;
-    font-weight: 300;
-  }
-  .home-contact-content {
-    width: 86%;
-    margin: 0 auto;
-    display: block;
-    text-align: center;
-    .email {
-      color: $blue;
-    }
-  }
 }
 
-
-
-
-
+.home-contact-email {
+  color: $blue;
+}

@@ -60,45 +60,55 @@ class Login extends React.Component {
             { error && <p className="error">{ error }</p> }
             <p className="create-account">New here? Create an <Link className="standard-link signup-link" to="/signup">account</Link>.</p>
           </section>
-          <section className="home-section home-about">
-            <div className="home-about-content">
-              <h3>About</h3>
+          <section className="home-section home-about section-white section-arrow">
+            <div className="home-section-content">
+              <h3 className="home-section-title">About</h3>
               <p>2018 midterm elections are around the corner. Do your Senators & Congresspeople deserve your vote?</p>
-              <p>We've gathered and scored your reps' attendance, sponsored legislation, voting record, and ideology trends — dating all the way back to 1989.</p> 
+              <p>We've gathered and scored your reps' attendance, sponsored legislation, voting record, and ideology trends — dating all the way back to 1989.</p>
               <p>Tally is journalism-free, so you can spend less time sifting through headlines and focus on metrics that matter.</p>
             </div>
           </section>
-          <section className="home-section home-team">
-            <div className="home-team-content">
-              <h3>The Team</h3>
+          <section className="home-section home-team section-arrow">
+            <div className="home-section-content">
+              <h3 className="home-section-title">The Team</h3>
               <p>Tally was built by a scrappy team in New York City with a shared passion for politics and data. Our backgrounds span political science, journalism, computer science and design.</p>
-              <div className="team-list">
-                <p>Alex Hubbard</p>
-                <span className="team-title">Founder, Data Scientist</span>
-                <p>Kim Hart</p>
-                <span className="team-title">Co-Founder, Front End Engineer</span>
-                <p>Ryano Taylor</p>
-                <span className="team-title">Front End Engineer</span>
-                <p>Mattan Ingram</p>
-                <span className="team-title">Product Designer</span>
-                <p>Jesse Smith</p>
-                <span className="team-title">UX Designer</span>
-              </div>
+              <ul className="team-list">
+                <li className="team-list-item">
+                  <span className="team-name">Alex Hubbard</span>
+                  <span className="team-title">Founder, Data Scientist</span>
+                </li>
+                <li className="team-list-item">
+                  <span className="team-name">Kim Hart</span>
+                  <span className="team-title">Co-Founder, Front End Engineer</span>
+                </li>
+                <li className="team-list-item">
+                  <span className="team-name">Ryano Taylor</span>
+                  <span className="team-title">Front End Engineer</span>
+                </li>
+                <li className="team-list-item">
+                  <span className="team-name">Mattan Ingram</span>
+                  <span className="team-title">Product Designer</span>
+                </li>
+                <li className="team-list-item">
+                  <span className="team-name">Jesse Smith</span>
+                  <span className="team-title">UX Designer</span>
+                </li>
+              </ul>
             </div>
           </section>
-          <section className="home-section home-mission">
-            <div className="home-mission-content">
-              <h3>Mission</h3>
+          <section className="home-section home-mission section-white section-arrow">
+            <div className="home-section-content">
+              <h3 className="home-section-title">Mission</h3>
               <p>Tally aims to provide all people with a simple and fresh way to connect with their elected officials and review legislation that affects their district.</p>
               <p>Our data is directly collected from public records on <a className="gov-sites" target="_blank" href="https://congress.gov/">Congress.gov</a> and <a className="gov-sites" target="_blank" href="https://www.senate.gov/">Senate.gov</a>. We are not affiliated with a specific party and place utmost importance on remaining impartial in our data collection and scoring algorithms. Through this presentation of unbiased data, we hope to encourage confidence in voters and accountability in representatives.</p>
              </div>
           </section>
           <section className="home-section home-contact">
-            <div className="home-contact-content">
-              <h3>Contact Us</h3>
+            <div className="home-section-content">
+              <h3 className="home-section-title">Contact Us</h3>
               <p>Want to learn more about what we're building? Get in touch:</p>
-              <p>Alex Hubbard: <span className="email">alex(at)tally.us.com</span></p>
-              <p>Kim Hart: <span className="email">kim(at)tally.us.com</span></p>
+              <p>Alex Hubbard: <span className="home-contact-email">alex@tally.us.com</span></p>
+              <p>Kim Hart: <span className="home-contact-email">kim@tally.us.com</span></p>
              </div>
           </section>
         </div>
