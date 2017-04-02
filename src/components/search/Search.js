@@ -3,6 +3,7 @@ import Relay from 'react-relay';
 import _ from 'lodash';
 import { isLoading } from '../../utils/Utils';
 import SearchResult from './SearchResult';
+import IconSearch from '../icons/IconSearch';
 
 class Search extends React.Component {
 
@@ -25,8 +26,8 @@ class Search extends React.Component {
     let { search } = this.props.data;
     search = search.filter(({ chamber: this_chamber }) => this_chamber === chamber);
     let capitalizedChamber = chamber.charAt(0).toUpperCase() + chamber.slice(1);
-    if (!search.length && (!this.searchBox || (this.searchBox && !this.searchBox.value))) return <p className="search-result-prompt">Try searching for a rep, a district,<br/> a state, or a ZIP code.</p>
-    if (!search.length && this.searchBox && this.searchBox.value) return <p className="search-result-error">No results.</p>
+    if (!search.length && (!this.searchBox || (this.searchBox && !this.searchBox.value))) return <span className="search-result-message search-result-prompt">Try searching for a rep, a district,<br/> a state, or a ZIP code.</span>
+    if (!search.length && this.searchBox && this.searchBox.value) return <span className="search-result-message search-result-error">No results.</span>
     return (
       <div className="search-result-section">
         <h3 className="search-result-section-title">{capitalizedChamber}</h3>
@@ -50,11 +51,13 @@ class Search extends React.Component {
     return (
       <div className="search-wrap">
         <div className="search-bar">
-          <input type="text" className="search-input-text" placeholder="Search" id="search-input-text" ref={c => this.searchBox = c} onChange={this.handleSearch} />
-          <img className="search-input-icon" src="./img/search.svg" />
+          <input type="text" className="search-input-text" placeholder="Search..." id="search-input-text" ref={c => this.searchBox = c} onChange={this.handleSearch} />
+          <IconSearch className="search-bar-icon" fill="#fff" />
         </div>
-        { this.getResults('senate') }
-        { this.getResults('house') }
+        <div className="search-result-wrap">
+          { this.getResults('senate') }
+          { this.getResults('house') }
+        </div>
       </div>
     );
   }

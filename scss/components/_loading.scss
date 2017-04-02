@@ -33,10 +33,6 @@
   }
 }
 
-/*
-  Set the color of the icon
-*/
-svg path,
-svg rect {
+.loading-spinner-path {
   fill: $teal-green;
 }

@@ -55,10 +55,10 @@ class ReportCard extends React.Component {
       let { phone, twitter_handle, facebook, address, bio_text } = this.props;
       let list = contact ? [ phone, twitter_handle, facebook, address ] : bio_text.split('; ');
       return (
-        <ul className={`report-card-${contact ? 'contact' : 'bio'}-list`}>
+        <ul className={`rep-card-${contact ? 'contact' : 'bio'}-list`}>
           { list.map((item, index) => !['none', '#facebook'].includes(item.toLowerCase())
-            ? (<li className={`report-card-${contact ? 'contact' : 'bio'}-list-item`} key={`${item}${index}`}>
-                <span className="report-card-contact-list-item-text">{ item }</span>
+            ? (<li className={`rep-card-${contact ? 'contact' : 'bio'}-list-item`} key={`${item}${index}`}>
+                <span className="rep-card-contact-list-item-text">{ item }</span>
               </li>)
             : null
           )}
@@ -66,15 +66,15 @@ class ReportCard extends React.Component {
       );
     }
     return (
-      <div className="report-card-metrics-wrap">
-        <h4 className="report-card-section-title">Participation Scores<span className="question-mark-circle"><p className="question-mark">?</p></span></h4>
-        <div className="report-card-sliders">
+      <div className="rep-card-metrics-wrap">
+        <h4 className="rep-card-section-title">Participation Scores<span className="question-mark-circle"><p className="question-mark">?</p></span></h4>
+        <div className="rep-card-sliders">
           <Attendance {...this.props} />
           <Participation {...this.props} />
           <Efficacy {...this.props} />
           <MembershipStats {...this.props} />
         </div>
-        <h4 className="report-card-section-title">Policies</h4>
+        <h4 className="rep-card-section-title">Policies</h4>
         <PolicyAreas {...this.props} />
       </div>
     );
@@ -85,23 +85,21 @@ class ReportCard extends React.Component {
     let { tab, contact, bio } = this.state;
     let fullName = name.split(',').reverse().join().replace(/\,/g,' ');
     return (
-      <div className="report-card-info">
-        <div className="report-card-header-wrap">
-          <div className="report-card-photo-wrap">
-            <div className="report-card-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}} />
-            <div className="report-card-close" onClick={() => this.props.close()}>
-              <IconClose width={15} height={15} stroke="#4990E2" strokeWidth="2" />
-            </div>
-          </div>
-          <span className="report-card-name">{ fullName }</span>
-          <span className="report-card-role">
-          { this.formatParty(party) } &bull; { chamber.replace(/\b\w/g, l => l.toUpperCase()) } &bull; { state } { chamber === 'house' && <span>&bull; District {district}</span> }
+      <div className="rep-card-content">
+        <div className="rep-card-close control-button" onClick={() => this.props.close()}>
+          <IconClose width={15} height={15} stroke="#4990E2" strokeWidth="2" />
+        </div>
+        <div className="rep-card-header-wrap">
+          <div className="rep-card-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}}></div>
+          <span className="rep-card-name">{ fullName }</span>
+          <span className="rep-card-role">
+            { this.formatParty(party) } &bull; { chamber.replace(/\b\w/g, l => l.toUpperCase()) } &bull; { state } { chamber === 'house' && <span>&bull; District {district}</span> }
           </span>
-          { leadership_position !== "None" && <span className="report-card-leadership">{ leadership_position }</span> }
-          <div className="report-card-grade-wrap">
-            <span className="report-card-grade">{ letter_grade }</span>
+          { leadership_position !== "None" && <span className="rep-card-leadership">{ leadership_position }</span> }
+          <div className="rep-card-grade-wrap">
+            <span className="rep-card-grade">{ letter_grade }</span>
           </div>
-          <div className="report-card-buttons-wrap">
+          <div className="rep-card-buttons-wrap">
             <button className={`contact-btn${contact ? ' active' : ''}`} onClick={() => this.setState({ contact: !contact, bio: false })}>Contact</button>
             <button className={`bio-btn${bio ? ' active' : ''}`} onClick={() => this.setState({ bio: !bio, contact: false })}>Bio</button>
           </div>

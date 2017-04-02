@@ -26,7 +26,7 @@ class SearchResult extends React.Component {
       <li className="search-result-list-item" onClick={() => this.setState({ active: true })}>
         <div className="search-result-list-item-photo" style={{ background: `url(${this.getPhotoSource(photo_url)}) no-repeat center 10% / cover`}} />
         <div className="search-result-list-item-name">{ fullName }</div>
-        <Modal key={`search_reportcard_${bioguide_id}`} contentLabel={`${fullName} modal`} className={`modal-card`} isOpen={active} style={{ overflowY: 'scroll' }}>
+        <Modal key={`search_reportcard_${bioguide_id}`} contentLabel={`${fullName} modal`} className={`rep-card-wrap`} isOpen={active} style={{ overflowY: 'scroll' }}>
           <ReportCard {...this.props} close={() => this.setState({ active: false })} />
         </Modal>
       </li>

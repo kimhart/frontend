@@ -29,7 +29,7 @@ class DashboardPage extends React.Component {
     return reps
     ? reps.map(rep => {
       return (
-        <Modal key={`reportcard_${rep.bioguide_id}`} contentLabel={`${rep.name} modal`} className={`modal-card`} isOpen={rep.bioguide_id === activeReportCard} style={{ overflowY: 'scroll' }}>
+        <Modal key={`reportcard_${rep.bioguide_id}`} contentLabel={`${rep.name} modal`} className={`rep-card-wrap`} isOpen={rep.bioguide_id === activeReportCard} style={{ overflowY: 'scroll' }}>
           <ReportCard {...this.props} {...rep} close={() => this.setState({ activeReportCard: null })} />
         </Modal>
       );

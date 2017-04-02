@@ -1,44 +1,66 @@
-.search-wrap {
-  margin-top: 60px;
-  margin-bottom: 60px;
-}
+
 
 .search-bar {
   background: $blue;
   display: flex;
+  align-items: center;
   width: 100%;
   height: 55px;
+  padding: 0 15px;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 900;
 }
 
 .search-input-text::-webkit-input-placeholder {
-  color: #FFF;
-  font-style: italic;
-  opacity: .7;
-  font-weight: 300;
-  font-size: 16px;
+  color: white;
 }
 
 .search-input-text {
   background: $blue;
-  color: $white;
-  margin: 0;
+  color: white;
   border: 0;
   box-sizing: border-box;
   width: 100%;
-  padding-left: 15px;
   font-size: 20px;
   font-weight: 500;
+  font-family: $header-font;
+  flex-grow: 1;
 }
 
-.search-input-icon {
-  background: $blue;
+.search-result-wrap {
+  margin-top: 55px;
+  margin-bottom: 60px;
+  min-height: calc(100vh - 115px);
+  position: relative;
+}
+
+.search-result-message {
+  font-family: $brand-font;
+  text-align: center;
+  font-size: 24px;
+  text-align: center;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
-  right: 0px;
-  width: 25px;
-  padding: 14px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  &:first-of-type {
+    display: none;
+  }
+}
+
+.search-result-prompt {
+
+}
+
+.search-result-error {
+
 }
 
 .search-result-section-title {
@@ -49,28 +71,11 @@
   padding: 40px 0 10px 20px
 }
 
-.search-result-error {
-  font-family: $brand-font;
-  text-align: center;
-  padding: 20px;
-}
-
-.search-result-prompt:first-of-type, .search-result-error:first-of-type {
-  display: none;
-}
-
-.search-result-prompt {
-  font-size: 22px;
-  text-align: center;
-  margin: 50% 20px;
-  font-weight: 500;
-  color: $text-gray;
-}
-
-ul.search-result-list {
-  list-style-type: none;
+.search-result-list {
+  list-style: none;
   padding: 0;
   width: 100%;
+  box-shadow: 0 2px 8px $light-gray;
 }
 
 .search-result-list-item {
@@ -79,10 +84,6 @@ ul.search-result-list {
   align-items: center;
   border-top: 1px solid $light-gray;
   padding: 10px;
-}
-
-.search-result-list-item:last-of-type {
-  box-shadow: 2px 2px 8px $light-gray;
 }
 
 .search-result-list-item-photo {
@@ -97,19 +98,3 @@ ul.search-result-list {
   padding: 20px;
   font-size: 16px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
