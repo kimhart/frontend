@@ -43,21 +43,21 @@ class Footer extends React.Component {
           </span>
           <span className="nav-bar-tab_title" onClick={this.scrollToTop()}>Rank</span>
         </Link>
-        <Link to="/" className={`nav-bar-tab ${this.getActiveTab() === 'analyze' ? ' active' : ''}`}>
+        {/* <Link to="/" className={`nav-bar-tab ${this.getActiveTab() === 'analyze' ? ' active' : ''}`}>
           <span className="nav-bar-tab_icon">
             <IconAnalyze fill="black" />
           </span>
           <span className="nav-bar-tab_title">Analyze</span>
-        </Link>
+        </Link> */}
         <Link to="/search" className={`nav-bar-tab ${this.getActiveTab() === 'search' ? ' active' : ''}`}>
           <span className="nav-bar-tab_icon">
             <IconSearch fill="black" />
           </span>
           <span className="nav-bar-tab_title">Search</span>
         </Link>
-        <Link to="/" className={`nav-bar-tab ${this.getActiveTab() === 'logout' ? ' active' : ''}`} onClick={() => this.logOut()}>
+        {/* <Link to="/" className={`nav-bar-tab ${this.getActiveTab() === 'logout' ? ' active' : ''}`} onClick={() => this.logOut()}>
           <span className="nav-bar-tab_title" style={{ pointerEvents: 'none' }}>Logout</span>
-        </Link>
+        </Link> */}
       </nav>
     );
   }
