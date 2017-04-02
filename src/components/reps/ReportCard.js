@@ -55,19 +55,24 @@ class ReportCard extends React.Component {
       let { phone, twitter_handle, facebook, address, bio_text } = this.props;
       let list = contact ? [ phone, twitter_handle, facebook, address ] : bio_text.split('; ');
       return (
-        <ul className={`rep-card-${contact ? 'contact' : 'bio'}-list`}>
-          { list.map((item, index) => !['none', '#facebook'].includes(item.toLowerCase())
-            ? (<li className={`rep-card-${contact ? 'contact' : 'bio'}-list-item`} key={`${item}${index}`}>
-                <span className="rep-card-contact-list-item-text">{ item }</span>
-              </li>)
-            : null
-          )}
-        </ul>
+        <div class="rep-card-details-wrap">
+          <ul className={`rep-card-${contact ? 'contact' : 'bio'}-list`}>
+            { list.map((item, index) => !['none', '#facebook'].includes(item.toLowerCase())
+              ? (<li className={`rep-card-${contact ? 'contact' : 'bio'}-list-item`} key={`${item}${index}`}>
+                  <span className="rep-card-contact-list-item-text">{ item }</span>
+                </li>)
+              : null
+            )}
+          </ul>
+        </div>
       );
     }
     return (
       <div className="rep-card-metrics-wrap">
-        <h4 className="rep-card-section-title">Participation Scores<span className="question-mark-circle"><p className="question-mark">?</p></span></h4>
+        <h4 className="rep-card-section-title">
+          Participation Scores
+          <span className="control-button question-mark-circle">?</span>
+        </h4>
         <div className="rep-card-sliders">
           <Attendance {...this.props} />
           <Participation {...this.props} />

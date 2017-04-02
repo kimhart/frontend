@@ -1,8 +1,9 @@
 .rep-card-wrap {
-  margin: 60px 20px;
+  margin: 60px auto;
+  max-width: 700px;
   background: $white;
   border-radius: 15px;
-  box-shadow: 0 5px 25px rgba(0,0,0,.35);
+  box-shadow: 0 5px 25px transparentize($blue, 0.65);
   position: relative;
 }
 
@@ -58,9 +59,15 @@
   color: $white;
 }
 
+.rep-card-metrics-wrap {
+  padding: 0 15px;
+}
+
 .rep-card-section-title {
   color: $soft-red;
   font-size: 20px;
+  margin: 20px 0;
+  position: relative;
 }
 
 .rep-card-sliders {
@@ -100,24 +107,22 @@
   }
 }
 
-.rep-card-contact-list {
-  margin: 0;
-  padding: 0;
-}
-
 .rep-card-contact-list-item {
   list-style: none;
   padding: 20px;
-  border-bottom: 1px solid $light-gray;
   text-transform: capitalize;
-  &:last-child {
-    border-bottom: 0;
+  &:not(:last-child) {
+    border-bottom: 1px solid $light-gray;
   }
 }
 
+.rep-card-bio-list {
+  padding-left: 1em;
+  margin: 0 15px;
+}
+
 .rep-card-bio-list-item {
-  padding: 10px;
-  text-transform: capitalize;
+  padding: 10px 0;
 }
 
 .rep-card-buttons-wrap {
