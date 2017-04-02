@@ -18,33 +18,44 @@
     color: white;
     cursor: pointer;
     text-align: center;
-    margin: 20px;
+    margin: 30px 0 20px 0;
     font-size: 24px;
     text-align: center;
     font-weight: 500;
   }
   .rank-category-dropdown {
-    display: flex;
+    display: none;
     justify-content: center;
     align-content: center;
     flex-direction: column;
     align-self: center;
     background-color: white;
-    width: 70%;
-    border-radius: 3px; 
-  }
-  .rank-category-item {
-    color: $blue;
-    box-shadow: 1px 1px lighten($blue, 30%);
-    cursor: pointer;
-    text-align: center;
-    font-size: 20px;
-    padding: 15px;
-    margin: 0;
-    font-weight: 300;
-    &.active {
-      background-color: lighten($blue, 35%);
-      font-weight: 700;
+    width: 95%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    &.open {
+      display: flex;
+    }
+    .rank-category-item {
+      color: $blue;
+      border-bottom: 1px solid lighten($blue, 30%);
+      cursor: pointer;
+      text-align: center;
+      font-size: 16px;
+      padding: 15px;
+      margin: 0;
+      font-weight: 300;
+      &.active {
+        background-color: lighten($blue, 35%);
+        font-weight: 700;
+      }
+      &:first-child {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+      }
+      &:last-child {
+        border-bottom: 0;
+      }
     }
   }
 }
@@ -53,13 +64,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 20px;
   .rank-toggle-chamber {
     color: white;
     cursor: pointer;
     background-color: $blue;
     font-weight: 300;
-    padding: 10px;
+    padding: 15px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     flex: 1;

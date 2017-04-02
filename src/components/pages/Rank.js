@@ -74,8 +74,11 @@ class Rank extends Component {
 
   getDropDown = () => {
     const dropdown = this.refs.dropdown;
-    console.log(dropdown)
-
+    if (dropdown.classList.contains('open')) {
+      dropdown.classList.remove('open');
+    } else {
+      dropdown.classList.add('open');
+    }
   }
 
   getExplainerCopy = () => {
@@ -107,9 +110,9 @@ class Rank extends Component {
         <div className="rank-controls-wrap">
           <div className="rank-category-wrap">
             <div className="rank-category-name">
-              <p>{this.getActiveCategory()}</p>
+              <p onClick={() => this.getDropDown()}>{this.getActiveCategory()}</p>
             </div>
-            <div className="rank-category-dropdown" ref="dropdown" onClick={this.getDropDown()}>
+            <div className="rank-category-dropdown" ref="dropdown" onClick={() => this.getDropDown()}>
               <p className={`rank-category-item ${this.getActiveCategory() === 'Bills' ? 'active' : ''}`} onClick={() => this.setState({ attendance: false, participation: false, efficacy: true })}>Bills</p>
               <p className={`rank-category-item ${this.getActiveCategory() === 'Attendance' ? 'active' : ''}`} onClick={() => this.setState({ attendance: true, participation: false, efficacy: false })}>Attendance</p>
               <p className={`rank-category-item ${this.getActiveCategory() === 'Votes' ? 'active' : ''}`} onClick={() => this.setState({ attendance: false, participation: true, efficacy: false })}>Votes</p>
@@ -126,11 +129,10 @@ class Rank extends Component {
         <div className="rank-filter-wrap">
           <input type="text" className="filter-input-text" placeholder="Find someone" />
           <img className="filter-input-icon" src="./img/icon-filter.svg" />
-        </div>
-        
+        </div>*/}
         <div className="rank-list-wrap">
           {this.getRankList()}
-        </div>*/}
+        </div>
       </div>
     );
   }
