@@ -1,7 +1,7 @@
 .rep-card-wrap {
   margin: 60px auto;
   max-width: 700px;
-  background: $white;
+  background: white;
   border-radius: 15px;
   box-shadow: 0 5px 25px transparentize($blue, 0.65);
   position: relative;
@@ -41,22 +41,22 @@
   font-weight: 400;
   font-size: 26px;
   margin: 5px 15px;
-  color: $white;
+  color: white;
 }
 
 .rep-card-role {
   text-align: center;
   margin: 5px 15px;
-  color: $white;
+  color: white;
   span {
-    color: $white;
+    color: white;
   }
 }
 
 .rep-card-leadership {
   text-align: center;
   margin: 5px 15px;
-  color: $white;
+  color: white;
 }
 
 .rep-card-metrics-wrap {
@@ -132,8 +132,8 @@
 }
 
 .contact-btn, .bio-btn {
-  border: 1px solid $white;
-  color: $white;
+  border: 1px solid white;
+  color: white;
   font-size: 14px;
   background-color: transparent;
   border-radius: 10px;
@@ -142,7 +142,7 @@
   box-sizing: border-box;
   width: 50%;
   &.active {
-    background: $white;
+    background: white;
     color: $blue;
   }
 }
