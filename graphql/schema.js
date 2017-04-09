@@ -40,6 +40,8 @@ import {
   getRepSearchSchema,
 } from './rep';
 
+import { getRepBeliefSchema } from './beliefs';
+
 let schema = (db) => {
   class Data {};
   let data = new Data();
@@ -77,7 +79,8 @@ let schema = (db) => {
       rank_attendance: rankAttendanceSchema(),
       rank_participation: rankParticipationSchema(),
       rank_efficacy: rankEfficacySchema(),
-      search: getRepSearchSchema()
+      search: getRepSearchSchema(),
+      beliefs: getRepBeliefSchema()
     }),
     interfaces: [nodeDefs.nodeInterface]
   });

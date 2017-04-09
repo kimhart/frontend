@@ -50,7 +50,7 @@ class ReportCard extends React.Component {
   }
 
   getCardContent = () => {
-    let { contact, bio } = this.state;
+    let { contact, bio, beliefs } = this.state;
     if (contact || bio) {
       let { phone, twitter_handle, facebook, address, bio_text } = this.props;
       let list = contact ? [ phone, twitter_handle, facebook, address ] : bio_text.split('; ');
@@ -67,6 +67,7 @@ class ReportCard extends React.Component {
         </div>
       );
     }
+    console.log(this.props.data.beliefs);
     return (
       <div className="rep-card-metrics-wrap">
         <h4 className="rep-card-section-title">
@@ -125,6 +126,13 @@ export default Relay.createContainer(ReportCard, {
     data: () => Relay.QL`
     fragment on Data {
       id
+      beliefs(bioguide_id: $bioguide_id) {
+        bioguide_id
+        sub_type_of
+        tally_score
+        total_actions
+        type
+      }
       ${Attendance.getFragment('data')}
       ${Participation.getFragment('data')}
       ${Efficacy.getFragment('data')}
