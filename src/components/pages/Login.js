@@ -50,7 +50,7 @@ class Login extends React.Component {
       let { error } = this.state;
       return (
         <div className="home-page-wrap">
-          <h2 className="page-title">Tally</h2>
+          <Link className="standard-link" to="/"><h2 className="page-title">Tally</h2></Link>
           <section className="home-section home-login">
             <div id="login-form" className="login-form">
               <input type="email" placeholder="Email" required ref={(c) => this._email = c} />

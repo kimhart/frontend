@@ -4,6 +4,8 @@ import { Link } from 'react-router';
 import RepRankCluster from '../rank/RepRankCluster';
 import Search from '../search/Search';
 import { isLoading } from '../../utils/Utils';
+import IconTriangleDown from '../icons/IconTriangleDown';
+import IconClose from '../icons/IconClose';
 
 class Rank extends Component {
 
@@ -81,6 +83,15 @@ class Rank extends Component {
     }
   }
 
+  getExplainerModal = () => {
+    const explainerModal = this.refs.explainerModal;
+    if (explainerModal.classList.contains('open')) {
+      explainerModal.classList.remove('open');
+    } else {
+      explainerModal.classList.add('open');
+    }
+  }
+
   getExplainerCopy = () => {
     let { attendance, participation, efficacy } = this.state;
     let { rank_attendance, rank_participation, rank_efficacy } = this.props.data;
@@ -89,9 +100,9 @@ class Rank extends Component {
     let max_sponsor = rank_efficacy ? rank_efficacy[0].max_sponsor : null;
     let chamber = this.getActiveChamber();
     let Chamber = chamber ? chamber.charAt(0).toUpperCase() + chamber.slice(1) : chamber;
-    if (attendance) return `This page ranks ${Chamber} reps by how many days of work they've attended out of the ${total_work_days} work days in this term. Reps who share a rank position are listed alphabetically within their category.`;
-    if (participation) return `This page ranks ${Chamber} reps by how many votes they've cast out of the ${total_votes} votes held this term. Reps who share a rank position are listed alphabetically within their category.`;
-    if (efficacy) return  `This page ranks ${Chamber} reps by how many bills they've sponsored compared to the highest amount sponsored by a single rep (${max_sponsor}). Reps who share a rank position are listed alphabetically within their category.`;
+    if (attendance) return `Compares ${chamber} reps by how many days of work they've attended vs. the ${total_work_days} work days in this term.`;
+    if (participation) return `Compares ${chamber} reps by how many votes they've cast vs. the ${total_votes} votes held this term.`;
+    if (efficacy) return  `Compares ${chamber} reps by how many bills they've sponsored vs. the most bills created by one rep this term.`;
     return false;
   }
 
@@ -109,8 +120,10 @@ class Rank extends Component {
       <div className="rank-wrap">
         <div className="rank-controls-wrap">
           <div className="rank-category-wrap">
-            <div className="rank-category-name">
-              <p onClick={() => this.getDropDown()}>{this.getActiveCategory()}</p>
+            <p className="rank-headline">Rank lawmakers based on<br/> core job functions:</p>
+            <div className="rank-category-name" onClick={() => this.getDropDown()}>
+              <p>{this.getActiveCategory()}</p>
+              <IconTriangleDown />
             </div>
             <div className="rank-category-dropdown" ref="dropdown" onClick={() => this.getDropDown()}>
               <p className={`rank-category-item ${this.getActiveCategory() === 'Bills' ? 'active' : ''}`} onClick={() => this.setState({ attendance: false, participation: false, efficacy: true })}>Bills</p>
@@ -124,13 +137,17 @@ class Rank extends Component {
           </div>
         </div>
         <div className="rank-sort-wrap">
+          <input className="rank-search-filter" placeholder="Find someone..."></input>
+          <button className="rank-sort-btn">Sort <IconTriangleDown fill="#4990E2"/></button>
+          <span className="control-button question-mark-circle" onClick={() => this.getExplainerModal()}>?</span>
         </div>
-        {/* search functionality???
-        <div className="rank-filter-wrap">
-          <input type="text" className="filter-input-text" placeholder="Find someone" />
-          <img className="filter-input-icon" src="./img/icon-filter.svg" />
-        </div>*/}
         <div className="rank-list-wrap">
+          <div className="rank-explainer-modal" ref="explainerModal">
+            <div className="rep-card-close control-button" onClick={() => this.getExplainerModal()}>
+              <IconClose width={15} height={15} stroke="#4990E2" strokeWidth="2" />
+            </div>
+            <p className="rank-explainer-copy">{this.getExplainerCopy()}</p>
+          </div>
           {this.getRankList()}
         </div>
       </div>

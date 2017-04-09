@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import RepInfoCluster from './../reps/RepInfoCluster';
 import ReportCard from './../reps/ReportCard';
 import { UserUtils } from './../../utils/Utils';
+import { browserHistory } from 'react-router';
 import Modal from 'react-modal';
 
 class DashboardPage extends React.Component {
@@ -21,6 +22,10 @@ class DashboardPage extends React.Component {
   getRepInfoClusters = () => {
     let { reps } = this.props.data;
     return reps ? reps.map(rep => <RepInfoCluster {...this.props} key={`repinfocluster_${rep.bioguide_id}`} {...rep} onClick={() => this.setState({ activeReportCard: rep.bioguide_id })}/>) : null;
+  }
+
+  logOut = () => {
+    UserUtils.logOut();
   }
 
   getReportCards = () => {
@@ -52,9 +57,12 @@ class DashboardPage extends React.Component {
       <div className="main-dash">
         <div className="greeting-banner">
           <h2 className="greeting">Welcome {user.first_name}</h2>
+          <p className="logout" onClick={() => this.logOut()}>Logout</p>
         </div>
-        <h3 className="headline">Your Representatives</h3>
-        <p className="your-district">{user.state_long} Congressional District {this.getDistrict(user)}</p>
+        <div className="your-location">
+          <h3 className="headline">Your Representatives</h3>
+          <p className="your-district">{user.state_long} Congressional District {this.getDistrict(user)}</p>
+        </div>
         <div className="rep-info-clusters">
           {this.getRepInfoClusters()}
           {this.getReportCards()}
