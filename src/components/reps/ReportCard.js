@@ -2,6 +2,7 @@ import React from 'react';
 import Relay from 'react-relay';
 import { Link } from 'react-router';
 import Attendance from './Attendance';
+import Beliefs from './Beliefs';
 import Participation from './Participation';
 import Efficacy from './Efficacy';
 import MembershipStats from './MembershipStats';
@@ -50,7 +51,7 @@ class ReportCard extends React.Component {
   }
 
   getCardContent = () => {
-    let { contact, bio, beliefs } = this.state;
+    let { contact, bio, tab } = this.state;
     if (contact || bio) {
       let { phone, twitter_handle, facebook, address, bio_text } = this.props;
       let list = contact ? [ phone, twitter_handle, facebook, address ] : bio_text.split('; ');
@@ -67,23 +68,33 @@ class ReportCard extends React.Component {
         </div>
       );
     }
-    console.log(this.props.data.beliefs);
-    return (
-      <div className="rep-card-metrics-wrap">
-        <h4 className="rep-card-section-title">
-          Participation Scores
-          <span className="control-button question-mark-circle">?</span>
-        </h4>
-        <div className="rep-card-sliders">
-          <Attendance {...this.props} />
-          <Participation {...this.props} />
-          <Efficacy {...this.props} />
-          <MembershipStats {...this.props} />
+    let tabs = {
+      stats: (
+        <div className="rep-card-metrics-wrap">
+          <h4 className="rep-card-section-title">
+            Participation Scores
+            <span className="control-button question-mark-circle">?</span>
+          </h4>
+          <div className="rep-card-sliders">
+            <Attendance {...this.props} />
+            <Participation {...this.props} />
+            <Efficacy {...this.props} />
+            <MembershipStats {...this.props} />
+          </div>
+          <h4 className="rep-card-section-title">Policies</h4>
+          <PolicyAreas {...this.props} />
         </div>
-        <h4 className="rep-card-section-title">Policies</h4>
-        <PolicyAreas {...this.props} />
-      </div>
-    );
+      ),
+      beliefs: (
+        <div className="rep-card-metrics-wrap">
+          <h4 className="rep-card-section-title">
+            <span className="control-button question-mark-circle">?</span>
+          </h4>
+          <Beliefs {...this.props} />
+        </div>
+      )
+    }
+    return tabs[tab] || null;
   }
 
   render() {
@@ -126,13 +137,7 @@ export default Relay.createContainer(ReportCard, {
     data: () => Relay.QL`
     fragment on Data {
       id
-      beliefs(bioguide_id: $bioguide_id) {
-        bioguide_id
-        sub_type_of
-        tally_score
-        total_actions
-        type
-      }
+      ${Beliefs.getFragment('data')}
       ${Attendance.getFragment('data')}
       ${Participation.getFragment('data')}
       ${Efficacy.getFragment('data')}
