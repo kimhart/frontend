@@ -55,9 +55,6 @@ class Footer extends React.Component {
           </span>
           <span className="nav-bar-tab_title">Search</span>
         </Link>
-        {/* <Link to="/" className={`nav-bar-tab ${this.getActiveTab() === 'logout' ? ' active' : ''}`} onClick={() => this.logOut()}>
-          <span className="nav-bar-tab_title" style={{ pointerEvents: 'none' }}>Logout</span>
-        </Link> */}
       </nav>
     );
   }
