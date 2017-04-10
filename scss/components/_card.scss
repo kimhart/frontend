@@ -11,6 +11,7 @@
   display: flex;
   flex-direction: column;
   background: $blue;
+  color: white;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 }
@@ -31,6 +32,7 @@
 .rep-card-photo {
   margin: 0 auto;
   margin-top: -50px;
+  margin-bottom: 15px;
   height: 100px;
   width: 100px;
   border-radius: 100%;
@@ -40,24 +42,44 @@
   text-align: center;
   font-weight: 600;
   font-size: 26px;
-  margin: 5px 15px;
-  color: white;
+  margin: 0 15px;
 }
 
-.rep-card-role {
+.rep-card-position-wrap {
+  margin-bottom: 15px;
+}
+
+.rep-card-role, .rep-card-leadership {
+  display: block;
   text-align: center;
-  margin: 5px 15px;
+  margin: 0 15px;
+}
+
+.rep-card-buttons-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 0 15px;
+  margin-bottom: 15px;
+}
+
+.contact-btn, .bio-btn {
+  width: 90px;
+  border: 1px solid white;
   color: white;
-  span {
-    color: white;
+  font-size: 14px;
+  background-color: transparent;
+  border-radius: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+  &.active {
+    background: white;
+    color: $blue;
   }
 }
 
-.rep-card-leadership {
-  text-align: center;
-  margin: 5px 15px;
-  color: white;
-}
 
 .rep-card-metrics-wrap {
   padding: 0 15px;
@@ -123,28 +145,6 @@
 
 .rep-card-bio-list-item {
   padding: 10px 0;
-}
-
-.rep-card-buttons-wrap {
-  width: 70%;
-  display: flex;
-  margin: 0 auto;
-}
-
-.contact-btn, .bio-btn {
-  border: 1px solid white;
-  color: white;
-  font-size: 14px;
-  background-color: transparent;
-  border-radius: 10px;
-  padding: 10px;
-  margin: 20px 5px;
-  box-sizing: border-box;
-  width: 50%;
-  &.active {
-    background: white;
-    color: $blue;
-  }
 }
 
 .basic-donut-chart-middle {
