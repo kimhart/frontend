@@ -14,7 +14,9 @@ class Rank extends Component {
     this.state = {
       attendance: false,
       participation: false,
-      efficacy: true
+      efficacy: true,
+      bestToWorst: false,
+      worstToBest: false
     };
     props.relay.setVariables({ chamber: 'house' }, ({ aborted, done, error }) => {
       if (aborted || done || error) {
@@ -47,13 +49,14 @@ class Rank extends Component {
     })
     return Object.keys(rankDict).map(key => {
       let reps = rankDict[key];
-      let { attendance, participation, efficacy } = this.state;
+      let { attendance, participation, efficacy, bestToWorst, worstToBest } = this.state;
       return (
         <div>
           <p className="rep-rank-number">{key}.</p>
-          { reps.map(rep => <RepRankCluster category={category} {...this.props} key={rep.bioguide_id} {...rep} />) }
+          <p></p>
+          { reps.map(rep => <RepRankCluster category={category} {...this.props} key={rep.bioguide_id} {...rep} />)}
         </div>
-      );
+      )
     });
   }
 
@@ -99,10 +102,9 @@ class Rank extends Component {
     let total_votes = rank_participation ? rank_participation[0].total_votes : null;
     let max_sponsor = rank_efficacy ? rank_efficacy[0].max_sponsor : null;
     let chamber = this.getActiveChamber();
-    let Chamber = chamber ? chamber.charAt(0).toUpperCase() + chamber.slice(1) : chamber;
     if (attendance) return `Compares ${chamber} reps by how many days of work they've attended vs. the ${total_work_days} work days in this term.`;
     if (participation) return `Compares ${chamber} reps by how many votes they've cast vs. the ${total_votes} votes held this term.`;
-    if (efficacy) return  `Compares ${chamber} reps by how many bills they've sponsored vs. the most bills created by one rep this term.`;
+    if (efficacy) return `Compares ${chamber} reps by how many bills they've sponsored vs. the most bills created by one rep this term.`;
     return false;
   }
 
@@ -138,7 +140,7 @@ class Rank extends Component {
         </div>
         <div className="rank-sort-wrap">
           <input className="rank-search-filter" placeholder="Find someone..."></input>
-          <button className="rank-sort-btn">Sort <IconTriangleDown fill="#4990E2"/></button>
+          <button className="rank-sort-btn" onClick={() => this.getResults() }>Sort <IconTriangleDown fill="#4990E2"/></button>
           <span className="control-button question-mark-circle" onClick={() => this.getExplainerModal()}>?</span>
         </div>
         <div className="rank-list-wrap">
@@ -151,7 +153,7 @@ class Rank extends Component {
           {this.getRankList()}
         </div>
       </div>
-    );
+    )
   }
 }
 
