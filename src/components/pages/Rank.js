@@ -98,10 +98,13 @@ class Rank extends Component {
 
   getExplainerModal = () => {
     const explainerModal = this.refs.explainerModal;
+    const explainerOverlay = this.refs.explainerOverlay;
     if (explainerModal.classList.contains('open')) {
       explainerModal.classList.remove('open');
+      explainerOverlay.classList.remove('open');
     } else {
       explainerModal.classList.add('open');
+      explainerOverlay.classList.add('open');
     }
   }
 
@@ -150,10 +153,11 @@ class Rank extends Component {
         </div>
         <div className="rank-sort-wrap">
           <input className="rank-search-filter" placeholder="Find someone..."></input>
-          <button className="rank-sort-btn" onClick={() => this.getResults() }>Sort <IconTriangleDown fill="#4990E2"/></button>
+          <button className="rank-sort-btn" onClick={() => this.getResults()}>Sort <IconTriangleDown fill="#4990E2"/></button>
           <span className="control-button question-mark-circle" onClick={() => this.getExplainerModal()}>?</span>
         </div>
         <div className="rank-list-wrap">
+          <div className="rank-modal-overlay" ref="explainerOverlay" onClick={() => this.getExplainerModal()}></div>
           <div className="rank-explainer-modal" ref="explainerModal">
             <div className="rep-card-close control-button" onClick={() => this.getExplainerModal()}>
               <IconClose width={15} height={15} stroke="#4990E2" strokeWidth="2" />
