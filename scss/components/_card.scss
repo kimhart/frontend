@@ -223,6 +223,29 @@
   text-transform: capitalize;
   margin-bottom: 20px;
 }
+
 .rep-belief-item:not(:last-child) {
   margin-bottom: 50px;
+}
+
+.policy-areas {
+
+}
+
+.policy-area {
+  margin-bottom: 15px;
+}
+
+.policy-area-divs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.policy-area-div {
+  background-color: $teal-green;
+  width: 15px;
+  height: 15px;
+  border-radius: 5px;
+  margin-right: 5px;
 }
