@@ -49,6 +49,8 @@
     width: 95%;
     box-sizing: border-box;
     border-radius: 5px;
+    -webkit-animation: slide-down .3s ease-out;
+    -moz-animation: slide-down .3s ease-out;
     &.open {
       display: flex;
     }
@@ -207,6 +209,15 @@
 .rep-rank-cluster-headline {
   display: flex;
   justify-content: space-between;
+  border-top: 1px solid $light-gray;
+  padding-top: 20px;
+}
+
+.rep-rank-number, .rep-rank-totals {
+  font-size: 18px;
+  padding: 0 10px;
+  font-weight: 400;
+  color: $text-gray;
 }
 
 .rep-rank-stats {
@@ -242,13 +253,6 @@
 
 .rep-rank-number-wrap {
   border-top: 1px solid $light-gray;
-}
-
-.rep-rank-number, .rep-rank-totals {
-  font-size: 18px;
-  padding: 0 10px;
-  font-weight: 600;
-  color: $blue;
 }
 
 .rank-sort-wrap {
@@ -287,5 +291,28 @@
   border-radius: 5px;
 }
 
+
+
+@-webkit-keyframes slide-down {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-5%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}
+
+@-moz-keyframes slide-down {
+  0% {
+    opacity: 0;
+    -moz-transform: translateY(-5%);
+  }
+  100% {
+    opacity: 1;
+    -moz-transform: translateY(0);
+  }
+}
 
 
