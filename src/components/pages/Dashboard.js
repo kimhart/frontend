@@ -24,10 +24,6 @@ class DashboardPage extends React.Component {
     return reps ? reps.map(rep => <RepInfoCluster {...this.props} key={`repinfocluster_${rep.bioguide_id}`} {...rep} onClick={() => this.setState({ activeReportCard: rep.bioguide_id })}/>) : null;
   }
 
-  logOut = () => {
-    UserUtils.logOut();
-  }
-
   getReportCards = () => {
     let { activeReportCard } = this.state;
     let { reps } = this.props.data;
@@ -57,7 +53,7 @@ class DashboardPage extends React.Component {
       <div className="main-dash">
         <div className="greeting-banner">
           <h2 className="greeting">Welcome {user.first_name}</h2>
-          <p className="logout" onClick={() => this.logOut()}>Logout</p>
+          <p className="logout" onClick={() => this.props.logOut()}>Logout</p>
         </div>
         <div className="your-location">
           <h3 className="headline">Your Representatives</h3>
