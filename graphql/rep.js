@@ -107,6 +107,7 @@ let repPolicyAreasType = new GraphQLObjectType({
   name: "RepPolicyAreas",
   fields: () => ({
     policy_area: { type: GraphQLString, resolve: rep => rep.policy_area },
+    count: { type: GraphQLInt, resolve: rep => rep.count },
     percent: { type: GraphQLFloat, resolve: rep => rep.percent }
   })
 })
