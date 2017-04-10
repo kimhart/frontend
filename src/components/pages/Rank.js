@@ -52,8 +52,18 @@ class Rank extends Component {
       let { attendance, participation, efficacy, bestToWorst, worstToBest } = this.state;
       return (
         <div>
-          <p className="rep-rank-number">{key}.</p>
-          <p></p>
+          <div className="rep-rank-cluster-headline">
+            <p className="rep-rank-number">#{key}</p>
+            {reps[0].rep_sponsor &&
+              <p className="rep-rank-totals">{reps[0].rep_sponsor}/{reps[0].max_sponsor} bills</p>
+            }
+            {reps[0].days_at_work &&
+              <p className="rep-rank-totals">{reps[0].days_at_work}/{reps[0].total_work_days} days</p>
+            }
+            {reps[0].rep_votes &&
+              <p className="rep-rank-totals">{reps[0].rep_votes}/{reps[0].total_votes} votes</p>
+            }
+          </div>
           { reps.map(rep => <RepRankCluster category={category} {...this.props} key={rep.bioguide_id} {...rep} />)}
         </div>
       )

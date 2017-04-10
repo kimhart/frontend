@@ -187,6 +187,11 @@
   width: 100%;
 }
 
+.rep-rank-cluster-headline {
+  display: flex;
+  justify-content: space-between;
+}
+
 .rep-rank-stats {
   display: flex;
   flex-direction: row;
@@ -222,7 +227,7 @@
   border-top: 1px solid $light-gray;
 }
 
-.rep-rank-number {
+.rep-rank-number, .rep-rank-totals {
   font-size: 18px;
   padding: 0 10px;
   font-weight: 600;
