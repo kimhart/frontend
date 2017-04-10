@@ -2,6 +2,8 @@ import React from 'react';
 import Relay from 'react-relay';
 import { Link } from 'react-router';
 
+import IconStamp from '../icons/IconStamp';
+
 class RepInfoCluster extends React.Component {
 
   constructor(props) {
@@ -33,7 +35,8 @@ class RepInfoCluster extends React.Component {
             <p className="rep-info-role">{chamber.replace(/\b\w/g, l => l.toUpperCase())} {this.formatParty(party)}</p>
           </div>
           <div className="rep-letter-grade-wrap">
-            <p className="rep-letter-grade">{letter_grade}</p>
+            <IconStamp />
+            <span className="rep-letter-grade">{letter_grade}</span>
           </div>
         </div>
       </div>

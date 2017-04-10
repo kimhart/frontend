@@ -7,7 +7,7 @@ import Participation from './Participation';
 import Efficacy from './Efficacy';
 import MembershipStats from './MembershipStats';
 import PolicyAreas from './PolicyAreas';
-import { IconClose } from '../icons/Icons';
+import { IconClose, IconStamp } from '../icons/Icons';
 
 class ReportCard extends React.Component {
 
@@ -107,15 +107,16 @@ class ReportCard extends React.Component {
           <IconClose width={15} height={15} stroke="#4990E2" strokeWidth="2" />
         </div>
         <div className="rep-card-header-wrap">
+          <div className="rep-letter-grade-wrap">
+            <IconStamp fill="white" />
+            <span className="rep-letter-grade">{letter_grade}</span>
+          </div>
           <div className="rep-card-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}}></div>
           <span className="rep-card-name">{ fullName }</span>
           <span className="rep-card-role">
             { this.formatParty(party) } &bull; { chamber.replace(/\b\w/g, l => l.toUpperCase()) } &bull; { state } { chamber === 'house' && <span>&bull; District {district}</span> }
           </span>
           { leadership_position !== "None" && <span className="rep-card-leadership">{ leadership_position }</span> }
-          <div className="rep-card-grade-wrap">
-            <span className="rep-card-grade">{ letter_grade }</span>
-          </div>
           <div className="rep-card-buttons-wrap">
             <button className={`contact-btn${contact ? ' active' : ''}`} onClick={() => this.setState({ contact: !contact, bio: false })}>Contact</button>
             <button className={`bio-btn${bio ? ' active' : ''}`} onClick={() => this.setState({ bio: !bio, contact: false })}>Bio</button>

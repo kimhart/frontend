@@ -5,19 +5,39 @@
   height: 55px;
   display: flex;
   align-items: center;
+  justify-content: center;
   .greeting {
     font-size: 20px;
     font-weight: 500;
     margin: 0;
     color: white;
-    padding: 0 15px;
+    padding-left: 58px;
   }
+  .logout {
+    align-self: right;
+    color: white;
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+.your-location {
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .your-district {
   font-size: 16px;
+  font-weight: 300;
   text-align: center;
   margin: 0 auto 20px auto;
+}
+
+.main-dash {
+  padding-bottom: 70px;
 }
 
 .rep-info-clusters {
@@ -43,7 +63,7 @@
   box-sizing: border-box;
   border: 1px solid $blue;
   border-radius: 15px;
-  padding: 15px;
+  padding: 10px 15px;
   cursor: pointer;
   transition: box-shadow 0.1s linear;
   box-shadow: 0 5px 10px transparentize($blue, .75);
@@ -64,7 +84,7 @@
 }
 
 .rep-info-details {
-  font-size: 14px;
+  font-size: 16px;
   flex-grow: 1;
   padding: 0 15px;
   text-align: left;
@@ -82,23 +102,27 @@
 .rep-info-role {
   margin: 0;
   font-weight: 300;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .rep-letter-grade-wrap {
-  width: 50px;
-  height: 50px;
-  border: 3px solid $blue;
-  box-sizing: border-box;
-  border-radius: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: rotate(-20deg);
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  transform: rotate(-12deg);
+  position: relative;
 }
 
 .rep-letter-grade {
-  font-size: 26px;
-  color: $blue;
-  font-weight: 400;
+  font-size: 21px;
+  color: white;
+  font-weight: 700;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $header-font;
 }

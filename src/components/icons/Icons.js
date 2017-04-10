@@ -1,5 +1,7 @@
 import IconClose from './IconClose';
+import IconStamp from './IconStamp';
 
 export {
-  IconClose
+  IconClose,
+  IconStamp
 }
