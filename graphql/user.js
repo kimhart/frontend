@@ -62,7 +62,7 @@ export let Login = mutationWithClientMutationId({
         reject(error)
       })
       .then(user => {
-        if (!!user.user_id) {
+        if (!!user && !!user.user_id) {
           resolve(user);
         }
         else {
