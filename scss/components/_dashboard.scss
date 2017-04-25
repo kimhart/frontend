@@ -1,12 +1,12 @@
 header.logo {
-  height: 50px;
+  height: 30px;
   background-color: white;
   display: flex;
   .logo-container {
     margin-top: 10px;
     display: flex;
     align-items: center;
-    height: 50px;
+    height: 30px;
     width: 70%;
     .tally-logo {
       width: 30px;
@@ -44,9 +44,9 @@ header.logo {
 
 
 .your-location {
-  height: 100px;
+  height: 80px;
   margin-top: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   background-color: $blue;
   color: white;
   display: flex;
@@ -64,7 +64,7 @@ header.logo {
   font-size: 16px;
   font-weight: 300;
   text-align: center;
-  margin: 0 auto 15px auto;
+  margin: 0 auto 20px auto;
   .state {
     font-weight: 600;
   }
