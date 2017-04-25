@@ -55,13 +55,13 @@ class Rank extends Component {
           <div>
             <div className="rep-rank-cluster-headline">
               <p className="rep-rank-number">{key}.</p>
-              {reps[0].rep_sponsor &&
+              {reps[0].rep_sponsor >= 0 &&
                 <p className="rep-rank-totals">{reps[0].rep_sponsor}/{reps[0].max_sponsor} bills</p>
               }
-              {reps[0].days_at_work &&
+              {reps[0].days_at_work >= 0  &&
                 <p className="rep-rank-totals">{reps[0].days_at_work}/{reps[0].total_work_days} days</p>
               }
-              {reps[0].rep_votes &&
+              {reps[0].rep_votes >= 0  &&
                 <p className="rep-rank-totals">{reps[0].rep_votes}/{reps[0].total_votes} votes</p>
               }
             </div>
