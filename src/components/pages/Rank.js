@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import RepRankCluster from '../rank/RepRankCluster';
 import Search from '../search/Search';
 import { isLoading } from '../../utils/Utils';
-import { IconTriangleDown, IconClose, IconAngleDown, IconSearch } from '../icons/Icons';
+import { IconTriangleDown, IconClose, IconAngleDown, IconSearch, TallyLogo } from '../icons/Icons';
 
 class Rank extends Component {
 
@@ -141,9 +141,24 @@ class Rank extends Component {
     let total_votes = rank_participation ? rank_participation[0].total_votes : null;
     let max_sponsor = rank_efficacy ? rank_efficacy[0].max_sponsor : null;
     let chamber = this.getActiveChamber();
-    if (attendance) return `Compares ${chamber} reps by how many days of work they've attended vs. the ${total_work_days} work days in this term.`;
-    if (participation) return `Compares ${chamber} reps by how many votes they've cast vs. the ${total_votes} votes held this term.`;
-    if (efficacy) return `Compares ${chamber} reps by how many bills they've sponsored vs. the most bills created by one rep this term.`;
+    if (attendance) return (
+      <div>
+        <span className="explainer-title">Work Attendance</span>
+        <span className="explainer-copy">You're currently ranking {chamber} reps based on how many days of work they've attended vs. the {total_work_days} work days in this term.<br/><br/> Reps who share a rank position are listed alphabetically within their category.</span>
+      </div>
+    );
+    if (participation) return (
+      <div>
+        <span className="explainer-title">Votes Cast</span>
+        <span className="explainer-copy">You're currently ranking {chamber} reps based on how many votes they've cast vs. the {total_votes} votes held this term.<br/><br/> Reps who share a rank position are listed alphabetically within their category.</span>
+      </div>
+    );
+    if (efficacy) return (
+      <div>
+        <span className="explainer-title">Bills Sponsored</span>
+        <span className="explainer-copy">You're currently ranking {chamber} reps based on how many bills they've sponsored vs. the most bills created by one rep this term, which is currently {max_sponsor}.<br/><br/> Reps who share a rank position are listed alphabetically within their category.</span>
+      </div>
+    );
     return false;
   }
 
@@ -160,6 +175,12 @@ class Rank extends Component {
     const { bestToWorst } = this.state;
     return (
       <div className="rank-wrap">
+        <header className="logo">
+          <div className="logo-container">
+            <TallyLogo />
+            <span className="tally-logo-helper">Tally</span>
+          </div>
+        </header>
         <div className="rank-controls-wrap">
           <div className="rank-category-wrap">
             <p className="rank-headline">Rank reps based on their<br/> core job functions:</p>
@@ -179,9 +200,11 @@ class Rank extends Component {
           </div>
         </div>
         <div className="rank-sort-wrap">
-          <input className="rank-search-filter" placeholder="Search" />
-          <div className="search-bar-icon">
-            <IconSearch fill="#4990E2" />
+          <div className="rank-search">
+            <input className="rank-search-filter" placeholder="Search" />
+            <div className="search-bar-icon">
+              <IconSearch width="20px" fill="#4990E2" />
+            </div>
           </div>
           <button className="rank-sort-btn" onClick={() => this.setState({bestToWorst: !bestToWorst})}>
             Sort
@@ -197,7 +220,7 @@ class Rank extends Component {
             <div className="rep-card-close control-button" onClick={() => this.getExplainerModal()}>
               <IconClose width={15} height={15} stroke="#4990E2" strokeWidth="2" />
             </div>
-            <p className="rank-explainer-copy">{this.getExplainerCopy()}</p>
+            {this.getExplainerCopy()}
           </div>
           {this.getRankList()}
         </div>
