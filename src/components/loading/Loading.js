@@ -1,6 +1,7 @@
 import React from 'react';
 import LoadingSpinner from './LoadingSpinner';
 import { emitter, actions } from '../../utils/Emitter';
+import TallyLogo from '.././icons/Icons';
 
 class Loading extends React.Component {
 
