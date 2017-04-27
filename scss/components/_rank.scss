@@ -227,8 +227,8 @@
 .rep-rank-cluster-headline {
   display: flex;
   justify-content: space-between;
-  padding: 25px 0 0 0;
-  border-top: 1px solid transparentize($light-gray, .55);
+  padding: 25px 0 10px 0;
+  border-bottom: 1px solid transparentize($light-gray, .55);
 }
 
 .rep-rank-number, .rep-rank-totals {
@@ -279,7 +279,7 @@
   justify-content: space-between;
   align-items: center;
   flex-grow: 1;
-  margin: 30px 0 15px 0;
+  margin: 20px 0 5px 0;
   padding: 10px;
 }
 

@@ -14,8 +14,7 @@ class Rank extends Component {
       attendance: false,
       participation: false,
       efficacy: true,
-      bestToWorst: true,
-      limit: true
+      bestToWorst: true
     };
     props.relay.setVariables({ chamber: 'house' }, ({ aborted, done, error }) => {
       if (aborted || done || error) {
@@ -60,7 +59,7 @@ class Rank extends Component {
     if (bestToWorst) {
       return Object.keys(rankDict).map(key => {
         let reps = rankDict[key];
-        let { attendance, participation, efficacy, bestToWorst, limit } = this.state;
+        let { attendance, participation, efficacy, bestToWorst } = this.state;
         return (
           <div className="rep-rank-clusters">
             <div className="rep-rank-cluster-headline">
@@ -76,7 +75,7 @@ class Rank extends Component {
               }
             </div>
             <div className={`reps-list`}>
-            { limit ?
+            { reps.length > 3 ?
               reps.slice(0, 3).map(rep =>
                 <RepRankCluster category={category} {...this.props} key={rep.bioguide_id} {...rep} />
               ) :
@@ -91,7 +90,7 @@ class Rank extends Component {
     } else {
       return Object.keys(rankDict).reverse().map(key => {
         let reps = rankDict[key];
-        let { attendance, participation, efficacy, bestToWorst, limit } = this.state;
+        let { attendance, participation, efficacy, bestToWorst } = this.state;
         return (
           <div className="rep-rank-clusters">
             <div className="rep-rank-cluster-headline">
@@ -106,8 +105,8 @@ class Rank extends Component {
                 <p className="rep-rank-totals">{reps[0].rep_votes}/{reps[0].total_votes} votes</p>
               }
             </div>
-            <div className={`reps-list`}>
-            { limit ?
+            <div className="reps-list">
+            { reps.length > 3 ?
               reps.slice(0, 3).map(rep =>
                 <RepRankCluster category={category} {...this.props} key={rep.bioguide_id} {...rep} />
               ) :
