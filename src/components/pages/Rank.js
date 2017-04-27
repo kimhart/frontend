@@ -33,6 +33,15 @@ class Rank extends Component {
     return false;
   }
 
+  getOrdinal = (i) => {
+    let j = i % 10;
+    let k = i % 100;
+    if (j == 1 && k != 11) return i + "st";
+    if (j == 2 && k != 12) return i + "nd";
+    if (j == 3 && k != 13) return i + "rd";
+    return i + "th";
+  }
+
   getResults = ({ category, data }) => {
     let { bestToWorst } = this.state;
     if (!data) return null;
@@ -52,9 +61,9 @@ class Rank extends Component {
         let reps = rankDict[key];
         let { attendance, participation, efficacy, bestToWorst } = this.state;
         return (
-          <div>
+          <div className="rep-rank-clusters">
             <div className="rep-rank-cluster-headline">
-              <p className="rep-rank-number">{key}.</p>
+              <p className="rep-rank-number">{this.getOrdinal(key)}</p>
               {reps[0].rep_sponsor >= 0 &&
                 <p className="rep-rank-totals">{reps[0].rep_sponsor}/{reps[0].max_sponsor} bills</p>
               }
@@ -65,8 +74,16 @@ class Rank extends Component {
                 <p className="rep-rank-totals">{reps[0].rep_votes}/{reps[0].total_votes} votes</p>
               }
             </div>
-            { reps.map(rep =>
-              <RepRankCluster category={category} {...this.props} key={rep.bioguide_id} {...rep} />)}
+            <div className={`reps-list`}>
+            { reps.length > 3 ?
+              reps.slice(0, 3).map(rep =>
+                <RepRankCluster category={category} {...this.props} key={rep.bioguide_id} {...rep} />
+              ) :
+              reps.map(rep =>
+                <RepRankCluster category={category} {...this.props} key={rep.bioguide_id} {...rep} />)
+            }
+            </div>
+            { reps.length > 3 ? <div className="view-more-reps">Show {reps.length - 3} more reps tied for {this.getOrdinal(key)} place</div> : null }
           </div>
         )
       })
@@ -75,9 +92,9 @@ class Rank extends Component {
         let reps = rankDict[key];
         let { attendance, participation, efficacy, bestToWorst } = this.state;
         return (
-          <div>
+          <div className="rep-rank-clusters">
             <div className="rep-rank-cluster-headline">
-              <p className="rep-rank-number">{key}.</p>
+              <p className="rep-rank-number">{this.getOrdinal(key)}</p>
               {reps[0].rep_sponsor >= 0 &&
                 <p className="rep-rank-totals">{reps[0].rep_sponsor}/{reps[0].max_sponsor} bills</p>
               }
@@ -88,8 +105,16 @@ class Rank extends Component {
                 <p className="rep-rank-totals">{reps[0].rep_votes}/{reps[0].total_votes} votes</p>
               }
             </div>
-            { reps.map(rep =>
-              <RepRankCluster category={category} {...this.props} key={rep.bioguide_id} {...rep} />)}
+            <div className="reps-list">
+            { reps.length > 3 ?
+              reps.slice(0, 3).map(rep =>
+                <RepRankCluster category={category} {...this.props} key={rep.bioguide_id} {...rep} />
+              ) :
+              reps.map(rep =>
+                <RepRankCluster category={category} {...this.props} key={rep.bioguide_id} {...rep} />)
+            }
+            </div>
+            { reps.length > 3 ? <div className="view-more-reps">Show {reps.length - 3} more reps tied for {this.getOrdinal(key)} place</div> : null }
           </div>
         )
       })
@@ -144,7 +169,7 @@ class Rank extends Component {
     if (attendance) return (
       <div>
         <span className="explainer-title">Work Attendance</span>
-        <span className="explainer-copy">You're currently ranking {chamber} reps based on how many days of work they've attended vs. the {total_work_days} work days in this term.<br/><br/> Reps who share a rank position are listed alphabetically within their category.</span>
+        <span className="explainer-copy">You're currently ranking {chamber} reps based on how many days of work they've attended vs. the {total_work_days} total work days in this term.<br/><br/> Reps who share a rank position are listed alphabetically within their category.</span>
       </div>
     );
     if (participation) return (
@@ -156,7 +181,7 @@ class Rank extends Component {
     if (efficacy) return (
       <div>
         <span className="explainer-title">Bills Sponsored</span>
-        <span className="explainer-copy">You're currently ranking {chamber} reps based on how many bills they've sponsored vs. the most bills created by one rep this term, which is currently {max_sponsor}.<br/><br/> Reps who share a rank position are listed alphabetically within their category.</span>
+        <span className="explainer-copy">You're currently ranking {chamber} reps based on how many bills they've sponsored vs. the <em>most</em> bills created by one rep this term, which is currently {max_sponsor}.<br/><br/> Reps who share a rank position are listed alphabetically within their category.</span>
       </div>
     );
     return false;
@@ -183,7 +208,7 @@ class Rank extends Component {
         </header>
         <div className="rank-controls-wrap">
           <div className="rank-category-wrap">
-            <p className="rank-headline">Rank reps based on their<br/> core job functions:</p>
+            <p className="rank-headline">Rank based on core job performance:</p>
             <div className="rank-category-name" onClick={() => this.getDropDown()}>
               <p>{this.getActiveCategory()}</p>
               <IconTriangleDown />

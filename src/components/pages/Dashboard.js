@@ -66,7 +66,7 @@ class DashboardPage extends React.Component {
           <h3 className="headline">Your Representatives</h3>
           <p className="your-district"><span className="state">{user.state_long}</span> &nbsp;Congressional District {this.getDistrict(user)}</p>
         </div>
-        <span className="tap-a-rep">Tap a representative to learn more.</span>
+        <span className="tap-a-rep">Click on a representative to learn more.</span>
         <div className="rep-info-clusters">
           {this.getRepInfoClusters()}
           {this.getReportCards()}

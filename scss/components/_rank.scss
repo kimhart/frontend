@@ -21,7 +21,7 @@
   width: 100%;
   .rank-headline {
     text-align: center;
-    font-size: 20px;
+    font-size: 18px;
     padding: 30px 10px 10px 10px;
     color: white;
   }
@@ -30,10 +30,11 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    width: auto;
+    width: 70%;
     padding: 0 20px;
+    background-color: lighten($blue, 15%);
     margin: 10px auto;
-    border: 1px solid white;
+    // border: 1px solid white;
     border-radius: 5px;
      p {
       color: white;
@@ -51,7 +52,7 @@
     flex-direction: column;
     align-self: center;
     background-color: white;
-    width: 95%;
+    width: 70%;
     box-sizing: border-box;
     border-radius: 5px;
     -webkit-animation: slide-down .3s ease-out;
@@ -67,7 +68,7 @@
       font-size: 16px;
       padding: 15px;
       margin: 0;
-      font-weight: 300;
+      font-weight: 400;
       &.active {
         background-color: lighten($blue, 35%);
         font-weight: 700;
@@ -226,16 +227,15 @@
 .rep-rank-cluster-headline {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid $light-gray;
-  padding: 20px 0 10px 0;
+  padding: 25px 0 10px 0;
+  border-bottom: 1px solid transparentize($light-gray, .55);
 }
 
 .rep-rank-number, .rep-rank-totals {
-  font-size: 16px;
+  font-size: 18px;
   padding: 0 10px;
-  font-weight: 400;
+  font-weight: 500;
   color: $text-gray;
-  opacity: .8;
 }
 
 .rep-rank-stats {
@@ -279,7 +279,7 @@
   justify-content: space-between;
   align-items: center;
   flex-grow: 1;
-  margin: 20px 0;
+  margin: 20px 0 5px 0;
   padding: 10px;
 }
 
@@ -287,7 +287,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: lighten($blue, 37%);
+  box-shadow: 0 0 10px transparentize($blue, .75);
+  border: 1px solid transparentize($blue, .75);
   border-radius: 5px;
   flex-grow: 1;
 }
@@ -298,8 +299,6 @@
 }
 
 .rank-search-filter {
-  background: lighten($blue, 37%);
-  border: 1px solid lighten($blue, 37%);
   color: $blue;
   margin: 0 10px 0 0;
   border-radius: 5px;
@@ -338,6 +337,14 @@
     margin-left: 10px;
     margin-bottom: 5px;
   }
+}
+
+.view-more-reps {
+  text-align: center;
+  padding: 10px;
+  width: 100%;
+  background-color: transparentize($light-gray, .55);
+  font-size: 13px;
 }
 
 
