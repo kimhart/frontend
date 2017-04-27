@@ -14,7 +14,8 @@ class Rank extends Component {
       attendance: false,
       participation: false,
       efficacy: true,
-      bestToWorst: true
+      bestToWorst: true,
+      limit: true
     };
     props.relay.setVariables({ chamber: 'house' }, ({ aborted, done, error }) => {
       if (aborted || done || error) {
@@ -59,9 +60,9 @@ class Rank extends Component {
     if (bestToWorst) {
       return Object.keys(rankDict).map(key => {
         let reps = rankDict[key];
-        let { attendance, participation, efficacy, bestToWorst } = this.state;
+        let { attendance, participation, efficacy, bestToWorst, limit } = this.state;
         return (
-          <div>
+          <div className="rep-rank-clusters">
             <div className="rep-rank-cluster-headline">
               <p className="rep-rank-number">{this.getOrdinal(key)}</p>
               {reps[0].rep_sponsor >= 0 &&
@@ -74,17 +75,25 @@ class Rank extends Component {
                 <p className="rep-rank-totals">{reps[0].rep_votes}/{reps[0].total_votes} votes</p>
               }
             </div>
-            { reps.map(rep =>
-              <RepRankCluster category={category} {...this.props} key={rep.bioguide_id} {...rep} />)}
+            <div className={`reps-list`}>
+            { limit ?
+              reps.slice(0, 3).map(rep =>
+                <RepRankCluster category={category} {...this.props} key={rep.bioguide_id} {...rep} />
+              ) :
+              reps.map(rep =>
+                <RepRankCluster category={category} {...this.props} key={rep.bioguide_id} {...rep} />)
+            }
+            </div>
+            { reps.length > 3 ? <div className="view-more-reps">Show {reps.length - 3} more reps tied for {this.getOrdinal(key)} place</div> : null }
           </div>
         )
       })
     } else {
       return Object.keys(rankDict).reverse().map(key => {
         let reps = rankDict[key];
-        let { attendance, participation, efficacy, bestToWorst } = this.state;
+        let { attendance, participation, efficacy, bestToWorst, limit } = this.state;
         return (
-          <div>
+          <div className="rep-rank-clusters">
             <div className="rep-rank-cluster-headline">
               <p className="rep-rank-number">{this.getOrdinal(key)}</p>
               {reps[0].rep_sponsor >= 0 &&
@@ -97,8 +106,16 @@ class Rank extends Component {
                 <p className="rep-rank-totals">{reps[0].rep_votes}/{reps[0].total_votes} votes</p>
               }
             </div>
-            { reps.map(rep =>
-              <RepRankCluster category={category} {...this.props} key={rep.bioguide_id} {...rep} />)}
+            <div className={`reps-list`}>
+            { limit ?
+              reps.slice(0, 3).map(rep =>
+                <RepRankCluster category={category} {...this.props} key={rep.bioguide_id} {...rep} />
+              ) :
+              reps.map(rep =>
+                <RepRankCluster category={category} {...this.props} key={rep.bioguide_id} {...rep} />)
+            }
+            </div>
+            { reps.length > 3 ? <div className="view-more-reps">Show {reps.length - 3} more reps tied for {this.getOrdinal(key)} place</div> : null }
           </div>
         )
       })
@@ -192,7 +209,7 @@ class Rank extends Component {
         </header>
         <div className="rank-controls-wrap">
           <div className="rank-category-wrap">
-            <p className="rank-headline">Rank reps based on their<br/> core job functions:</p>
+            <p className="rank-headline">Rank based on core job performance:</p>
             <div className="rank-category-name" onClick={() => this.getDropDown()}>
               <p>{this.getActiveCategory()}</p>
               <IconTriangleDown />

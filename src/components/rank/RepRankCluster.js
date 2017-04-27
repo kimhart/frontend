@@ -24,7 +24,7 @@ class RepRankCluster extends React.Component {
     return false;
   }
 
-  getShortParty = (party) => party === 'Democratic' ? '(D)' : '(R)';
+  getShortParty = (party) => party === 'Democratic' ? <span className="democrat-blue">D</span> : <span className="republican-red">R</span>;
 
   render() {
     let { name, party, state, category, days_at_work, total_work_days, percent_at_work, rep_sponsor, sponsor_percent, max_sponsor, percent_votes, rep_votes, total_votes, rank } = this.props;
