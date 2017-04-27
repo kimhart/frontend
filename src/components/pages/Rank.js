@@ -33,6 +33,15 @@ class Rank extends Component {
     return false;
   }
 
+  getOrdinal = (i) => {
+    let j = i % 10;
+    let k = i % 100;
+    if (j == 1 && k != 11) return i + "st";
+    if (j == 2 && k != 12) return i + "nd";
+    if (j == 3 && k != 13) return i + "rd";
+    return i + "th";
+  }
+
   getResults = ({ category, data }) => {
     let { bestToWorst } = this.state;
     if (!data) return null;
@@ -54,7 +63,7 @@ class Rank extends Component {
         return (
           <div>
             <div className="rep-rank-cluster-headline">
-              <p className="rep-rank-number">{key}.</p>
+              <p className="rep-rank-number">{this.getOrdinal(key)}</p>
               {reps[0].rep_sponsor >= 0 &&
                 <p className="rep-rank-totals">{reps[0].rep_sponsor}/{reps[0].max_sponsor} bills</p>
               }
@@ -77,7 +86,7 @@ class Rank extends Component {
         return (
           <div>
             <div className="rep-rank-cluster-headline">
-              <p className="rep-rank-number">{key}.</p>
+              <p className="rep-rank-number">{this.getOrdinal(key)}</p>
               {reps[0].rep_sponsor >= 0 &&
                 <p className="rep-rank-totals">{reps[0].rep_sponsor}/{reps[0].max_sponsor} bills</p>
               }
@@ -144,7 +153,7 @@ class Rank extends Component {
     if (attendance) return (
       <div>
         <span className="explainer-title">Work Attendance</span>
-        <span className="explainer-copy">You're currently ranking {chamber} reps based on how many days of work they've attended vs. the {total_work_days} work days in this term.<br/><br/> Reps who share a rank position are listed alphabetically within their category.</span>
+        <span className="explainer-copy">You're currently ranking {chamber} reps based on how many days of work they've attended vs. the {total_work_days} total work days in this term.<br/><br/> Reps who share a rank position are listed alphabetically within their category.</span>
       </div>
     );
     if (participation) return (
@@ -156,7 +165,7 @@ class Rank extends Component {
     if (efficacy) return (
       <div>
         <span className="explainer-title">Bills Sponsored</span>
-        <span className="explainer-copy">You're currently ranking {chamber} reps based on how many bills they've sponsored vs. the most bills created by one rep this term, which is currently {max_sponsor}.<br/><br/> Reps who share a rank position are listed alphabetically within their category.</span>
+        <span className="explainer-copy">You're currently ranking {chamber} reps based on how many bills they've sponsored vs. the <em>most</em> bills created by one rep this term, which is currently {max_sponsor}.<br/><br/> Reps who share a rank position are listed alphabetically within their category.</span>
       </div>
     );
     return false;
