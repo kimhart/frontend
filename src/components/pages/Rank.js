@@ -50,12 +50,13 @@ class Rank extends Component {
 
   getResults = ({ category, data }) => {
     let { bestToWorst } = this.state;
+    let { chamber } = this.props.relay.variables;
     if (!data) return null;
     let rankDict = this.groupResultsByRank(data);
     if (bestToWorst) {
-      return Object.keys(rankDict).map(key => <RepRankClusterGroup key={`${key}${category}`} {...this.state} reps={rankDict[key]} category={category} rank={key} />);
+      return Object.keys(rankDict).map(key => <RepRankClusterGroup key={`${key}${category}${chamber}${bestToWorst}`} {...this.state} reps={rankDict[key]} category={category} rank={key} />);
     } else {
-      return Object.keys(rankDict).reverse().map(key => <RepRankClusterGroup key={`${key}${category}`} {...this.state} reps={rankDict[key]} category={category} rank={key} />);
+      return Object.keys(rankDict).reverse().map(key => <RepRankClusterGroup key={`${key}${category}${chamber}${bestToWorst}`} {...this.state} reps={rankDict[key]} category={category} rank={key} />);
     }
   }
 

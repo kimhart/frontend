@@ -40,12 +40,12 @@ class RepRankClusterGroup extends React.Component {
         </div>
         <div className="reps-list">
           { reps.length > limit
-            ? reps.slice(0, limit).map(rep => <RepRankCluster category={category} {...this.props} key={rep.bioguide_id} {...rep} />)
-            : reps.map(rep => <RepRankCluster category={category} {...this.props} key={rep.bioguide_id} {...rep} />)
+            ? reps.slice(0, limit).map(rep => <RepRankCluster key={`${rep.bioguide_id}${category}`} category={category} {...this.props} {...rep} />)
+            : reps.map(rep => <RepRankCluster key={`${rep.bioguide_id}${category}`} category={category} {...this.props} {...rep} />)
           }
         </div>
         { reps.length > 3
-          ? <div className="view-more-reps" onClick={() => this.setState({ limit: limit === 3 ? max : 3 })}>Show {reps.length - 3} { limit === 3 ? 'more' : 'less' } reps tied for {this.getOrdinal(rank)} place</div> 
+          ? <div className="view-more-reps" onClick={() => this.setState({ limit: limit === 3 ? max : 3 })}>Show {reps.length - 3} { limit === 3 ? 'more' : 'less' } reps tied for {this.getOrdinal(rank)} place</div>
           : null
         }
       </div>
