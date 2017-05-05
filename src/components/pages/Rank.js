@@ -141,8 +141,10 @@ class Rank extends Component {
       <div className="rank-wrap">
         <header className="logo">
           <div className="logo-container">
-            <TallyLogo />
-            <span className="tally-logo-helper">Tally</span>
+            <Link to="/">
+              <TallyLogo />
+              <span className="tally-logo-helper">Tally</span>
+            </Link>
           </div>
         </header>
         <div className="rank-controls-wrap">

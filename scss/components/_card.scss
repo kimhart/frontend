@@ -132,10 +132,16 @@
 .rep-card-contact-list-item {
   list-style: none;
   padding: 20px;
-  text-transform: capitalize;
   &:not(:last-child) {
     border-bottom: 1px solid $light-gray;
   }
+  a, a:hover, a:active, a:visited {
+    color: $blue;
+  }
+}
+
+.rep-card-details-wrap {
+  padding: 20px 5px;
 }
 
 .rep-card-bio-list {
@@ -145,7 +151,16 @@
 
 .rep-card-bio-list-item {
   padding: 10px 0;
+  text-transform: capitalize;
+  &:first-of-type {
+    display: none;
+  }
 }
+
+.rep-card-contact-list-item:nth-last-of-type(3) {
+  text-transform: lowercase;
+}
+
 
 .basic-donut-chart-middle {
   p {
