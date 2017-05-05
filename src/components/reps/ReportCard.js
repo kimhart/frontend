@@ -39,6 +39,12 @@ class ReportCard extends React.Component {
     return lastName;
   }
 
+  normalizePhoneNumber(s) {
+    var s2 = (""+s).replace(/\D/g, '');
+    var m = s2.match(/^(\d{3})(\d{3})(\d{4})$/);
+    return (!m) ? null : "(" + m[1] + ") " + m[2] + "-" + m[3];
+  }
+
   getMetricsTabs = () => {
     let { tab, contact, bio } = this.state;
     if (contact || bio) return null;
@@ -54,14 +60,15 @@ class ReportCard extends React.Component {
     let { contact, bio, tab } = this.state;
     if (contact || bio) {
       let { phone, twitter_handle, facebook, address, bio_text } = this.props;
-      let list = contact ? [ phone, twitter_handle, facebook, address ] : bio_text.split('; ');
+      let twitterFixed = twitter_handle ? <a target="_blank" href={`https://twitter.com/${twitter_handle}`}>{twitter_handle.split('').pop() === '/' ? twitter_handle.slice(0, -1) : twitter_handle}</a> : null;
+      let facebookFixed = facebook !== 'None' ? <a target="_blank" href={`https://${facebook}`}>{facebook.substring(4)}</a> : 'Public account not listed';
+      let phoneFixed = phone ? <a href={`tel:${phone}`}>{this.normalizePhoneNumber(phone)}</a> : null;
+      let list = contact ? [ phoneFixed, twitterFixed, facebookFixed, address ] : bio_text.split('; ');
       return (
-        <div class="rep-card-details-wrap">
+        <div className="rep-card-details-wrap">
           <ul className={`rep-card-${contact ? 'contact' : 'bio'}-list`}>
-            { list.map((item, index) => !['none', '#facebook'].includes(item.toLowerCase())
-              ? (<li className={`rep-card-${contact ? 'contact' : 'bio'}-list-item`} key={`${item}${index}`}>
-                  <span className="rep-card-contact-list-item-text">{ item }</span>
-                </li>)
+            { list.map((item, index) => !['none', '#facebook'].includes(item)
+              ? (<li className={`rep-card-${contact ? 'contact' : 'bio'}-list-item`} key={`${item}${index}`}>{ item }</li>)
               : null
             )}
           </ul>
