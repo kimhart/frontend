@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Relay from 'react-relay';
 import { Link } from 'react-router';
-import RepRankCluster from '../rank/RepRankCluster';
+import RepRankClusterGroup from '../rank/RepRankClusterGroup';
 import Search from '../search/Search';
 import { isLoading } from '../../utils/Utils';
 import { IconTriangleDown, IconClose, IconAngleDown, IconSearch, TallyLogo } from '../icons/Icons';
@@ -33,18 +33,7 @@ class Rank extends Component {
     return false;
   }
 
-  getOrdinal = (i) => {
-    let j = i % 10;
-    let k = i % 100;
-    if (j == 1 && k != 11) return i + "st";
-    if (j == 2 && k != 12) return i + "nd";
-    if (j == 3 && k != 13) return i + "rd";
-    return i + "th";
-  }
-
-  getResults = ({ category, data }) => {
-    let { bestToWorst } = this.state;
-    if (!data) return null;
+  groupResultsByRank(data) {
     let rankDict = {};
     data.forEach(datum => {
       let { rank } = datum;
@@ -55,69 +44,18 @@ class Rank extends Component {
       else {
         rankDict[rank].push(datum);
       }
-    })
+    });
+    return rankDict;
+  }
+
+  getResults = ({ category, data }) => {
+    let { bestToWorst } = this.state;
+    if (!data) return null;
+    let rankDict = this.groupResultsByRank(data);
     if (bestToWorst) {
-      return Object.keys(rankDict).map(key => {
-        let reps = rankDict[key];
-        let { attendance, participation, efficacy, bestToWorst } = this.state;
-        return (
-          <div className="rep-rank-clusters">
-            <div className="rep-rank-cluster-headline">
-              <p className="rep-rank-number">{this.getOrdinal(key)}</p>
-              {reps[0].rep_sponsor >= 0 &&
-                <p className="rep-rank-totals">{reps[0].rep_sponsor}/{reps[0].max_sponsor} bills</p>
-              }
-              {reps[0].days_at_work >= 0  &&
-                <p className="rep-rank-totals">{reps[0].days_at_work}/{reps[0].total_work_days} days</p>
-              }
-              {reps[0].rep_votes >= 0  &&
-                <p className="rep-rank-totals">{reps[0].rep_votes}/{reps[0].total_votes} votes</p>
-              }
-            </div>
-            <div className={`reps-list`}>
-            { reps.length > 3 ?
-              reps.slice(0, 3).map(rep =>
-                <RepRankCluster category={category} {...this.props} key={rep.bioguide_id} {...rep} />
-              ) :
-              reps.map(rep =>
-                <RepRankCluster category={category} {...this.props} key={rep.bioguide_id} {...rep} />)
-            }
-            </div>
-            { reps.length > 3 ? <div className="view-more-reps">Show {reps.length - 3} more reps tied for {this.getOrdinal(key)} place</div> : null }
-          </div>
-        )
-      })
+      return Object.keys(rankDict).map(key => <RepRankClusterGroup key={`${key}${category}`} {...this.state} reps={rankDict[key]} category={category} rank={key} />);
     } else {
-      return Object.keys(rankDict).reverse().map(key => {
-        let reps = rankDict[key];
-        let { attendance, participation, efficacy, bestToWorst } = this.state;
-        return (
-          <div className="rep-rank-clusters">
-            <div className="rep-rank-cluster-headline">
-              <p className="rep-rank-number">{this.getOrdinal(key)}</p>
-              {reps[0].rep_sponsor >= 0 &&
-                <p className="rep-rank-totals">{reps[0].rep_sponsor}/{reps[0].max_sponsor} bills</p>
-              }
-              {reps[0].days_at_work >= 0 &&
-                <p className="rep-rank-totals">{reps[0].days_at_work}/{reps[0].total_work_days} days</p>
-              }
-              {reps[0].rep_votes >= 0 &&
-                <p className="rep-rank-totals">{reps[0].rep_votes}/{reps[0].total_votes} votes</p>
-              }
-            </div>
-            <div className="reps-list">
-            { reps.length > 3 ?
-              reps.slice(0, 3).map(rep =>
-                <RepRankCluster category={category} {...this.props} key={rep.bioguide_id} {...rep} />
-              ) :
-              reps.map(rep =>
-                <RepRankCluster category={category} {...this.props} key={rep.bioguide_id} {...rep} />)
-            }
-            </div>
-            { reps.length > 3 ? <div className="view-more-reps">Show {reps.length - 3} more reps tied for {this.getOrdinal(key)} place</div> : null }
-          </div>
-        )
-      })
+      return Object.keys(rankDict).reverse().map(key => <RepRankClusterGroup key={`${key}${category}`} {...this.state} reps={rankDict[key]} category={category} rank={key} />);
     }
   }
 
