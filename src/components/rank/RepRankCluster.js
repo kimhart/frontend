@@ -1,5 +1,4 @@
 import React from 'react';
-import Relay from 'react-relay';
 
 class RepRankCluster extends React.Component {
 
@@ -45,15 +44,4 @@ class RepRankCluster extends React.Component {
   }
 }
 
-export default Relay.createContainer(RepRankCluster, {
-  initialVariables: {
-    district: null
-  },
-  fragments: {
-    data: () => Relay.QL`
-      fragment on Data {
-        id
-      }
-    `
-  }
-});
+export default RepRankCluster;
