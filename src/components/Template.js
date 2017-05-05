@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, IndexLink, Link, browserHistory, applyRouterMiddleware } from 'react-router';
 import useRelay from 'react-router-relay';
 import Footer from './Footer';
+import Header from './Header';
 import Logout from './Logout';
 import Login from './pages/Login';
 import Signup from './pages/Signup';

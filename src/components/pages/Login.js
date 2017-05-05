@@ -64,8 +64,9 @@ class Login extends React.Component {
             <div className="home-section-content">
               <h3 className="home-section-title">About</h3>
               <p>2018 midterm elections are around the corner. Do your Senators & Congresspeople deserve your vote?</p>
-              <p>We've gathered and scored your reps' attendance, sponsored legislation, voting record, and ideology trends — dating all the way back to 1989.</p>
-              <p>Tally is journalism-free, so you can spend less time sifting through headlines and focus on metrics that matter.</p>
+              <p>We've combined your reps' attendance, sponsored legislation and voting participation into a simple letter grade to guage their activity at the most basic level — with data dating all the way back to 1989.</p><br/>
+              <p>Curious about how your reps are actually voting? We have that covered, too. Check out your reps' detailed voting trend history to determine where he or she stands on the issues you care about.</p><br/>
+              <p>Tally is journalism-free, so you can spend less time sifting through headlines (fake or not) and focus on metrics that matter.</p>
             </div>
           </section>
           <section className="home-section home-team section-arrow">
@@ -82,16 +83,12 @@ class Login extends React.Component {
                   <span className="team-title">Co-Founder, Front End Engineer</span>
                 </li>
                 <li className="team-list-item">
-                  <span className="team-name">Ryano Taylor</span>
+                  <span className="team-name">Ryan Taylor</span>
                   <span className="team-title">Front End Engineer</span>
                 </li>
                 <li className="team-list-item">
                   <span className="team-name">Mattan Ingram</span>
                   <span className="team-title">Product Designer</span>
-                </li>
-                <li className="team-list-item">
-                  <span className="team-name">Jesse Smith</span>
-                  <span className="team-title">UX Designer</span>
                 </li>
               </ul>
             </div>
@@ -99,14 +96,14 @@ class Login extends React.Component {
           <section className="home-section home-mission section-white section-arrow">
             <div className="home-section-content">
               <h3 className="home-section-title">Mission</h3>
-              <p>Tally aims to provide all people with a simple and fresh way to connect with their elected officials and review legislation that affects their district.</p>
+              <p>Tally provides all people with a simple and fresh way to connect with their elected officials and review legislation that affects their district.</p><br/>
               <p>Our data is directly collected from public records on <a className="gov-sites" target="_blank" href="https://congress.gov/">Congress.gov</a> and <a className="gov-sites" target="_blank" href="https://www.senate.gov/">Senate.gov</a>. We are not affiliated with a specific party and place utmost importance on remaining impartial in our data collection and scoring algorithms. Through this presentation of unbiased data, we hope to encourage confidence in voters and accountability in representatives.</p>
              </div>
           </section>
           <section className="home-section home-contact">
             <div className="home-section-content">
               <h3 className="home-section-title">Contact Us</h3>
-              <p>Want to learn more about what we're building? Get in touch:</p>
+              <p>Want to learn more about what we're building?<br/> Get in touch:</p><br/>
               <p>Alex Hubbard: <span className="home-contact-email">alex@tally.us.com</span></p>
               <p>Kim Hart: <span className="home-contact-email">kim@tally.us.com</span></p>
              </div>
