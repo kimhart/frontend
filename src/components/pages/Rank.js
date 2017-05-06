@@ -37,7 +37,6 @@ class Rank extends Component {
     let rankDict = {};
     data.forEach(datum => {
       let { rank } = datum;
-
       if (!rankDict[rank]) {
         rankDict[rank] = [datum];
       }
