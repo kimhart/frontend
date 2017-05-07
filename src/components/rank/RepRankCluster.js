@@ -23,7 +23,7 @@ class RepRankCluster extends React.Component {
     return false;
   }
 
-  getShortParty = (party) => party === 'Democratic' ? <span className="democrat-blue">D</span> : <span className="republican-red">R</span>;
+  getShortParty = (party) => party === 'Democratic' ? <span className="democrat-blue">Democrat</span> : <span className="republican-red">Republican</span>;
 
   render() {
     let { name, party, state, category, days_at_work, total_work_days, percent_at_work, rep_sponsor, sponsor_percent, max_sponsor, percent_votes, rep_votes, total_votes, rank } = this.props;
@@ -33,7 +33,7 @@ class RepRankCluster extends React.Component {
         <div className="rep-rank-headshot" style={{background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}}></div>
         <div className="rep-rank-stack">
           <div className="rep-rank-stats">
-            <p className="rep-rank-name">{fullName} {this.getShortParty(party)}</p>
+            <p className="rep-rank-name">{fullName} &middot;{this.getShortParty(party)}</p>
           </div>
           <div className="rep-rank-stats-bar">
             <div className="rep-rank-stats-fill" style={{ backgroundColor: '#47E5BC', width: `${this.getBarFill(category)}%`}}></div>

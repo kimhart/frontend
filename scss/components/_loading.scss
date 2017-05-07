@@ -9,7 +9,6 @@
   transition: opacity 0.3s ease-in-out;
   background: transparentize(white, .3);
   z-index: $z-top;
-  pointer-events: none;
   &.active {
     opacity: 1;
     width: 100%;
