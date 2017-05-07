@@ -328,7 +328,7 @@ export let getRepSearchSchema = () => {
   return {
     type: new GraphQLList(repType),
     args: {
-      search_term: { type: GraphQLString },
+      search_term: { type: GraphQLString }
     },
     resolve: (__, args) => {
       let { search_term } = args;

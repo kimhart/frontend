@@ -24,7 +24,7 @@ class RepInfoCluster extends React.Component {
   render() {
     let { name, chamber, party, letter_grade, onClick } = this.props;
     // NOTE: null checking
-    let fullName = name ? name.split(',').reverse().join().replace(/\,/g,' ') : 'John Doe';
+    let fullName = name ? name.split(',').reverse().join().replace(/\,/g,' ') : {name};
 
     return (
       <div className="rep-info-cluster-wrap" onClick={onClick}>
