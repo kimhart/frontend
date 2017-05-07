@@ -1,9 +1,10 @@
 import React from 'react';
 import Relay from 'react-relay';
 import _ from 'lodash';
+import { Link } from 'react-router';
 import { isLoading } from '../../utils/Utils';
 import SearchResult from './SearchResult';
-import IconSearch from '../icons/IconSearch';
+import { IconSearch, TallyLogo } from '../icons/Icons';
 
 class Search extends React.Component {
 
@@ -50,6 +51,14 @@ class Search extends React.Component {
   render() {
     return (
       <div className="search-wrap">
+        <header className="logo">
+          <div className="logo-container">
+            <Link to="/">
+              <TallyLogo />
+              <span className="tally-logo-helper">Tally</span>
+            </Link>
+          </div>
+        </header>
         <div className="search-bar">
           <input type="text" className="search-input-text" placeholder="Search..." id="search-input-text" ref={c => this.searchBox = c} onChange={this.handleSearch} />
           <IconSearch className="search-bar-icon" fill="#fff" />
@@ -73,15 +82,26 @@ export default Relay.createContainer(Search, {
     fragment on Data {
       id
       search(search_term: $search_term) {
+        address
+        bio_text
         bioguide_id
         chamber
+        congress_url
         district
-        letter_grade
+        facebook
         leadership_position
+        letter_grade
         name
+        number_grade
         party
-        state
+        phone
         photo_url
+        served_until
+        state
+        twitter_handle
+        twitter_url
+        website
+        year_elected
       }
       ${SearchResult.getFragment('data')}
     }

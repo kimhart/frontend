@@ -9,9 +9,26 @@ class PolicyAreas extends React.Component {
     props.relay.setVariables({ bioguide_id: props.bioguide_id });
   }
 
-  getPolicyAreas= () => {
+  getPolicyAreas = () => {
     const policyAreas = this.props.data.policy_areas;
-    return policyAreas ? policyAreas.map((policyArea, index) => <li key={index}>{policyArea.policy_area}: {Math.round(policyArea.percent * 100)}%</li>) : null;
+    return policyAreas ? policyAreas.map((policyArea, index) => {
+      let { policy_area, percent, count } = policyArea;
+      let divs = [];
+      for (let i = 0; i < count; i++) {
+        divs.push('hello moto');
+      }
+      return (
+        <div key={`${policy_area}${index}`} className="policy-area">
+          {policy_area}
+          <div className="policy-area-divs">
+            { divs.map((_, i) => (
+              <div key={`${i}${policy_area}${index}`} className="policy-area-div" />
+            ))}
+          </div>
+        </div>
+      )
+    })
+    : null;
   }
 
   render() {
@@ -19,9 +36,9 @@ class PolicyAreas extends React.Component {
     return (
       <div className="slider-container comparison">
         <div className="slider-labels">
-          <ul className="policy-areas">
+          <div className="policy-areas">
             {this.getPolicyAreas()}
-          </ul>
+          </div>
         </div>
       </div>
     );
@@ -36,6 +53,7 @@ export default Relay.createContainer(PolicyAreas, {
     data: () => Relay.QL`
     fragment on Data {
       policy_areas(bioguide_id: $bioguide_id) {
+        count
         percent
         policy_area
       }

@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, IndexLink, Link, browserHistory, applyRouterMiddleware } from 'react-router';
 import useRelay from 'react-router-relay';
 import Footer from './Footer';
+import Header from './Header';
 import Logout from './Logout';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -35,6 +36,11 @@ class Template extends React.Component {
     });
   }
 
+  logOut = () => {
+    UserUtils.logOut();
+    this.props.relay.setVariables({ user_id: null });
+  }
+
   render() {
     let { user } = this.props.data;
     if (user && user.user_id === "null" && !this.isValidUserId(UserUtils.getUserId())) {
@@ -45,7 +51,7 @@ class Template extends React.Component {
         return <Signup {...this.props} update={() => this.setUser()} />
       } return <Login {...this.props} update={() => this.setUser()} />
     } else {
-      const childrenWithUser = React.Children.map(this.props.children, (child) => React.cloneElement(child, { user }));
+      const childrenWithUser = React.Children.map(this.props.children, (child) => React.cloneElement(child, { user, logOut: () => this.logOut() }));
       return (
         <div className="page-wrap">
           <Loading />

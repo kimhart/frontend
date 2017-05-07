@@ -88,7 +88,7 @@
 .rep-card-section-title {
   color: $soft-red;
   font-size: 20px;
-  margin: 20px 0;
+  margin: 35px 0;
   position: relative;
 }
 
@@ -132,10 +132,16 @@
 .rep-card-contact-list-item {
   list-style: none;
   padding: 20px;
-  text-transform: capitalize;
   &:not(:last-child) {
     border-bottom: 1px solid $light-gray;
   }
+  a, a:hover, a:active, a:visited {
+    color: $blue;
+  }
+}
+
+.rep-card-details-wrap {
+  padding: 20px 5px;
 }
 
 .rep-card-bio-list {
@@ -145,7 +151,16 @@
 
 .rep-card-bio-list-item {
   padding: 10px 0;
+  text-transform: capitalize;
+  &:first-of-type {
+    display: none;
+  }
 }
+
+.rep-card-contact-list-item:nth-last-of-type(3) {
+  text-transform: lowercase;
+}
+
 
 .basic-donut-chart-middle {
   p {
@@ -219,10 +234,41 @@
   background-size: cover;
 }
 
+.rep-belief-slider-terms {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 36px;
+  font-size: 12px;
+}
+
 .rep-belief-item-type {
   text-transform: capitalize;
   margin-bottom: 20px;
 }
+
 .rep-belief-item:not(:last-child) {
   margin-bottom: 50px;
+}
+
+.policy-areas {
+
+}
+
+.policy-area {
+  margin-bottom: 15px;
+}
+
+.policy-area-divs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.policy-area-div {
+  background-color: $teal-green;
+  width: 15px;
+  height: 15px;
+  border-radius: 5px;
+  margin-right: 5px;
 }

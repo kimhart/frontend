@@ -1,8 +1,11 @@
 import React from 'react';
 
-const TallyLogo = () => {
+const TallyLogo = ({ width, height, viewBox }) => {
+  width = width || '295.4px';
+  height = height || '350.3px';
+  viewBox = viewBox || '0 0 295.4 350.3'
   return (
-    <svg className="tally-logo" x="0px" y="0px" width="295.4px" height="350.3px" viewBox="0 0 295.4 350.3">
+    <svg className="tally-logo" x="0px" y="0px" width={width} height={height} viewBox={viewBox}>
       <g>
         <polygon className="logo-shade" points="295.4,98.9 97.7,134 290.2,0   "/>
         <polygon className="logo-red-stripe" points="163.7,122.3 196.7,116.4 196.7,350.3 163.7,332.1 147.2,323 130.7,332.1 97.7,350.3 97.7,134
@@ -22,7 +25,7 @@ const TallyLogo = () => {
       </g>
     </svg>
   );
-  
+
 };
 
 export default TallyLogo;

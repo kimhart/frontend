@@ -6,6 +6,7 @@ import ReportCard from './../reps/ReportCard';
 import { UserUtils } from './../../utils/Utils';
 import { browserHistory } from 'react-router';
 import Modal from 'react-modal';
+import TallyLogo from './../icons/TallyLogo';
 
 class DashboardPage extends React.Component {
 
@@ -22,10 +23,6 @@ class DashboardPage extends React.Component {
   getRepInfoClusters = () => {
     let { reps } = this.props.data;
     return reps ? reps.map(rep => <RepInfoCluster {...this.props} key={`repinfocluster_${rep.bioguide_id}`} {...rep} onClick={() => this.setState({ activeReportCard: rep.bioguide_id })}/>) : null;
-  }
-
-  logOut = () => {
-    UserUtils.logOut();
   }
 
   getReportCards = () => {
@@ -55,14 +52,21 @@ class DashboardPage extends React.Component {
     let { user } = this.state;
     return (
       <div className="main-dash">
-        <div className="greeting-banner">
-          <h2 className="greeting">Welcome {user.first_name}</h2>
-          <p className="logout" onClick={() => this.logOut()}>Logout</p>
-        </div>
+        <header className="logo">
+          <div className="logo-container">
+            <TallyLogo />
+            <span className="tally-logo-helper">Tally</span>
+          </div>
+          <div className="user-container">
+            <h2 className="greeting">{user.first_name}</h2>
+            <span className="logout" onClick={() => this.props.logOut()}>Logout</span>
+          </div>
+        </header>
         <div className="your-location">
           <h3 className="headline">Your Representatives</h3>
-          <p className="your-district">{user.state_long} Congressional District {this.getDistrict(user)}</p>
+          <p className="your-district"><span className="state">{user.state_long}</span> &nbsp;Congressional District {this.getDistrict(user)}</p>
         </div>
+        <span className="tap-a-rep">Click on a representative to learn more.</span>
         <div className="rep-info-clusters">
           {this.getRepInfoClusters()}
           {this.getReportCards()}

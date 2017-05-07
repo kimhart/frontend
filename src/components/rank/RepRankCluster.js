@@ -1,5 +1,4 @@
 import React from 'react';
-import Relay from 'react-relay';
 
 class RepRankCluster extends React.Component {
 
@@ -24,26 +23,17 @@ class RepRankCluster extends React.Component {
     return false;
   }
 
-  getShortParty = (party) => party === 'Democratic' ? '(D)' : '(R)';
+  getShortParty = (party) => party === 'Democratic' ? <span className="democrat-blue">D</span> : <span className="republican-red">R</span>;
 
   render() {
-
     let { name, party, state, category, days_at_work, total_work_days, percent_at_work, rep_sponsor, sponsor_percent, max_sponsor, percent_votes, rep_votes, total_votes, rank } = this.props;
     let fullName = name ? name.split(',').reverse().join().replace(/\,/g,' ') : 'John Doe';
-    let attendanceMetrics = category === 'attendance' ? `${days_at_work}/${total_work_days} days` : null;
-    let participationMetrics = category === 'participation' ? `${rep_votes}/${total_votes} votes` : null;
-    let efficacyMetrics = category === 'efficacy' ? `${rep_sponsor}/${max_sponsor} bills` : null;
     return (
       <div className="rep-rank-cluster-wrap">
         <div className="rep-rank-headshot" style={{background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}}></div>
         <div className="rep-rank-stack">
           <div className="rep-rank-stats">
             <p className="rep-rank-name">{fullName} {this.getShortParty(party)}</p>
-            <p className="rep-rank-metrics">
-              {attendanceMetrics}
-              {participationMetrics}
-              {efficacyMetrics}
-            </p>
           </div>
           <div className="rep-rank-stats-bar">
             <div className="rep-rank-stats-fill" style={{ backgroundColor: '#47E5BC', width: `${this.getBarFill(category)}%`}}></div>
@@ -54,15 +44,4 @@ class RepRankCluster extends React.Component {
   }
 }
 
-export default Relay.createContainer(RepRankCluster, {
-  initialVariables: {
-    district: null
-  },
-  fragments: {
-    data: () => Relay.QL`
-      fragment on Data {
-        id
-      }
-    `
-  }
-});
+export default RepRankCluster;

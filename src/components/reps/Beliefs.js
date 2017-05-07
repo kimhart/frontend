@@ -23,16 +23,16 @@ class Beliefs extends React.Component {
       let { type, bioguide_id, sub_type_of, tally_score } = belief;
       return (
         <div key={`${bioguide_id}${sub_type_of}${type}`} className="rep-belief-item clickable" onClick={() => this.setState({ level: type === 'overall' ? 'overall' : sub_type_of })}>
-           <div className="rep-belief-item-type">{type}</div>
-           <BeliefRange {...this.props} {...belief} />
+          <div className="rep-belief-item-type">{type}</div>
+          <BeliefRange {...this.props} {...belief} />
         </div>
       )
     }), beliefs.filter(belief => belief.sub_type_of === level).map(belief => {
       let { type, bioguide_id, sub_type_of, tally_score } = belief;
       return (
         <div key={`${bioguide_id}${sub_type_of}${type}`} className="rep-belief-item clickable" onClick={() => this.setState({ level: type || level })}>
-           <div className="rep-belief-item-type">{type}</div>
-           <BeliefRange {...this.props} {...belief} />
+          <div className="rep-belief-item-type">{type}</div>
+          <BeliefRange {...this.props} {...belief} />
         </div>
       )
     })];

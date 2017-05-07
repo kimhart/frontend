@@ -1,11 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import Relay from 'react-relay';
 import { Link } from 'react-router';
-import RepRankCluster from '../rank/RepRankCluster';
+import RepRankClusterGroup from '../rank/RepRankClusterGroup';
 import Search from '../search/Search';
 import { isLoading } from '../../utils/Utils';
-import IconTriangleDown from '../icons/IconTriangleDown';
-import IconClose from '../icons/IconClose';
+import { IconTriangleDown, IconClose, IconAngleDown, IconSearch, TallyLogo } from '../icons/Icons';
 
 class Rank extends Component {
 
@@ -15,8 +14,7 @@ class Rank extends Component {
       attendance: false,
       participation: false,
       efficacy: true,
-      bestToWorst: false,
-      worstToBest: false
+      bestToWorst: true
     };
     props.relay.setVariables({ chamber: 'house' }, ({ aborted, done, error }) => {
       if (aborted || done || error) {
@@ -35,36 +33,38 @@ class Rank extends Component {
     return false;
   }
 
-  getResults = ({ category, data }) => {
-    if (!data) return null;
+  groupResultsByRank(data) {
     let rankDict = {};
     data.forEach(datum => {
       let { rank } = datum;
+
       if (!rankDict[rank]) {
         rankDict[rank] = [datum];
       }
       else {
         rankDict[rank].push(datum);
       }
-    })
-    return Object.keys(rankDict).map(key => {
-      let reps = rankDict[key];
-      let { attendance, participation, efficacy, bestToWorst, worstToBest } = this.state;
-      return (
-        <div>
-          <p className="rep-rank-number">{key}.</p>
-          <p></p>
-          { reps.map(rep => <RepRankCluster category={category} {...this.props} key={rep.bioguide_id} {...rep} />)}
-        </div>
-      )
     });
+    return rankDict;
+  }
+
+  getResults = ({ category, data }) => {
+    let { bestToWorst } = this.state;
+    let { chamber } = this.props.relay.variables;
+    if (!data) return null;
+    let rankDict = this.groupResultsByRank(data);
+    if (bestToWorst) {
+      return Object.keys(rankDict).map(key => <RepRankClusterGroup key={`${key}${category}${chamber}${bestToWorst}`} {...this.state} reps={rankDict[key]} category={category} rank={key} />);
+    } else {
+      return Object.keys(rankDict).reverse().map(key => <RepRankClusterGroup key={`${key}${category}${chamber}${bestToWorst}`} {...this.state} reps={rankDict[key]} category={category} rank={key} />);
+    }
   }
 
   getActiveCategory = () => {
     let { attendance, participation, efficacy } = this.state;
-    if (attendance) return 'Attendance';
-    if (participation) return 'Votes';
-    if (efficacy) return 'Bills';
+    if (attendance) return 'Work Attendance';
+    if (participation) return 'Votes Cast';
+    if (efficacy) return 'Bills Sponsored';
     return false;
   }
 
@@ -88,10 +88,13 @@ class Rank extends Component {
 
   getExplainerModal = () => {
     const explainerModal = this.refs.explainerModal;
+    const explainerOverlay = this.refs.explainerOverlay;
     if (explainerModal.classList.contains('open')) {
       explainerModal.classList.remove('open');
+      explainerOverlay.classList.remove('open');
     } else {
       explainerModal.classList.add('open');
+      explainerOverlay.classList.add('open');
     }
   }
 
@@ -102,9 +105,24 @@ class Rank extends Component {
     let total_votes = rank_participation ? rank_participation[0].total_votes : null;
     let max_sponsor = rank_efficacy ? rank_efficacy[0].max_sponsor : null;
     let chamber = this.getActiveChamber();
-    if (attendance) return `Compares ${chamber} reps by how many days of work they've attended vs. the ${total_work_days} work days in this term.`;
-    if (participation) return `Compares ${chamber} reps by how many votes they've cast vs. the ${total_votes} votes held this term.`;
-    if (efficacy) return `Compares ${chamber} reps by how many bills they've sponsored vs. the most bills created by one rep this term.`;
+    if (attendance) return (
+      <div>
+        <span className="explainer-title">Work Attendance</span>
+        <span className="explainer-copy">You're currently ranking {chamber} reps based on how many days of work they've attended vs. the {total_work_days} total work days in this term.<br/><br/> Reps who share a rank position are listed alphabetically within their category.</span>
+      </div>
+    );
+    if (participation) return (
+      <div>
+        <span className="explainer-title">Votes Cast</span>
+        <span className="explainer-copy">You're currently ranking {chamber} reps based on how many votes they've cast vs. the {total_votes} votes held this term.<br/><br/> Reps who share a rank position are listed alphabetically within their category.</span>
+      </div>
+    );
+    if (efficacy) return (
+      <div>
+        <span className="explainer-title">Bills Sponsored</span>
+        <span className="explainer-copy">You're currently ranking {chamber} reps based on how many bills they've sponsored vs. the <em>most</em> bills created by one rep this term, which is currently {max_sponsor}.<br/><br/> Reps who share a rank position are listed alphabetically within their category.</span>
+      </div>
+    );
     return false;
   }
 
@@ -118,19 +136,28 @@ class Rank extends Component {
   }
 
   render() {
+    const { bestToWorst } = this.state;
     return (
       <div className="rank-wrap">
+        <header className="logo">
+          <div className="logo-container">
+            <Link to="/">
+              <TallyLogo />
+              <span className="tally-logo-helper">Tally</span>
+            </Link>
+          </div>
+        </header>
         <div className="rank-controls-wrap">
           <div className="rank-category-wrap">
-            <p className="rank-headline">Rank lawmakers based on<br/> core job functions:</p>
+            <p className="rank-headline">Rank based on core job performance:</p>
             <div className="rank-category-name" onClick={() => this.getDropDown()}>
               <p>{this.getActiveCategory()}</p>
               <IconTriangleDown />
             </div>
             <div className="rank-category-dropdown" ref="dropdown" onClick={() => this.getDropDown()}>
-              <p className={`rank-category-item ${this.getActiveCategory() === 'Bills' ? 'active' : ''}`} onClick={() => this.setState({ attendance: false, participation: false, efficacy: true })}>Bills</p>
-              <p className={`rank-category-item ${this.getActiveCategory() === 'Attendance' ? 'active' : ''}`} onClick={() => this.setState({ attendance: true, participation: false, efficacy: false })}>Attendance</p>
-              <p className={`rank-category-item ${this.getActiveCategory() === 'Votes' ? 'active' : ''}`} onClick={() => this.setState({ attendance: false, participation: true, efficacy: false })}>Votes</p>
+              <p className={`rank-category-item ${this.getActiveCategory() === 'Bills' ? 'active' : ''}`} onClick={() => this.setState({ attendance: false, participation: false, efficacy: true })}>Bills Sponsored</p>
+              <p className={`rank-category-item ${this.getActiveCategory() === 'Attendance' ? 'active' : ''}`} onClick={() => this.setState({ attendance: true, participation: false, efficacy: false })}>Work Attendance</p>
+              <p className={`rank-category-item ${this.getActiveCategory() === 'Votes' ? 'active' : ''}`} onClick={() => this.setState({ attendance: false, participation: true, efficacy: false })}>Votes Cast</p>
             </div>
           </div>
           <div className="rank-toggle-wrap">
@@ -139,16 +166,27 @@ class Rank extends Component {
           </div>
         </div>
         <div className="rank-sort-wrap">
-          <input className="rank-search-filter" placeholder="Find someone..."></input>
-          <button className="rank-sort-btn" onClick={() => this.getResults() }>Sort <IconTriangleDown fill="#4990E2"/></button>
+          <div className="rank-search">
+            <input className="rank-search-filter" placeholder="Search" />
+            <div className="search-bar-icon">
+              <IconSearch width="20px" fill="#4990E2" />
+            </div>
+          </div>
+          <button className="rank-sort-btn" onClick={() => this.setState({bestToWorst: !bestToWorst})}>
+            Sort
+            <div className="sort-arrow">
+              <IconAngleDown fill="#4990E2" transform={bestToWorst ? null : 'rotate(180)'} />
+            </div>
+          </button>
           <span className="control-button question-mark-circle" onClick={() => this.getExplainerModal()}>?</span>
         </div>
         <div className="rank-list-wrap">
+          <div className="rank-modal-overlay" ref="explainerOverlay" onClick={() => this.getExplainerModal()}></div>
           <div className="rank-explainer-modal" ref="explainerModal">
             <div className="rep-card-close control-button" onClick={() => this.getExplainerModal()}>
               <IconClose width={15} height={15} stroke="#4990E2" strokeWidth="2" />
             </div>
-            <p className="rank-explainer-copy">{this.getExplainerCopy()}</p>
+            {this.getExplainerCopy()}
           </div>
           {this.getRankList()}
         </div>
