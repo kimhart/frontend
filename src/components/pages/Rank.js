@@ -36,7 +36,8 @@ class Rank extends Component {
 
   handleSearch = _.debounce(() => {
     this.props.relay.setVariables({
-      search_term: this.searchBox.value
+      search_term: this.searchBox.value,
+      category: this.getCategorySimple()
     }, ({ aborted, done, error }) => {
       if (aborted || done || error) {
         isLoading(false);
@@ -60,11 +61,11 @@ class Rank extends Component {
   // }
 
   getRankList = () => {
-    let { attendance, participation, efficacy, search_term } = this.state;
-    let { rank_attendance, rank_participation, rank_efficacy } = this.props.data;
-    if (attendance) return this.getResults({ category: 'attendance', data: rank_attendance });
-    if (participation) return this.getResults({ category: 'participation', data: rank_participation });
-    if (efficacy) return this.getResults({ category: 'efficacy', data: rank_efficacy });
+    let { attendance, participation, efficacy } = this.state;
+    let { rank_attendance, rank_participation, rank_efficacy, search } = this.props.data;
+    if (attendance) return this.getResults({ category: 'attendance', data: search.length > 1 ? search : rank_attendance });
+    if (participation) return this.getResults({ category: 'participation', data: search.length > 1 ? search : rank_participation });
+    if (efficacy) return this.getResults({ category: 'efficacy', data: search.length > 1 ? search : rank_efficacy });
     return false;
   }
 
@@ -73,6 +74,7 @@ class Rank extends Component {
     let { chamber } = this.props.relay.variables;
     if (!data) return null;
     let rankDict = this.groupResultsByRank(data);
+    console.log(data)
     if (bestToWorst) {
       return Object.keys(rankDict).map(key => <RepRankClusterGroup key={`${key}${category}${chamber}${bestToWorst}`} {...this.state} reps={rankDict[key]} category={category} rank={key} />);
     } else {
@@ -99,6 +101,14 @@ class Rank extends Component {
     if (attendance) return 'Work Attendance';
     if (participation) return 'Votes Cast';
     if (efficacy) return 'Bills Sponsored';
+    return false;
+  }
+
+  getCategorySimple = () => {
+    let { attendance, participation, efficacy } = this.state;
+    if (attendance) return 'attendance';
+    if (participation) return 'participation';
+    if (efficacy) return 'efficacy';
     return false;
   }
 
@@ -206,8 +216,7 @@ class Rank extends Component {
             </div>
             {this.getExplainerCopy()}
           </div>
-          {/* {this.getRankList()} */}
-          {this.getSearchResults()}
+          {this.getRankList()}
         </div>
       </div>
     )
@@ -218,6 +227,7 @@ class Rank extends Component {
 export default Relay.createContainer(Rank, {
   initialVariables: {
     chamber: null,
+    category: null,
     search_term: null
   },
   fragments: {
@@ -260,7 +270,7 @@ export default Relay.createContainer(Rank, {
         state
         total_votes
       }
-      search(search_term: $search_term) {
+      search(search_term: $search_term, category: $category, chamber: $chamber) {
         address
         bio_text
         bioguide_id
@@ -275,6 +285,7 @@ export default Relay.createContainer(Rank, {
         party
         phone
         photo_url
+        rank
         served_until
         state
         twitter_handle
