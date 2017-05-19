@@ -82,8 +82,8 @@ class ReportCard extends React.Component {
               <IconLocation />
             </div>
           </div>
-          { chamber === 'senate' && address },
-          { chamber === 'house' && <span>{address}<br/>Washington DC, 20515</span>}
+          { chamber === 'senate' && address }
+          { chamber === 'house' && <span>{address}<br/>Washington, D.C. 20515</span>}
         </a>
         : null;
 
