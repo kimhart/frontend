@@ -47,34 +47,21 @@ class Rank extends Component {
   }, 300);
 
 
-  // getSearchResults = () => {
-  //   console.log(this.props.data)
-  //   let { search } = this.props.data;
-  //   if (!search.length && this.searchBox && this.searchBox.value) return <span className="search-result-message search-result-error">No results.</span>
-  //   return (
-  //     <div className="search-result-section">
-  //       <ul className="search-result-list">
-  //         hi
-  //       </ul>
-  //     </div>
-  //   );
-  // }
-
   getRankList = () => {
     let { attendance, participation, efficacy } = this.state;
     let { rank_attendance, rank_participation, rank_efficacy, search } = this.props.data;
-    if (attendance) return this.getResults({ category: 'attendance', data: search.length > 1 ? search : rank_attendance });
-    if (participation) return this.getResults({ category: 'participation', data: search.length > 1 ? search : rank_participation });
-    if (efficacy) return this.getResults({ category: 'efficacy', data: search.length > 1 ? search : rank_efficacy });
-    return false;
+    if (!search.length && this.searchBox && this.searchBox.value) return this.getResults({ data: 'blank' })
+    if (attendance) return this.getResults({ category: 'attendance', data: search.length > 0 ? search : rank_attendance });
+    if (participation) return this.getResults({ category: 'participation', data: search.length > 0 ? search : rank_participation });
+    if (efficacy) return this.getResults({ category: 'efficacy', data: search.length > 0 ? search : rank_efficacy });
   }
 
   getResults = ({ category, data }) => {
     let { bestToWorst } = this.state;
     let { chamber } = this.props.relay.variables;
     if (!data) return null;
+    if (data === 'blank') return <p className="no-results">No results match that search in the {chamber}.</p>;
     let rankDict = this.groupResultsByRank(data);
-    console.log(data)
     if (bestToWorst) {
       return Object.keys(rankDict).map(key => <RepRankClusterGroup key={`${key}${category}${chamber}${bestToWorst}`} {...this.state} reps={rankDict[key]} category={category} rank={key} />);
     } else {

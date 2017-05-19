@@ -111,6 +111,11 @@
   margin-bottom: 100px;
 }
 
+.no-results {
+  margin: 30px auto;
+  text-align: center;
+}
+
 .question-mark-circle {
   min-height: 35px;
   min-width: 35px;
@@ -337,6 +342,7 @@
 
 .view-more-reps {
   text-align: center;
+  cursor: pointer;
   padding: 10px;
   width: 100%;
   background-color: transparentize($light-gray, .55);
