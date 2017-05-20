@@ -44,6 +44,7 @@ export let repType = new GraphQLObjectType({
     photo_url: { type: GraphQLString, resolve: rep => rep.photo_url },
     policy_areas: { type: new GraphQLList(repPolicyAreasType), resolve: rep => rep.policy_areas },
     memberships: { type: new GraphQLList(repMembershipType), resolve: rep => rep.memberships },
+    rank: { type: GraphQLInt, resolve: rep => rep.rank },
     membership_stats: { type: new GraphQLList(repMembershipStatsType), resolve: rep => rep.membership_stats },
     served_until: { type: GraphQLString, resolve: rep => rep.served_until },
     state: { type: GraphQLString, resolve: rep => rep.state },
@@ -329,15 +330,17 @@ export let getRepSearchSchema = () => {
     type: new GraphQLList(repType),
     args: {
       search_term: { type: GraphQLString },
+      category: { type: GraphQLString },
+      chamber: { type: GraphQLString }
     },
     resolve: (__, args) => {
-      let { search_term } = args;
+      let { search_term, chamber, category } = args;
       if (search_term) {
         return new Promise((resolve, reject) => {
           rp({
             method: 'POST',
             uri: `${config.backend.uri}/search`,
-            body: { search_term },
+            body: { search_term, chamber, category },
             json: true
           })
           .catch(error => reject(error))

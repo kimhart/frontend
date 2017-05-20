@@ -51,14 +51,6 @@ class Search extends React.Component {
   render() {
     return (
       <div className="search-wrap">
-        <header className="logo">
-          <div className="logo-container">
-            <Link to="/">
-              <TallyLogo />
-              <span className="tally-logo-helper">Tally</span>
-            </Link>
-          </div>
-        </header>
         <div className="search-bar">
           <input type="text" className="search-input-text" placeholder="Search..." id="search-input-text" ref={c => this.searchBox = c} onChange={this.handleSearch} />
           <IconSearch className="search-bar-icon" fill="#fff" />

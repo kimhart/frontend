@@ -7,7 +7,7 @@ import Participation from './Participation';
 import Efficacy from './Efficacy';
 import MembershipStats from './MembershipStats';
 import PolicyAreas from './PolicyAreas';
-import { IconClose, IconStamp } from '../icons/Icons';
+import { IconClose, IconStamp, IconAngleDown, IconPhone, IconFacebook, IconTwitter, IconLocation } from '../icons/Icons';
 
 class ReportCard extends React.Component {
 
@@ -58,18 +58,60 @@ class ReportCard extends React.Component {
 
   getCardContent = () => {
     let { contact, bio, tab } = this.state;
+    let { chamber, name } = this.props;
+    let lastName = name.split(',')[0];
+
     if (contact || bio) {
       let { phone, twitter_handle, facebook, address, bio_text } = this.props;
-      let twitterFixed = twitter_handle ? <a target="_blank" href={`https://twitter.com/${twitter_handle}`}>{twitter_handle.split('').pop() === '/' ? twitter_handle.slice(0, -1) : twitter_handle}</a> : null;
-      let facebookFixed = facebook !== 'None' ? <a target="_blank" href={`https://${facebook}`}>{facebook.substring(4)}</a> : 'Public account not listed';
-      let phoneFixed = phone ? <a href={`tel:${phone}`}>{this.normalizePhoneNumber(phone)}</a> : null;
-      let list = contact ? [ phoneFixed, twitterFixed, facebookFixed, address ] : bio_text.split('; ');
+
+      let phoneLinked = phone ?
+        <a className="contact-list-link" href={`tel:${phone}`}>
+          <div className="contact-icon-wrap">
+            <div className="contact-icon-circle">
+              <IconPhone />
+            </div>
+          </div>
+          {this.normalizePhoneNumber(phone)}
+        </a>
+        : null;
+
+      let addressLinked = address ?
+        <a target="_blank" className="contact-list-link"  href={`http://maps.google.com/?q=${address}`}>
+          <div className="contact-icon-wrap">
+            <div className="contact-icon-circle">
+              <IconLocation />
+            </div>
+          </div>
+          { chamber === 'senate' && address }
+          { chamber === 'house' && <span>{address}<br/>Washington, D.C. 20515</span>}
+        </a>
+        : null;
+
+      let twitterLinked = twitter_handle ?
+        <a target="_blank" className="contact-list-link"  href={`https://twitter.com/${twitter_handle}`}>
+          <div className="contact-icon-wrap">
+            <IconTwitter />
+          </div>
+          {twitter_handle.split('').pop() === '/' ? twitter_handle.slice(0, -1) : twitter_handle}
+        </a>
+        : null;
+
+      let facebookLinked = facebook !== 'None' ?
+        <a target="_blank" className="contact-list-link"  href={`https://${facebook}`}>
+          <div className="contact-icon-wrap">
+            <IconFacebook />
+          </div>
+          {name && name.split(',').reverse().join().replace(/\,/g,' ')}
+        </a>
+        : 'Public account not listed';
+
+      let list = contact ? [ phoneLinked, addressLinked, twitterLinked, facebookLinked  ] : bio_text.split('; ');
       return (
         <div className="rep-card-details-wrap">
           <ul className={`rep-card-${contact ? 'contact' : 'bio'}-list`}>
-            { list.map((item, index) => !['none', '#facebook'].includes(item)
-              ? (<li className={`rep-card-${contact ? 'contact' : 'bio'}-list-item`} key={`${item}${index}`}>{ item }</li>)
-              : null
+            { list.map((item, index) => !['none', '#facebook'].includes(item) ?
+            (<li className={`rep-card-${contact ? 'contact' : 'bio'}-list-item`} key={`${item}${index}`}>{item}</li>)
+            : null
             )}
           </ul>
         </div>
@@ -78,9 +120,7 @@ class ReportCard extends React.Component {
     let tabs = {
       stats: (
         <div className="rep-card-metrics-wrap">
-          <h4 className="rep-card-section-title">
-            Participation Scores
-            <span className="control-button question-mark-circle">?</span>
+          <h4 className="rep-card-section-title">Participation Scores<span className="control-button question-mark-circle">?</span>
           </h4>
           <div className="rep-card-sliders">
             <Attendance {...this.props} />

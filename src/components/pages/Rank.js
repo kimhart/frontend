@@ -14,7 +14,8 @@ class Rank extends Component {
       attendance: false,
       participation: false,
       efficacy: true,
-      bestToWorst: true
+      bestToWorst: true,
+      search_term: null
     };
     props.relay.setVariables({ chamber: 'house' }, ({ aborted, done, error }) => {
       if (aborted || done || error) {
@@ -24,20 +25,54 @@ class Rank extends Component {
     isLoading(true);
   }
 
+  selectChamber = (chamber) => {
+    this.props.relay.setVariables({ chamber }, ({ aborted, done, error }) => {
+      if (aborted || done || error) {
+        isLoading(false);
+      }
+    });
+    isLoading(true);
+  }
+
+  handleSearch = _.debounce(() => {
+    this.props.relay.setVariables({
+      search_term: this.searchBox.value,
+      category: this.getCategorySimple()
+    }, ({ aborted, done, error }) => {
+      if (aborted || done || error) {
+        isLoading(false);
+      }
+    });
+    isLoading(true);
+  }, 300);
+
+
   getRankList = () => {
     let { attendance, participation, efficacy } = this.state;
-    let { rank_attendance, rank_participation, rank_efficacy } = this.props.data;
-    if (attendance) return this.getResults({ category: 'attendance', data: rank_attendance });
-    if (participation) return this.getResults({ category: 'participation', data: rank_participation });
-    if (efficacy) return this.getResults({ category: 'efficacy', data: rank_efficacy });
-    return false;
+    let { rank_attendance, rank_participation, rank_efficacy, search } = this.props.data;
+    if (!search.length && this.searchBox && this.searchBox.value) return this.getResults({ data: 'blank' })
+    if (attendance) return this.getResults({ category: 'attendance', data: search.length > 0 ? search : rank_attendance });
+    if (participation) return this.getResults({ category: 'participation', data: search.length > 0 ? search : rank_participation });
+    if (efficacy) return this.getResults({ category: 'efficacy', data: search.length > 0 ? search : rank_efficacy });
+  }
+
+  getResults = ({ category, data }) => {
+    let { bestToWorst } = this.state;
+    let { chamber } = this.props.relay.variables;
+    if (!data) return null;
+    if (data === 'blank') return <p className="no-results">No results match that search in the {chamber}.</p>;
+    let rankDict = this.groupResultsByRank(data);
+    if (bestToWorst) {
+      return Object.keys(rankDict).map(key => <RepRankClusterGroup key={`${key}${category}${chamber}${bestToWorst}`} {...this.state} reps={rankDict[key]} category={category} rank={key} />);
+    } else {
+      return Object.keys(rankDict).reverse().map(key => <RepRankClusterGroup key={`${key}${category}${chamber}${bestToWorst}`} {...this.state} reps={rankDict[key]} category={category} rank={key} />);
+    }
   }
 
   groupResultsByRank(data) {
     let rankDict = {};
     data.forEach(datum => {
       let { rank } = datum;
-
       if (!rankDict[rank]) {
         rankDict[rank] = [datum];
       }
@@ -48,23 +83,19 @@ class Rank extends Component {
     return rankDict;
   }
 
-  getResults = ({ category, data }) => {
-    let { bestToWorst } = this.state;
-    let { chamber } = this.props.relay.variables;
-    if (!data) return null;
-    let rankDict = this.groupResultsByRank(data);
-    if (bestToWorst) {
-      return Object.keys(rankDict).map(key => <RepRankClusterGroup key={`${key}${category}${chamber}${bestToWorst}`} {...this.state} reps={rankDict[key]} category={category} rank={key} />);
-    } else {
-      return Object.keys(rankDict).reverse().map(key => <RepRankClusterGroup key={`${key}${category}${chamber}${bestToWorst}`} {...this.state} reps={rankDict[key]} category={category} rank={key} />);
-    }
-  }
-
   getActiveCategory = () => {
     let { attendance, participation, efficacy } = this.state;
     if (attendance) return 'Work Attendance';
     if (participation) return 'Votes Cast';
     if (efficacy) return 'Bills Sponsored';
+    return false;
+  }
+
+  getCategorySimple = () => {
+    let { attendance, participation, efficacy } = this.state;
+    if (attendance) return 'attendance';
+    if (participation) return 'participation';
+    if (efficacy) return 'efficacy';
     return false;
   }
 
@@ -126,30 +157,14 @@ class Rank extends Component {
     return false;
   }
 
-  selectChamber = (chamber) => {
-    this.props.relay.setVariables({ chamber }, ({ aborted, done, error }) => {
-      if (aborted || done || error) {
-        isLoading(false);
-      }
-    });
-    isLoading(true);
-  }
 
   render() {
     const { bestToWorst } = this.state;
     return (
       <div className="rank-wrap">
-        <header className="logo">
-          <div className="logo-container">
-            <Link to="/">
-              <TallyLogo />
-              <span className="tally-logo-helper">Tally</span>
-            </Link>
-          </div>
-        </header>
         <div className="rank-controls-wrap">
           <div className="rank-category-wrap">
-            <p className="rank-headline">Rank based on core job performance:</p>
+            <p className="rank-headline">Rank reps based on core job performance:</p>
             <div className="rank-category-name" onClick={() => this.getDropDown()}>
               <p>{this.getActiveCategory()}</p>
               <IconTriangleDown />
@@ -167,7 +182,7 @@ class Rank extends Component {
         </div>
         <div className="rank-sort-wrap">
           <div className="rank-search">
-            <input className="rank-search-filter" placeholder="Search" />
+            <input className="rank-search-filter" placeholder="Search" ref={c => this.searchBox = c} onChange={this.handleSearch} />
             <div className="search-bar-icon">
               <IconSearch width="20px" fill="#4990E2" />
             </div>
@@ -198,7 +213,9 @@ class Rank extends Component {
 
 export default Relay.createContainer(Rank, {
   initialVariables: {
-    chamber: null
+    chamber: null,
+    category: null,
+    search_term: null
   },
   fragments: {
     data: () => Relay.QL`
@@ -239,6 +256,29 @@ export default Relay.createContainer(Rank, {
         rep_votes
         state
         total_votes
+      }
+      search(search_term: $search_term, category: $category, chamber: $chamber) {
+        address
+        bio_text
+        bioguide_id
+        chamber
+        congress_url
+        district
+        facebook
+        leadership_position
+        letter_grade
+        name
+        number_grade
+        party
+        phone
+        photo_url
+        rank
+        served_until
+        state
+        twitter_handle
+        twitter_url
+        website
+        year_elected
       }
     }
   `

@@ -80,7 +80,6 @@
   }
 }
 
-
 .rep-card-metrics-wrap {
   padding: 0 15px 20px 15px;
 }
@@ -90,6 +89,9 @@
   font-size: 20px;
   margin: 35px 0;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .rep-card-sliders {
@@ -129,24 +131,65 @@
   }
 }
 
+.rep-card-contact-list-item,
+.rep-card-bio-list-item {
+  a,
+  a:hover,
+  a:active,
+  a:visited,
+  span {
+    color: $blue;
+    font-size: 15px;
+    font-weight: 400;
+  }
+}
+
+.details-title {
+  width: 100%;
+  margin: 10px auto;
+  text-transform: uppercase;
+  color: transparentize($text-gray, .20);
+  font-size: 20px;
+}
+
 .rep-card-contact-list-item {
   list-style: none;
-  padding: 20px;
+  padding: 15px 5px;
   &:not(:last-child) {
     border-bottom: 1px solid $light-gray;
   }
-  a, a:hover, a:active, a:visited {
-    color: $blue;
+  .contact-list-link {
+    display: flex;
+    align-items: center;
+  }
+  .contact-icon-wrap {
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    margin-right: 10px;
+    display: inline-block;
+  }
+  .contact-icon-circle {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    box-sizing: border-box;
+    padding: 5px;
+    border-radius: 50%;
+    border: 1px solid #ED2332;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
 .rep-card-details-wrap {
-  padding: 20px 5px;
+  padding: 0 5px;
 }
 
 .rep-card-bio-list {
   padding-left: 1em;
-  margin: 0 15px;
+  margin: 15px;
 }
 
 .rep-card-bio-list-item {
@@ -158,7 +201,8 @@
 }
 
 .rep-card-contact-list-item:nth-last-of-type(3) {
-  text-transform: lowercase;
+  flex-wrap: wrap;
+  line-height: 1.3em;
 }
 
 
@@ -249,10 +293,6 @@
 
 .rep-belief-item:not(:last-child) {
   margin-bottom: 50px;
-}
-
-.policy-areas {
-
 }
 
 .policy-area {
