@@ -15,6 +15,8 @@
   align-content: center;
   flex-direction: column;
   width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
   .rank-headline {
     text-align: center;
     font-size: 18px;
@@ -29,8 +31,7 @@
     width: 70%;
     padding: 0 20px;
     background-color: lighten($blue, 15%);
-    margin: 10px auto;
-    // border: 1px solid white;
+    margin: 20px auto;
     border-radius: 5px;
      p {
       color: white;
@@ -39,6 +40,10 @@
       font-size: 18px;
       text-align: center;
       font-weight: 500;
+    }
+    @media screen and (min-width: 700px) {
+      margin: 20px auto;
+      width: 280px;
     }
   }
   .rank-category-dropdown {
@@ -77,6 +82,11 @@
         border-bottom: 0;
       }
     }
+    @media screen and (min-width: 700px) {
+      width: 280px;
+      margin-top: -15px;
+      margin-bottom: 20px;
+    }
   }
 }
 
@@ -84,6 +94,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media screen and (min-width: 700px) {
+    margin: 0 auto;
+    width: 300px;
+  }
   .rank-toggle-chamber {
     color: white;
     cursor: pointer;
@@ -106,9 +120,12 @@
   }
 }
 
+
 .rank-list-wrap {
   background-color: white;
   margin-bottom: 100px;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .no-results {
@@ -121,6 +138,9 @@
   min-width: 35px;
   box-sizing: border-box;
   position: relative;
+  @media screen and (min-width: 700px) {
+    margin-left: 0;
+  }
 }
 
 .rank-modal-overlay {
@@ -282,14 +302,17 @@
   flex-grow: 1;
   margin: 20px 0 5px 0;
   padding: 10px;
+  max-width: 700px;
+  @media screen and (min-width: 700px) {
+    margin: 30px auto;
+  }
 }
 
 .rank-search {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 0 10px transparentize($blue, .75);
-  border: 1px solid transparentize($blue, .75);
+  background-color: transparentize($blue, .85);
   border-radius: 5px;
   flex-grow: 1;
 }
@@ -347,8 +370,14 @@
   width: 100%;
   background-color: transparentize($light-gray, .55);
   font-size: 13px;
+  .icon-angle-down {
+    margin-left: 5px;
+  }
+  @media screen and (min-width: 700px) {
+    width: 45%;
+    margin: 0 auto;
+  }
 }
-
 
 
 @-webkit-keyframes slide-down {

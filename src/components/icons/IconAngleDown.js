@@ -1,13 +1,12 @@
 import React from 'react';
 
-const IconAngleDown = ({ fill, viewBox, height, width, transform }) => {
-  fill = fill || 'white';
+const IconAngleDown = ({ fill, height, width, transform }) => {
+  fill = fill || '#fff';
   width = width || '10px';
   height = height || '10px'
-  viewBox = viewBox || '47 12 10 6';
   transform = transform || null;
   return (
-    <svg className="icon-angle-down" viewBox={viewBox} transform={transform}>
+    <svg className="icon-angle-down" width={width} height={height} viewBox="47 12 10 6" transform={transform}>
         <path stroke="none" fill={fill} fillRule="evenodd" d="M57,12.8316633 C57,12.751503 56.9599198,12.6613226 56.8997996,12.6012024 L56.3987976,12.1002004 C56.3386774,12.0400802 56.248497,12 56.1683367,12 C56.0881764,12 55.997996,12.0400802 55.9378758,12.1002004 L52,16.0380762 L48.0621242,12.1002004 C48.002004,12.0400802 47.9118236,12 47.8316633,12 C47.741483,12 47.6613226,12.0400802 47.6012024,12.1002004 L47.1002004,12.6012024 C47.0400802,12.6613226 47,12.751503 47,12.8316633 C47,12.9118236 47.0400802,13.002004 47.1002004,13.0621242 L51.7695391,17.7314629 C51.8296593,17.7915832 51.9198397,17.8316633 52,17.8316633 C52.0801603,17.8316633 52.1703407,17.7915832 52.2304609,17.7314629 L56.8997996,13.0621242 C56.9599198,13.002004 57,12.9118236 57,12.8316633 Z"></path>
     </svg>
   );
