@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Relay from 'react-relay';
 import { Link } from 'react-router';
 import RepRankClusterGroup from '../rank/RepRankClusterGroup';
-import Search from '../search/Search';
+import Modal from 'react-modal';
 import { isLoading } from '../../utils/Utils';
 import { IconTriangleDown, IconClose, IconAngleDown, IconSearch, TallyLogo } from '../icons/Icons';
 
@@ -167,7 +167,7 @@ class Rank extends Component {
             <p className="rank-headline">Rank reps based on core job performance:</p>
             <div className="rank-category-name" onClick={() => this.getDropDown()}>
               <p>{this.getActiveCategory()}</p>
-              <IconTriangleDown />
+              <IconAngleDown fill="#fff" width="12px" />
             </div>
             <div className="rank-category-dropdown" ref="dropdown" onClick={() => this.getDropDown()}>
               <p className={`rank-category-item ${this.getActiveCategory() === 'Bills' ? 'active' : ''}`} onClick={() => this.setState({ attendance: false, participation: false, efficacy: true })}>Bills Sponsored</p>
@@ -190,7 +190,7 @@ class Rank extends Component {
           <button className="rank-sort-btn" onClick={() => this.setState({bestToWorst: !bestToWorst})}>
             Sort
             <div className="sort-arrow">
-              <IconAngleDown fill="#4990E2" transform={bestToWorst ? null : 'rotate(180)'} />
+              <IconTriangleDown fill="#4990E2" transform={bestToWorst ? null : 'rotate(180)'} />
             </div>
           </button>
           <span className="control-button question-mark-circle" onClick={() => this.getExplainerModal()}>?</span>
