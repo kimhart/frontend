@@ -7,6 +7,7 @@ import Footer from './Footer';
 import Header from './Header';
 import Logout from './Logout';
 import Login from './pages/Login';
+import Analyze from './pages/Analyze';
 import Signup from './pages/Signup';
 import Loading from './loading/Loading';
 import { UserUtils } from '../utils/Utils';
@@ -55,8 +56,9 @@ class Template extends React.Component {
       return (
         <div className="page-wrap">
           <Loading />
+          <Footer placement="top" update={() => this.setUser()} />
           { childrenWithUser }
-          <Footer update={() => this.setUser()} />
+          <Footer placement="bottom" update={() => this.setUser()} />
         </div>
       );
     }

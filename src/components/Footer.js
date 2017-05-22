@@ -4,13 +4,14 @@ import { Router, Route, IndexRoute, IndexLink, Link, browserHistory, applyRouter
 import useRelay from 'react-router-relay';
 import { UserUtils } from '../utils/Utils';
 import Scroll from 'react-scroll';
-import IconReps from './icons/IconReps';
-import IconRank from './icons/IconRank';
-import IconAnalyze from './icons/IconAnalyze';
-import IconSearch from './icons/IconSearch';
+import { IconReps, IconRank, IconAnalyze, IconSearch, TallyLogo } from './icons/Icons';
 const scroll = Scroll.animateScroll;
 
 class Footer extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
 
   getActiveTab = (tab) => {
     if (location.href.includes('search')) return 'search';
@@ -29,8 +30,14 @@ class Footer extends React.Component {
   }
 
   render() {
+    let { placement } = this.props;
     return (
-      <nav className="nav-bar">
+      <nav className={`nav-bar ${placement}`}>
+        {placement === 'top' &&
+        <Link to="/" className="nav-logo nav-bar-tab">
+          <TallyLogo height="80px"/><span className="logo-text">Tally</span>
+        </Link>
+        }
         <Link to="/" className={`nav-bar-tab ${!this.getActiveTab() ? ' active' : ''}`}>
           <span className="nav-bar-tab_icon">
             <IconReps fill="black" />
@@ -43,12 +50,12 @@ class Footer extends React.Component {
           </span>
           <span className="nav-bar-tab_title" onClick={this.scrollToTop()}>Rank</span>
         </Link>
-        {/* <Link to="/" className={`nav-bar-tab ${this.getActiveTab() === 'analyze' ? ' active' : ''}`}>
+        <Link to="/analyze" className={`nav-bar-tab ${this.getActiveTab() === 'analyze' ? ' active' : ''}`}>
           <span className="nav-bar-tab_icon">
             <IconAnalyze fill="black" />
           </span>
           <span className="nav-bar-tab_title">Analyze</span>
-        </Link> */}
+        </Link>
         <Link to="/search" className={`nav-bar-tab ${this.getActiveTab() === 'search' ? ' active' : ''}`}>
           <span className="nav-bar-tab_icon">
             <IconSearch fill="black" />
