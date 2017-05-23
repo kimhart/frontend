@@ -3,10 +3,32 @@
   width: 100%;
   max-width: 700px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   text-align: center;
   background-color: white;
   margin: 0 auto;
+  .tally-logo {
+    margin-left: 0;
+    max-width: 50px;
+  }
+  .main-tabs {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex: 1;
+    a {
+      margin: 0 20px;
+    }
+  }
+  .current-user {
+    display: flex;
+    align-items: center;
+    &-name {
+      font-size: 18px;
+      font-weight: 500;
+      margin-right: 10px;
+    }
+  }
   .nav-bar-tab {
     height: 100%;
     flex: 1;
@@ -21,6 +43,7 @@
     text-decoration: none;
     opacity: 0.5;
     &.nav-logo {
+      justify-content: flex-start;
       opacity: 1;
       height: 100%;
       flex-direction: row;
@@ -50,6 +73,10 @@
       align-items: center;
       justify-content: center;
     }
+  }
+  .current-user.nav-bar-tab {
+    flex-direction: row;
+    justify-content: flex-end;
   }
 }
 
