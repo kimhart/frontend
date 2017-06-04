@@ -11,6 +11,7 @@ a {
 
 p, li, a, label, input, span {
   font-weight: 300;
+  font-family: $brand-font, 'Arial', sans-serif;
 }
 
 h1, h2, h3, h4 {
@@ -19,7 +20,6 @@ h1, h2, h3, h4 {
 }
 
 h2 {
-  color: $soft-red;
   margin: 20px auto;
   width: 100%;
   display: block;
@@ -31,7 +31,6 @@ h2 {
 
 h3.headline {
   font-size: $standard-h3;
-  color: $soft-red;
   margin: 20px auto 5px auto;
 }
 

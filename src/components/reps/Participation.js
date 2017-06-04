@@ -16,7 +16,7 @@ class Participation extends React.Component {
     const totalVotes = participation ? participation.total_votes : null;
 
     return (
-      <div className="slider-container">
+      <div className="donut-chart-container">
         <BasicDonutChart value={repVotes || 0} max={totalVotes || 100} height={150} width={150} label="Votes" />
       </div>
     );

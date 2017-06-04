@@ -12,6 +12,7 @@ import NotFound from './components/pages/NotFound';
 import Login from './components/pages/Login';
 import Analyze from './components/pages/Analyze';
 import Search from './components/search/Search';
+import AboutMetrics from './components/pages/AboutMetrics';
 import AppLoading from './components/pages/AppLoading';
 
 let RootQuery = {
@@ -37,6 +38,7 @@ class App extends React.Component {
           <Route path="/login" component={Login} />
           <Route path="/search" component={Search} queries={RootQuery} />
           <Route path="/analyze" component={Analyze} />
+          <Route path="/about-metrics" component={AboutMetrics} />
           <Route path="*" component={NotFound} />
         </Route>
       </Router>

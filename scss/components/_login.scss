@@ -42,6 +42,10 @@
   margin: 0 auto 20px auto;
   display: block;
   text-align: center;
+  p {
+    max-width: 400px;
+    margin: 0 auto;
+  }
 }
 
 .section-white {
@@ -83,6 +87,10 @@
 .home-about {
   background-color: $blue;
   font-weight: 300;
+  p {
+    max-width: 400px;
+    margin: 0 auto;
+  }
   &:after {
    border-top: solid 20px $blue;
   }
@@ -97,6 +105,10 @@
   list-style: none;
   padding-left: 0;
   margin: 20px 0;
+  p {
+    max-width: 400px;
+    margin: 0 auto;
+  }
 }
 
 .team-list-item {
@@ -124,6 +136,10 @@
 .home-mission {
   background-color: $soft-red;
   padding-bottom: 20px;
+  p {
+    max-width: 400px;
+    margin: 0 auto;
+  }
   &:after {
    border-top: solid 20px $soft-red;
   }
@@ -138,4 +154,12 @@
 
 .home-contact-email {
   color: $blue;
+}
+
+.login-error-msg {
+  color: darken($soft-red, 25%);
+  display: block;
+  text-align: center;
+  margin: 20px auto;
+  width: 100%;
 }
