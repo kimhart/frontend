@@ -8,9 +8,8 @@ class NotFound extends React.Component {
     render() {
       return (
         <div className="not-found-page">
-          <h2>That page doesn't exist.</h2>
+          <h3>That page doesn't exist.</h3>
           <span className="back">
-            <i className="material-icons">arrow_back&nbsp;</i>
             <p><Link to="/">Return to dashboard</Link></p>
           </span>
         </div>

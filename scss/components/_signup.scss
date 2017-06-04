@@ -37,6 +37,14 @@
   }
 }
 
+.signup-error-msg {
+  color: darken($soft-red, 25%);
+  display: block;
+  text-align: center;
+  margin: 20px auto;
+  width: 100%;
+}
+
 
 #progress-signup, .signup-btn {
   font-size: 18px;

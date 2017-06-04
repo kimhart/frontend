@@ -51,7 +51,6 @@ header.logo {
 
 .your-location {
   height: 80px;
-  margin-top: 20px;
   margin-bottom: 20px;
   background-color: $blue;
   color: white;
@@ -64,6 +63,20 @@ header.logo {
     font-size: 20px;
     font-weight: 600;
   }
+}
+
+.state-icon {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.state-icon-image {
+  fill: white;
+}
+
+.location-info {
+  display: flex;
+  justify-content: center;
 }
 
 .your-district {

@@ -65,9 +65,11 @@ class Footer extends React.Component {
             <span className="nav-bar-tab_title">Search</span>
           </Link>
         </div>
+        {placement === 'top' &&
         <div className="current-user nav-bar-tab">
           <span className="current-user-name">Mattan  👤</span>
         </div>
+        }
       </nav>
     );
   }

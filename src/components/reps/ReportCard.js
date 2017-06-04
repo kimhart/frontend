@@ -120,7 +120,9 @@ class ReportCard extends React.Component {
     let tabs = {
       stats: (
         <div className="rep-card-metrics-wrap">
-          <h4 className="rep-card-section-title">Participation Scores<span className="control-button question-mark-circle">?</span>
+          <h4 className="rep-card-section-title">
+            Participation Scores
+            <span className="control-button question-mark-circle">?</span>
           </h4>
           <div className="rep-card-sliders">
             <Attendance {...this.props} />
@@ -135,6 +137,7 @@ class ReportCard extends React.Component {
       beliefs: (
         <div className="rep-card-metrics-wrap">
           <h4 className="rep-card-section-title">
+            Beliefs
             <span className="control-button question-mark-circle">?</span>
           </h4>
           <Beliefs {...this.props} />
