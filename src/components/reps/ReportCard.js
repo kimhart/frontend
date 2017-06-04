@@ -107,7 +107,7 @@ class ReportCard extends React.Component {
         </div>
         <div className="rep-card-header-wrap">
           <div className="rep-letter-grade-wrap">
-            <IconStamp />
+            <IconStamp fill="#3A7ADB" />
             <span className="rep-letter-grade">{letter_grade}</span>
           </div>
           <div className="rep-card-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}}></div>
