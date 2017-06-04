@@ -1,6 +1,17 @@
 :focus {outline:none;}
 *{-webkit-tap-highlight-color: rgba(0,0,0,0);}
 // @import '../node_modules/reset-css/_reset';
+
+$breakpoints: (
+  'phone': 320px,
+  'tablet': 768px,
+  'desktop': 1024px,
+  'large': 1300px
+);
+
+@import '../node_modules/include-media/dist/_include-media.scss';
+
+
 @import 'utils/all';
 @import 'base/all';
 @import 'components/all';

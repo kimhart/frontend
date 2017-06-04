@@ -55,12 +55,12 @@ class DashboardPage extends React.Component {
       <div className="main-dash">
         <div className="your-location">
           <h3 className="headline">Your Representatives</h3>
-          <div className="location-info">
-            <div className="state-icon">
-              <img className="state-icon-image" src={`./img/states/${user.state_long}.svg`} />
-            </div>
-            <p className="your-district"><span className="state">{user.state_long}</span> &nbsp;Congressional District {this.getDistrict(user)}</p>
-          </div>
+          <p className="your-district">
+            <svg className="state-icon">
+              <use xlinkHref={ `#icon-${user.state_long.replace(/\s/g, '-')}` }/>
+            </svg>
+            <span className="state">{user.state_long}</span> Congressional District {this.getDistrict(user)}
+          </p>
         </div>
         <span className="tap-a-rep">Click on a representative to learn more.</span>
         <div className="rep-info-clusters">

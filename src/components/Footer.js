@@ -33,9 +33,9 @@ class Footer extends React.Component {
   render() {
     let { placement } = this.props;
     return (
-      <nav className={`nav-bar ${placement}`}>
+      <nav className={`nav-bar nav-bar--${placement}`}>
         {placement === 'top' &&
-        <Link to="/" className="nav-logo nav-bar-tab">
+        <Link to="/" className="nav-logo">
           <TallyLogo /><span className="logo-text">Tally</span>
         </Link>
         }
@@ -66,8 +66,8 @@ class Footer extends React.Component {
           </Link>
         </div>
         {placement === 'top' &&
-        <div className="current-user nav-bar-tab">
-          <span className="current-user-name">Mattan  👤</span>
+        <div className="current-user">
+          <span className="current-user-name">Profile</span>
         </div>
         }
       </nav>
