@@ -6,8 +6,18 @@
   }
 }
 
+.search-header {
+  background-color: $blue;
+  margin: 0;
+  width: 100%;
+  padding: 20px;
+  @media screen and (min-width: 400px) {
+    margin-top: 20px;
+  }
+}
+
 .search-bar {
-  background: lighten($blue, 10%);
+  background-color: white;
   display: flex;
   align-items: center;
   width: 96%;
@@ -16,16 +26,22 @@
   height: 50px;
   padding: 0 10px;
   z-index: 900;
+  @media screen and (min-width: 700px) {
+    width: 40%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
 }
 
 .search-input-text::-webkit-input-placeholder {
-  color: transparentize(white, .10);
-  font-weight: 100;
+  color: lighten($text-gray, 30%);
+  font-weight: 200;
+  font-size: 20px;
 }
 
 .search-input-text {
-  background: lighten($blue, 10%);
-  color: white;
+  background-color: white;
+  color: $text-gray;
   border: 0;
   box-sizing: border-box;
   width: 100%;
@@ -51,12 +67,17 @@
   align-items: center;
   justify-content: center;
   position: absolute;
+  padding: 20px;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   &:first-of-type {
     display: none;
+  }
+  @media screen and (min-width: 700px) {
+    max-width: 500px;
+    margin: 0 auto;
   }
 }
 
@@ -65,7 +86,12 @@
   color: $blue;
   font-size: 20px;
   font-weight: 500;
-  padding: 40px 0 10px 20px
+  padding: 40px 0 10px 20px;
+  @media screen and (min-width: 700px) {
+    max-width: 600px;
+    margin: 0 auto;
+    padding-left: 0;
+  }
 }
 
 .search-result-list {
@@ -73,25 +99,39 @@
   padding: 0;
   width: 100%;
   box-shadow: 0 2px 8px $light-gray;
-}
-
-.search-result-list-item {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  border-top: 1px solid $light-gray;
-  padding: 10px;
-}
-
-.search-result-list-item-photo {
-  width: 60px;
-  height: 60px;
-  border-radius: 30px;
-  margin-left: 10px;
-}
-
-.search-result-list-item-name {
-  font-weight: 600;
-  padding: 20px;
-  font-size: 16px;
+  @media screen and (min-width: 700px) {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  &-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid $light-gray;
+    padding: 10px;
+    cursor: pointer;
+    .start {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    &-photo {
+      width: 60px;
+      height: 60px;
+      border-radius: 30px;
+      margin-left: 10px;
+    }
+    &-name {
+      font-weight: 600;
+      padding: 10px;
+      font-size: 16px;
+    }
+    &-party {
+      font-weight: 300;
+      padding: 0;
+      display: block;
+      font-size: 14px;
+      font-weight: 300;
+    }
+  }
 }

@@ -10,6 +10,7 @@ import RepBio from './components/pages/RepBio';
 import Rank from './components/pages/Rank';
 import NotFound from './components/pages/NotFound';
 import Login from './components/pages/Login';
+import Analyze from './components/pages/Analyze';
 import Search from './components/search/Search';
 import AppLoading from './components/pages/AppLoading';
 
@@ -35,6 +36,7 @@ class App extends React.Component {
           <Route path="/signup" component={Signup} queries={RootQuery}/>
           <Route path="/login" component={Login} />
           <Route path="/search" component={Search} queries={RootQuery} />
+          <Route path="/analyze" component={Analyze} />
           <Route path="*" component={NotFound} />
         </Route>
       </Router>

@@ -52,7 +52,7 @@ class DashboardPage extends React.Component {
     let { user } = this.state;
     return (
       <div className="main-dash">
-        <header className="logo">
+        {/* <header className="logo">
           <div className="logo-container">
             <TallyLogo />
             <span className="tally-logo-helper">Tally</span>
@@ -61,7 +61,7 @@ class DashboardPage extends React.Component {
             <h2 className="greeting">{user.first_name}</h2>
             <span className="logout" onClick={() => this.props.logOut()}>Logout</span>
           </div>
-        </header>
+        </header> */}
         <div className="your-location">
           <h3 className="headline">Your Representatives</h3>
           <p className="your-district"><span className="state">{user.state_long}</span> &nbsp;Congressional District {this.getDistrict(user)}</p>

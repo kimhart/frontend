@@ -1,5 +1,7 @@
 import React from 'react';
 import RepRankCluster from '../rank/RepRankCluster';
+import { IconAngleDown } from '../icons/Icons';
+
 
 class RepRankClusterGroup extends React.Component {
 
@@ -45,7 +47,8 @@ class RepRankClusterGroup extends React.Component {
           }
         </div>
         { reps.length > 3
-          ? <div className="view-more-reps" onClick={() => this.setState({ limit: limit === 3 ? max : 3 })}>Show {reps.length - 3} { limit === 3 ? 'more' : 'less' } reps tied for {this.getOrdinal(rank)} place</div>
+          ? <div className="view-more-reps" onClick={() => this.setState({ limit: limit === 3 ? max : 3 })}>
+            Show {reps.length - 3} { limit === 3 ? 'more' : 'less' } reps tied for {this.getOrdinal(rank)} place <IconAngleDown fill="#000" width="8px" transform={limit === 3 ? null : 'rotate(180)'}/></div>
           : null
         }
       </div>

@@ -1,9 +1,15 @@
 import React from 'react';
+import Relay from 'react-relay';
+import Modal from 'react-modal';
+import ReportCard from '../reps/ReportCard';
 
 class RepRankCluster extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      cardActive: false
+    };
   }
 
   getPhotoSource = () => {
@@ -31,10 +37,10 @@ class RepRankCluster extends React.Component {
   }
 
   render() {
-    let { name, party, state, category, days_at_work, total_work_days, percent_at_work, rep_sponsor, sponsor_percent, max_sponsor, percent_votes, rep_votes, total_votes, rank } = this.props;
+    let { bioguide_id, name, party, state, category, days_at_work, total_work_days, percent_at_work, rep_sponsor, sponsor_percent, max_sponsor, percent_votes, rep_votes, total_votes, rank } = this.props;
     let fullName = name ? name.split(',').reverse().join().replace(/\,/g,' ') : 'John Doe';
     return (
-      <div className="rep-rank-cluster-wrap">
+      <div className="rep-rank-cluster-wrap" onClick={() => this.setState({ cardActive: true })}>
         <div className="rep-rank-headshot" style={{background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}}></div>
         <div className="rep-rank-stack">
           <div className="rep-rank-stats">
@@ -44,6 +50,9 @@ class RepRankCluster extends React.Component {
             <div className="rep-rank-stats-fill" style={{ backgroundColor: '#47E5BC', width: `${this.getBarFill(category)}%`}}></div>
           </div>
         </div>
+        <Modal key={`rank_reportcard_${bioguide_id}`} contentLabel={`${fullName} modal`} className={`rep-card-wrap`} isOpen={this.state.cardActive}>
+          <ReportCard {...this.props} close={() => this.setState({ active: false })} />
+        </Modal>
       </div>
     );
   }
