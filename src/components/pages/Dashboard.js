@@ -64,7 +64,12 @@ class DashboardPage extends React.Component {
         </header> */}
         <div className="your-location">
           <h3 className="headline">Your Representatives</h3>
-          <p className="your-district"><span className="state">{user.state_long}</span> &nbsp;Congressional District {this.getDistrict(user)}</p>
+          <p className="your-district">
+            <svg className="state-icon">
+              <use xlinkHref={ `#icon-${user.state_long.replace(/\s/g, '-')}` }/>
+            </svg>
+            <span className="state">{user.state_long}</span> Congressional District {this.getDistrict(user)}
+          </p>
         </div>
         <span className="tap-a-rep">Click on a representative to learn more.</span>
         <div className="rep-info-clusters">
