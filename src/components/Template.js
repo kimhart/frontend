@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import Analyze from './pages/Analyze';
 import Signup from './pages/Signup';
 import Loading from './loading/Loading';
+import IconStates from './icons/IconStates';
 import { UserUtils } from '../utils/Utils';
 
 class Template extends React.Component {
@@ -55,6 +56,7 @@ class Template extends React.Component {
       const childrenWithUser = React.Children.map(this.props.children, (child) => React.cloneElement(child, { user, logOut: () => this.logOut() }));
       return (
         <div className="page-wrap">
+          <IconStates />
           <Loading />
           <Footer placement="top" update={() => this.setUser()} />
           { childrenWithUser }
