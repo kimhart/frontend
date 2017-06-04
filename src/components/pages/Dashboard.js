@@ -53,36 +53,20 @@ class DashboardPage extends React.Component {
     let { user } = this.state;
     return (
       <div className="main-dash">
-        {/* <MediaQuery query='(max-device-width: 600px)'> */}
-          <div className="your-location">
-            <h3 className="headline">Your Representatives</h3>
-            <div className="location-info">
-              <div className="state-icon">
-                <img className="state-icon-image" src={`./img/states/${user.state_long}.svg`} />
-              </div>
-              <p className="your-district"><span className="state">{user.state_long}</span> &nbsp;Congressional District {this.getDistrict(user)}</p>
+        <div className="your-location">
+          <h3 className="headline">Your Representatives</h3>
+          <div className="location-info">
+            <div className="state-icon">
+              <img className="state-icon-image" src={`./img/states/${user.state_long}.svg`} />
             </div>
+            <p className="your-district"><span className="state">{user.state_long}</span> &nbsp;Congressional District {this.getDistrict(user)}</p>
           </div>
-          <span className="tap-a-rep">Click on a representative to learn more.</span>
-          <div className="rep-info-clusters">
-            {this.getRepInfoClusters()}
-            {this.getReportCards()}
-          </div>
-        {/* </MediaQuery> */}
-        {/* <MediaQuery query='(min-device-width: 601px)'>
-          <div className="your-location">
-            <h3 className="headline">Your Representatives</h3>
-            <div className="location-info">
-              <div className="state-icon">
-                <img className="state-icon-image" src={`./../../svg/states/${user.state_long}.svg`} />
-              </div>
-              <p className="your-district"><span className="state">{user.state_long}</span> &nbsp;Congressional District {this.getDistrict(user)}</p>
-            </div>
-          </div>
-          <div className="rep-cards-desktop">
-            {this.getReportCards()}
-          </div>
-        </MediaQuery> */}
+        </div>
+        <span className="tap-a-rep">Click on a representative to learn more.</span>
+        <div className="rep-info-clusters">
+          {this.getRepInfoClusters()}
+          {this.getReportCards()}
+        </div>
       </div>
     );
   }

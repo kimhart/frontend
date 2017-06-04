@@ -39,18 +39,12 @@ class ReportCard extends React.Component {
     return lastName;
   }
 
-  normalizePhoneNumber(s) {
-    var s2 = (""+s).replace(/\D/g, '');
-    var m = s2.match(/^(\d{3})(\d{3})(\d{4})$/);
-    return (!m) ? null : "(" + m[1] + ") " + m[2] + "-" + m[3];
-  }
-
   getMetricsTabs = () => {
     let { tab, contact, bio } = this.state;
     if (contact || bio) return null;
     return (
       <div className="card-toggle-wrap">
-        <p className={`card-toggle-stats${tab == 'stats' ? ' active' : ''}`} onClick={() => this.setState({ tab: 'stats' })}>Stats</p>
+        <p className={`card-toggle-stats${tab == 'stats' ? ' active' : ''}`} onClick={() => this.setState({ tab: 'stats' })}>Job Scores</p>
         <p className={`card-toggle-stats${tab == 'beliefs' ? ' active' : ''}`} onClick={() => this.setState({ tab: 'beliefs' })}>Beliefs</p>
       </div>
     );
@@ -61,70 +55,26 @@ class ReportCard extends React.Component {
     let { chamber, name } = this.props;
     let lastName = name.split(',')[0];
 
-    if (contact || bio) {
-      let { phone, twitter_handle, facebook, address, bio_text } = this.props;
-
-      let phoneLinked = phone ?
-        <a className="contact-list-link" href={`tel:${phone}`}>
-          <div className="contact-icon-wrap">
-            <div className="contact-icon-circle">
-              <IconPhone />
-            </div>
-          </div>
-          {this.normalizePhoneNumber(phone)}
-        </a>
-        : null;
-
-      let addressLinked = address ?
-        <a target="_blank" className="contact-list-link"  href={`http://maps.google.com/?q=${address}`}>
-          <div className="contact-icon-wrap">
-            <div className="contact-icon-circle">
-              <IconLocation />
-            </div>
-          </div>
-          { chamber === 'senate' && address }
-          { chamber === 'house' && <span>{address}<br/>Washington, D.C. 20515</span>}
-        </a>
-        : null;
-
-      let twitterLinked = twitter_handle ?
-        <a target="_blank" className="contact-list-link"  href={`https://twitter.com/${twitter_handle}`}>
-          <div className="contact-icon-wrap">
-            <IconTwitter />
-          </div>
-          {twitter_handle.split('').pop() === '/' ? twitter_handle.slice(0, -1) : twitter_handle}
-        </a>
-        : null;
-
-      let facebookLinked = facebook !== 'None' ?
-        <a target="_blank" className="contact-list-link"  href={`https://${facebook}`}>
-          <div className="contact-icon-wrap">
-            <IconFacebook />
-          </div>
-          {name && name.split(',').reverse().join().replace(/\,/g,' ')}
-        </a>
-        : 'Public account not listed';
-
-      let list = contact ? [ phoneLinked, addressLinked, twitterLinked, facebookLinked  ] : bio_text.split('; ');
+    if (bio) {
+      let { bio_text } = this.props;
+      let list = bio_text.split('; ');
       return (
         <div className="rep-card-details-wrap">
-          <ul className={`rep-card-${contact ? 'contact' : 'bio'}-list`}>
-            { list.map((item, index) => !['none', '#facebook'].includes(item) ?
-            (<li className={`rep-card-${contact ? 'contact' : 'bio'}-list-item`} key={`${item}${index}`}>{item}</li>)
+          <ul className="rep-card-bio-list">
+            { list.map((item, index) => !['none'].includes(item) ?
+            (<li className="rep-card-bio-list-item" key={`${item}${index}`}>{item}</li>)
             : null
             )}
           </ul>
         </div>
-      );
+      )
     }
+
     let tabs = {
       stats: (
         <div className="rep-card-metrics-wrap">
-          <h4 className="rep-card-section-title">
-            Participation Scores
-            <span className="control-button question-mark-circle">?</span>
-          </h4>
-          <div className="rep-card-sliders">
+          <h4 className="rep-card-section-title">Participation</h4>
+          <div className="rep-card-donut-charts">
             <Attendance {...this.props} />
             <Participation {...this.props} />
             <Efficacy {...this.props} />
@@ -136,10 +86,8 @@ class ReportCard extends React.Component {
       ),
       beliefs: (
         <div className="rep-card-metrics-wrap">
-          <h4 className="rep-card-section-title">
-            Beliefs
-            <span className="control-button question-mark-circle">?</span>
-          </h4>
+          <h4 className="rep-card-section-title">Beliefs</h4>
+          <p className="rep-card-section-subtitle">Click a section to explore a breakdown of each topic.</p>
           <Beliefs {...this.props} />
         </div>
       )
@@ -148,9 +96,10 @@ class ReportCard extends React.Component {
   }
 
   render() {
-    let { bioguide_id, district, chamber, letter_grade, leadership_position, name, party, state, data } = this.props;
+    let { bioguide_id, district, chamber, letter_grade, leadership_position, name, party, state, data, phone, twitter_handle, facebook, address, bio_text } = this.props;
     let { tab, contact, bio } = this.state;
     let fullName = name.split(',').reverse().join().replace(/\,/g,' ');
+
     return (
       <div className="rep-card-content">
         <div className="rep-card-close control-button" onClick={() => this.props.close()}>
@@ -158,7 +107,7 @@ class ReportCard extends React.Component {
         </div>
         <div className="rep-card-header-wrap">
           <div className="rep-letter-grade-wrap">
-            <IconStamp fill="white" />
+            <IconStamp />
             <span className="rep-letter-grade">{letter_grade}</span>
           </div>
           <div className="rep-card-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}}></div>
@@ -170,8 +119,25 @@ class ReportCard extends React.Component {
             { leadership_position !== "None" && <span className="rep-card-leadership">{ leadership_position }</span> }
           </div>
           <div className="rep-card-buttons-wrap">
-            <button className={`contact-btn${contact ? ' active' : ''}`} onClick={() => this.setState({ contact: !contact, bio: false })}>Contact</button>
             <button className={`bio-btn${bio ? ' active' : ''}`} onClick={() => this.setState({ bio: !bio, contact: false })}>Bio</button>
+            <div className="contact-icons">
+              {/* {phone} */}
+              <a target="_blank" href={`tel:${phone}`}>
+                <div className="contact-icon-circle"><IconPhone /></div>
+              </a>
+              {/* address */}
+              <a target="_blank" href={`http://maps.google.com/?q=${address}`}>
+                <div className="contact-icon-circle"><IconLocation /></div>
+              </a>
+              {/* twitter */}
+              <a target="_blank" href={`https://twitter.com/${twitter_handle}`}>
+                <div className="contact-icon-circle"><IconTwitter /></div>
+              </a>
+              {/* facebook */}
+              <a target="_blank" href={`https://${facebook}`}>
+                <div className="contact-icon-circle"><IconFacebook /></div>
+              </a>
+            </div>
           </div>
           { this.getMetricsTabs() }
         </div>

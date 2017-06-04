@@ -50,8 +50,8 @@ header.logo {
 
 
 .your-location {
-  height: 80px;
   margin-bottom: 20px;
+  padding-bottom: 10px;
   background-color: $blue;
   color: white;
   display: flex;
@@ -127,7 +127,7 @@ header.logo {
   margin-left: 30px;
   margin-right: 15px;
   box-sizing: border-box;
-  border: 1px solid $blue;
+  border: 1px solid transparentize($blue, .75);
   border-radius: 15px;
   padding: 10px 15px;
   cursor: pointer;

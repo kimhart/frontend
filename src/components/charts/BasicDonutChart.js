@@ -53,8 +53,12 @@ class BasicDonutChart extends React.Component {
     }
     return (
       <div className="basic-donut-chart" style={{ position: 'relative', marginBottom: height/4 }}>
-        <div className="basic-donut-chart-middle" style={{ ...styles, alignItems: 'center' }}><p style={{ fontSize: 22 }}>{ `${value}/${max}` }</p></div>
-        <div className="basic-donut-chart-label" style={{ ...styles, alignItems: 'flex-end', top: height/4 }}><p style={{ fontSize: 18 }}>{ label }</p></div>
+        <div className="basic-donut-chart-middle" style={{ ...styles, alignItems: 'center' }}>
+          <p style={{ fontSize: 22 }}>{ `${value}/${max}` }</p>
+        </div>
+        <div className="basic-donut-chart-label" style={{ ...styles, alignItems: 'flex-end', top: height/4 }}>
+          <p style={{ fontSize: 18, fontWeight: 500 }}>{ label }</p>
+        </div>
         { container.toReact() }
       </div>
     );

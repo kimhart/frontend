@@ -4,20 +4,21 @@
   background: white;
   border-radius: 15px;
   box-shadow: 0 5px 25px transparentize($blue, 0.65);
+  border: 1px solid $lightest-blue;
   position: relative;
 }
 
 .rep-card-header-wrap {
   display: flex;
   flex-direction: column;
-  background: $blue;
-  color: white;
+  background: white;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 }
 
 .rep-card-content {
   padding-bottom: 30px;
+  width: 100%;
 }
 
 .rep-card-close {
@@ -35,18 +36,20 @@
 
 .rep-card-photo {
   margin: 0 auto;
-  margin-top: -50px;
+  margin-top: -45px;
   margin-bottom: 15px;
-  height: 100px;
-  width: 100px;
+  height: 140px;
+  width: 140px;
   border-radius: 100%;
+  border: 1px solid $lightest-blue;
 }
 
 .rep-card-name {
   text-align: center;
   font-weight: 600;
   font-size: 26px;
-  margin: 0 15px;
+  margin: 10px 0;
+  color: $text-gray;
 }
 
 .rep-card-position-wrap {
@@ -57,6 +60,7 @@
   display: block;
   text-align: center;
   margin: 0 15px;
+  color: $text-gray;
 }
 
 .rep-card-buttons-wrap {
@@ -66,59 +70,60 @@
   margin-bottom: 15px;
 }
 
-.contact-btn, .bio-btn {
+.bio-btn {
   width: 90px;
-  border: 1px solid white;
-  color: white;
+  border: 1px solid $blue;
+  color: $blue;
   font-size: 14px;
-  background-color: transparent;
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 10px;
   box-sizing: border-box;
   &:not(:last-child) {
     margin-right: 10px;
   }
   &.active {
-    background: white;
-    color: $blue;
+    background: $light-blue;
+    color: white;
+    border: none;
   }
 }
 
 .rep-card-metrics-wrap {
-  padding: 0 15px 20px 15px;
-  height: 90%;
+  padding: 0 0 20px 0;
+  border-top: 1px solid $lightest-blue;
 }
 
 .rep-card-section-title {
-  color: $soft-red;
-  font-size: 20px;
-  margin: 35px 0;
+  color: $blue;
+  font-family: $brand-font;
+  font-weight: 400;
+  font-size: 22px;
+  margin: 40px 0 20px 0;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.rep-card-sliders {
+.rep-card-section-subtitle {
+  width: 90%;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  display: block;
+}
+
+.rep-card-donut-charts {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  .slider-container {
+  .donut-chart-container {
     display: inline-block;
   }
-  .slider-body {
-    border-radius: 8px;
-    background-color: #FFF;
-    width: 95%;
-    margin: 0 auto;
-    border: 1px solid $text-gray;
-    overflow: hidden;
-  }
-  .slider-bar {
-    border-radius-top-left: 8px;
-    border-radius-bottom-left: 8px;
-    height: 1em;
+  .basic-donut-chart-label {
+    margin-top: -20px;
+    font-weight: 400;
   }
 }
 
@@ -149,6 +154,10 @@
   }
 }
 
+.policy-areas {
+  padding: 20px;
+}
+
 .details-title {
   width: 100%;
   margin: 10px auto;
@@ -157,35 +166,23 @@
   font-size: 20px;
 }
 
-.rep-card-contact-list-item {
-  list-style: none;
-  padding: 15px 5px;
-  &:not(:last-child) {
-    border-bottom: 1px solid $light-gray;
-  }
-  .contact-list-link {
-    display: flex;
-    align-items: center;
-  }
-  .contact-icon-wrap {
-    width: 40px;
-    height: 40px;
-    padding: 5px;
-    margin-right: 10px;
-    display: inline-block;
-  }
-  .contact-icon-circle {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-    box-sizing: border-box;
-    padding: 5px;
-    border-radius: 50%;
-    border: 1px solid #ED2332;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.contact-icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.contact-icon-circle {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  box-sizing: border-box;
+  padding: 5px;
+  border-radius: 100%;
+  border: 1px solid #ED2332;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .rep-card-details-wrap {
@@ -229,37 +226,43 @@
 .card-toggle-stats {
   color: #FFF;
   cursor: pointer;
-  background-color: $blue;
+  background: $lightest-blue;
+  color: #FFF;
   font-weight: 300;
   text-align: center;
   font-size: 16px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  border: 1px solid $lightest-blue;
   margin: 10px 5px 0 5px;
   padding: 15px 5px;
   flex: 1;
+  transform: translateY(1px);
   &.active {
+    background: white;
+    border-bottom: 1px solid white;
     color: $blue;
-    background-color: #FFF;
     font-weight: 600;
     position: relative;
     top: 2px;
+    transform: none;
   }
 }
 
 .rep-card-header-wrap {
+  width: 100%;
   .rep-letter-grade-wrap {
-    width: 80px;
-    height: 80px;
+    width: 75px;
+    height: 75px;
     position: absolute;
     top: 10px;
     left: 10px;
-    opacity: 0.35;
+    opacity: 0.8;
   }
 
   .rep-letter-grade {
-    font-size: 42px;
-    color: $blue;
+    font-size: 36px;
+    color: white;
   }
 }
 
@@ -270,7 +273,7 @@
   width: 100%;
   height: 10px;
   margin: 0;
-  padding: 0px;
+  padding: 0;
   .dots {
     width: 100%;
     position: absolute;
@@ -284,6 +287,7 @@
       background-color: transparentize($blue, .45);
       width: 8px;
       height: 8px;
+      margin: 1px;
       border-radius: 16px;
     }
   }
@@ -309,12 +313,20 @@
 
 .rep-belief-item-type {
   text-transform: capitalize;
-  margin-bottom: 20px;
+  margin: 15px auto;
+  text-align: center;
+  font-weight: 500;
 }
 
-.rep-belief-item:not(:last-child) {
-  margin-bottom: 50px;
+.rep-belief-item {
+  width: 100%;
+  padding: 20px 15px 50px 15px;
+  border-bottom: 1px solid transparentize($blue, .9);
+  &:first-child {
+    background-color: transparentize($blue, .9);
+  }
 }
+
 
 .policy-area {
   margin-bottom: 15px;

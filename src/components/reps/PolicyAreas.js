@@ -34,11 +34,9 @@ class PolicyAreas extends React.Component {
   render() {
 
     return (
-      <div className="slider-container comparison">
-        <div className="slider-labels">
-          <div className="policy-areas">
-            {this.getPolicyAreas()}
-          </div>
+      <div className="donut-chart-container comparison">
+        <div className="policy-areas">
+          {this.getPolicyAreas()}
         </div>
       </div>
     );

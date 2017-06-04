@@ -16,7 +16,7 @@ class Efficacy extends React.Component {
     const maxSponsors = efficacy ? efficacy.max_sponsor : null;
 
     return (
-      <div className="slider-container">
+      <div className="donut-chart-container">
         <BasicDonutChart value={repSponsors || 0} max={maxSponsors || 100} height={150} width={150} label="Bills" />
       </div>
     );
