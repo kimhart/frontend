@@ -20,7 +20,9 @@ $standard-h3: 24px;
 $soft-red:    #F0454B;
 $bright-red:  #ED2332;
 $blue:        #3A7ADB;
-$blue-light:  #D0E1F7;
+$blue-pale:  #D0E1F7;
+$blue-light:  #6194e2;
+$blue-lightest: lighten(#6194e2, 15%);
 $teal-green:  #41ead4;
 $text-gray:   #4A4A4A;
 $dark-gray:   #122C34;
@@ -37,5 +39,5 @@ $z-modal: 999;
 // ----------------------------------------------
 
 @mixin card-shadow {
-  box-shadow: 0 4px 0 0 $blue-light, 0 6px 20px 0 transparentize($blue, .75);
+  box-shadow: 0 4px 0 0 $blue-pale, 0 6px 20px 0 transparentize($blue, .75);
 }

@@ -91,6 +91,7 @@ class Signup extends React.Component {
                   <input id="email" type="email" placeholder="Email" ref="emailInput" required  />
                   <input id="password" type="password" placeholder="Password" ref="passwordInput" required />
                   <input id="password-match" type="password" placeholder="Confirm Password" ref="passwordConfirm" required />
+                  <span className="signup-error-msg">{error}</span>
                   <button id="progress-signup" onClick={this.validatePassword}>Continue</button>
                 </div>
               }

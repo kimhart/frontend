@@ -63,10 +63,13 @@ class Login extends React.Component {
           <section className="home-section home-about section-white section-arrow">
             <div className="home-section-content">
               <h3 className="home-section-title">About</h3>
-              <p>2018 midterm elections are around the corner. Do your Senators & Congresspeople deserve your vote?</p>
-              <p>We've combined your reps' attendance, sponsored legislation and voting participation into a simple letter grade to guage their activity at the most basic level — with data dating all the way back to 1989.</p><br/>
-              <p>Curious about how your reps are actually voting? We have that covered, too. Check out your reps' detailed voting trend history to determine where he or she stands on the issues you care about.</p><br/>
-              <p>Tally is journalism-free, so you can spend less time sifting through headlines (fake or not) and focus on metrics that matter.</p>
+              <p>2018 midterm elections are around the corner. Do your current Senators and Congresspeople deserve your vote?</p><br/>
+              <p>We've identified your representatives and combined stats about their attendance, voting participation and bill sponsorship into a letter grade to guage their job performance at the most basic level. Our data reaches back to 1989 and compares all federal lawmakers around the country.</p><br/>
+              <p>Stay tuned — upcoming features include a breakdown of campaign finances and donor information, and a daily analysis of the transcripts from each session (outlining highly-discussed topics and what your rep had to say on the floor that day.)</p><br/>
+              <p>Unlike other political apps, Tally is journalism-free, so you can spend less time sifting through headlines and focus on metrics that matter.</p>
+              <Link className="standard-link" to="/about-metrics">
+                <p>About Our Metrics</p>
+              </Link>
             </div>
           </section>
           <section className="home-section home-team section-arrow">

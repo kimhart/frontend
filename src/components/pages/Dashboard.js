@@ -52,16 +52,6 @@ class DashboardPage extends React.Component {
     let { user } = this.state;
     return (
       <div className="main-dash">
-        {/* <header className="logo">
-          <div className="logo-container">
-            <TallyLogo />
-            <span className="tally-logo-helper">Tally</span>
-          </div>
-          <div className="user-container">
-            <h2 className="greeting">{user.first_name}</h2>
-            <span className="logout" onClick={() => this.props.logOut()}>Logout</span>
-          </div>
-        </header> */}
         <div className="your-location">
           <h3 className="headline">Your Representatives</h3>
           <p className="your-district">

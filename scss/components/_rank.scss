@@ -133,16 +133,6 @@
   text-align: center;
 }
 
-.question-mark-circle {
-  min-height: 35px;
-  min-width: 35px;
-  box-sizing: border-box;
-  position: relative;
-  @media screen and (min-width: 700px) {
-    margin-left: 0;
-  }
-}
-
 .rank-modal-overlay {
   display: none;
   &.open {

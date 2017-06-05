@@ -16,7 +16,7 @@ class Attendance extends React.Component {
     const totalWorkDays = attendance ? attendance.total_work_days : null;
 
     return (
-      <div className="slider-container">
+      <div className="donut-chart-container">
         <BasicDonutChart value={daysAtWork || 0} max={totalWorkDays || 150} height={150} width={150} label="Attendance" />
       </div>
     );

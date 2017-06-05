@@ -16,7 +16,7 @@ class MembershipStats extends React.Component {
     const maxCommittees = membershipStats ? membershipStats.max_committees : null;
 
     return (
-      <div className="slider-container comparison">
+      <div className="donut-chart-container comparison">
         <BasicDonutChart value={numCommittees || 0} max={maxCommittees || 100} height={150} width={150} label="Committees" />
       </div>
     );
