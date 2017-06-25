@@ -39,6 +39,7 @@ class RepRankCluster extends React.Component {
   render() {
     let { bioguide_id, name, party, state, category, days_at_work, total_work_days, percent_at_work, rep_sponsor, sponsor_percent, max_sponsor, percent_votes, rep_votes, total_votes, rank, chamber } = this.props;
     let fullName = name ? name.split(',').reverse().join().replace(/\,/g,' ') : 'John Doe';
+    console.log(this.props);
     return (
       <div className="rep-rank-cluster-wrap clickable" onClick={() => this.setState({ cardActive: true })}>
         <div className="rep-rank-headshot" style={{background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}} />
