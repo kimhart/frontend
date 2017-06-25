@@ -2,6 +2,7 @@ import React from 'react';
 import Relay from 'react-relay';
 import { isLoading } from '../../utils/Utils';
 import BeliefRange from './BeliefRange';
+import { IconAngleDown } from '../icons/Icons';
 
 class Beliefs extends React.Component {
 
@@ -19,18 +20,44 @@ class Beliefs extends React.Component {
   }
 
   renderBeliefs({ beliefs, level }) {
+    let isClickable = level === "overall";
     return [beliefs.filter(belief => belief.type === level).map(belief => {
       let { type, bioguide_id, sub_type_of, tally_score } = belief;
       return (
-        <div key={`${bioguide_id}${sub_type_of}${type}`} className="rep-belief-item clickable" onClick={() => this.setState({ level: type === 'overall' ? 'overall' : sub_type_of })}>
-          <div className="rep-belief-item-type">{type}</div>
+        <div key={`${bioguide_id}${sub_type_of}${type}`} className="rep-belief-item" onClick={() => this.setState({ level: type === 'overall' ? 'overall' : sub_type_of })}>
+          <div className="rep-belief-item-type">
+            { type }&nbsp;
+          </div>
+          { !isClickable
+            ? (
+              <a className="clickable"
+                onClick={() => this.setState({ level: type === 'overall' ? 'overall' : sub_type_of })}
+                style={{
+                  position: 'absolute',
+                  left: 10,
+                  top: 10
+                }}
+              >
+                <IconAngleDown fill="#000000" transform="rotate(90)" /> Back to Overall
+              </a>
+            )
+            : null
+          }
           <BeliefRange {...this.props} {...belief} />
         </div>
       )
     }), beliefs.filter(belief => belief.sub_type_of === level).map(belief => {
       let { type, bioguide_id, sub_type_of, tally_score } = belief;
       return (
-        <div key={`${bioguide_id}${sub_type_of}${type}`} className="rep-belief-item clickable" onClick={() => this.setState({ level: type || level })}>
+        <div
+          key={`${bioguide_id}${sub_type_of}${type}`}
+          className={`rep-belief-item ${isClickable ? 'clickable' : ''}`}
+          onClick={
+            isClickable
+            ? () => this.setState({ level: type || level })
+            : () => null
+          }
+        >
           <div className="rep-belief-item-type">{type}</div>
           <BeliefRange {...this.props} {...belief} />
         </div>
