@@ -35,9 +35,9 @@ class Footer extends React.Component {
     return (
       <nav className={`nav-bar nav-bar--${placement}`}>
         {placement === 'top' &&
-        <Link to="/" className="nav-logo">
-          <TallyLogo /><span className="logo-text">Tally</span>
-        </Link>
+          <Link to="/" className="nav-logo">
+            <TallyLogo /><span className="logo-text">Tally</span>
+          </Link>
         }
         <div className="main-tabs">
           <Link to="/" className={`nav-bar-tab ${!this.getActiveTab() ? ' active' : ''}`}>
@@ -52,12 +52,12 @@ class Footer extends React.Component {
             </span>
             <span className="nav-bar-tab_title" onClick={this.scrollToTop()}>Rank</span>
           </Link>
-          <Link to="/analyze" className={`nav-bar-tab ${this.getActiveTab() === 'analyze' ? ' active' : ''}`}>
+          {/* <Link to="/analyze" className={`nav-bar-tab ${this.getActiveTab() === 'analyze' ? ' active' : ''}`}>
             <span className="nav-bar-tab_icon">
               <IconAnalyze fill="black" />
             </span>
             <span className="nav-bar-tab_title">Analyze</span>
-          </Link>
+          </Link> */}
           <Link to="/search" className={`nav-bar-tab ${this.getActiveTab() === 'search' ? ' active' : ''}`}>
             <span className="nav-bar-tab_icon">
               <IconSearch fill="black" />
