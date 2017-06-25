@@ -46,7 +46,7 @@ class DashboardPage extends React.Component {
     ? reps.map(rep => {
       return (
         <div className={`rep-card-wrap`}>
-          <ReportCard key={`reportcard_${rep.bioguide_id}`} {...this.props} {...rep} close={null} />
+          <ReportCard key={`reportcard_${rep.bioguide_id}`} {...this.props} {...rep} />
         </div>
       );
     })
