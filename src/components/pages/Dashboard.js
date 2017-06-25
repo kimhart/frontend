@@ -1,7 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
 import ReactDOM from 'react-dom';
-import MediaQuery from 'react-responsive';
 import RepInfoCluster from './../reps/RepInfoCluster';
 import ReportCard from './../reps/ReportCard';
 import { UserUtils } from './../../utils/Utils';
