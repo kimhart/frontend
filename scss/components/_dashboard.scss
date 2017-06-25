@@ -126,6 +126,16 @@ header.logo {
   max-width: 600px;
   margin: 0 auto;
   margin-top: 20px;
+  &.mobile {
+    @include min-width($tablet) {
+      display: none;
+    }
+  }
+  &.desktop {
+    @include max-width($tablet) {
+      display: none;
+    }
+  }
 }
 
 .rep-info-cluster-wrap {

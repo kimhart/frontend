@@ -25,15 +25,29 @@ class DashboardPage extends React.Component {
     return reps ? reps.map(rep => <RepInfoCluster {...this.props} key={`repinfocluster_${rep.bioguide_id}`} {...rep} onClick={() => this.setState({ activeReportCard: rep.bioguide_id })}/>) : null;
   }
 
+  getReportCardsAsModals = () => {
+    let { activeReportCard } = this.state;
+    let { reps } = this.props.data;
+    return reps
+    ? reps.map(rep => {
+      return (
+        <Modal key={`reportcard_${rep.bioguide_id}_modal`} contentLabel={`${rep.name} modal`} className={`rep-card-wrap`} isOpen={rep.bioguide_id === activeReportCard} style={{ overflowY: 'scroll' }}>
+          <ReportCard {...this.props} {...rep} close={() => this.setState({ activeReportCard: null })} />
+        </Modal>
+      );
+    })
+    : null;
+  }
+
   getReportCards = () => {
     let { activeReportCard } = this.state;
     let { reps } = this.props.data;
     return reps
     ? reps.map(rep => {
       return (
-        <Modal key={`reportcard_${rep.bioguide_id}`} contentLabel={`${rep.name} modal`} className={`rep-card-wrap`} isOpen={rep.bioguide_id === activeReportCard} style={{ overflowY: 'scroll' }}>
-          <ReportCard {...this.props} {...rep} close={() => this.setState({ activeReportCard: null })} />
-        </Modal>
+        <div className={`rep-card-wrap`}>
+          <ReportCard key={`reportcard_${rep.bioguide_id}`} {...this.props} {...rep} close={null} />
+        </div>
       );
     })
     : null;
@@ -62,8 +76,11 @@ class DashboardPage extends React.Component {
           </p>
         </div>
         <span className="tap-a-rep">Click on a representative to learn more.</span>
-        <div className="rep-info-clusters">
+        <div className="rep-info-clusters mobile">
           {this.getRepInfoClusters()}
+          {this.getReportCardsAsModals()}
+        </div>
+        <div className="rep-info-clusters desktop">
           {this.getReportCards()}
         </div>
       </div>
