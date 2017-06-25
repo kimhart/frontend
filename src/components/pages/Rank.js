@@ -230,6 +230,21 @@ export default Relay.createContainer(Rank, {
         rank
         state
         total_work_days
+        letter_grade
+        address
+        bio_text
+        chamber
+        congress_url
+        facebook
+        leadership_position
+        letter_grade
+        number_grade
+        phone
+        served_until
+        twitter_handle
+        twitter_url
+        website
+        year_elected
       }
       rank_efficacy(chamber: $chamber) {
         bioguide_id
@@ -242,6 +257,21 @@ export default Relay.createContainer(Rank, {
         rank
         state
         max_sponsor
+        letter_grade
+        address
+        bio_text
+        chamber
+        congress_url
+        facebook
+        leadership_position
+        letter_grade
+        number_grade
+        phone
+        served_until
+        twitter_handle
+        twitter_url
+        website
+        year_elected
       }
       rank_participation(chamber: $chamber) {
         bioguide_id
@@ -254,6 +284,21 @@ export default Relay.createContainer(Rank, {
         rep_votes
         state
         total_votes
+        letter_grade
+        address
+        bio_text
+        chamber
+        congress_url
+        facebook
+        leadership_position
+        letter_grade
+        number_grade
+        phone
+        served_until
+        twitter_handle
+        twitter_url
+        website
+        year_elected
       }
       search(search_term: $search_term, category: $category, chamber: $chamber) {
         address

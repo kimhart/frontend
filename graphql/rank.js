@@ -35,7 +35,22 @@ let rankAttendanceType = new GraphQLObjectType({
     photo_url: { type: GraphQLString, resolve: rep => rep.photo_url},
     rank: { type: GraphQLInt, resolve: rep => rep.rank},
     state: { type: GraphQLString, resolve: rep => rep.state},
-    total_work_days: { type: GraphQLInt, resolve: rep => rep.total_work_days}
+    total_work_days: { type: GraphQLInt, resolve: rep => rep.total_work_days},
+    letter_grade: { type: GraphQLString, resolve: rep => rep.letter_grade },
+    address: { type: GraphQLString, resolve: rep => rep.address },
+    bio_text: { type: GraphQLString, resolve: rep => rep.bio_text },
+    chamber: { type: GraphQLString, resolve: rep => rep.chamber },
+    congress_url: { type: GraphQLString, resolve: rep => rep.congress_url },
+    facebook: { type: GraphQLString, resolve: rep => rep.facebook },
+    leadership_position: { type: GraphQLString, resolve: rep => rep.leadership_position },
+    letter_grade: { type: GraphQLString, resolve: rep => rep.letter_grade },
+    number_grade: { type: GraphQLFloat, resolve: rep => rep.number_grade },
+    phone: { type: GraphQLString, resolve: rep => rep.phone },
+    served_until: { type: GraphQLString, resolve: rep => rep.served_until },
+    twitter_handle: { type: GraphQLString, resolve: rep => rep.twitter_handle },
+    twitter_url: { type: GraphQLString, resolve: rep => rep.twitter_url },
+    website: { type: GraphQLString, resolve: rep => rep.website },
+    year_elected: { type: GraphQLInt, resolve: rep => rep.year_elected },
   })
 })
 
@@ -51,7 +66,23 @@ let rankParticipationType = new GraphQLObjectType({
     rank: { type: GraphQLInt, resolve: rep => rep.rank },
     rep_votes: { type: GraphQLInt, resolve: rep => rep.rep_votes },
     state: { type: GraphQLString, resolve: rep => rep.state },
-    total_votes: { type: GraphQLInt, resolve: rep => rep.total_votes }
+    total_votes: { type: GraphQLInt, resolve: rep => rep.total_votes },
+    total_work_days: { type: GraphQLInt, resolve: rep => rep.total_work_days},
+    letter_grade: { type: GraphQLString, resolve: rep => rep.letter_grade },
+    address: { type: GraphQLString, resolve: rep => rep.address },
+    bio_text: { type: GraphQLString, resolve: rep => rep.bio_text },
+    chamber: { type: GraphQLString, resolve: rep => rep.chamber },
+    congress_url: { type: GraphQLString, resolve: rep => rep.congress_url },
+    facebook: { type: GraphQLString, resolve: rep => rep.facebook },
+    leadership_position: { type: GraphQLString, resolve: rep => rep.leadership_position },
+    letter_grade: { type: GraphQLString, resolve: rep => rep.letter_grade },
+    number_grade: { type: GraphQLFloat, resolve: rep => rep.number_grade },
+    phone: { type: GraphQLString, resolve: rep => rep.phone },
+    served_until: { type: GraphQLString, resolve: rep => rep.served_until },
+    twitter_handle: { type: GraphQLString, resolve: rep => rep.twitter_handle },
+    twitter_url: { type: GraphQLString, resolve: rep => rep.twitter_url },
+    website: { type: GraphQLString, resolve: rep => rep.website },
+    year_elected: { type: GraphQLInt, resolve: rep => rep.year_elected },
   })
 })
 
@@ -67,7 +98,23 @@ let rankEfficacyType = new GraphQLObjectType({
     photo_url: { type: GraphQLString, resolve: rep => rep.photo_url },
     rank: { type: GraphQLInt, resolve: rep => rep.rank },
     state: { type: GraphQLString, resolve: rep => rep.state },
-    max_sponsor: { type: GraphQLInt, resolve: rep => rep.max_sponsor }
+    max_sponsor: { type: GraphQLInt, resolve: rep => rep.max_sponsor },
+    total_work_days: { type: GraphQLInt, resolve: rep => rep.total_work_days},
+    letter_grade: { type: GraphQLString, resolve: rep => rep.letter_grade },
+    address: { type: GraphQLString, resolve: rep => rep.address },
+    bio_text: { type: GraphQLString, resolve: rep => rep.bio_text },
+    chamber: { type: GraphQLString, resolve: rep => rep.chamber },
+    congress_url: { type: GraphQLString, resolve: rep => rep.congress_url },
+    facebook: { type: GraphQLString, resolve: rep => rep.facebook },
+    leadership_position: { type: GraphQLString, resolve: rep => rep.leadership_position },
+    letter_grade: { type: GraphQLString, resolve: rep => rep.letter_grade },
+    number_grade: { type: GraphQLFloat, resolve: rep => rep.number_grade },
+    phone: { type: GraphQLString, resolve: rep => rep.phone },
+    served_until: { type: GraphQLString, resolve: rep => rep.served_until },
+    twitter_handle: { type: GraphQLString, resolve: rep => rep.twitter_handle },
+    twitter_url: { type: GraphQLString, resolve: rep => rep.twitter_url },
+    website: { type: GraphQLString, resolve: rep => rep.website },
+    year_elected: { type: GraphQLInt, resolve: rep => rep.year_elected },
   })
 })
 
