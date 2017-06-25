@@ -14,6 +14,7 @@ import Analyze from './components/pages/Analyze';
 import Search from './components/search/Search';
 import AboutMetrics from './components/pages/AboutMetrics';
 import AppLoading from './components/pages/AppLoading';
+import Settings from './components/pages/Settings';
 
 let RootQuery = {
   data: (Component) => Relay.QL`
@@ -38,7 +39,8 @@ class App extends React.Component {
           <Route path="/login" component={Login} />
           <Route path="/search" component={Search} queries={RootQuery} />
           <Route path="/analyze" component={Analyze} />
-          <Route path="/about-metrics" component={AboutMetrics} />
+          <Route path="/metrics" component={AboutMetrics} />
+          <Route path="/settings" component={Settings} />
           <Route path="*" component={NotFound} />
         </Route>
       </Router>

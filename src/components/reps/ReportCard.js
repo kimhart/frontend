@@ -74,7 +74,7 @@ class ReportCard extends React.Component {
             : null
             )}
           </ul>
-        </div>
+        </div>``
       )
     }
 
@@ -139,7 +139,12 @@ class ReportCard extends React.Component {
             <IconStamp fill="#3A7ADB" />
             <span className="rep-letter-grade">{letter_grade}</span>
           </div>
-          <div className="rep-card-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}}></div>
+          <div
+            className="rep-card-photo"
+            style={{
+              background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`
+            }}
+          />
           <h1 className="rep-card-name">{ fullName }</h1>
           <div className="rep-card-position-wrap">
             <span className="rep-card-role">

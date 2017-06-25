@@ -4,7 +4,7 @@ import { Router, Route, IndexRoute, IndexLink, Link, browserHistory, applyRouter
 import useRelay from 'react-router-relay';
 import { UserUtils } from '../utils/Utils';
 import Scroll from 'react-scroll';
-import { IconReps, IconRank, IconAnalyze, IconSearch, TallyLogo } from './icons/Icons';
+import { IconReps, IconRank, IconAnalyze, IconSearch, TallyLogo, IconSettings } from './icons/Icons';
 const scroll = Scroll.animateScroll;
 
 class Footer extends React.Component {
@@ -67,7 +67,7 @@ class Footer extends React.Component {
         </div>
         {placement === 'top' &&
         <div className="current-user">
-          <span className="current-user-name">Profile</span>
+          <span className="current-user-name"><IconSettings /></span>
         </div>
         }
       </nav>

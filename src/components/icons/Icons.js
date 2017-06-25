@@ -11,6 +11,7 @@ import IconStamp from './IconStamp';
 import IconTriangleDown from './IconTriangleDown';
 import IconTwitter from './IconTwitter';
 import TallyLogo from './TallyLogo';
+import IconSettings from './IconSettings';
 
 export {
   IconClose,
@@ -25,5 +26,6 @@ export {
   IconSearch,
   IconTriangleDown,
   IconTwitter,
-  TallyLogo
+  TallyLogo,
+  IconSettings
 }

@@ -6,7 +6,7 @@ import ReportCard from './../reps/ReportCard';
 import { UserUtils } from './../../utils/Utils';
 import { browserHistory } from 'react-router';
 import Modal from 'react-modal';
-import TallyLogo from './../icons/TallyLogo';
+import { TallyLogo, IconSettings } from './../icons/Icons.js';
 
 class DashboardPage extends React.Component {
 

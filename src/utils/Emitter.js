@@ -17,7 +17,8 @@ class Emitter extends EventEmitter {
 }
 
 let actions = {
-  APP_LOADING: 'APP_LOADING'
+  APP_LOADING: 'APP_LOADING',
+  INIT_APP_LOADING: 'INIT_APP_LOADING',
 }
 
 let emitter = new Emitter();

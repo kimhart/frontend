@@ -10,8 +10,9 @@ import Login from './pages/Login';
 import Analyze from './pages/Analyze';
 import Signup from './pages/Signup';
 import Loading from './loading/Loading';
+import AppLoading from './pages/AppLoading';
 import IconStates from './icons/IconStates';
-import { UserUtils } from '../utils/Utils';
+import { UserUtils, isLoading, initLoading } from '../utils/Utils';
 
 class Template extends React.Component {
 
@@ -23,6 +24,13 @@ class Template extends React.Component {
         this.setState({ done: true });
       }
     });
+  }
+
+  componentDidMount() {
+    initLoading(true);
+    setTimeout(() => {
+      initLoading(false);
+    }, 1000);
   }
 
   isValidUserId = (user_id) => {
@@ -51,7 +59,15 @@ class Template extends React.Component {
     if (!user) {
       if (this.props.location.pathname === "/signup") {
         return <Signup {...this.props} update={() => this.setUser()} />
-      } return <Login {...this.props} update={() => this.setUser()} />
+      }
+      else {
+        return (
+          <div className="page-wrap">
+            <AppLoading />
+            <Login {...this.props} update={() => this.setUser()} />
+          </div>
+        );
+      }
     } else {
       const childrenWithUser = React.Children.map(this.props.children, (child) => React.cloneElement(child, { user, logOut: () => this.logOut() }));
       return (
