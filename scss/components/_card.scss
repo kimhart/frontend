@@ -377,9 +377,13 @@
   width: 100%;
   padding: 20px 15px 50px 15px;
   border-bottom: 1px solid transparentize($blue, .9);
+  position: relative;
   &:first-child {
     margin-top: 20px;
     background-color: transparentize($blue, .9);
+  }
+  &.clickable:hover {
+    background-color: transparentize($blue, .95);
   }
 }
 
