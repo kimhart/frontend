@@ -1,7 +1,7 @@
 import React from 'react';
+import Relay from 'react-relay';
 import RepRankCluster from '../rank/RepRankCluster';
 import { IconAngleDown } from '../icons/Icons';
-
 
 class RepRankClusterGroup extends React.Component {
 
@@ -24,7 +24,7 @@ class RepRankClusterGroup extends React.Component {
   }
 
   render() {
-    let { attendance, participation, efficacy, bestToWorst, category, rank } = this.props;
+    let { attendance, participation, efficacy, bestToWorst, category, rank, chamber } = this.props;
     let { reps, limit, max } = this.state;
     return (
       <div className="rep-rank-clusters">
@@ -42,8 +42,8 @@ class RepRankClusterGroup extends React.Component {
         </div>
         <div className="reps-list">
           { reps.length > limit
-            ? reps.slice(0, limit).map(rep => <RepRankCluster key={`${rep.bioguide_id}${category}`} category={category} {...this.props} {...rep} />)
-            : reps.map(rep => <RepRankCluster key={`${rep.bioguide_id}${category}`} category={category} {...this.props} {...rep} />)
+            ? reps.slice(0, limit).map(rep => <RepRankCluster {...this.props} {...rep} key={`${rep.bioguide_id}${category}`} category={category} chamber={chamber} />)
+            : reps.map(rep => <RepRankCluster {...this.props} {...rep} key={`${rep.bioguide_id}${category}`} category={category} chamber={chamber} />)
           }
         </div>
         { reps.length > 3
@@ -57,4 +57,13 @@ class RepRankClusterGroup extends React.Component {
 
 }
 
-export default RepRankClusterGroup;
+export default Relay.createContainer(RepRankClusterGroup, {
+  fragments: {
+    data: () => Relay.QL`
+      fragment on Data {
+        id
+        ${RepRankCluster.getFragment('data')}
+      }
+    `
+  }
+});
