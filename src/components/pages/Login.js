@@ -63,9 +63,9 @@ class Login extends React.Component {
           <section className="home-section home-about section-white section-arrow">
             <div className="home-section-content">
               <h3 className="home-section-title">About</h3>
-              <p>2018 midterm elections are around the corner. Do your current Senators and Congresspeople deserve your vote?</p><br/>
-              <p>We've identified your representatives and combined stats about their attendance, voting participation and bill sponsorship into a letter grade to guage their job performance at the most basic level. Our data reaches back to 1989 and compares all federal lawmakers around the country.</p><br/>
-              <p>Stay tuned — upcoming features include a breakdown of campaign finances and donor information, and a daily analysis of the transcripts from each session (outlining highly-discussed topics and what your rep had to say on the floor that day.)</p><br/>
+              <p>It has become more important than ever to hold our legislators accountable. Do your current reps deserve your vote in the 2018 midterms?</p><br/>
+              <p>Using public data reaching back nearly three decades—1989 through today—we combined stats about your reps' attendance, voting participation and bill sponsorship into a letter grade to guage their job performance at the most basic level. Tally helps you learn about your reps' top issues & ideologies, and allows you to compare them to other lawmakers in both the Senate and House in every district across the country.</p><br/>
+              <p>Upcoming features include a breakdown of campaign finances and donor information, and a daily analysis of the transcripts from each session (outlining highly-discussed topics and what your rep had to say on the floor that day.)</p><br/>
               <p>Unlike other political apps, Tally is journalism-free, so you can spend less time sifting through headlines and focus on metrics that matter.</p>
               <Link className="standard-link" to="/about-metrics">
                 <p>About Our Metrics</p>
@@ -75,7 +75,7 @@ class Login extends React.Component {
           <section className="home-section home-team section-arrow">
             <div className="home-section-content">
               <h3 className="home-section-title">The Team</h3>
-              <p>Tally was built by a scrappy team in New York City with a shared passion for politics and data. Our backgrounds span political science, journalism, computer science and design.</p>
+              <p>Tally was built by a small team in New York City with a shared passion for politics and data. Our backgrounds span political science, journalism, computer science, product design, and mathematics.</p>
               <ul className="team-list">
                 <li className="team-list-item">
                   <span className="team-name">Alex Hubbard</span>
@@ -92,6 +92,10 @@ class Login extends React.Component {
                 <li className="team-list-item">
                   <span className="team-name">Mattan Ingram</span>
                   <span className="team-title">Product Designer</span>
+                </li>
+                <li className="team-list-item">
+                  <span className="team-name">Lilliana Nishihira</span>
+                  <span className="team-title">Data Analyst</span>
                 </li>
               </ul>
             </div>

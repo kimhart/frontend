@@ -75,8 +75,7 @@ class Rank extends Component {
       let { rank } = datum;
       if (!rankDict[rank]) {
         rankDict[rank] = [datum];
-      }
-      else {
+      } else {
         rankDict[rank].push(datum);
       }
     });
@@ -117,15 +116,13 @@ class Rank extends Component {
     }
   }
 
-  getExplainerModal = () => {
+  getExplainerModal = (e) => {
+    e ? e.stopPropagation() : null;
     const explainerModal = this.refs.explainerModal;
-    const explainerOverlay = this.refs.explainerOverlay;
     if (explainerModal.classList.contains('open')) {
       explainerModal.classList.remove('open');
-      explainerOverlay.classList.remove('open');
     } else {
       explainerModal.classList.add('open');
-      explainerOverlay.classList.add('open');
     }
   }
 
@@ -187,21 +184,21 @@ class Rank extends Component {
               <IconSearch width="20px" fill="#4990E2" />
             </div>
           </div>
-          <button className="rank-sort-btn" onClick={() => this.setState({bestToWorst: !bestToWorst})}>
-            Sort
-            <div className="sort-arrow">
+          <button className="rank-sort-btn" onClick={() => this.setState({bestToWorst: !bestToWorst})}>Sort
+          <div className="sort-arrow">
               <IconTriangleDown fill="#4990E2" transform={bestToWorst ? null : 'rotate(180)'} />
             </div>
           </button>
           <span className="control-button question-mark-circle" onClick={() => this.getExplainerModal()}>?</span>
         </div>
         <div className="rank-list-wrap">
-          <div className="rank-modal-overlay" ref="explainerOverlay" onClick={() => this.getExplainerModal()}></div>
-          <div className="rank-explainer-modal" ref="explainerModal">
-            <div className="rep-card-close control-button" onClick={() => this.getExplainerModal()}>
-              <IconClose width={15} height={15} stroke="#4990E2" strokeWidth="2" />
+          <div className="rank-modal-overlay" ref="explainerModal" onClick={(e) => this.getExplainerModal(e)}>
+            <div className="rank-explainer-modal">
+              <div className="rep-card-close control-button" onClick={(e) => this.getExplainerModal(e)}>
+                <IconClose width={15} height={15} stroke="#4990E2" strokeWidth="2" />
+              </div>
+              {this.getExplainerCopy()}
             </div>
-            {this.getExplainerCopy()}
           </div>
           {this.getRankList()}
         </div>

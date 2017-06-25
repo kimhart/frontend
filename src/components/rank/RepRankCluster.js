@@ -44,7 +44,7 @@ class RepRankCluster extends React.Component {
         <div className="rep-rank-headshot" style={{background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}}></div>
         <div className="rep-rank-stack">
           <div className="rep-rank-stats">
-            <p className="rep-rank-name">{fullName} &middot;{this.getShortParty(party)}</p>
+            <p className="rep-rank-name">{fullName} &middot; {this.getShortParty(party)}</p>
           </div>
           <div className="rep-rank-stats-bar">
             <div className="rep-rank-stats-fill" style={{ backgroundColor: '#47E5BC', width: `${this.getBarFill(category)}%`}}></div>

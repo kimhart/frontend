@@ -41,5 +41,4 @@ Ultimately, the Tally community will consist of users who wish to lead meaningfu
 * [Kim Hart](https://github.com/kimhart) — Co-Founder / Front End Engineer
 * [Ryano Taylor](https://github.com/ryanosaur) — Front End Engineer
 * [Mattan Ingram](http://mattaningram.com/) — Product Designer
-* [Jesse Smith](https://JesseLNSmith.com) — UX Designer
-
+* [Lilliana Nishihira](https://www.linkedin.com/in/lilliana-nishihira/) — Data Analyst
