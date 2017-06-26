@@ -63,9 +63,9 @@ class Rank extends Component {
     if (data === 'blank') return <p className="no-results">No results match that search in the {chamber}.</p>;
     let rankDict = this.groupResultsByRank(data);
     if (bestToWorst) {
-      return Object.keys(rankDict).map(key => <RepRankClusterGroup key={`${key}${category}${chamber}${bestToWorst}`} {...this.state} reps={rankDict[key]} category={category} rank={key} />);
+      return Object.keys(rankDict).map(key => <RepRankClusterGroup key={`${key}${category}${chamber}${bestToWorst}`} {...this.props} {...this.state} reps={rankDict[key]} category={category} rank={key} chamber={chamber} />);
     } else {
-      return Object.keys(rankDict).reverse().map(key => <RepRankClusterGroup key={`${key}${category}${chamber}${bestToWorst}`} {...this.state} reps={rankDict[key]} category={category} rank={key} />);
+      return Object.keys(rankDict).reverse().map(key => <RepRankClusterGroup key={`${key}${category}${chamber}${bestToWorst}`} {...this.props} {...this.state} reps={rankDict[key]} category={category} rank={key} chamber={chamber} />);
     }
   }
 
@@ -185,7 +185,7 @@ class Rank extends Component {
             </div>
           </div>
           <button className="rank-sort-btn" onClick={() => this.setState({bestToWorst: !bestToWorst})}>Sort
-          <div className="sort-arrow">
+            <div className="sort-arrow">
               <IconTriangleDown fill="#4990E2" transform={bestToWorst ? null : 'rotate(180)'} />
             </div>
           </button>
@@ -217,6 +217,7 @@ export default Relay.createContainer(Rank, {
   fragments: {
     data: () => Relay.QL`
     fragment on Data {
+      ${RepRankClusterGroup.getFragment('data')}
       id
       rank_attendance(chamber: $chamber) {
         bioguide_id
@@ -229,6 +230,21 @@ export default Relay.createContainer(Rank, {
         rank
         state
         total_work_days
+        letter_grade
+        address
+        bio_text
+        chamber
+        congress_url
+        facebook
+        leadership_position
+        letter_grade
+        number_grade
+        phone
+        served_until
+        twitter_handle
+        twitter_url
+        website
+        year_elected
       }
       rank_efficacy(chamber: $chamber) {
         bioguide_id
@@ -241,6 +257,21 @@ export default Relay.createContainer(Rank, {
         rank
         state
         max_sponsor
+        letter_grade
+        address
+        bio_text
+        chamber
+        congress_url
+        facebook
+        leadership_position
+        letter_grade
+        number_grade
+        phone
+        served_until
+        twitter_handle
+        twitter_url
+        website
+        year_elected
       }
       rank_participation(chamber: $chamber) {
         bioguide_id
@@ -253,6 +284,21 @@ export default Relay.createContainer(Rank, {
         rep_votes
         state
         total_votes
+        letter_grade
+        address
+        bio_text
+        chamber
+        congress_url
+        facebook
+        leadership_position
+        letter_grade
+        number_grade
+        phone
+        served_until
+        twitter_handle
+        twitter_url
+        website
+        year_elected
       }
       search(search_term: $search_term, category: $category, chamber: $chamber) {
         address
