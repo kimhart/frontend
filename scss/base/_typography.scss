@@ -24,13 +24,15 @@ h2 {
   width: 100%;
   display: block;
   &.page-title {
-    margin-bottom: 0;
+    margin: 0;
     font-size: $standard-h2;
+    font-weight: 400;
   }
 }
 
 h3.headline {
   font-size: $standard-h3;
+  font-weight: 400;
   margin: 20px auto 5px auto;
 }
 

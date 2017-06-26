@@ -90,7 +90,7 @@
 
 .rep-card-metrics-wrap {
   padding: 0 0 20px 0;
-  border-top: 1px solid $lightest-blue;
+  border-top: 1px solid transparentize($blue, .7)
 }
 
 .rep-card-section-title {
@@ -113,6 +113,9 @@
   margin: 0 auto;
   margin-bottom: 30px;
   display: block;
+  &.bills {
+    margin-bottom: 10px;
+  }
 }
 
 .rep-card-explainer {
@@ -295,7 +298,7 @@
   transform: translateY(1px);
   &.active {
     background: white;
-    border: 1px solid $lightest-blue;
+    border: 1px solid transparentize($blue, .7);
     border-bottom: 1px solid white;
     color: $blue;
     font-weight: 600;
@@ -348,6 +351,12 @@
   }
 }
 
+.back-to-overall {
+  font-size: 13px;
+  font-weight: 500;
+  margin-left: 5px;
+}
+
 .rep-belief-slider {
   width: 30px;
   height: 30px;
@@ -362,13 +371,31 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  height: 36px;
+  height: 40px;
   font-size: 12px;
+  .moderate {
+    margin-left: 30px;
+    font-weight: 400;
+  }
+  .liberal {
+    color: lighten($blue, 5%);
+    font-weight: 400;
+  }
+  .conservative {
+    color: lighten($soft-red, 5%);
+    font-weight: 400;
+  }
+}
+
+.rep-card-section-divider {
+  border-bottom: 1px solid transparentize($blue, .7);
+  padding-bottom: 20px;
 }
 
 .rep-belief-item-type {
   text-transform: capitalize;
-  margin: 15px auto;
+  font-size: 18px;
+  margin: 15px auto 30px auto;
   text-align: center;
   font-weight: 500;
 }

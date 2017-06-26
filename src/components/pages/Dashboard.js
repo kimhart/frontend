@@ -66,7 +66,7 @@ class DashboardPage extends React.Component {
     let { user } = this.state;
     return (
       <div className="main-dash">
-        <div className="your-location">
+        <div className="blue-header">
           <div className="settings-top">
             <Link to="/settings">
               <IconSettings fill="white" />

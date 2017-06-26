@@ -159,7 +159,7 @@ class Rank extends Component {
     const { bestToWorst } = this.state;
     return (
       <div className="rank-wrap">
-        <div className="rank-controls-wrap">
+        <div className="rank-controls-wrap blue-gradient">
           <div className="rank-category-wrap">
             <p className="rank-headline">Rank reps based on core job performance:</p>
             <div className="rank-category-name" onClick={() => this.getDropDown()}>

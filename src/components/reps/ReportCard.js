@@ -59,7 +59,7 @@ class ReportCard extends React.Component {
   }
 
   getCardContent = () => {
-    let { contact, bio, tab } = this.state;
+    let { contact, bio, tab, leadership_position } = this.state;
     let { chamber, name } = this.props;
     let lastName = name.split(',')[0];
 
@@ -69,6 +69,7 @@ class ReportCard extends React.Component {
       return (
         <div className="rep-card-details-wrap">
           <ul className="rep-card-bio-list">
+            { leadership_position ? <li>{leadership_position}</li> : null }
             { list.map((item, index) => !['none'].includes(item) ?
             (<li className="rep-card-bio-list-item" key={`${item}${index}`}>{item}</li>)
             : null
@@ -81,42 +82,44 @@ class ReportCard extends React.Component {
     let tabs = {
       stats: (
         <div className="rep-card-metrics-wrap">
-          <h4 className="rep-card-section-title">Participation</h4>
-            { this.state.showExplainer &&
-            <div className="rep-card-explainer">
-              <span className="close" onClick={() => this.toggleExplainer()}>x</span>
-              <p className="rep-card-explainer-headline">Job Score Breakdown</p>
-              <p className="rep-card-explainer-copy-header">Attendance</p>
-              <p className="rep-card-explainer-copy">Days of work {lastName} has attended vs. the total work days in this term.</p>
-              <p className="rep-card-explainer-copy-header">Votes</p>
-              <p className="rep-card-explainer-copy">Number of votes {lastName} has cast vs. the total votes held this term.</p>
-              <p className="rep-card-explainer-copy-header">Bills</p>
-              <p className="rep-card-explainer-copy">Number of bills {lastName} has sponsored vs. the <em>most</em> bills sponsored by a single rep this term.</p>
-              <p className="rep-card-explainer-copy-header">Committees</p>
-              <p className="rep-card-explainer-copy">Number of congressional committees {lastName} has joined, compared to the highest number of committees joined by a single rep.</p>
-              <p className="close-explainer" onClick={() => this.toggleExplainer()}>Got it</p>
-            </div>
-            }
-            { !this.state.showExplainer &&
-            <div>
-              <p className="rep-card-section-subtitle">Learn more about this breakdown <span className="show-explainer" onClick={() => this.toggleExplainer()}>here</span>.</p>
-              <div className="rep-card-donut-charts">
-                <Attendance {...this.props} />
-                <Participation {...this.props} />
-                <Efficacy {...this.props} />
-                <MembershipStats {...this.props} />
+          <div className="rep-card-section-divider">
+            <h4 className="rep-card-section-title">Participation</h4>
+              { this.state.showExplainer &&
+              <div className="rep-card-explainer">
+                <span className="close" onClick={() => this.toggleExplainer()}>x</span>
+                <p className="rep-card-explainer-headline">Job Score Breakdown</p>
+                <p className="rep-card-explainer-copy-header">Attendance</p>
+                <p className="rep-card-explainer-copy">Days of work {lastName} has attended vs. the total work days in this term.</p>
+                <p className="rep-card-explainer-copy-header">Votes</p>
+                <p className="rep-card-explainer-copy">Number of votes {lastName} has cast vs. the total votes held this term.</p>
+                <p className="rep-card-explainer-copy-header">Bills</p>
+                <p className="rep-card-explainer-copy">Number of bills {lastName} has sponsored vs. the <em>most</em> bills sponsored by a single rep this term.</p>
+                <p className="rep-card-explainer-copy-header">Committees</p>
+                <p className="rep-card-explainer-copy">Number of congressional committees {lastName} has joined, compared to the highest number of committees joined by a single rep.</p>
+                <p className="close-explainer" onClick={() => this.toggleExplainer()}>Got it</p>
               </div>
+              }
+              { !this.state.showExplainer &&
+              <div>
+                <p className="rep-card-section-subtitle">Learn more about job scores <span className="show-explainer" onClick={() => this.toggleExplainer()}>here</span>.</p>
+                <div className="rep-card-donut-charts">
+                  <Attendance {...this.props} />
+                  <Participation {...this.props} />
+                  <Efficacy {...this.props} />
+                  <MembershipStats {...this.props} />
+                </div>
+              </div>
+              }
             </div>
-            }
           <h4 className="rep-card-section-title">Bill Topics</h4>
-          <p className="rep-card-section-subtitle">{lastName} has sponsored bills spanning these categories:</p>
+          <p className="rep-card-section-subtitle bills">{lastName} has sponsored bills spanning these categories:</p>
           <PolicyAreas {...this.props} />
         </div>
       ),
       beliefs: (
         <div className="rep-card-metrics-wrap">
           <h4 className="rep-card-section-title">Beliefs</h4>
-          <p className="rep-card-section-subtitle">Click a section to explore a breakdown of each topic.</p>
+          <p className="rep-card-section-subtitle">Based on the bills {lastName} has voted on, here's how he/she leans on top issues.<br/><br/>Click on a section to explore more.</p>
           <Beliefs {...this.props} />
         </div>
       )

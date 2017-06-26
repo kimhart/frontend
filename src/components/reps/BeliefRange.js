@@ -24,8 +24,9 @@ class BeliefRange extends React.Component {
         </div>
         <div className="rep-belief-slider" style={{ left: `calc(${converted_percent}% - 15px)`, background: `url(${this.getPhotoSource()}) no-repeat`, backgroundSize: '100%' }} />
         <div className="rep-belief-slider-terms">
-          <span>Liberal</span>
-          <span>Conservative</span>
+          <span className="liberal">Liberal</span>
+          <span className="moderate">Moderate</span>
+          <span className="conservative">Conservative</span>
         </div>
       </div>
     );
