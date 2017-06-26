@@ -1,6 +1,7 @@
 import React from 'react';
 import Relay from 'react-relay';
 import { Link } from 'react-router';
+import { IconSettings } from '../icons/Icons';
 
 class Settings extends React.Component {
 
@@ -34,7 +35,9 @@ class Settings extends React.Component {
     let { editingAddress, changingPassword } = this.state;
     return (
       <div className="settings-wrap">
-        <h2 className="page-title">Settings</h2>
+        <div className="settings-header">
+          <h2 className="page-title">Settings</h2>
+        </div>
         <div className="update-settings">
           <p className="settings-label">{ editingAddress ? 'Edit Address' : 'Your Address' }</p>
           { editingAddress &&

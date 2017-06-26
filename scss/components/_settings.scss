@@ -1,5 +1,17 @@
 .settings-wrap {
-  padding: 20px;
+
+  .settings-header {
+    background-color: $blue;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h2 {
+      color: white;
+      font-weight: 500;
+      margin-top: 0;
+    }
+  }
 
   .update-settings {
     margin: 20px auto;
