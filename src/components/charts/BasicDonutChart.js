@@ -7,10 +7,15 @@ class BasicDonutChart extends React.Component {
   buildChart = (container) => {
     let { width, height, value, max } = this.props;
     let radius = Math.min(width, height) / 2;
+    let outerRadius = radius - 10;
+    let innerRadius = radius - 20;
 
     let arc = d3.arc()
-    .outerRadius(radius - 10)
-    .innerRadius(radius - 20)
+    .outerRadius(outerRadius)
+    .innerRadius(innerRadius)
+    .cornerRadius(outerRadius - innerRadius)
+    .startAngle(0);
+
 
     let pie = d3.pie()
     .sort(null)
@@ -34,6 +39,7 @@ class BasicDonutChart extends React.Component {
     .style('fill', '#41EAD4')
     .style('opacity', ({ data }) => {
       return data.background ? '0.2' : '1';
+
     })
     // .transition()
     // .ease(d3.easeElastic)

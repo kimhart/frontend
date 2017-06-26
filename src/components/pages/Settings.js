@@ -35,7 +35,7 @@ class Settings extends React.Component {
     let { editingAddress, changingPassword } = this.state;
     return (
       <div className="settings-wrap">
-        <div className="settings-header">
+        <div className="blue-header">
           <h2 className="page-title">Settings</h2>
         </div>
         <div className="update-settings">
