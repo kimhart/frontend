@@ -74,7 +74,7 @@ class ReportCard extends React.Component {
             : null
             )}
           </ul>
-        </div>
+        </div>``
       )
     }
 
@@ -141,13 +141,18 @@ class ReportCard extends React.Component {
             <IconStamp fill="#3A7ADB" />
             <span className="rep-letter-grade">{letter_grade}</span>
           </div>
-          <div className="rep-card-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}}></div>
+          <div
+            className="rep-card-photo"
+            style={{
+              background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`
+            }}
+          />
           <h1 className="rep-card-name">{ fullName }</h1>
           <div className="rep-card-position-wrap">
             <span className="rep-card-role">
               { this.formatParty(party) } &bull; { chamber.replace(/\b\w/g, l => l.toUpperCase()) } &bull; { state } { chamber === 'house' && <span>&bull; District {district}</span> }
             </span>
-            { leadership_position !== "None" && <span className="rep-card-leadership">{ leadership_position }</span> }
+            {/* { leadership_position !== "None" && <span className="rep-card-leadership">{ leadership_position }</span> } */}
           </div>
           <div className="rep-card-buttons-wrap">
             <button className={`bio-btn${bio ? ' active' : ''}`} onClick={() => this.setState({ bio: !bio, contact: false })}>Bio</button>

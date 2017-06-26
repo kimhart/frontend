@@ -4,9 +4,9 @@ import ReactDOM from 'react-dom';
 import RepInfoCluster from './../reps/RepInfoCluster';
 import ReportCard from './../reps/ReportCard';
 import { UserUtils } from './../../utils/Utils';
-import { browserHistory } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import Modal from 'react-modal';
-import TallyLogo from './../icons/TallyLogo';
+import { TallyLogo, IconSettings } from './../icons/Icons.js';
 
 class DashboardPage extends React.Component {
 
@@ -67,6 +67,11 @@ class DashboardPage extends React.Component {
     return (
       <div className="main-dash">
         <div className="your-location">
+          <div className="settings-top">
+            <Link to="/settings">
+              <IconSettings fill="white" />
+            </Link>
+          </div>
           <h3 className="headline">Your Representatives</h3>
           <p className="your-district">
             <svg className="state-icon">
@@ -75,7 +80,7 @@ class DashboardPage extends React.Component {
             <span className="state">{user.state_long}</span> Congressional District {this.getDistrict(user)}
           </p>
         </div>
-        <span className="tap-a-rep">Click on a representative to learn more.</span>
+        <span className="tap-a-rep">Click on a rep to learn more.</span>
         <div className="rep-info-clusters mobile">
           {this.getRepInfoClusters()}
           {this.getReportCardsAsModals()}

@@ -1,0 +1,84 @@
+.settings-wrap {
+
+  .settings-header {
+    background-color: $blue;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h2 {
+      color: white;
+      font-weight: 500;
+      margin-top: 0;
+    }
+  }
+
+  .update-settings {
+    margin: 20px auto;
+    max-width: 600px;
+  }
+
+  .row {
+    display: flex;
+    margin: 15px 0;
+    span, input {
+      flex: 1;
+    }
+  }
+
+  .update-settings-input {
+    border: 1px solid transparentize($text-gray, .8);
+    border-radius: 3px;
+    padding: 10px;
+    margin: 10px 20px 10px 0;
+    &.save {
+      background-color: transparentize($blue, .3);
+      color: white;
+      padding: 10px 20px;
+      cursor: pointer;
+      border: none;
+      margin-right: 5px;
+    }
+    &.cancel {
+      background: transparentize($text-gray, .8);
+      cursor: pointer;
+      border: none;
+      margin-right: 0;
+    }
+  }
+
+  .settings-label {
+    font-weight: 500;
+    text-transform: uppercase;
+    padding-right: 30px;
+    margin-top: 30px;
+  }
+
+  .pw {
+    -webkit-text-security: disc;
+    color: transparentize($text-gray, .4);
+  }
+
+  .update {
+    font-size: 14px;
+    color: $blue;
+    text-align: right;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .logout {
+    background-color: $soft-red;
+    color: white;
+    padding: 10px 30px;
+    text-transform: uppercase;
+    text-align: center;
+    width: auto;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 40px auto;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+}

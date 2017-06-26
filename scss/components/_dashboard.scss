@@ -63,11 +63,18 @@ header.logo {
     color: white;
     font-size: 20px;
     font-weight: 600;
+    @include min-width($tablet) {
+      font-size: 26px;
+    }
   }
 
-  @include media(">tablet") {
-    height: 170px;
-  }
+  // @include media(">tablet") {
+  //   height: 100px;
+  // }
+}
+
+.headline {
+  margin-top: 0;
 }
 
 .state-icon {
@@ -117,6 +124,19 @@ header.logo {
   width: 100%;
   margin: 10px auto;
   display: block;
+  @include min-width($tablet) {
+    display: none;
+  }
+}
+
+.settings-top {
+  margin: 20px 20px 0 0;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  @include min-width($tablet) {
+    display: none;
+  }
 }
 
 .rep-info-clusters {
@@ -126,17 +146,21 @@ header.logo {
   margin: 0 auto;
   margin-top: 20px;
   &.mobile {
+    max-width: 600px;
     @include min-width($tablet) {
       display: none;
     }
-    max-width: 600px;
   }
   &.desktop {
+    flex-direction: row;
+    justify-content: center;
+    width: 90%;
     @include max-width($tablet) {
       display: none;
     }
-    flex-flow: row wrap;
-    justify-content: center;
+    @media only screen and (max-width: 1100px) {
+      flex-flow: row wrap;
+    }
     // NOTE: obv needs to be refactored
     // piss poor css right here
     .rep-card-wrap {
