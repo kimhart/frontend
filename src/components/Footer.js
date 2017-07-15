@@ -18,6 +18,7 @@ class Footer extends React.Component {
     if (location.href.includes('rank')) return 'rank';
     if (location.href.includes('explore')) return 'explore';
     if (location.href.includes('analyze')) return 'analyze';
+    if (location.href.includes('settings')) return 'settings';
     return false;
   }
 
@@ -64,10 +65,11 @@ class Footer extends React.Component {
             </span>
             <span className="nav-bar-tab_title">Search</span>
           </Link>
-        </div>
-        <div className="settings">
-          <Link to="/settings">
-            <IconSettings />
+          <Link to="/settings" className={`settings nav-bar-tab ${this.getActiveTab() === 'settings' ? ' active' : ''}`}>
+            <span className="nav-bar-tab_icon">
+              <IconSettings />
+            </span>
+            <span className="nav-bar-tab_title">Settings</span>
           </Link>
         </div>
       </nav>
