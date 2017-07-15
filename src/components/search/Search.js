@@ -28,7 +28,7 @@ class Search extends React.Component {
     search = search.filter(({ chamber: this_chamber }) => this_chamber === chamber);
     let capitalizedChamber = chamber.charAt(0).toUpperCase() + chamber.slice(1);
     if (!search.length && (!this.searchBox || (this.searchBox && !this.searchBox.value))) {
-      return <span className="search-result-message search-result-prompt">Looking for someone specific?<br/><br/> Try searching for a rep's name, a district, a state, or a ZIP code.</span>
+      return <span className="search-result-message search-result-prompt">Try searching for a rep's name, a district, a state, or a ZIP code.</span>
     }
     if (!search.length && this.searchBox && this.searchBox.value) {
       return <span className="search-result-message search-result-error">No results.</span>
@@ -55,7 +55,7 @@ class Search extends React.Component {
   render() {
     return (
       <div className="search-wrap">
-        <div className="search-header">
+        <div className="search-header blue-header">
           <div className="search-bar">
             <input type="text" className="search-input-text" placeholder="Search" id="search-input-text" ref={c => this.searchBox = c} onChange={this.handleSearch} />
             <IconSearch fill="white" />

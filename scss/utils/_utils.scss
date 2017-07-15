@@ -1,0 +1,21 @@
+
+.clickable {
+  cursor: pointer;
+}
+
+.blue-header {
+  height: 130px;
+  width: 100%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $blue;
+  background: linear-gradient( to bottom right, lighten($blue, 10%), darken($blue, 4%));
+}
+
+.blue-gradient {
+  background-color: $blue;
+  background: linear-gradient( to bottom right, lighten($blue, 10%), darken($blue, 4%));
+}

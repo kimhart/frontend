@@ -16,7 +16,8 @@ class ReportCard extends React.Component {
     this.state = {
       contact: false,
       bio: false,
-      tab: 'stats'
+      tab: 'stats',
+      showExplainer: false
     };
     props.relay.setVariables({ bioguide_id: props.bioguide_id, chamber: props.chamber });
   }
@@ -50,8 +51,15 @@ class ReportCard extends React.Component {
     );
   }
 
+  toggleExplainer = () => {
+    let { showExplainer } = this.state;
+    this.setState({
+      showExplainer: !showExplainer
+    });
+  }
+
   getCardContent = () => {
-    let { contact, bio, tab } = this.state;
+    let { contact, bio, tab, leadership_position } = this.state;
     let { chamber, name } = this.props;
     let lastName = name.split(',')[0];
 
@@ -61,33 +69,57 @@ class ReportCard extends React.Component {
       return (
         <div className="rep-card-details-wrap">
           <ul className="rep-card-bio-list">
+            { leadership_position ? <li>{leadership_position}</li> : null }
             { list.map((item, index) => !['none'].includes(item) ?
             (<li className="rep-card-bio-list-item" key={`${item}${index}`}>{item}</li>)
             : null
             )}
           </ul>
-        </div>
+        </div>``
       )
     }
 
     let tabs = {
       stats: (
         <div className="rep-card-metrics-wrap">
-          <h4 className="rep-card-section-title">Participation</h4>
-          <div className="rep-card-donut-charts">
-            <Attendance {...this.props} />
-            <Participation {...this.props} />
-            <Efficacy {...this.props} />
-            <MembershipStats {...this.props} />
-          </div>
-          <h4 className="rep-card-section-title">Policies</h4>
+          <div className="rep-card-section-divider">
+            <h4 className="rep-card-section-title">Participation</h4>
+              { this.state.showExplainer &&
+              <div className="rep-card-explainer">
+                <span className="close" onClick={() => this.toggleExplainer()}>x</span>
+                <p className="rep-card-explainer-headline">Job Score Breakdown</p>
+                <p className="rep-card-explainer-copy-header">Attendance</p>
+                <p className="rep-card-explainer-copy">Days of work {lastName} has attended vs. the total work days in this term.</p>
+                <p className="rep-card-explainer-copy-header">Votes</p>
+                <p className="rep-card-explainer-copy">Number of votes {lastName} has cast vs. the total votes held this term.</p>
+                <p className="rep-card-explainer-copy-header">Bills</p>
+                <p className="rep-card-explainer-copy">Number of bills {lastName} has sponsored vs. the <em>most</em> bills sponsored by a single rep this term.</p>
+                <p className="rep-card-explainer-copy-header">Committees</p>
+                <p className="rep-card-explainer-copy">Number of congressional committees {lastName} has joined, compared to the highest number of committees joined by a single rep.</p>
+                <p className="close-explainer" onClick={() => this.toggleExplainer()}>Got it</p>
+              </div>
+              }
+              { !this.state.showExplainer &&
+              <div>
+                <p className="rep-card-section-subtitle">Learn more about job scores <span className="show-explainer" onClick={() => this.toggleExplainer()}>here</span>.</p>
+                <div className="rep-card-donut-charts">
+                  <Attendance {...this.props} />
+                  <Participation {...this.props} />
+                  <Efficacy {...this.props} />
+                  <MembershipStats {...this.props} />
+                </div>
+              </div>
+              }
+            </div>
+          <h4 className="rep-card-section-title">Bill Topics</h4>
+          <p className="rep-card-section-subtitle bills">{lastName} has sponsored bills spanning these categories:</p>
           <PolicyAreas {...this.props} />
         </div>
       ),
       beliefs: (
         <div className="rep-card-metrics-wrap">
           <h4 className="rep-card-section-title">Beliefs</h4>
-          <p className="rep-card-section-subtitle">Click a section to explore a breakdown of each topic.</p>
+          <p className="rep-card-section-subtitle">Based on the bills {lastName} has voted on, here's how he/she leans on top issues.<br/><br/>Click on a section to explore more.</p>
           <Beliefs {...this.props} />
         </div>
       )
@@ -102,38 +134,41 @@ class ReportCard extends React.Component {
 
     return (
       <div className="rep-card-content">
-        <div className="rep-card-close control-button" onClick={() => this.props.close()}>
-          <IconClose width={15} height={15} stroke="#4990E2" strokeWidth="2" />
-        </div>
+        { this.props.close &&
+          <div className="rep-card-close control-button" onClick={() => this.props.close()}>
+            <IconClose width={15} height={15} stroke="#4990E2" strokeWidth="2" />
+          </div>
+        }
         <div className="rep-card-header-wrap">
           <div className="rep-letter-grade-wrap">
             <IconStamp fill="#3A7ADB" />
             <span className="rep-letter-grade">{letter_grade}</span>
           </div>
-          <div className="rep-card-photo" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}}></div>
+          <div
+            className="rep-card-photo"
+            style={{
+              background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`
+            }}
+          />
           <h1 className="rep-card-name">{ fullName }</h1>
           <div className="rep-card-position-wrap">
             <span className="rep-card-role">
               { this.formatParty(party) } &bull; { chamber.replace(/\b\w/g, l => l.toUpperCase()) } &bull; { state } { chamber === 'house' && <span>&bull; District {district}</span> }
             </span>
-            { leadership_position !== "None" && <span className="rep-card-leadership">{ leadership_position }</span> }
+            {/* { leadership_position !== "None" && <span className="rep-card-leadership">{ leadership_position }</span> } */}
           </div>
           <div className="rep-card-buttons-wrap">
             <button className={`bio-btn${bio ? ' active' : ''}`} onClick={() => this.setState({ bio: !bio, contact: false })}>Bio</button>
             <div className="contact-icons">
-              {/* {phone} */}
               <a target="_blank" href={`tel:${phone}`}>
                 <div className="contact-icon-circle"><IconPhone /></div>
               </a>
-              {/* address */}
               <a target="_blank" href={`http://maps.google.com/?q=${address}`}>
                 <div className="contact-icon-circle"><IconLocation /></div>
               </a>
-              {/* twitter */}
               <a target="_blank" href={`https://twitter.com/${twitter_handle}`}>
                 <div className="contact-icon-circle"><IconTwitter /></div>
               </a>
-              {/* facebook */}
               <a target="_blank" href={`https://${facebook}`}>
                 <div className="contact-icon-circle"><IconFacebook /></div>
               </a>

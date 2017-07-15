@@ -15,15 +15,11 @@
     max-width: 700px;
     text-align: center;
   }
+}
 
-  .current-user {
-    display: flex;
-    align-items: center;
-    &-name {
-      font-size: 18px;
-      font-weight: 500;
-      margin-right: 10px;
-    }
+.settings {
+  @include max-width($tablet) {
+    display: none;
   }
 }
 
@@ -37,7 +33,7 @@
   }
 
   .logo-text {
-    font-size: 24px;
+    font-size: 20px;
     font-family: $header-font;
     color: $text-gray;
     font-weight: 600;

@@ -1,7 +1,8 @@
 import UserUtils from './UserUtils';
-import { isLoading } from './LoadingUtils';
+import { isLoading, initLoading } from './LoadingUtils';
 
 export {
   UserUtils,
-  isLoading
+  isLoading,
+  initLoading
 }

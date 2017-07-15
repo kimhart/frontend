@@ -63,9 +63,9 @@ class Rank extends Component {
     if (data === 'blank') return <p className="no-results">No results match that search in the {chamber}.</p>;
     let rankDict = this.groupResultsByRank(data);
     if (bestToWorst) {
-      return Object.keys(rankDict).map(key => <RepRankClusterGroup key={`${key}${category}${chamber}${bestToWorst}`} {...this.state} reps={rankDict[key]} category={category} rank={key} />);
+      return Object.keys(rankDict).map(key => <RepRankClusterGroup key={`${key}${category}${chamber}${bestToWorst}`} {...this.props} {...this.state} reps={rankDict[key]} category={category} rank={key} chamber={chamber} />);
     } else {
-      return Object.keys(rankDict).reverse().map(key => <RepRankClusterGroup key={`${key}${category}${chamber}${bestToWorst}`} {...this.state} reps={rankDict[key]} category={category} rank={key} />);
+      return Object.keys(rankDict).reverse().map(key => <RepRankClusterGroup key={`${key}${category}${chamber}${bestToWorst}`} {...this.props} {...this.state} reps={rankDict[key]} category={category} rank={key} chamber={chamber} />);
     }
   }
 
@@ -75,8 +75,7 @@ class Rank extends Component {
       let { rank } = datum;
       if (!rankDict[rank]) {
         rankDict[rank] = [datum];
-      }
-      else {
+      } else {
         rankDict[rank].push(datum);
       }
     });
@@ -117,15 +116,13 @@ class Rank extends Component {
     }
   }
 
-  getExplainerModal = () => {
+  getExplainerModal = (e) => {
+    e ? e.stopPropagation() : null;
     const explainerModal = this.refs.explainerModal;
-    const explainerOverlay = this.refs.explainerOverlay;
     if (explainerModal.classList.contains('open')) {
       explainerModal.classList.remove('open');
-      explainerOverlay.classList.remove('open');
     } else {
       explainerModal.classList.add('open');
-      explainerOverlay.classList.add('open');
     }
   }
 
@@ -162,7 +159,7 @@ class Rank extends Component {
     const { bestToWorst } = this.state;
     return (
       <div className="rank-wrap">
-        <div className="rank-controls-wrap">
+        <div className="rank-controls-wrap blue-gradient">
           <div className="rank-category-wrap">
             <p className="rank-headline">Rank reps based on core job performance:</p>
             <div className="rank-category-name" onClick={() => this.getDropDown()}>
@@ -187,8 +184,7 @@ class Rank extends Component {
               <IconSearch width="20px" fill="#4990E2" />
             </div>
           </div>
-          <button className="rank-sort-btn" onClick={() => this.setState({bestToWorst: !bestToWorst})}>
-            Sort
+          <button className="rank-sort-btn" onClick={() => this.setState({bestToWorst: !bestToWorst})}>Sort
             <div className="sort-arrow">
               <IconTriangleDown fill="#4990E2" transform={bestToWorst ? null : 'rotate(180)'} />
             </div>
@@ -196,12 +192,13 @@ class Rank extends Component {
           <span className="control-button question-mark-circle" onClick={() => this.getExplainerModal()}>?</span>
         </div>
         <div className="rank-list-wrap">
-          <div className="rank-modal-overlay" ref="explainerOverlay" onClick={() => this.getExplainerModal()}></div>
-          <div className="rank-explainer-modal" ref="explainerModal">
-            <div className="rep-card-close control-button" onClick={() => this.getExplainerModal()}>
-              <IconClose width={15} height={15} stroke="#4990E2" strokeWidth="2" />
+          <div className="rank-modal-overlay" ref="explainerModal" onClick={(e) => this.getExplainerModal(e)}>
+            <div className="rank-explainer-modal">
+              <div className="rep-card-close control-button" onClick={(e) => this.getExplainerModal(e)}>
+                <IconClose width={15} height={15} stroke="#4990E2" strokeWidth="2" />
+              </div>
+              {this.getExplainerCopy()}
             </div>
-            {this.getExplainerCopy()}
           </div>
           {this.getRankList()}
         </div>
@@ -220,6 +217,7 @@ export default Relay.createContainer(Rank, {
   fragments: {
     data: () => Relay.QL`
     fragment on Data {
+      ${RepRankClusterGroup.getFragment('data')}
       id
       rank_attendance(chamber: $chamber) {
         bioguide_id
@@ -232,6 +230,21 @@ export default Relay.createContainer(Rank, {
         rank
         state
         total_work_days
+        letter_grade
+        address
+        bio_text
+        chamber
+        congress_url
+        facebook
+        leadership_position
+        letter_grade
+        number_grade
+        phone
+        served_until
+        twitter_handle
+        twitter_url
+        website
+        year_elected
       }
       rank_efficacy(chamber: $chamber) {
         bioguide_id
@@ -244,6 +257,21 @@ export default Relay.createContainer(Rank, {
         rank
         state
         max_sponsor
+        letter_grade
+        address
+        bio_text
+        chamber
+        congress_url
+        facebook
+        leadership_position
+        letter_grade
+        number_grade
+        phone
+        served_until
+        twitter_handle
+        twitter_url
+        website
+        year_elected
       }
       rank_participation(chamber: $chamber) {
         bioguide_id
@@ -256,6 +284,21 @@ export default Relay.createContainer(Rank, {
         rep_votes
         state
         total_votes
+        letter_grade
+        address
+        bio_text
+        chamber
+        congress_url
+        facebook
+        leadership_position
+        letter_grade
+        number_grade
+        phone
+        served_until
+        twitter_handle
+        twitter_url
+        website
+        year_elected
       }
       search(search_term: $search_term, category: $category, chamber: $chamber) {
         address

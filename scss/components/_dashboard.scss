@@ -63,11 +63,32 @@ header.logo {
     color: white;
     font-size: 20px;
     font-weight: 600;
+    @include min-width($tablet) {
+      font-size: 26px;
+    }
   }
 
-  @include media(">tablet") {
-    height: 170px;
-  }
+  // @include media(">tablet") {
+  //   height: 100px;
+  // }
+}
+
+.headline {
+  margin-top: -20px;
+}
+
+.state-icon {
+  width: 35px;
+  margin-right: 10px;
+}
+
+.state-icon-image {
+  fill: white;
+}
+
+.location-info {
+  display: flex;
+  justify-content: center;
 }
 
 .state-icon {
@@ -97,6 +118,10 @@ header.logo {
     display: inline-block;
     vertical-align: middle;
     margin-right: 10px;
+    @media screen and (min-width: 700px) {
+      width: 50px;
+      height: 50px;
+    }
   }
 
   .state {
@@ -117,15 +142,57 @@ header.logo {
   width: 100%;
   margin: 10px auto;
   display: block;
+  @include min-width($tablet) {
+    display: none;
+  }
+}
+
+.settings-top {
+  margin: 20px 20px 0 0;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  h3 {
+    font-weight: 400;
+  }
+  @include min-width($tablet) {
+    display: none;
+  }
 }
 
 .rep-info-clusters {
   display: flex;
-  flex-direction: column;
+  flex-flow: column;
   width: 100%;
-  max-width: 600px;
   margin: 0 auto;
   margin-top: 20px;
+  &.mobile {
+    max-width: 600px;
+    @include min-width($tablet) {
+      display: none;
+    }
+  }
+  &.desktop {
+    flex-direction: row;
+    justify-content: center;
+    width: 90%;
+    @include max-width($tablet) {
+      display: none;
+    }
+    @media only screen and (max-width: 1100px) {
+      flex-flow: row wrap;
+    }
+    // NOTE: obv needs to be refactored
+    // piss poor css right here
+    .rep-card-wrap {
+      flex-basis: 450px;
+      margin: 60px 10px;
+    }
+    .rep-card-content {
+      display: flex;
+      flex-flow: column;
+    }
+  }
 }
 
 .rep-info-cluster-wrap {
