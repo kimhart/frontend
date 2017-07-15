@@ -1,6 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
-import Modal from 'react-modal';
+import TallyModal from '../modal/TallyModal';
 import ReportCard from '../reps/ReportCard';
 
 class RepRankCluster extends React.Component {
@@ -50,9 +50,9 @@ class RepRankCluster extends React.Component {
             <div className="rep-rank-stats-fill" style={{ backgroundColor: '#47E5BC', width: `${this.getBarFill(category)}%`}} />
           </div>
         </div>
-        <Modal key={`rank_reportcard_${bioguide_id}`} contentLabel={`${fullName} modal`} className={`rep-card-wrap`} isOpen={this.state.cardActive}>
+        <TallyModal key={`rank_reportcard_${bioguide_id}`} contentLabel={`${fullName} modal`} className={`rep-card-wrap`} isOpen={this.state.cardActive}>
           <ReportCard {...this.props} close={() => this.setState({ cardActive: false })} chamber={chamber} />
-        </Modal>
+        </TallyModal>
       </div>
     );
   }

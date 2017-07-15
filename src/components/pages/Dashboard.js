@@ -5,7 +5,7 @@ import RepInfoCluster from './../reps/RepInfoCluster';
 import ReportCard from './../reps/ReportCard';
 import { UserUtils } from './../../utils/Utils';
 import { Link, browserHistory } from 'react-router';
-import Modal from 'react-modal';
+import TallyModal from '../modal/TallyModal';
 import { TallyLogo, IconSettings } from './../icons/Icons.js';
 
 class DashboardPage extends React.Component {
@@ -31,9 +31,9 @@ class DashboardPage extends React.Component {
     return reps
     ? reps.map(rep => {
       return (
-        <Modal key={`reportcard_${rep.bioguide_id}_modal`} contentLabel={`${rep.name} modal`} className={`rep-card-wrap`} isOpen={rep.bioguide_id === activeReportCard} style={{ overflowY: 'scroll' }}>
+        <TallyModal key={`reportcard_${rep.bioguide_id}_modal`} contentLabel={`${rep.name} modal`} className={`rep-card-wrap`} isOpen={rep.bioguide_id === activeReportCard} style={{ overflowY: 'scroll' }}>
           <ReportCard {...this.props} {...rep} close={() => this.setState({ activeReportCard: null })} />
-        </Modal>
+        </TallyModal>
       );
     })
     : null;
