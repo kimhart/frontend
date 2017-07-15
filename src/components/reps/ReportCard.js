@@ -70,12 +70,11 @@ class ReportCard extends React.Component {
         <div className="rep-card-details-wrap">
           <ul className="rep-card-bio-list">
             { leadership_position ? <li>{leadership_position}</li> : null }
-            { list.map((item, index) => !['none'].includes(item) ?
-            (<li className="rep-card-bio-list-item" key={`${item}${index}`}>{item}</li>)
-            : null
-            )}
+            { list.map((item, index) => !['none'].includes(item) ? (
+              <li className="rep-card-bio-list-item" key={`${item}${index}`}>{item}</li>
+            ) : null)}
           </ul>
-        </div>``
+        </div>
       )
     }
 
