@@ -19,7 +19,7 @@
   .rank-headline {
     text-align: center;
     font-size: 18px;
-    padding: 30px 10px 10px 10px;
+    padding: 10px;
     color: white;
   }
   .rank-category-name {
@@ -30,7 +30,8 @@
     width: 70%;
     padding: 0 20px;
     background-color: lighten($blue, 15%);
-    margin: 20px auto;
+    margin: 10px auto;
+    margin-bottom: 20px;
     border-radius: 5px;
      p {
       color: white;
@@ -345,7 +346,7 @@
   height: auto;
   width: 20%;
   padding: 7px;
-  margin: 0 20px;
+  margin: 0 10px;
   box-shadow: 0 0 10px transparentize($blue, .75);
   border: 1px solid transparentize($blue, .75);
   border-radius: 5px;
@@ -358,6 +359,9 @@
     width: 10px;
     margin-left: 10px;
     margin-bottom: 5px;
+  }
+  @include min-width($tablet) {
+    margin: 0 20px;
   }
 }
 

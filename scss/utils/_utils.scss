@@ -4,7 +4,6 @@
 }
 
 .blue-header {
-  height: 200px;
   width: 100%;
   color: white;
   display: flex;
@@ -12,10 +11,9 @@
   justify-content: center;
   align-items: center;
   background-color: $blue;
-  background: linear-gradient( to bottom right, $blue, darken($blue, 6%));
-}
+  background: linear-gradient( to bottom, $blue, darken($blue, 10%));
 
-.blue-gradient {
-  background-color: $blue;
-  background: linear-gradient( to bottom right, lighten($blue, 10%), darken($blue, 4%));
+  @include min-width($tablet) {
+    height: 200px;
+  }
 }
