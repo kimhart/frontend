@@ -4,11 +4,7 @@
   background: white;
   border-radius: 15px;
   box-shadow: 0 5px 25px transparentize($blue, 0.65);
-<<<<<<< HEAD
   border: 1px solid $blue-lightest;
-=======
-  border: 1px solid $lightest-blue;
->>>>>>> tally-app/master
   position: relative;
 }
 
@@ -45,11 +41,7 @@
   height: 140px;
   width: 140px;
   border-radius: 100%;
-<<<<<<< HEAD
   border: 1px solid $blue-lightest;
-=======
-  border: 1px solid $lightest-blue;
->>>>>>> tally-app/master
 }
 
 .rep-card-name {
@@ -90,11 +82,7 @@
     margin-right: 10px;
   }
   &.active {
-<<<<<<< HEAD
     background: $blue-light;
-=======
-    background: $light-blue;
->>>>>>> tally-app/master
     color: white;
     border: none;
   }
@@ -102,19 +90,12 @@
 
 .rep-card-metrics-wrap {
   padding: 0 0 20px 0;
-<<<<<<< HEAD
-  border-top: 1px solid $blue-lightest;
-=======
   border-top: 1px solid transparentize($blue, .7)
->>>>>>> tally-app/master
 }
 
 .rep-card-section-title {
   color: $blue;
-<<<<<<< HEAD
-=======
   cursor: pointer;
->>>>>>> tally-app/master
   font-family: $brand-font;
   font-weight: 400;
   font-size: 22px;
@@ -127,18 +108,11 @@
 
 .rep-card-section-subtitle {
   width: 90%;
-<<<<<<< HEAD
-=======
   cursor: pointer;
->>>>>>> tally-app/master
   text-align: center;
   margin: 0 auto;
   margin-bottom: 30px;
   display: block;
-<<<<<<< HEAD
-}
-
-=======
   &.bills {
     margin-bottom: 10px;
   }
@@ -197,8 +171,6 @@
   margin: 20px auto;
 }
 
-
->>>>>>> tally-app/master
 .rep-card-donut-charts {
   width: 100%;
   display: flex;
@@ -312,11 +284,7 @@
 .card-toggle-stats {
   color: #FFF;
   cursor: pointer;
-<<<<<<< HEAD
   background: $blue-lightest;
-=======
-  background: $lightest-blue;
->>>>>>> tally-app/master
   color: #FFF;
   font-weight: 300;
   text-align: center;
@@ -329,11 +297,7 @@
   transform: translateY(1px);
   &.active {
     background: white;
-<<<<<<< HEAD
-    border: 1px solid $blue-lightest;
-=======
     border: 1px solid transparentize($blue, .7);
->>>>>>> tally-app/master
     border-bottom: 1px solid white;
     color: $blue;
     font-weight: 600;
@@ -384,15 +348,12 @@
       border-radius: 16px;
     }
   }
-<<<<<<< HEAD
-=======
 }
 
 .back-to-overall {
   font-size: 13px;
   font-weight: 500;
   margin-left: 5px;
->>>>>>> tally-app/master
 }
 
 .rep-belief-slider {
@@ -432,12 +393,8 @@
 
 .rep-belief-item-type {
   text-transform: capitalize;
-<<<<<<< HEAD
-  margin: 15px auto;
-=======
   font-size: 18px;
   margin: 15px auto 30px auto;
->>>>>>> tally-app/master
   text-align: center;
   font-weight: 500;
 }
@@ -446,11 +403,6 @@
   width: 100%;
   padding: 20px 15px 50px 15px;
   border-bottom: 1px solid transparentize($blue, .9);
-<<<<<<< HEAD
-  &:first-child {
-    background-color: transparentize($blue, .9);
-  }
-=======
   position: relative;
   &:first-child {
     margin-top: 20px;
@@ -459,7 +411,6 @@
   &.clickable:hover {
     background-color: transparentize($blue, .95);
   }
->>>>>>> tally-app/master
 }
 
 
