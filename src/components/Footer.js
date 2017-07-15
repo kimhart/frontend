@@ -46,11 +46,11 @@ class Footer extends React.Component {
             </span>
             <span className="nav-bar-tab_title">Reps</span>
           </Link>
-          <Link to="/rank" className={`nav-bar-tab ${this.getActiveTab() === 'rank' ? ' active' : ''}`} onClick={() => this.scrollToTop()}>
+          <Link to="/rank" className={`nav-bar-tab ${this.getActiveTab() === 'rank' ? ' active' : ''}`}>
             <span className="nav-bar-tab_icon">
               <IconRank fill="black" />
             </span>
-            <span className="nav-bar-tab_title" onClick={() => this.scrollToTop()}>Rank</span>
+            <span className="nav-bar-tab_title">Rank</span>
           </Link>
           {/* <Link to="/analyze" className={`nav-bar-tab ${this.getActiveTab() === 'analyze' ? ' active' : ''}`}>
             <span className="nav-bar-tab_icon">
