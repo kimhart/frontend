@@ -5,34 +5,36 @@
 
 .rank-controls-wrap {
   width: 100%;
-  padding-top: 10px;
 }
 
 .rank-category-wrap {
   display: flex;
+  flex-grow: 1;
   justify-content: center;
   align-content: center;
   flex-direction: column;
-  width: 100%;
+  max-width: 340px;
   max-width: 700px;
   margin: 0 auto;
+  padding: 15px;
+
   .rank-headline {
     text-align: center;
     font-size: 18px;
-    padding: 30px 10px 10px 10px;
+    margin-bottom: 15px;
     color: white;
   }
+
   .rank-category-name {
     display: flex;
+    width: 100%;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    width: 70%;
-    padding: 0 20px;
     background-color: lighten($blue, 15%);
-    margin: 20px auto;
+    margin: 0 auto;
     border-radius: 5px;
-     p {
+    p {
       color: white;
       text-align: center;
       margin: 10px;
@@ -40,11 +42,8 @@
       text-align: center;
       font-weight: 500;
     }
-    @media screen and (min-width: 700px) {
-      margin: 20px auto;
-      width: 280px;
-    }
   }
+
   .rank-category-dropdown {
     display: none;
     justify-content: center;
@@ -57,9 +56,11 @@
     border-radius: 5px;
     -webkit-animation: slide-down .3s ease-out;
     -moz-animation: slide-down .3s ease-out;
+
     &.open {
       display: flex;
     }
+
     .rank-category-item {
       color: $blue;
       border-bottom: 1px solid lighten($blue, 30%);
@@ -81,7 +82,8 @@
         border-bottom: 0;
       }
     }
-    @media screen and (min-width: 700px) {
+
+    @include min-width($tablet) {
       width: 280px;
       margin-top: -15px;
       margin-bottom: 20px;
@@ -91,30 +93,34 @@
 
 .rank-toggle-wrap {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  @media screen and (min-width: 700px) {
-    margin: 0 auto;
-    width: 300px;
-  }
+  padding: 0 15px;
+
   .rank-toggle-chamber {
     color: white;
     cursor: pointer;
-    background-color: $blue;
     font-weight: 300;
-    padding: 15px;
+    min-width: 150px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     flex: 1;
     text-align: center;
     font-size: 16px;
-    margin: 10px 10px 0 10px;
+
     &.active {
       color: $blue;
       background-color: white;
       font-weight: 600;
       position: relative;
-      top: 2px;
+    }
+
+    @include min-width($tablet) {
+      height: 50px;
     }
   }
 }
@@ -123,8 +129,9 @@
 .rank-list-wrap {
   background-color: white;
   margin-bottom: 100px;
-  max-width: 700px;
+  max-width: 800px;
   margin: 0 auto;
+  padding: 0 15px;
 }
 
 .no-results {
@@ -209,7 +216,7 @@
   justify-content: flex-start;
   align-items: center;
   align-content: center;
-  margin: 20px 10px;
+  margin: 20px 0;
 }
 
 .rep-rank-cluster {
@@ -245,9 +252,13 @@
 
 .rep-rank-number, .rep-rank-totals {
   font-size: 18px;
-  padding: 0 10px;
   font-weight: 500;
   color: $text-gray;
+}
+
+.rep-rank-totals {
+  font-weight: 300;
+  text-transform: capitalize;
 }
 
 .rep-rank-stats {
@@ -288,14 +299,18 @@
 
 .rank-sort-wrap {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  flex-grow: 1;
   margin: 20px 0 5px 0;
-  padding: 10px;
-  max-width: 700px;
+  max-width: 800px;
+  padding: 0 15px;
+
   @media screen and (min-width: 700px) {
     margin: 30px auto;
+  }
+
+  .question-mark-circle {
+    margin-left: auto;
+    flex-shrink: 0;
   }
 }
 
@@ -306,6 +321,7 @@
   background-color: transparentize($blue, .90);
   border-radius: 5px;
   flex-grow: 1;
+  max-width: 320px;
 }
 
 .search-bar-icon {
@@ -315,12 +331,10 @@
 
 .rank-search-filter {
   color: $blue;
-  margin: 0 10px 0 0;
   border-radius: 5px;
   padding: 8px;
   font-size: 14px;
   box-sizing: border-box;
-  width: 80%;
   font-size: 16px;
   position: relative;
 }
@@ -352,6 +366,9 @@
     margin-left: 10px;
     margin-bottom: 5px;
   }
+  @include min-width($tablet) {
+    margin: 0 20px;
+  }
 }
 
 .view-more-reps {
@@ -361,6 +378,7 @@
   width: 100%;
   background-color: transparentize($light-gray, .55);
   font-size: 13px;
+  border-radius: 2px;
   .icon-angle-down {
     margin-left: 5px;
   }
