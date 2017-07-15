@@ -175,7 +175,7 @@ header.logo {
   &.desktop {
     flex-direction: row;
     justify-content: center;
-    width: 90%;
+    padding: 0 15px;
     @include max-width($tablet) {
       display: none;
     }
@@ -185,8 +185,8 @@ header.logo {
     // NOTE: obv needs to be refactored
     // piss poor css right here
     .rep-card-wrap {
-      flex-basis: 450px;
-      margin: 60px 10px;
+      flex-basis: 350px;
+      margin: 60px 15px;
     }
     .rep-card-content {
       display: flex;

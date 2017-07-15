@@ -19,7 +19,9 @@ class PolicyAreas extends React.Component {
       }
       return (
         <div key={`${policy_area}${index}`} className="policy-area">
-          {policy_area}
+          <div className="policy-area-title">
+            {policy_area}
+          </div>
           <div className="policy-area-divs">
             { divs.map((_, i) => (
               <div key={`${i}${policy_area}${index}`} className="policy-area-div" />

@@ -4,7 +4,7 @@
 }
 
 .blue-header {
-  height: 130px;
+  height: 200px;
   width: 100%;
   color: white;
   display: flex;
@@ -12,7 +12,7 @@
   justify-content: center;
   align-items: center;
   background-color: $blue;
-  background: linear-gradient( to bottom right, lighten($blue, 10%), darken($blue, 4%));
+  background: linear-gradient( to bottom right, $blue, darken($blue, 6%));
 }
 
 .blue-gradient {
