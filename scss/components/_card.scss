@@ -4,7 +4,8 @@
   background: white;
   border-radius: 15px;
   box-shadow: 0 5px 25px transparentize($blue, 0.65);
-  border: 1px solid $blue-lightest;
+  @include card-shadow;
+  border: 1px solid transparentize($blue, 0.85);
   position: relative;
 }
 
@@ -36,24 +37,23 @@
 
 .rep-card-photo {
   margin: 0 auto;
-  margin-top: -45px;
-  margin-bottom: 15px;
-  height: 140px;
-  width: 140px;
+  margin-top: -30px;
+  margin-bottom: 20px;
+  height: 100px;
+  width: 100px;
   border-radius: 100%;
-  border: 1px solid $blue-lightest;
 }
 
 .rep-card-name {
   text-align: center;
   font-weight: 600;
-  font-size: 26px;
-  margin: 10px 0;
+  font-size: 22px;
+  margin-bottom: 5px;
   color: $text-gray;
 }
 
 .rep-card-position-wrap {
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 
 .rep-card-role, .rep-card-leadership {
@@ -72,12 +72,16 @@
 
 .bio-btn {
   width: 90px;
+  height: 30px;
   border: 1px solid $blue;
   color: $blue;
   font-size: 14px;
-  border-radius: 5px;
-  padding: 10px;
+  border-radius: 10px;
+  padding: 0 10px;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   &:not(:last-child) {
     margin-right: 10px;
   }
@@ -99,7 +103,7 @@
   font-family: $brand-font;
   font-weight: 400;
   font-size: 22px;
-  margin: 40px 0 20px 0;
+  margin: 40px 0 10px 0;
   position: relative;
   display: flex;
   justify-content: center;
@@ -113,9 +117,6 @@
   margin: 0 auto;
   margin-bottom: 30px;
   display: block;
-  &.bills {
-    margin-bottom: 10px;
-  }
 }
 
 .rep-card-explainer {
@@ -175,10 +176,12 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
+
   .donut-chart-container {
     display: inline-block;
   }
+
   .basic-donut-chart-label {
     margin-top: -20px;
     font-weight: 400;
@@ -213,7 +216,7 @@
 }
 
 .policy-areas {
-  padding: 20px;
+  padding: 0 20px;
 }
 
 .details-title {
@@ -284,16 +287,19 @@
 .card-toggle-stats {
   color: #FFF;
   cursor: pointer;
-  background: $blue-lightest;
-  color: #FFF;
+  background: transparentize($blue, .75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 300;
   text-align: center;
   font-size: 16px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   margin: 10px 5px 0 5px;
-  padding: 15px 5px;
+  padding: 0 15px;
   flex: 1;
+  height: 40px;
   transform: translateY(1px);
   &.active {
     background: white;
@@ -310,15 +316,15 @@
 .rep-card-header-wrap {
   width: 100%;
   .rep-letter-grade-wrap {
-    width: 75px;
-    height: 75px;
+    width: 70px;
+    height: 70px;
     position: absolute;
     top: 10px;
     left: 10px;
   }
 
   .rep-letter-grade {
-    font-size: 36px;
+    font-size: 26px;
     color: white;
   }
 }
@@ -415,7 +421,10 @@
 
 
 .policy-area {
-  margin-bottom: 15px;
+  font-size: 14px;
+  &:not(:last-child) {
+    margin-bottom: 15px;
+  }
 }
 
 .policy-area-divs {
@@ -428,6 +437,6 @@
   background-color: $teal-green;
   width: 15px;
   height: 15px;
-  border-radius: 5px;
-  margin: 10px 5px 0 0;
+  border-radius: 3px;
+  margin: 5px 5px 0 0;
 }
