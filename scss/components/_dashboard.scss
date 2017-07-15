@@ -91,6 +91,20 @@ header.logo {
   justify-content: center;
 }
 
+.state-icon {
+  width: 35px;
+  margin-right: 10px;
+}
+
+.state-icon-image {
+  fill: white;
+}
+
+.location-info {
+  display: flex;
+  justify-content: center;
+}
+
 .your-district {
   font-size: 16px;
   font-weight: 300;
@@ -196,18 +210,11 @@ header.logo {
   margin-left: 30px;
   margin-right: 15px;
   box-sizing: border-box;
-  border: 1px solid transparentize($blue, .75);
   border-radius: 15px;
   padding: 10px 15px;
   cursor: pointer;
   transition: box-shadow 0.1s linear;
-  box-shadow: 0 5px 10px transparentize($blue, .75);
-  &:hover {
-    box-shadow: 0 8px 15px transparentize($blue, .75);
-  }
-  &:active {
-    box-shadow: 0 2px 4px transparentize($blue, .4);
-  }
+  @include card-shadow;
 }
 
 .rep-info-headshot {
