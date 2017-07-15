@@ -142,7 +142,7 @@ header.logo {
   width: 100%;
   margin: 15px auto;
   display: block;
-  @include min-width($tablet) {
+  @include min-width($desktop) {
     display: none;
   }
 }
@@ -165,28 +165,29 @@ header.logo {
   flex-flow: column;
   width: 100%;
   margin: 0 auto;
+
   &.mobile {
     max-width: 600px;
-    @include min-width($tablet) {
+    @include min-width($desktop) {
       display: none;
     }
   }
+
   &.desktop {
     flex-direction: row;
     justify-content: center;
     padding: 0 15px;
-    @include max-width($tablet) {
+
+    @include max-width($desktop) {
       display: none;
-    }
-    @media only screen and (max-width: 1100px) {
       flex-flow: row wrap;
     }
-    // NOTE: obv needs to be refactored
-    // piss poor css right here
+
     .rep-card-wrap {
       flex-basis: 350px;
       margin: 60px 15px;
     }
+
     .rep-card-content {
       display: flex;
       flex-flow: column;
