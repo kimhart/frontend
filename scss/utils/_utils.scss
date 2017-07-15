@@ -19,3 +19,7 @@
   background-color: $blue;
   background: linear-gradient( to bottom right, lighten($blue, 10%), darken($blue, 4%));
 }
+
+.no-scroll {
+  overflow: hidden;
+}
