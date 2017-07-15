@@ -8,13 +8,13 @@
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   background-color: $blue;
   background: linear-gradient( to bottom, $blue, darken($blue, 10%));
 
   @include min-width($tablet) {
-    height: 200px;
+    min-height: 200px;
   }
 }
 

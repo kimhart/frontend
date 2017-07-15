@@ -154,7 +154,7 @@ class ReportCard extends React.Component {
             <span className="rep-card-role">
               { this.formatParty(party) } &bull; { chamber.replace(/\b\w/g, l => l.toUpperCase()) } &bull; { state } { chamber === 'house' && <span>&bull; District {district}</span> }
             </span>
-            {/* { leadership_position !== "None" && <span className="rep-card-leadership">{ leadership_position }</span> } */}
+            { leadership_position !== "None" && <span className="rep-card-leadership">{ leadership_position }</span> }
           </div>
           <div className="rep-card-buttons-wrap">
             <button className={`bio-btn${bio ? ' active' : ''}`} onClick={() => this.setState({ bio: !bio, contact: false })}>Bio</button>
