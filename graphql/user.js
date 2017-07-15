@@ -27,6 +27,8 @@ let userType = new GraphQLObjectType({
   name: "User",
   fields: () => ({
     city: { type: GraphQLString, resolve: user => user.city },
+    street: { type: GraphQLString, resolve: user => user.street },
+    zip_code: { type: GraphQLString, resolve: user => user.zip_code },
     district: { type: GraphQLInt, resolve: user => user.district },
     first_name: { type: GraphQLString, resolve: user => user.first_name },
     last_name: { type: GraphQLString, resolve: user => user.last_name },
@@ -37,13 +39,19 @@ let userType = new GraphQLObjectType({
   })
 });
 
+let userInputFields = {
+  clientMutationId: { type: GraphQLString, resolve: ({ clientMutationId }) => clientMutationId },
+  email: { type: GraphQLString, resolve: ({ email }) => email },
+  password: { type: GraphQLString, resolve: ({ password }) => password  },
+  first_name: { type: GraphQLString, resolve: ({ first_name }) => first_name  },
+  last_name: { type: GraphQLString, resolve: ({ last_name }) => last_name  },
+  street: { type: GraphQLString, resolve: ({ street }) => street  },
+  zip_code: { type: GraphQLString, resolve: ({ zip_code }) => zip_code  },
+}
+
 export let Login = mutationWithClientMutationId({
   name: 'Login',
-  inputFields: {
-    clientMutationId: { type: GraphQLString, resolve: ({ clientMutationId }) => clientMutationId },
-    email: { type: GraphQLString, resolve: ({ email }) => email },
-    password: { type: GraphQLString, resolve: ({ password }) => password  }
-  },
+  inputFields: { ...userInputFields },
   outputFields: {
     user: {
       type: userType,
@@ -51,7 +59,7 @@ export let Login = mutationWithClientMutationId({
     }
   },
   mutateAndGetPayload: ({ email, password }) => {
-    return new Promise(function(resolve, reject) {
+    return new Promise((resolve, reject) => {
       rp({
         method: 'POST',
         uri: `${config.backend.uri}/login`,
@@ -75,15 +83,7 @@ export let Login = mutationWithClientMutationId({
 
 export let Signup = mutationWithClientMutationId({
   name: 'Signup',
-  inputFields: {
-    clientMutationId: { type: GraphQLString, resolve: ({ clientMutationId }) => clientMutationId },
-    email: { type: GraphQLString, resolve: ({ email }) => email },
-    password: { type: GraphQLString, resolve: ({ password }) => password  },
-    first_name: { type: GraphQLString, resolve: ({ first_name }) => first_name  },
-    last_name: { type: GraphQLString, resolve: ({ last_name }) => last_name  },
-    street: { type: GraphQLString, resolve: ({ street }) => street  },
-    zip_code: { type: GraphQLString, resolve: ({ zip_code }) => zip_code  },
-  },
+  inputFields: { ...userInputFields },
   outputFields: {
     user: {
       type: userType,
@@ -91,7 +91,7 @@ export let Signup = mutationWithClientMutationId({
     }
   },
   mutateAndGetPayload: ({ email, password, first_name, last_name, street, zip_code }) => {
-    return new Promise(function(resolve, reject) {
+    return new Promise((resolve, reject) => {
       rp({
         method: 'POST',
         uri: `${config.backend.uri}/new_user`,

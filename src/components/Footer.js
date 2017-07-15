@@ -35,7 +35,7 @@ class Footer extends React.Component {
     let { placement } = this.props;
     return (
       <nav className={`nav-bar nav-bar--${placement}`}>
-        {placement === 'top' &&
+        { placement === 'top' &&
           <Link to="/" className="nav-logo">
             <TallyLogo /><span className="logo-text">Tally</span>
           </Link>
@@ -65,13 +65,23 @@ class Footer extends React.Component {
             </span>
             <span className="nav-bar-tab_title">Search</span>
           </Link>
+          { placement === 'bottom' &&
+            <Link to="/settings" className={`settings nav-bar-tab ${this.getActiveTab() === 'settings' ? ' active' : ''}`}>
+              <span className="nav-bar-tab_icon">
+                <IconSettings />
+              </span>
+              <span className="nav-bar-tab_title">Settings</span>
+            </Link>
+          }
+        </div>
+        { placement === 'top' &&
           <Link to="/settings" className={`settings nav-bar-tab ${this.getActiveTab() === 'settings' ? ' active' : ''}`}>
             <span className="nav-bar-tab_icon">
               <IconSettings />
             </span>
             <span className="nav-bar-tab_title">Settings</span>
           </Link>
-        </div>
+        }
       </nav>
     );
   }
