@@ -1,6 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
-import Modal from 'react-modal';
+import TallyModal from '../modal/TallyModal';
 import ReportCard from '../reps/ReportCard';
 import { IconStamp } from '../icons/Icons';
 
@@ -45,9 +45,9 @@ class SearchResult extends React.Component {
             <span className="rep-letter-grade">{letter_grade}</span>
           </div>
         </div>
-        <Modal key={`search_reportcard_${bioguide_id}`} contentLabel={`${fullName} modal`} className={`rep-card-wrap`} isOpen={active} style={{ overflowY: 'scroll' }}>
+        <TallyModal key={`search_reportcard_${bioguide_id}`} contentLabel={`${fullName} modal`} className={`rep-card-wrap`} isOpen={active} style={{ overflowY: 'scroll' }}>
           <ReportCard {...this.props} close={() => this.setState({ active: false })} />
-        </Modal>
+        </TallyModal>
       </li>
     );
   }
