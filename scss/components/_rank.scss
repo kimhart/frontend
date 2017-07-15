@@ -100,7 +100,6 @@
   .rank-toggle-chamber {
     color: white;
     cursor: pointer;
-    background-color: $blue;
     font-weight: 300;
     padding: 15px;
     border-top-left-radius: 5px;
@@ -123,8 +122,9 @@
 .rank-list-wrap {
   background-color: white;
   margin-bottom: 100px;
-  max-width: 700px;
+  max-width: 800px;
   margin: 0 auto;
+  padding: 0 15px;
 }
 
 .no-results {
@@ -209,7 +209,7 @@
   justify-content: flex-start;
   align-items: center;
   align-content: center;
-  margin: 20px 10px;
+  margin: 20px 0;
 }
 
 .rep-rank-cluster {
@@ -245,9 +245,13 @@
 
 .rep-rank-number, .rep-rank-totals {
   font-size: 18px;
-  padding: 0 10px;
   font-weight: 500;
   color: $text-gray;
+}
+
+.rep-rank-totals {
+  font-weight: 300;
+  text-transform: capitalize;
 }
 
 .rep-rank-stats {
@@ -288,14 +292,18 @@
 
 .rank-sort-wrap {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  flex-grow: 1;
   margin: 20px 0 5px 0;
-  padding: 10px;
-  max-width: 700px;
+  max-width: 800px;
+  padding: 0 15px;
+
   @media screen and (min-width: 700px) {
     margin: 30px auto;
+  }
+
+  .question-mark-circle {
+    margin-left: auto;
+    flex-shrink: 0;
   }
 }
 
@@ -306,6 +314,7 @@
   background-color: transparentize($blue, .90);
   border-radius: 5px;
   flex-grow: 1;
+  max-width: 320px;
 }
 
 .search-bar-icon {
@@ -315,12 +324,10 @@
 
 .rank-search-filter {
   color: $blue;
-  margin: 0 10px 0 0;
   border-radius: 5px;
   padding: 8px;
   font-size: 14px;
   box-sizing: border-box;
-  width: 80%;
   font-size: 16px;
   position: relative;
 }
@@ -338,7 +345,7 @@
   height: auto;
   width: 20%;
   padding: 7px;
-  margin: 0 10px;
+  margin: 0 20px;
   box-shadow: 0 0 10px transparentize($blue, .75);
   border: 1px solid transparentize($blue, .75);
   border-radius: 5px;
