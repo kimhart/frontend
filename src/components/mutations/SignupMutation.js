@@ -22,8 +22,8 @@ class SignupMutation extends Relay.Mutation {
 
   // translates props into useable variables
   getVariables() {
-    let { email, password, user, first_name, last_name, street, zip_code } = this.props;
-    return { email, password, first_name, last_name, street, zip_code };
+    let { email, password, user, first_name, last_name, party, street, zip_code } = this.props;
+    return { email, password, first_name, last_name, party, street, zip_code };
   }
 
   // This method should return a GraphQL operation that represents the mutation to be performed.

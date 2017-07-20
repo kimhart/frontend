@@ -30,6 +30,7 @@ let userType = new GraphQLObjectType({
     district: { type: GraphQLInt, resolve: user => user.district },
     first_name: { type: GraphQLString, resolve: user => user.first_name },
     last_name: { type: GraphQLString, resolve: user => user.last_name },
+    party: { type: GraphQLString, resolve: user => user.party },
     state_long: { type: GraphQLString, resolve: user => user.state_long },
     state_short: { type: GraphQLString, resolve: user => user.state_short },
     user_id: { type: GraphQLString, resolve: user => user.user_id },
@@ -81,6 +82,7 @@ export let Signup = mutationWithClientMutationId({
     password: { type: GraphQLString, resolve: ({ password }) => password  },
     first_name: { type: GraphQLString, resolve: ({ first_name }) => first_name  },
     last_name: { type: GraphQLString, resolve: ({ last_name }) => last_name  },
+    party: { type: GraphQLString, resolve: ({ party }) => party },
     street: { type: GraphQLString, resolve: ({ street }) => street  },
     zip_code: { type: GraphQLString, resolve: ({ zip_code }) => zip_code  },
   },
@@ -90,12 +92,12 @@ export let Signup = mutationWithClientMutationId({
       resolve: user => user,
     }
   },
-  mutateAndGetPayload: ({ email, password, first_name, last_name, street, zip_code }) => {
+  mutateAndGetPayload: ({ email, password, first_name, last_name, party, street, zip_code }) => {
     return new Promise(function(resolve, reject) {
       rp({
         method: 'POST',
         uri: `${config.backend.uri}/new_user`,
-        body: { email, password, first_name, last_name, street, zip_code },
+        body: { email, password, first_name, last_name, party, street, zip_code },
         json: true
       })
       .catch(error => {
@@ -108,7 +110,7 @@ export let Signup = mutationWithClientMutationId({
         } else {
           let errors = {
             'Bad address': `We couldn't the address you entered. Please try again.`,
-            'oops! That user name already exists.': 'That email already exists.'
+            'That user name already exists.': 'That email already exists.'
           }
           resolve({ error: errors[results] || `There was an error in what you've entered. Please verify your information is correct.` });
         }

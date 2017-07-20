@@ -69,7 +69,6 @@ class ReportCard extends React.Component {
       return (
         <div className="rep-card-details-wrap">
           <ul className="rep-card-bio-list">
-            { leadership_position ? <li>{leadership_position}</li> : null }
             { list.map((item, index) => !['none'].includes(item) ? (
               <li className="rep-card-bio-list-item" key={`${item}${index}`}>{item}</li>
             ) : null)}
@@ -111,14 +110,14 @@ class ReportCard extends React.Component {
               }
             </div>
           <h4 className="rep-card-section-title">Bill Topics</h4>
-          <p className="rep-card-section-subtitle bills">{lastName} has sponsored bills spanning these categories:</p>
+          <p className="rep-card-section-subtitle bills">{lastName}'s sponsored bills and their categories:</p>
           <PolicyAreas {...this.props} />
         </div>
       ),
       beliefs: (
         <div className="rep-card-metrics-wrap">
           <h4 className="rep-card-section-title">Beliefs</h4>
-          <p className="rep-card-section-subtitle">Based on the bills {lastName} has voted on, here's how he/she leans on top issues.<br/><br/>Click on a section to explore more.</p>
+          <p className="rep-card-section-subtitle">Click on a section to explore more.</p>
           <Beliefs {...this.props} />
         </div>
       )
