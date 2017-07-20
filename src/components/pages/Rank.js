@@ -159,7 +159,7 @@ class Rank extends Component {
     const { bestToWorst } = this.state;
     return (
       <div className="rank-wrap">
-        <div className="rank-controls-wrap blue-gradient">
+        <div className="rank-controls-wrap blue-header">
           <div className="rank-category-wrap">
             <p className="rank-headline">Rank reps based on core job performance:</p>
             <div className="rank-category-name" onClick={() => this.getDropDown()}>
@@ -173,8 +173,8 @@ class Rank extends Component {
             </div>
           </div>
           <div className="rank-toggle-wrap">
-            <p className={`rank-toggle-chamber ${this.getActiveChamber() === 'house' ? 'active' : ''}`} onClick={() => this.selectChamber('house')}>House</p>
-            <p className={`rank-toggle-chamber ${this.getActiveChamber() === 'senate' ? 'active' : ''}`} onClick={() => this.selectChamber('senate')}>Senate</p>
+            <div className={`rank-toggle-chamber ${this.getActiveChamber() === 'house' ? 'active' : ''}`} onClick={() => this.selectChamber('house')}>House</div>
+            <div className={`rank-toggle-chamber ${this.getActiveChamber() === 'senate' ? 'active' : ''}`} onClick={() => this.selectChamber('senate')}>Senate</div>
           </div>
         </div>
         <div className="rank-sort-wrap">

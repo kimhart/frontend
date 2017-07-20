@@ -34,6 +34,9 @@ h3.headline {
   font-size: $standard-h3;
   font-weight: 400;
   margin: 20px auto 5px auto;
+  @include min-width($tablet) {
+    font-size: 24px;
+  }
 }
 
 .error {
