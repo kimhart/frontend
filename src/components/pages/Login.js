@@ -68,7 +68,7 @@ class Login extends React.Component {
               <p>Upcoming features include a breakdown of campaign finances and donor information, and a daily analysis of the transcripts from each session (outlining highly-discussed topics and what your rep had to say on the floor that day.)</p><br/>
               <p>Unlike other political apps, Tally is journalism-free, so you can spend less time sifting through headlines and focus on metrics that matter.</p>
               <Link className="standard-link" to="/about-metrics">
-                <p>About Our Metrics</p>
+                <p>Learn More</p>
               </Link>
             </div>
           </section>
