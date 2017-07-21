@@ -21,12 +21,10 @@ class Header extends React.Component {
     return (
       <header className="logo">
         <div className="logo-container">
-          <TallyLogo />
-          <span className="tally-logo-helper">Tally</span>
-        </div>
-        <div className="user-container">
-          <h2 className="greeting">{user.first_name}</h2>
-          <span className="logout" onClick={() => this.props.logOut()}>Logout</span>
+          <Link to="/">
+            <TallyLogo />
+            <span className="tally-logo-helper">Tally</span>
+          </Link>
         </div>
       </header>
     );

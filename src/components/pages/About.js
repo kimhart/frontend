@@ -3,7 +3,7 @@ import Relay from 'react-relay';
 import ReactDOM from 'react-dom';
 import { Link, browserHistory } from 'react-router';
 
-class AboutMetrics extends React.Component {
+class About extends React.Component {
 
   constructor(props) {
     super(props);
@@ -11,21 +11,21 @@ class AboutMetrics extends React.Component {
 
   render() {
     return (
-      <div className="about-metrics-wrap">
-        <h2 className="page-title">About Our Metrics</h2>
-        <h3 className="secondary-headline">Curious about how we calculate grades and beliefs? You're in the right place. Check out each section below to learn more about our math and data science.</h3>
-        <section className="about-metrics beliefs">
+      <div className="about-wrap">
+        <div className="blue-header">
+          <h3 className="headline">About Us</h3>
+        </div>
+        <div className="about-title-wrap">
+          <h3 className="about-title">Our Metrics</h3>
+        </div>
+        <section className="about-metrics">
           <h4>Beliefs</h4>
-
-          <h5>Short & Sweet:</h5>
-          <p>Indicates a representative’s political ideology based on past legislative actions</p>
-
-          <h5>Expanded:</h5>
+          <p>Indicate a representative’s political ideology based on past legislative actions.</p>
+          <h5>Breakdown:</h5>
           <p>“Beliefs” indicate representatives’ political ideologies—where they fall on the liberal-to- conservative spectrum—based on their legislative actions. Actions are broken up into two categories: bills they’ve voted on, and bills they’ve sponsored (written) or co-sponsored (committed to supporting when it comes time to vote).
           <br/><br/>
           These positions only reflect representatives’ histories with partisan bills—nonpartisan bills were not considered. A partisan bill is one for which the majority of representatives classified as liberals voted the opposite of representatives classified as conservatives.</p>
-
-          <h5>Deep-Dive:</h5>
+          <h5>The Math Behind the Scores:</h5>
           <p>Beliefs are split up into general categories (like “Social”), which are in turn made up of specific categories (like “Obamacare” and “Women and Minority Rights”). The specific categories are averaged to determine where representatives fall on the more general category’s liberal-to- conservative scale.
           These general categories are all averaged to get representatives’ “Overall” belief scores.
           <br/>
@@ -43,14 +43,10 @@ class AboutMetrics extends React.Component {
         </section>
         <section className="about-metrics grades">
           <h4>Grades</h4>
-
-          <h5>Short & Sweet:</h5>
-          <p>Indicates how active a representative is in Congress.</p>
-
-          <h5>Expanded:</h5>
+          <p>Indicate how active a representative is in Congress.</p>
+          <h5>Breakdown:</h5>
           <p>Why should you care about “grades”? You may agree with your representatives’ beliefs, but if they are not showing up to work or voting on bills, they are not actively representing you. Grades take into account representatives’ attendance and participation in Congress, as well as how many bills they’ve sponsored and how many committees they’re on. Representatives receive “extra credit” for having sponsored bills that become law and for being in congressional and/or committee leadership positions. The Speaker of the House is excluded from these letter grades.</p>
-
-          <h5>Deep-Dive:</h5>
+          <h5>The Math Behind the Scores:</h5>
           <p>Grades indicate how active representatives are in congress, so they take into account attendance, participation (aka, how many bills they’ve voted on), how many bills they’ve sponsored, and how many committees they are on. We boosted representatives’ grades if they’ve gone the extra mile by being in congressional and/or committee leadership positions and if they’ve sponsored bills that went on to become law.
           <br/><br/>
           The attendance and participation scores are simple. To calculate attendance, we divided representatives’ total days at work by the maximum days they could have been at work. For participation, we divided the total numbers of bills they’ve voted on by the total number of bills that went before Congress during their tenure.
@@ -63,11 +59,39 @@ class AboutMetrics extends React.Component {
           <br/><br/>
           This is where the extra credit comes in. If representatives sponsored bills that became law, they received “extra credit” proportional to the number of those bills that became law. Congressional leadership positions and committee leadership positions also garnered extra credit. Attendance and participation were weighted higher to ensure that representatives who at least show up to work and vote on bills get a C grade.
           <br/><br/>
-          Each letter grade maps to a percentile between 0 and 100. Representatives with over 100% were bumped down to 100% and received an “A+” grade. The remaining percentiles mapped to letter grades as follows:</p>
+          Each letter grade maps to a percentile between 0 and 100. Representatives with over 100% were bumped down to 100% and received an “A+” grade.</p>
+        </section>
+        <div className="about-title-wrap">
+          <h3 className="about-title">TEAM</h3>
+        </div>
+        <section className="about-team">
+          <p>Tally was built by a small team in New York City with a shared passion for politics and data. Our backgrounds span political science, journalism, computer science, product design, and mathematics.</p>
+          <ul className="team-list">
+            <li className="team-list-item">
+              <span className="team-name">Alex Hubbard</span>
+              <span className="team-title">Founder, Data Scientist</span>
+            </li>
+            <li className="team-list-item">
+              <span className="team-name">Kim Hart</span>
+              <span className="team-title">Co-Founder, Front End Engineer</span>
+            </li>
+            <li className="team-list-item">
+              <span className="team-name">Ryan Taylor</span>
+              <span className="team-title">Front End Engineer</span>
+            </li>
+            <li className="team-list-item">
+              <span className="team-name">Mattan Ingram</span>
+              <span className="team-title">Product Designer</span>
+            </li>
+            <li className="team-list-item">
+              <span className="team-name">Lilliana Nishihira</span>
+              <span className="team-title">Data Analyst</span>
+            </li>
+          </ul>
         </section>
       </div>
     );
   }
 }
 
-export default AboutMetrics;
+export default About;
