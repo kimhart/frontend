@@ -21,6 +21,7 @@ app.use('/bios/:bioguide_id', express.static('public'));
 app.use('/rank', express.static('public'));
 app.use('/search', express.static('public'));
 app.use('/settings', express.static('public'));
+app.use('/about', express.static('public'));
 
 app.use('/graphql', GraphQLHTTP({
   schema,

@@ -12,6 +12,7 @@ import Signup from './pages/Signup';
 import Loading from './loading/Loading';
 import AppLoading from './pages/AppLoading';
 import IconStates from './icons/IconStates';
+import About from './pages/About';
 import { UserUtils, isLoading, initLoading } from '../utils/Utils';
 
 class Template extends React.Component {
@@ -59,6 +60,14 @@ class Template extends React.Component {
     if (!user) {
       if (this.props.location.pathname === "/signup") {
         return <Signup {...this.props} update={() => this.setUser()} />
+      }
+      else if (this.props.location.pathname === "/about/" || this.props.location.pathname === "/about") {
+        return (
+          <div className="page-wrap">
+            <Header />
+            <About {...this.props} />
+          </div>
+        )
       }
       else {
         return (
