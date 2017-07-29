@@ -50,7 +50,7 @@ export let getRepBeliefSchema = () => {
             json: true
           })
           .catch(error => reject(error))
-          .then(beliefs => resolve(beliefs.results));
+          .then(beliefs => resolve(beliefs && beliefs.results ? beliefs.results : [] ));
         });
       }
       else {
