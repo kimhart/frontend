@@ -33,7 +33,7 @@
     background-color: lighten($blue, 15%);
     margin: 0 auto;
     border-radius: 5px;
-    
+
     p {
       color: white;
       text-align: center;
@@ -46,6 +46,8 @@
 
   .rank-category-dropdown {
     display: none;
+    width: 100%;
+    margin-top: 15px;
     justify-content: center;
     align-content: center;
     flex-direction: column;
@@ -86,8 +88,6 @@
     }
 
     @include min-width($tablet) {
-      width: 280px;
-      margin-top: -15px;
       margin-bottom: 20px;
     }
   }
