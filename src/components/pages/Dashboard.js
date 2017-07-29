@@ -6,7 +6,6 @@ import ReportCard from './../reps/ReportCard';
 import { UserUtils } from './../../utils/Utils';
 import { Link, browserHistory } from 'react-router';
 import TallyModal from '../modal/TallyModal';
-import { TallyLogo, IconSettings } from './../icons/Icons.js';
 
 class DashboardPage extends React.Component {
 
@@ -67,11 +66,6 @@ class DashboardPage extends React.Component {
     return (
       <div className="main-dash">
         <div className="blue-header">
-          <div className="settings-top">
-            <Link to="/settings">
-              <IconSettings fill="white" />
-            </Link>
-          </div>
           <h3 className="headline">Your Representatives</h3>
           <p className="your-district">
             <svg className="state-icon">
