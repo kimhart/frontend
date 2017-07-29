@@ -3,3 +3,4 @@ graphql/schema.json
 .DS_Store
 public/bundle.*
 public/css/*
+npm-debug*

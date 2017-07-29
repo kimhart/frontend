@@ -18,6 +18,7 @@ class Footer extends React.Component {
     if (location.href.includes('rank')) return 'rank';
     if (location.href.includes('explore')) return 'explore';
     if (location.href.includes('analyze')) return 'analyze';
+    if (location.href.includes('settings')) return 'settings';
     return false;
   }
 
@@ -34,7 +35,7 @@ class Footer extends React.Component {
     let { placement } = this.props;
     return (
       <nav className={`nav-bar nav-bar--${placement}`}>
-        {placement === 'top' &&
+        { placement === 'top' &&
           <Link to="/" className="nav-logo">
             <TallyLogo /><span className="logo-text">Tally</span>
           </Link>
@@ -64,12 +65,23 @@ class Footer extends React.Component {
             </span>
             <span className="nav-bar-tab_title">Search</span>
           </Link>
+          { placement === 'bottom' &&
+            <Link to="/settings" className={`settings nav-bar-tab ${this.getActiveTab() === 'settings' ? ' active' : ''}`}>
+              <span className="nav-bar-tab_icon">
+                <IconSettings />
+              </span>
+              <span className="nav-bar-tab_title">Settings</span>
+            </Link>
+          }
         </div>
-        <div className="settings">
-          <Link to="/settings">
-            <IconSettings />
+        { placement === 'top' &&
+          <Link to="/settings" className={`settings nav-bar-tab ${this.getActiveTab() === 'settings' ? ' active' : ''}`}>
+            <span className="nav-bar-tab_icon">
+              <IconSettings />
+            </span>
+            <span className="nav-bar-tab_title">Settings</span>
           </Link>
-        </div>
+        }
       </nav>
     );
   }
