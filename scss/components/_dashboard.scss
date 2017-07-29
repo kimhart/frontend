@@ -79,27 +79,9 @@ header.logo {
   margin-top: -20px;
 }
 
-.state-icon {
-  width: 35px;
-  margin-right: 10px;
-}
-
-.state-icon-image {
-  fill: white;
-}
-
 .location-info {
   display: flex;
   justify-content: center;
-}
-
-.state-icon {
-  width: 35px;
-  margin-right: 10px;
-}
-
-.state-icon-image {
-  fill: white;
 }
 
 .location-info {
@@ -108,26 +90,25 @@ header.logo {
 }
 
 .your-district {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 300;
   text-align: center;
   margin: 0 auto 20px auto;
 
   .state-icon {
     fill: white;
-    width: 30px;
-    height: 30px;
+    width: 70px;
+    height: 70px;
     display: inline-block;
     vertical-align: middle;
-    margin-right: 10px;
     @media screen and (min-width: 700px) {
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
     }
   }
 
   .state {
-    font-weight: 600;
+    font-size: 18px;
     margin-right: 5px;
   }
 }
