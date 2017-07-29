@@ -117,7 +117,8 @@ class ReportCard extends React.Component {
       beliefs: (
         <div className="rep-card-metrics-wrap">
           <h4 className="rep-card-section-title">Beliefs</h4>
-          <p className="rep-card-section-subtitle">Click on a section to explore more.</p>
+
+          {/* <p className="rep-card-section-subtitle">Click on a section to explore more.</p> */}
           <Beliefs {...this.props} />
         </div>
       )
