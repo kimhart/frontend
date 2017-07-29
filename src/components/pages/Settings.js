@@ -3,6 +3,7 @@ import Relay from 'react-relay';
 import { Link } from 'react-router';
 import { IconSettings } from '../icons/Icons';
 import { UserUtils } from '../../utils/Utils';
+import ChangeAddressMutation from '../mutations/ChangeAddressMutation';
 
 class Settings extends React.Component {
 
@@ -42,6 +43,37 @@ class Settings extends React.Component {
     ] : null;
   }
 
+  updateAddress = () => {
+    let {
+      new_zip_code: {
+        value: zip_code
+      },
+      new_street: {
+        value: street
+      },
+      props: {
+        data: { user }
+      }
+    } = this;
+    this.props.relay.commitUpdate(new ChangeAddressMutation({ user: user, user_id: user.user_id, street, zip_code }), {
+      onFailure: (error) => {
+        console.error({ file: 'ChangeAddressMutation', error });
+      },
+      onSuccess: ({ ChangeAddress: { user } }) => {
+        console.log({ user });
+        if (user.error) {
+          // this.setState({
+          //   error: user.error
+          // })
+        }
+        else {
+          // UserUtils.setUserId(user.user_id);
+          // this.props.update();
+        }
+      }
+    })
+  }
+
   render() {
     let { editingAddress, changingPassword } = this.state;
     let { user } = this.props.data;
@@ -62,16 +94,16 @@ class Settings extends React.Component {
             { editingAddress &&
             <div className="profile-section-content">
               <div className="profile-input-wrap input-label-wrap">
-                <input id="new-street-input" className="profile-input input--outline"/>
+                <input ref={c => this.new_street = c} id="new-street-input" className="profile-input input--outline"/>
                 <label className="label-input-placeholder" htmlFor="new-street-input">New Street Address</label>
               </div>
               <div className="profile-input-wrap input-label-wrap">
-                <input id="new-zip-input" className="profile-input input--outline"/>
+                <input ref={c => this.new_zip_code = c} id="new-zip-input" className="profile-input input--outline"/>
                 <label className="label-input-placeholder" htmlFor="new-zip-input">New ZIP Code</label>
               </div>
               <div className="profile-section-controls">
                 <button className="button--large button--outline button--gray" onClick={() => this.editAddress()}>Cancel</button>
-                <button className="button--large" onClick={() => console.log('save address to DB')}>Save</button>
+                <button className="button--large" onClick={() => this.updateAddress()}>Save</button>
               </div>
             </div>
             }
@@ -131,6 +163,7 @@ export default Relay.createContainer(Settings, {
       fragment on Data {
         id
         user(user_id: $user_id) {
+          ${ChangeAddressMutation.getFragment('user')}
           city
           district
           first_name
