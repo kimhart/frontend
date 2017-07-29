@@ -24,8 +24,14 @@ input, textarea, select {
   cursor: text;
 }
 
+input.no-focus-style {
+  &:focus {
+    border: inherit;
+  }
+}
+
 input:focus {
-  border: 1px solid transparentize($blue, .8);
+  border: 1px solid transparentize($blue, .6);
 
   + .label-input-placeholder {
     top: 0%;

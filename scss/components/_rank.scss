@@ -13,7 +13,6 @@
   justify-content: center;
   align-content: center;
   flex-direction: column;
-  max-width: 340px;
   max-width: 700px;
   margin: 0 auto;
   padding: 15px;
@@ -34,6 +33,7 @@
     background-color: lighten($blue, 15%);
     margin: 0 auto;
     border-radius: 5px;
+
     p {
       color: white;
       text-align: center;
@@ -46,12 +46,13 @@
 
   .rank-category-dropdown {
     display: none;
+    width: 100%;
+    margin-top: 15px;
     justify-content: center;
     align-content: center;
     flex-direction: column;
     align-self: center;
     background-color: white;
-    width: 70%;
     box-sizing: border-box;
     border-radius: 5px;
     -webkit-animation: slide-down .3s ease-out;
@@ -70,22 +71,23 @@
       padding: 15px;
       margin: 0;
       font-weight: 400;
+
       &.active {
         background-color: lighten($blue, 35%);
         font-weight: 700;
       }
+
       &:first-child {
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
       }
+
       &:last-child {
         border-bottom: 0;
       }
     }
 
     @include min-width($tablet) {
-      width: 280px;
-      margin-top: -15px;
       margin-bottom: 20px;
     }
   }
@@ -162,29 +164,24 @@
   display: block;
   position: absolute;
   z-index: $z-modal;
-  padding: 20px 0 40px 0;
-  background-color: rgba(58, 122, 219, .96);
+  padding: 30px;
+  background-color: $blue;
   border-radius: 5px;
   width: 90%;
-  margin: 0 15px 0 20px;
+  margin: 0 auto;
+
   @media screen and (min-width: 700px) {
     margin: 0 auto;
     width: 70%;
     max-width: 700px;
-  }
-  .rep-card-close {
-    width: 35px;
-    height: 35px;
-    cursor: pointer;
   }
 }
 
 .explainer-title {
   font-size: 20px;
   font-weight: 500;
-  padding: 10px 0;
+  margin-bottom: 30px;
   width: 100%;
-  border-bottom: 1px solid $light-gray;
   text-align: center;
   color: white;
   display: block;
@@ -193,10 +190,8 @@
 .explainer-copy {
   font-size: 18px;
   color: white;
-  padding: 20px;
   font-weight: 300;
   display: block;
-  text-align: center;
 }
 
 .rank-list-ranked-direction {

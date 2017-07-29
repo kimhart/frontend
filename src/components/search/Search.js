@@ -57,7 +57,7 @@ class Search extends React.Component {
       <div className="search-wrap">
         <div className="search-header blue-header">
           <div className="search-bar">
-            <input type="text" className="search-input-text" placeholder="Search" id="search-input-text" ref={c => this.searchBox = c} onChange={this.handleSearch} />
+            <input type="text" className="search-input-text no-focus-style" placeholder="Search" id="search-input-text" ref={c => this.searchBox = c} onChange={this.handleSearch} />
             <IconSearch fill="white" />
           </div>
         </div>
