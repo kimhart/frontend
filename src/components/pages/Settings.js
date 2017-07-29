@@ -45,8 +45,8 @@ class Settings extends React.Component {
             <h3 className="profile-label">{ editingAddress ? 'Edit Address' : 'Your Address' }</h3>
             { editingAddress &&
             <div className="profile-section-content">
-              <input className="profile-input" placeholder="New Street Address"/>
-              <input className="profile-input" placeholder="New ZIP Code"/>
+              <input className="profile-input input--outline" placeholder="New Street Address"/>
+              <input className="profile-input input--outline" placeholder="New ZIP Code"/>
               <div className="profile-section-controls">
                 <button className="button--large button--outline button--gray" onClick={() => this.editAddress()}>Cancel</button>
                 <button className="button--large" onClick={() => console.log('save address to DB')}>Save</button>
@@ -64,9 +64,9 @@ class Settings extends React.Component {
             <h3 className="profile-label">{ changingPassword ? 'Change Your Password' : 'Password' }</h3>
             { changingPassword &&
             <div className="profile-section-content">
-              <input className="profile-input" placeholder="Old Password"/>
-              <input className="profile-input" placeholder="New Password"/>
-              <input className="profile-input" placeholder="Confirm Password"/>
+              <input className="profile-input input--outline" placeholder="Old Password"/>
+              <input className="profile-input input--outline" placeholder="New Password"/>
+              <input className="profile-input input--outline" placeholder="Confirm Password"/>
               <div className="profile-section-controls">
                 <button className="button--large button--outline button--gray" onClick={() => this.changePassword()}>Cancel</button>
                 <button className="button--large" onClick={() => console.log('save PW to DB')}>Save</button>

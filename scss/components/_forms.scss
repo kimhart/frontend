@@ -1,9 +1,12 @@
 input, textarea, select {
   display: block;
   width: 100%;
+  border-radius: $br-medium;
+}
+
+.input--outline {
   background-color: transparent;
   border: 1px solid transparentize($text-gray, .8);
-  border-radius: $br-medium;
 }
 
 .login-form, .signup-form {
@@ -45,7 +48,7 @@ input, textarea, select {
       .dob-month {
         margin-right: 10px;
       }
-      
+
       .dob-year {
         margin-left: 10px;
       }
