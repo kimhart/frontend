@@ -1,3 +1,14 @@
+input, textarea, select {
+  display: block;
+  width: 100%;
+  border-radius: $br-medium;
+}
+
+.input--outline {
+  background-color: transparent;
+  border: 1px solid transparentize($text-gray, .8);
+}
+
 .login-form, .signup-form {
    input, select {
     border: 1px solid $light-gray;
@@ -7,6 +18,7 @@
     font-size: 18px;
     box-sizing: border-box;
     }
+
     label, input, select {
       display: block;
       width: 100%;
@@ -17,24 +29,28 @@
       font-size: $standard-paragraph;
       font-weight: 300;
     }
+
     label {
       color: $text-gray;
       margin: 20px 0 10px 0;
     }
+
     .dob-container {
       width: 100%;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
+
       .dob-day, .dob-month, .dob-year {
         width: 60% / 3;
       }
+
       .dob-month {
         margin-right: 10px;
       }
+
       .dob-year {
         margin-left: 10px;
       }
     }
 }
-

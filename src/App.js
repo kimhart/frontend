@@ -40,7 +40,7 @@ class App extends React.Component {
           <Route path="/search" component={Search} queries={RootQuery} />
           <Route path="/analyze" component={Analyze} />
           <Route path="/about" component={About} />
-          <Route path="/settings" component={Settings} />
+          <Route path="/settings" component={Settings} queries={RootQuery} />
           <Route path="*" component={NotFound} />
         </Route>
       </Router>
