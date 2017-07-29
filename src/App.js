@@ -12,7 +12,7 @@ import NotFound from './components/pages/NotFound';
 import Login from './components/pages/Login';
 import Analyze from './components/pages/Analyze';
 import Search from './components/search/Search';
-import AboutMetrics from './components/pages/AboutMetrics';
+import About from './components/pages/About';
 import AppLoading from './components/pages/AppLoading';
 import Settings from './components/pages/Settings';
 
@@ -39,7 +39,7 @@ class App extends React.Component {
           <Route path="/login" component={Login} />
           <Route path="/search" component={Search} queries={RootQuery} />
           <Route path="/analyze" component={Analyze} />
-          <Route path="/metrics" component={AboutMetrics} />
+          <Route path="/about" component={About} />
           <Route path="/settings" component={Settings} queries={RootQuery} />
           <Route path="*" component={NotFound} />
         </Route>
