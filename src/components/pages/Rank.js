@@ -164,7 +164,7 @@ class Rank extends Component {
             <p className="rank-headline">Rank reps based on core job performance:</p>
             <div className="rank-category-name" onClick={() => this.getDropDown()}>
               <p>{this.getActiveCategory()}</p>
-              <IconAngleDown fill="#fff" width="12px" />
+              <IconAngleDown fill="white" width="12px" />
             </div>
             <div className="rank-category-dropdown" ref="dropdown" onClick={() => this.getDropDown()}>
               <p className={`rank-category-item ${this.getActiveCategory() === 'Bills' ? 'active' : ''}`} onClick={() => this.setState({ attendance: false, participation: false, efficacy: true })}>Bills Sponsored</p>
@@ -181,12 +181,12 @@ class Rank extends Component {
           <div className="rank-search">
             <input className="rank-search-filter" placeholder="Search" ref={c => this.searchBox = c} onChange={this.handleSearch} />
             <div className="search-bar-icon">
-              <IconSearch width="20px" fill="#4990E2" />
+              <IconSearch width="20px" fill="#3A7ADB" />
             </div>
           </div>
           <button className="rank-sort-btn" onClick={() => this.setState({bestToWorst: !bestToWorst})}>Sort
             <div className="sort-arrow">
-              <IconTriangleDown fill="#4990E2" transform={bestToWorst ? null : 'rotate(180)'} />
+              <IconTriangleDown fill="#3A7ADB" transform={bestToWorst ? null : 'rotate(180)'} />
             </div>
           </button>
           <span className="control-button question-mark-circle" onClick={() => this.getExplainerModal()}>?</span>
@@ -194,8 +194,8 @@ class Rank extends Component {
         <div className="rank-list-wrap">
           <div className="rank-modal-overlay" ref="explainerModal" onClick={(e) => this.getExplainerModal(e)}>
             <div className="rank-explainer-modal">
-              <div className="rep-card-close" onClick={(e) => this.getExplainerModal(e)}>
-                <IconClose width={15} height={15} stroke="#4990E2" strokeWidth="2" />
+              <div className="card-close" onClick={(e) => this.getExplainerModal(e)}>
+                <IconClose color="white"/>
               </div>
               {this.getExplainerCopy()}
             </div>

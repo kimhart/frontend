@@ -34,7 +34,7 @@
   }
 
   .rep-letter-grade {
-    font-size: 26px;
+    font-size: 30px;
     color: white;
   }
 }
@@ -44,7 +44,7 @@
   width: 100%;
 }
 
-.rep-card-close {
+.card-close {
   position: absolute;
   top: 0;
   right: 0;
@@ -100,21 +100,13 @@
 
 .bio-btn {
   width: 90px;
-  height: 30px;
-  border: 1px solid $blue;
   color: $blue;
   font-size: 14px;
   border-radius: 10px;
-  padding: 0 10px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &:not(:last-child) {
-    margin-right: 10px;
-  }
+  margin-right: 10px;
+
   &.active {
-    background: $blue-light;
+    background: $blue;
     color: white;
     border: none;
   }
@@ -127,7 +119,6 @@
 
 .rep-card-section-title {
   color: $blue;
-  cursor: pointer;
   font-family: $brand-font;
   font-weight: 400;
   font-size: 22px;

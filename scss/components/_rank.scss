@@ -162,31 +162,24 @@
   display: block;
   position: absolute;
   z-index: $z-modal;
-  padding: 20px 0 40px 0;
+  padding: 30px;
   background-color: $blue;
   border-radius: 5px;
   width: 90%;
-  margin: 0 15px 0 20px;
+  margin: 0 auto;
 
   @media screen and (min-width: 700px) {
     margin: 0 auto;
     width: 70%;
     max-width: 700px;
   }
-
-  .rep-card-close {
-    width: 35px;
-    height: 35px;
-    cursor: pointer;
-  }
 }
 
 .explainer-title {
   font-size: 20px;
   font-weight: 500;
-  padding: 10px 0;
+  margin-bottom: 30px;
   width: 100%;
-  border-bottom: 1px solid $light-gray;
   text-align: center;
   color: white;
   display: block;
@@ -195,10 +188,8 @@
 .explainer-copy {
   font-size: 18px;
   color: white;
-  padding: 20px;
   font-weight: 300;
   display: block;
-  text-align: center;
 }
 
 .rank-list-ranked-direction {

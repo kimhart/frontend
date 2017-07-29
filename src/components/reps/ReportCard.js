@@ -133,8 +133,8 @@ class ReportCard extends React.Component {
     return (
       <div className="rep-card-content">
         { this.props.close &&
-          <div className="rep-card-close" onClick={() => this.props.close()}>
-            <IconClose width={15} height={15} stroke="#4990E2" strokeWidth="2" />
+          <div className="card-close" onClick={() => this.props.close()}>
+            <IconClose color="#4990E2"/>
           </div>
         }
         <div className="rep-card-header-wrap">
@@ -156,7 +156,7 @@ class ReportCard extends React.Component {
             { leadership_position !== "None" && <span className="rep-card-leadership">{ leadership_position }</span> }
           </div>
           <div className="rep-card-buttons-wrap">
-            <button className={`bio-btn${bio ? ' active' : ''}`} onClick={() => this.setState({ bio: !bio, contact: false })}>Bio</button>
+            <button className={`bio-btn button--medium button--outline button--blue ${bio ? ' active' : ''}`} onClick={() => this.setState({ bio: !bio, contact: false })}>Bio</button>
             <div className="contact-icons">
               <a target="_blank" href={`tel:${phone}`}>
                 <div className="contact-icon-circle"><IconPhone /></div>
