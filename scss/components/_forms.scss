@@ -9,6 +9,33 @@ input, textarea, select {
   border: 1px solid transparentize($text-gray, .8);
 }
 
+.input-label-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.label-input-placeholder {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  transition: all .15s ease-in;
+  color: transparentize(black, .4);
+  cursor: text;
+}
+
+input:focus {
+  border: 1px solid transparentize($blue, .8);
+
+  + .label-input-placeholder {
+    top: 0%;
+    font-size: .85em;
+    color: $blue;
+    background-color: white;
+    padding: 2px;
+  }
+}
+
 .login-form, .signup-form {
    input, select {
     border: 1px solid $light-gray;
