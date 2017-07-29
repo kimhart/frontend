@@ -13,7 +13,6 @@
   justify-content: center;
   align-content: center;
   flex-direction: column;
-  max-width: 340px;
   max-width: 700px;
   margin: 0 auto;
   padding: 15px;
@@ -34,6 +33,7 @@
     background-color: lighten($blue, 15%);
     margin: 0 auto;
     border-radius: 5px;
+    
     p {
       color: white;
       text-align: center;
@@ -51,7 +51,6 @@
     flex-direction: column;
     align-self: center;
     background-color: white;
-    width: 70%;
     box-sizing: border-box;
     border-radius: 5px;
     -webkit-animation: slide-down .3s ease-out;
@@ -70,14 +69,17 @@
       padding: 15px;
       margin: 0;
       font-weight: 400;
+
       &.active {
         background-color: lighten($blue, 35%);
         font-weight: 700;
       }
+
       &:first-child {
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
       }
+
       &:last-child {
         border-bottom: 0;
       }

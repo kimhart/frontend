@@ -179,7 +179,7 @@ class Rank extends Component {
         </div>
         <div className="rank-sort-wrap">
           <div className="rank-search">
-            <input className="rank-search-filter" placeholder="Search" ref={c => this.searchBox = c} onChange={this.handleSearch} />
+            <input className="rank-search-filter no-focus-style" placeholder="Search" ref={c => this.searchBox = c} onChange={this.handleSearch} />
             <div className="search-bar-icon">
               <IconSearch width="20px" fill="#3A7ADB" />
             </div>
