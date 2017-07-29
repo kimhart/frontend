@@ -1,11 +1,12 @@
-.settings-wrap {
+.profile-wrap {
 
-  .settings-header {
+  .profile-header {
     background-color: $blue;
     height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
+
     h2 {
       color: white;
       font-weight: 500;
@@ -13,72 +14,77 @@
     }
   }
 
-  .update-settings {
-    margin: 20px auto;
-    max-width: 600px;
-  }
-
-  .row {
-    display: flex;
-    margin: 15px 0;
-    span, input {
-      flex: 1;
-    }
-  }
-
-  .update-settings-input {
-    border: 1px solid transparentize($text-gray, .8);
-    border-radius: 3px;
-    padding: 10px;
-    margin: 10px 20px 10px 0;
-    &.save {
-      background-color: transparentize($blue, .3);
-      color: white;
-      padding: 10px 20px;
-      cursor: pointer;
-      border: none;
-      margin-right: 5px;
-    }
-    &.cancel {
-      background: transparentize($text-gray, .8);
-      cursor: pointer;
-      border: none;
-      margin-right: 0;
-    }
-  }
-
-  .settings-label {
-    font-weight: 500;
-    text-transform: uppercase;
-    padding-right: 30px;
-    margin-top: 30px;
+  .profile-info {
+    margin: 0 auto;
+    max-width: 640px;
+    padding: 0 15px;
   }
 
   .pw {
     -webkit-text-security: disc;
     color: transparentize($text-gray, .4);
   }
+}
 
-  .update {
+.profile-button-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 40px auto;
+  padding: 0 15px;
+}
+
+.logout-button {
+  font-weight: 500;
+  width: 200px;
+}
+
+.profile-section {
+  padding: 30px 0;
+  border-bottom: 1px solid $light-gray;
+}
+
+.profile-label {
+  font-weight: 500;
+  font-size: 1rem;
+  text-transform: uppercase;
+  text-align: left;
+  padding-right: 30px;
+  margin-bottom: 15px;
+}
+
+.profile-section-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.profile-current-value {
+  flex-grow: 1;
+
+  @include max-width($tablet) {
+    width: 100%;
+  }
+}
+
+.profile-info-update-button {
+  @include max-width($tablet) {
     font-size: 14px;
-    color: $blue;
-    text-align: right;
-    text-decoration: underline;
-    cursor: pointer;
+    margin-top: 15px;
+    margin-left: auto;
   }
+}
 
-  .logout {
-    background-color: $soft-red;
-    color: white;
-    padding: 10px 30px;
-    text-transform: uppercase;
-    text-align: center;
-    width: auto;
-    cursor: pointer;
-    border-radius: 5px;
-    margin: 40px auto;
-    font-size: 16px;
-    font-weight: 500;
+.profile-input {
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.profile-section-controls {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+
+  button {
+    margin-left: 10px;
   }
-
 }

@@ -12,9 +12,27 @@
 .rep-card-header-wrap {
   display: flex;
   flex-direction: column;
+  width: 100%;
   background: white;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
+
+  @include min-width($tablet) {
+    height: 310px;
+  }
+
+  .rep-letter-grade-wrap {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+  .rep-letter-grade {
+    font-size: 26px;
+    color: white;
+  }
 }
 
 .rep-card-content {
@@ -54,6 +72,7 @@
 
 .rep-card-position-wrap {
   margin-bottom: 30px;
+  flex-grow: 1;
 }
 
 .rep-card-role, .rep-card-leadership {
@@ -310,22 +329,6 @@
     position: relative;
     top: 2px;
     transform: none;
-  }
-}
-
-.rep-card-header-wrap {
-  width: 100%;
-  .rep-letter-grade-wrap {
-    width: 70px;
-    height: 70px;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-  }
-
-  .rep-letter-grade {
-    font-size: 26px;
-    color: white;
   }
 }
 

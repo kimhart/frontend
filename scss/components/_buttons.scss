@@ -1,3 +1,51 @@
+[class*="button--"] {
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $br-medium;
+  background-color: $blue;
+  color: white;
+}
+
+.button--small {
+  height: 22px;
+  font-size: 14px;
+}
+
+.button--medium {
+  height: 30px;
+  font-size: 14px;
+}
+
+.button--large {
+  height: 40px;
+}
+
+.button--red {
+  background-color: $bright-red;
+}
+
+.button--gray {
+  background-color: $gray;
+}
+
+.button--outline {
+  background-color: transparent;
+  border: 1px solid;
+  color: inherit;
+
+  &.button--gray {
+    background-color: transparent;
+    color: transparentize(black, .7);
+  }
+
+  &.button--white {
+    background-color: transparent;
+    color: white;
+  }
+}
+
 .control-button {
   background-color: white;
   box-shadow: 0 0 10px transparentize($blue, .75);
