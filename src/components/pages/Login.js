@@ -67,8 +67,8 @@ class Login extends React.Component {
               <p>Using public data reaching back nearly three decades—1989 through today—we combined stats about your reps' attendance, voting participation and bill sponsorship into a letter grade to guage their job performance at the most basic level. Tally helps you learn about your reps' top issues & ideologies, and allows you to compare them to other lawmakers in both the Senate and House in every district across the country.</p><br/>
               <p>Upcoming features include a breakdown of campaign finances and donor information, and a daily analysis of the transcripts from each session (outlining highly-discussed topics and what your rep had to say on the floor that day.)</p><br/>
               <p>Unlike other political apps, Tally is journalism-free, so you can spend less time sifting through headlines and focus on metrics that matter.</p>
-              <Link className="standard-link" to="/about-metrics">
-                <p>About Our Metrics</p>
+              <Link className="standard-link" to="/about">
+                <p className="learn-more-link">Learn About Metrics</p>
               </Link>
             </div>
           </section>

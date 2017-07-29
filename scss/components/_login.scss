@@ -1,6 +1,6 @@
 .home-page-wrap {
   margin: 0;
-  padding: 0;
+  padding: 40px 0;
   background-color: white;
 }
 
@@ -90,6 +90,12 @@
   p {
     max-width: 400px;
     margin: 0 auto;
+  }
+  .learn-more-link {
+    margin: 20px auto;
+    font-weight: 600;
+    text-decoration: underline;
+    font-weight: 400;
   }
   &:after {
    border-top: solid 20px $blue;

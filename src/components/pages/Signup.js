@@ -5,6 +5,7 @@ import { Link, browserHistory } from 'react-router';
 import Footer from '../Footer';
 import SignupMutation from '../mutations/SignupMutation';
 import { UserUtils } from '../../utils/Utils';
+import { TallyLogo } from '../icons/Icons';
 
 class Signup extends React.Component {
 
@@ -16,6 +17,7 @@ class Signup extends React.Component {
           password: null,
           first_name: null,
           last_name: null,
+          party: null,
           street: null,
           zip_code: null
         },
@@ -24,23 +26,17 @@ class Signup extends React.Component {
       }
     }
 
-    handleEmailPassword = () => {
+    handleDemographics = () => {
       let {
         emailInput: { value: email },
-        passwordInput: { value: password }
-      } = this.refs;
-      this.setState({ user: { email, password } });
-    }
-
-    handleDemographics = () => {
-      let { email, password } = this.state.user;
-      let {
+        passwordInput: { value: password },
         firstNameInput: { value: first_name },
         lastNameInput: { value: last_name },
+        partyInput: { value: party },
         streetInput: { value: street },
         zipcodeInput: { value: zip_code }
       } = this.refs;
-      this.setState({ user: { email, password, first_name, last_name, street, zip_code } });
+      this.setState({ user: { email, password, first_name, last_name, party, street, zip_code } });
     }
 
     handleSubmit = (e) => {
@@ -51,7 +47,6 @@ class Signup extends React.Component {
           console.error({ file: 'Signup', error });
         },
         onSuccess: ({ Signup: { user } }) => {
-          console.log({ user });
           if (typeof user === 'object' && user.hasOwnProperty('user_id') && !!user.user_id) {
             UserUtils.setUserId(user.user_id);
             this.props.update();
@@ -67,13 +62,16 @@ class Signup extends React.Component {
     validatePassword = () => {
       let {
         passwordInput: { value: password },
-        passwordConfirm: { value: passwordConfirm },
+        passwordConfirm: { value: passwordConfirm }
       } = this.refs;
 
       if (password !== passwordConfirm) {
         this.setState({ error: "Passwords must match." });
       } else {
-        this.setState({ passwordsConfirmed: true });
+        this.setState({
+          error: null,
+          passwordsConfirmed: true
+        });
       }
     }
 
@@ -81,31 +79,28 @@ class Signup extends React.Component {
       let { passwordsConfirmed, error } = this.state;
       return (
         <div className="signup-page-wrap">
-          <Link to="/">Home</Link>
+          <div className="logged-out-header">
+            <Link to="/"><TallyLogo /></Link>
+          </div>
           <div className="signup-page">
-            <form className="signup-form" onSubmit={this.handleSubmit}>
-              <p className="error">{error}</p>
-              { !passwordsConfirmed &&
-                <div className="signup-part-one" onChange={this.handleEmailPassword}>
-                  <h2 className="page-title">Sign Up</h2>
-                  <input id="email" type="email" placeholder="Email" ref="emailInput" required  />
-                  <input id="password" type="password" placeholder="Password" ref="passwordInput" required />
-                  <input id="password-match" type="password" placeholder="Confirm Password" ref="passwordConfirm" required />
-                  <span className="signup-error-msg">{error}</span>
-                  <button id="progress-signup" onClick={this.validatePassword}>Continue</button>
-                </div>
-              }
-              { passwordsConfirmed &&
-                <div className="signup-part-two" onChange={this.handleDemographics}>
-                  <h2 className="page-title">Tell Us About You</h2>
-                  <h3 className="signup-help-us">and help us find your district</h3>
-                  <input id="first-name" type="text" placeholder="First Name" ref="firstNameInput" required />
-                  <input id="last-name" type="text" placeholder="Last Name" ref="lastNameInput" required />
-                  <input id="address" type="text" placeholder="Street Address" ref="streetInput" required />
-                  <input id="zip" type="text" placeholder="ZIP code" ref="zipcodeInput" required />
-                  <button className="signup-btn" type="submit">Go!</button>
-                </div>
-              }
+            <form className="signup-form" onChange={this.handleDemographics} onSubmit={ !error ? this.handleSubmit : null }>
+              <h2 className="page-title">Sign Up</h2>
+              <input id="email" type="email" placeholder="Email" ref="emailInput" required  />
+              <input id="password" type="password" placeholder="Password" ref="passwordInput" required />
+              <input id="password-match" type="password" placeholder="Confirm Password" ref="passwordConfirm" required />
+              <input id="first-name" type="text" placeholder="First Name" ref="firstNameInput" required />
+              <input id="last-name" type="text" placeholder="Last Name" ref="lastNameInput" required />
+              <select id="party" ref="partyInput" required>
+                <option>Democrat</option>
+                <option>Republican</option>
+                <option>Independent</option>
+                <option>Libertarian</option>
+                <option>Other</option>
+              </select>
+              <input id="address" type="text" placeholder="Street Address" ref="streetInput" required />
+              <input id="zip" type="text" placeholder="ZIP code" ref="zipcodeInput" required />
+              <span className="signup-error-msg">{error ? error : null}</span>
+              <button onClick={this.validatePassword} className="signup-btn" type="submit">Go!</button>
             </form>
           </div>
         </div>
