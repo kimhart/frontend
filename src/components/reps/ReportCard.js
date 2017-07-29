@@ -133,7 +133,7 @@ class ReportCard extends React.Component {
     return (
       <div className="rep-card-content">
         { this.props.close &&
-          <div className="rep-card-close control-button" onClick={() => this.props.close()}>
+          <div className="rep-card-close" onClick={() => this.props.close()}>
             <IconClose width={15} height={15} stroke="#4990E2" strokeWidth="2" />
           </div>
         }

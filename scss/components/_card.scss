@@ -21,6 +21,10 @@
     height: 310px;
   }
 
+  .ReactModal__Content & {
+    height: auto;
+  }
+
   .rep-letter-grade-wrap {
     width: 70px;
     height: 70px;
@@ -42,8 +46,8 @@
 
 .rep-card-close {
   position: absolute;
-  top: -10px;
-  right: -10px;
+  top: 0;
+  right: 0;
   width: 40px;
   height: 40px;
   border-radius: 100%;
@@ -51,6 +55,11 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
+  .icon-close {
+    width: 16px;
+    height: 16px;
+  }
 }
 
 .rep-card-photo {

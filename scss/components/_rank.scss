@@ -163,15 +163,17 @@
   position: absolute;
   z-index: $z-modal;
   padding: 20px 0 40px 0;
-  background-color: rgba(58, 122, 219, .96);
+  background-color: $blue;
   border-radius: 5px;
   width: 90%;
   margin: 0 15px 0 20px;
+
   @media screen and (min-width: 700px) {
     margin: 0 auto;
     width: 70%;
     max-width: 700px;
   }
+
   .rep-card-close {
     width: 35px;
     height: 35px;

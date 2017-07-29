@@ -194,7 +194,7 @@ class Rank extends Component {
         <div className="rank-list-wrap">
           <div className="rank-modal-overlay" ref="explainerModal" onClick={(e) => this.getExplainerModal(e)}>
             <div className="rank-explainer-modal">
-              <div className="rep-card-close control-button" onClick={(e) => this.getExplainerModal(e)}>
+              <div className="rep-card-close" onClick={(e) => this.getExplainerModal(e)}>
                 <IconClose width={15} height={15} stroke="#4990E2" strokeWidth="2" />
               </div>
               {this.getExplainerCopy()}
