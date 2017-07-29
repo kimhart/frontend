@@ -26,6 +26,7 @@ $blue-lightest: lighten(#6194e2, 15%);
 $teal-green:  #41ead4;
 $text-gray:   #4A4A4A;
 $dark-gray:   #122C34;
+$gray:        #BBBBBB;
 $light-gray:  #DCDCDD;
 $purple: #b178fa;
 
@@ -42,8 +43,14 @@ $z-modal-overlay: 400;
   box-shadow: 0 4px 0 0 $blue-pale, 0 6px 20px 0 transparentize($blue, .75);
 }
 
-// breakpoints
+// BREAKPOINTS
 $phone: 320px;
 $tablet: 768px;
 $desktop: 1024px;
 $large: 1300px;
+
+
+// BORDER RADIUS
+$br-small: 2px;
+$br-medium: 5px;
+$br-large: 8px;

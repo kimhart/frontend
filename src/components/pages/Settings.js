@@ -34,45 +34,53 @@ class Settings extends React.Component {
   render() {
     let { editingAddress, changingPassword } = this.state;
     return (
-      <div className="settings-wrap">
+      <div className="profile-wrap">
         <div className="blue-header">
           <h2 className="page-title">Settings</h2>
         </div>
-        <div className="update-settings">
-          <p className="settings-label">{ editingAddress ? 'Edit Address' : 'Your Address' }</p>
-          { editingAddress &&
-          <div className="row">
-            <input className="update-settings-input" placeholder="New Street Address"/>
-            <input className="update-settings-input" placeholder="New ZIP Code"/>
-            <p className="update-settings-input save" onClick={() => console.log('save address to DB')}>Save</p>
-            <p className="update-settings-input cancel" onClick={() => this.editAddress()}>Cancel</p>
+        <div className="profile-info">
+          <div className="profile-section">
+            <h3 className="profile-label">{ editingAddress ? 'Edit Address' : 'Your Address' }</h3>
+            { editingAddress &&
+            <div className="profile-section-content">
+              <input className="profile-input" placeholder="New Street Address"/>
+              <input className="profile-input" placeholder="New ZIP Code"/>
+              <div className="profile-section-controls">
+                <button className="button--large button--outline button--gray" onClick={() => this.editAddress()}>Cancel</button>
+                <button className="button--large" onClick={() => console.log('save address to DB')}>Save</button>
+              </div>
+            </div>
+            }
+            { !editingAddress &&
+            <div className="profile-section-content">
+              <span className="profile-current-value">123 Main St, New York, NY</span>
+              <button className="profile-info-update-button button--medium button--outline button--gray" onClick={() => this.editAddress()}>Update Address</button>
+            </div>
+            }
           </div>
-          }
-          { !editingAddress &&
-          <div className="row">
-            <span className="current">123 Main St, New York, NY</span>
-            <span className="update" onClick={() => this.editAddress()}>Update Address</span>
+          <div className="profile-section">
+            <h3 className="profile-label">{ changingPassword ? 'Change Your Password' : 'Password' }</h3>
+            { changingPassword &&
+            <div className="profile-section-content">
+              <input className="profile-input" placeholder="Old Password"/>
+              <input className="profile-input" placeholder="New Password"/>
+              <input className="profile-input" placeholder="Confirm Password"/>
+              <div className="profile-section-controls">
+                <button className="button--large button--outline button--gray" onClick={() => this.changePassword()}>Cancel</button>
+                <button className="button--large" onClick={() => console.log('save PW to DB')}>Save</button>
+              </div>
+            </div>
+            }
+            { !changingPassword &&
+            <div className="profile-section-content">
+              <span className="profile-current-value pw">********************</span>
+              <button className="profile-info-update-button button--medium button--outline button--gray" onClick={() => this.changePassword()}>Change Password</button>
+            </div>
+            }
           </div>
-          }
-        <p className="settings-label">{ changingPassword ? 'Change Your Password' : 'Password' }</p>
-          { changingPassword &&
-          <div className="row">
-            <input className="update-settings-input" placeholder="Old Password"/>
-            <input className="update-settings-input" placeholder="New Password"/>
-            <input className="update-settings-input" placeholder="Confirm Password"/>
-            <p className="update-settings-input save" onClick={() => console.log('save PW to DB')}>Save</p>
-            <p className="update-settings-input cancel" onClick={() => this.changePassword()}>Cancel</p>
-          </div>
-          }
-          { !changingPassword &&
-          <div className="row">
-            <span className="current pw">********************</span>
-            <span className="update" onClick={() => this.changePassword()}>Change Password</span>
-          </div>
-          }
-          <div className="row">
-            <p className="logout clickable">Logout</p>
-          </div>
+        </div>
+        <div className="profile-button-wrap">
+          <button className="button--large button--red logout-button">Logout</button>
         </div>
       </div>
     )
