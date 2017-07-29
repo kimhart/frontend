@@ -59,11 +59,25 @@
 }
 
 .profile-current-value {
+  display: block;
   flex-grow: 1;
+  font-size: 1.2rem;
 
   @include max-width($tablet) {
     width: 100%;
   }
+
+  span {
+    display: block;
+  }
+}
+
+.profile-district {
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  letter-spacing: .04em;
+  color: $gray-med;
 }
 
 .profile-info-update-button {
@@ -74,9 +88,12 @@
   }
 }
 
+.profile-input-wrap {
+  margin-bottom: 15px;
+}
+
 .profile-input {
   padding: 10px;
-  margin-bottom: 15px;
 }
 
 .profile-section-controls {
