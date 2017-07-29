@@ -31,10 +31,20 @@ class Settings extends React.Component {
     // on save, revert back to 'not changing'
   }
 
+  getUserName(user) {
+    return user ? `${user.first_name} ${user.last_name}` : '';
+  }
+
+  getAddress(user) {
+    return user ? [
+      <span key="profile-district" className="profile-district">{ `District ${user.district}` }</span>,
+      <span key="profile-address" className="">{ `${user.street}, ${user.city}, ${user.state_short} ${user.zip_code}` }</span>
+    ] : null;
+  }
+
   render() {
     let { editingAddress, changingPassword } = this.state;
     let { user } = this.props.data;
-    console.log({ user });
     return (
       <div className="profile-wrap">
         <div className="blue-header">
@@ -44,7 +54,7 @@ class Settings extends React.Component {
           <div className="profile-section">
             <h3 className="profile-label">Name</h3>
             <div className="profile-section-content">
-              <span className="profile-current-value">firstName lastName</span>
+              <span className="profile-current-value">{ this.getUserName(user) }</span>
             </div>
           </div>
           <div className="profile-section">
@@ -68,8 +78,7 @@ class Settings extends React.Component {
             { !editingAddress &&
             <div className="profile-section-content">
               <div className="profile-current-value">
-                <span className="profile-district">District 12</span>
-                <span className="">123 Main St, New York, NY</span>
+                { this.getAddress(user) }
               </div>
               <button className="profile-info-update-button button--medium button--outline button--gray" onClick={() => this.editAddress()}>Update Address</button>
             </div>

@@ -80,8 +80,18 @@ class Beliefs extends React.Component {
   render() {
     let { beliefs, level } = this.state;
     if (!beliefs) return null;
+    else if (!beliefs.length) {
+      return (
+        <div>
+          <p className="rep-card-section-subtitle">This rep has not been in office long enough to predict their ideology yet.</p>
+        </div>
+      )
+    }
     return (
-      <div>{ this.renderBeliefs({ beliefs, level }) }</div>
+      <div>
+        <p className="rep-card-section-subtitle">Click on a section to explore more.</p>
+        <div>{ this.renderBeliefs({ beliefs, level }) }</div>
+      </div>
     );
   }
 
