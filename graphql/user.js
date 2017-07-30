@@ -144,7 +144,7 @@ export let ChangePassword = mutationWithClientMutationId({
         console.log({ password: user });
         let { results, user_id } = user;
         if (!!user_id) {
-          resolve({ user_id });
+          resolve(user);
         } else {
           let errors = {
             'Bad address': `We couldn't the address you entered. Please try again.`,
@@ -181,7 +181,7 @@ export let ChangeAddress = mutationWithClientMutationId({
         console.log({ address: user });
         let { results, user_id } = user;
         if (!!user_id) {
-          resolve({ user_id });
+          resolve(user);
         } else {
           let errors = {
             'Bad address': `We couldn't the address you entered. Please try again.`,
