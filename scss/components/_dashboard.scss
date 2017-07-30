@@ -10,22 +10,22 @@ header.logo {
     align-items: center;
     height: 30px;
     width: 70%;
-    .tally-logo {
-      width: 30px;
-      height: 30px;
-      margin: 0 10px 0 15px;
-    }
-    .tally-logo-helper {
-      font-size: 22px;
-      color: $text-gray;
-      font-weight: 600;
-      margin-bottom: 5px;
-      font-family: 'Work Sans', sans-serif;
+  }
+  .tally-logo {
+    width: 30px;
+    height: 30px;
+    margin: 0 10px 0 15px;
+  }
+  .tally-logo-helper {
+    font-size: 22px;
+    color: $text-gray;
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-family: 'Work Sans', sans-serif;
+    text-decoration: none;
+    a, a:hover, a:visited, a:active {
       text-decoration: none;
-      a, a:hover, a:visited, a:active {
-        text-decoration: none;
-        color: $text-gray;
-      }
+      color: $text-gray;
     }
   }
   .user-container {
