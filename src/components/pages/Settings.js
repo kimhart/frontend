@@ -32,7 +32,8 @@ class Settings extends React.Component {
   changePassword = () => {
     let { changingPassword } = this.state;
     this.setState({
-      changingPassword: !changingPassword
+      changingPassword: !changingPassword,
+      password_error: null
     })
     // on save, revert back to 'not changing'
   }
@@ -89,19 +90,33 @@ class Settings extends React.Component {
         data: { user }
       }
     } = this;
-    console.log({ password, confirm_new_password, old_password });
+    if (!old_password) {
+      this.setState({ password_error: 'Please enter your current password.' });
+      return;
+    }
+    else if (confirm_new_password !== password) {
+      this.setState({ password_error: 'Your new passwords don\'t match.' });
+      return;
+    }
+    isLoading(true);
     this.props.relay.commitUpdate(new ChangePasswordMutation({ user: user, user_id: user.user_id, password }), {
       onFailure: (error) => {
+        isLoading(false);
         console.error({ file: 'ChangePasswordMutation', error });
       },
       onSuccess: ({ ChangePassword: { user } }) => {
         console.log({ user });
         if (user.error) {
-          this.setState({ error: user.error });
+          isLoading(false);
+          this.setState({ password_error: user.error });
         }
         else {
-          this.props.relay.forceFetch({ user_id: UserUtils.getUserId() || null });
-          this.setState({ editingPassword: false });
+          this.props.relay.forceFetch({ user_id: UserUtils.getUserId() || null }, ({ done, error, aborted }) => {
+            if (done || error || aborted) {
+              isLoading(false);
+            }
+          });
+          this.setState({ changingPassword: false, password_error: null });
         }
       }
     })
@@ -158,16 +173,21 @@ class Settings extends React.Component {
             <h3 className="profile-label">{ changingPassword ? 'Change Your Password' : 'Password' }</h3>
             { changingPassword &&
               <div className="profile-section-content">
+                { password_error &&
+                  <div className="profile-address-error">
+                    { password_error }
+                  </div>
+                }
                 <div className="profile-input-wrap input-label-wrap">
-                  <input ref={c => this.old_password = c} id="old-password-input" className="profile-input input--outline"/>
+                  <input ref={c => this.old_password = c} type="password" id="old-password-input" className="profile-input input--outline"/>
                   <label className="label-input-placeholder" htmlFor="old-password-input">Old Password</label>
                 </div>
                 <div className="profile-input-wrap input-label-wrap">
-                  <input ref={c => this.new_password = c} id="new-password-input" className="profile-input input--outline"/>
+                  <input ref={c => this.new_password = c} type="password" id="new-password-input" className="profile-input input--outline"/>
                   <label className="label-input-placeholder" htmlFor="new-password-input">New Password</label>
                 </div>
                 <div className="profile-input-wrap input-label-wrap">
-                  <input ref={c => this.confirm_new_password = c} id="new-password-confirm" className="profile-input input--outline"/>
+                  <input ref={c => this.confirm_new_password = c} type="password" id="new-password-confirm" className="profile-input input--outline"/>
                   <label className="label-input-placeholder" htmlFor="new-password-confirm">Confirm Password</label>
                 </div>
                 <div className="profile-section-controls">
