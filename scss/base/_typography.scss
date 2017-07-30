@@ -9,6 +9,10 @@ a {
   text-decoration: none;
 }
 
+p {
+  line-height: 1.5;
+}
+
 p, li, a, label, input, span {
   font-weight: 300;
   font-family: $brand-font, 'Arial', sans-serif;
