@@ -12,6 +12,22 @@
   position: relative;
 }
 
+.login-logo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  align-items: center;
+  .tally-logo {
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+  }
+  .tally-title {
+    font-size: 28px;
+    font-weight: 600;
+  }
+}
+
 .section-arrow {
   &:after {
    content:'';

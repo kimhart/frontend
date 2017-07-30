@@ -16,7 +16,7 @@ class Beliefs extends React.Component {
         isLoading(false);
       }
     });
-    isLoading(true);
+    isLoading(true);hea
   }
 
   swapBeliefNames(type) {
