@@ -45,7 +45,7 @@ class ReportCard extends React.Component {
     if (contact || bio) return null;
     return (
       <div className="card-toggle-wrap">
-        <p className={`card-toggle-stats${tab == 'stats' ? ' active' : ''}`} onClick={() => this.setState({ tab: 'stats' })}>Job Scores</p>
+        <p className={`card-toggle-stats${tab == 'stats' ? ' active' : ''}`} onClick={() => this.setState({ tab: 'stats' })}>Stats</p>
         <p className={`card-toggle-stats${tab == 'beliefs' ? ' active' : ''}`} onClick={() => this.setState({ tab: 'beliefs' })}>Beliefs</p>
       </div>
     );
@@ -81,11 +81,10 @@ class ReportCard extends React.Component {
       stats: (
         <div className="rep-card-metrics-wrap">
           <div className="rep-card-section-divider">
-            <h4 className="rep-card-section-title">Participation</h4>
+            <h4 className="rep-card-section-title">Participation Scores</h4>
               { this.state.showExplainer &&
               <div className="rep-card-explainer">
                 <span className="close" onClick={() => this.toggleExplainer()}>x</span>
-                <p className="rep-card-explainer-headline">Job Score Breakdown</p>
                 <p className="rep-card-explainer-copy-header">Attendance</p>
                 <p className="rep-card-explainer-copy">Days of work {lastName} has attended vs. the total work days in this term.</p>
                 <p className="rep-card-explainer-copy-header">Votes</p>
@@ -99,7 +98,7 @@ class ReportCard extends React.Component {
               }
               { !this.state.showExplainer &&
               <div>
-                <p className="rep-card-section-subtitle">Learn more about job scores <span className="show-explainer" onClick={() => this.toggleExplainer()}>here</span>.</p>
+                <p className="rep-card-section-subtitle">These scores contribute to your rep's letter grade. Learn more <span className="show-explainer" onClick={() => this.toggleExplainer()}>here</span>.</p>
                 <div className="rep-card-donut-charts">
                   <Attendance {...this.props} />
                   <Participation {...this.props} />
@@ -109,8 +108,8 @@ class ReportCard extends React.Component {
               </div>
               }
             </div>
-          <h4 className="rep-card-section-title">Bill Topics</h4>
-          <p className="rep-card-section-subtitle bills">{lastName}'s sponsored bills and their categories:</p>
+          <h4 className="rep-card-section-title">Topics of Interest</h4>
+          <p className="rep-card-section-subtitle bills">{lastName} has sponsored bills under these categories:</p>
           <PolicyAreas {...this.props} />
         </div>
       ),
