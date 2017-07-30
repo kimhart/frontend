@@ -44,7 +44,7 @@ class DashboardPage extends React.Component {
     return reps
     ? reps.map(rep => {
       return (
-        <div className={`rep-card-wrap`}>
+        <div key={`reportcard_${rep.bioguide_id}_wrap`} className={`rep-card-wrap`}>
           <ReportCard key={`reportcard_${rep.bioguide_id}`} {...this.props} {...rep} />
         </div>
       );
@@ -66,12 +66,13 @@ class DashboardPage extends React.Component {
     return (
       <div className="main-dash">
         <div className="blue-header">
-          <h3 className="headline">Your Representatives</h3>
+          <h3 className="headline">{user.first_name}'s Representatives</h3>
           <p className="your-district">
             <svg className="state-icon">
               <use xlinkHref={ `#icon-${user.state_long.replace(/\s/g, '-')}` }/>
             </svg>
-            <span className="state">{user.state_long}</span> Congressional District {this.getDistrict(user)}
+            <br/>
+            <span className="state">{user.state_long}</span>District {this.getDistrict(user)}
           </p>
         </div>
         <span className="tap-a-rep">Click on a rep to learn more.</span>

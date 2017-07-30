@@ -19,6 +19,14 @@ class Beliefs extends React.Component {
     isLoading(true);
   }
 
+  swapBeliefNames(type) {
+    if (type === 'lgbt rights') { type = "LGBTQ+ Rights" }
+    if (type === 'obamacare') { type = "Obamacare (ACA)" }
+    if (type === 'abortion') { type = "Women's Reproductive Health" }
+    if (type === 'women and minority rights') { type = "Minority Rights" }
+    return type;
+  }
+
   renderBeliefs({ beliefs, level }) {
     let isClickable = level === "overall";
     return [beliefs.filter(belief => belief.type === level).map(belief => {
@@ -58,7 +66,7 @@ class Beliefs extends React.Component {
             : () => null
           }
         >
-          <div className="rep-belief-item-type">{type}</div>
+          <div className="rep-belief-item-type">{this.swapBeliefNames(type)}</div>
           <BeliefRange {...this.props} {...belief} />
         </div>
       )

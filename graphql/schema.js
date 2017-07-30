@@ -19,7 +19,7 @@ import {
 } from 'graphql-relay';
 
 import rp from 'request-promise';
-import { getUserSchema, Signup, Login } from './user';
+import { getUserSchema, Signup, Login, ChangePassword, ChangeAddress } from './user';
 
 import {
   rankAttendanceSchema,
@@ -100,7 +100,9 @@ let schema = (db) => {
       name: "Mutation",
       fields: () => ({
         Login,
-        Signup
+        Signup,
+        ChangeAddress,
+        ChangePassword
       })
     })
   });

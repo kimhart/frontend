@@ -42,7 +42,9 @@ let userType = new GraphQLObjectType({
 
 let userInputFields = {
   clientMutationId: { type: GraphQLString, resolve: ({ clientMutationId }) => clientMutationId },
+  user_id: { type: GraphQLString, resolve: ({ user_id }) => user_id },
   email: { type: GraphQLString, resolve: ({ email }) => email },
+  party: { type: GraphQLString, resolve: ({ party }) => party },
   password: { type: GraphQLString, resolve: ({ password }) => password  },
   first_name: { type: GraphQLString, resolve: ({ first_name }) => first_name  },
   last_name: { type: GraphQLString, resolve: ({ last_name }) => last_name  },
@@ -106,6 +108,80 @@ export let Signup = mutationWithClientMutationId({
         let { results, user_id } = user;
         if (!!user_id) {
           resolve({ user_id });
+        } else {
+          let errors = {
+            'Bad address': `We couldn't the address you entered. Please try again.`,
+            'That user name already exists.': 'That email already exists.'
+          }
+          resolve({ error: errors[results] || `There was an error in what you've entered. Please verify your information is correct.` });
+        }
+      });
+    });
+  },
+});
+
+export let ChangePassword = mutationWithClientMutationId({
+  name: 'ChangePassword',
+  inputFields: { ...userInputFields },
+  outputFields: {
+    user: {
+      type: userType,
+      resolve: user => user,
+    }
+  },
+  mutateAndGetPayload: ({ user_id, password }) => {
+    return new Promise((resolve, reject) => {
+      rp({
+        method: 'POST',
+        uri: `${config.backend.uri}/change_creds`,
+        body: { user_id, password, param: 'password' },
+        json: true
+      })
+      .catch(error => {
+        reject(error)
+      })
+      .then(user => {
+        console.log({ password: user });
+        let { results, user_id } = user;
+        if (!!user_id) {
+          resolve(user);
+        } else {
+          let errors = {
+            'Bad address': `We couldn't the address you entered. Please try again.`,
+            'That user name already exists.': 'That email already exists.'
+          }
+          resolve({ error: errors[results] || `There was an error in what you've entered. Please verify your information is correct.` });
+        }
+      });
+    });
+  },
+});
+
+export let ChangeAddress = mutationWithClientMutationId({
+  name: 'ChangeAddress',
+  inputFields: { ...userInputFields },
+  outputFields: {
+    user: {
+      type: userType,
+      resolve: user => user,
+    }
+  },
+  mutateAndGetPayload: ({ user_id, street, zip_code }) => {
+    return new Promise((resolve, reject) => {
+      rp({
+        method: 'POST',
+        uri: `${config.backend.uri}/change_creds`,
+        body: { user_id, street, zip_code, param: 'address' },
+        json: true
+      })
+      .catch(error => {
+        reject(error)
+      })
+      .then(user => {
+        console.log({ address: user });
+        let { results, user_id } = user;
+        if (!!user_id) {
+          resolve(user);
         } else {
           let errors = {
             'Bad address': `We couldn't the address you entered. Please try again.`,

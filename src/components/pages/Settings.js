@@ -3,6 +3,9 @@ import Relay from 'react-relay';
 import { Link } from 'react-router';
 import { IconSettings } from '../icons/Icons';
 import { UserUtils } from '../../utils/Utils';
+import ChangeAddressMutation from '../mutations/ChangeAddressMutation';
+import ChangePasswordMutation from '../mutations/ChangePasswordMutation';
+import { isLoading } from '../../utils/Utils';
 
 class Settings extends React.Component {
 
@@ -10,7 +13,9 @@ class Settings extends React.Component {
     super(props);
     this.state =  {
       editingAddress: false,
-      changingPassword: false
+      changingPassword: false,
+      address_error: null,
+      password_error: null
     }
     props.relay.setVariables({ user_id: UserUtils.getUserId() || null });
   }
@@ -18,7 +23,8 @@ class Settings extends React.Component {
   editAddress = () => {
     let { editingAddress } = this.state;
     this.setState({
-      editingAddress: !editingAddress
+      editingAddress: !editingAddress,
+      address_error: null
     })
     // on save, revert back to 'not editing'
   }
@@ -42,8 +48,67 @@ class Settings extends React.Component {
     ] : null;
   }
 
+  updateAddress = () => {
+    let {
+      new_zip_code: { value: zip_code },
+      new_street: { value: street },
+      props: {
+        data: { user }
+      }
+    } = this;
+    isLoading(true);
+    this.props.relay.commitUpdate(new ChangeAddressMutation({ user: user, user_id: user.user_id, street, zip_code }), {
+      onFailure: (error) => {
+        isLoading(false);
+        console.error({ file: 'ChangeAddressMutation', error });
+      },
+      onSuccess: ({ ChangeAddress: { user } }) => {
+        console.log({ user });
+        if (user.error) {
+          isLoading(false);
+          this.setState({ address_error: user.error });
+        }
+        else {
+          this.props.relay.forceFetch({ user_id: UserUtils.getUserId() || null }, ({ done, error, aborted }) => {
+            if (done || error || aborted) {
+              isLoading(false);
+            }
+          });
+          this.setState({ editingAddress: false, address_error: null });
+        }
+      }
+    })
+  }
+
+  updatePassword = () => {
+    let {
+      new_password: { value: password },
+      confirm_new_password: { value: confirm_new_password },
+      old_password: { value: old_password },
+      props: {
+        data: { user }
+      }
+    } = this;
+    console.log({ password, confirm_new_password, old_password });
+    this.props.relay.commitUpdate(new ChangePasswordMutation({ user: user, user_id: user.user_id, password }), {
+      onFailure: (error) => {
+        console.error({ file: 'ChangePasswordMutation', error });
+      },
+      onSuccess: ({ ChangePassword: { user } }) => {
+        console.log({ user });
+        if (user.error) {
+          this.setState({ error: user.error });
+        }
+        else {
+          this.props.relay.forceFetch({ user_id: UserUtils.getUserId() || null });
+          this.setState({ editingPassword: false });
+        }
+      }
+    })
+  }
+
   render() {
-    let { editingAddress, changingPassword } = this.state;
+    let { editingAddress, changingPassword, address_error, password_error } = this.state;
     let { user } = this.props.data;
     return (
       <div className="profile-wrap">
@@ -60,57 +125,62 @@ class Settings extends React.Component {
           <div className="profile-section">
             <h3 className="profile-label">{ editingAddress ? 'Edit Address' : 'Address' }</h3>
             { editingAddress &&
-            <div className="profile-section-content">
-              <div className="profile-input-wrap input-label-wrap">
-                <input id="new-street-input" className="profile-input input--outline"/>
-                <label className="label-input-placeholder" htmlFor="new-street-input">New Street Address</label>
+              <div className="profile-section-content">
+                { address_error &&
+                  <div className="profile-address-error">
+                    { address_error }
+                  </div>
+                }
+                <div className="profile-input-wrap input-label-wrap">
+                  <input ref={c => this.new_street = c} id="new-street-input" className="profile-input input--outline"/>
+                  <label className="label-input-placeholder" htmlFor="new-street-input">New Street Address</label>
+                </div>
+                <div className="profile-input-wrap input-label-wrap">
+                  <input ref={c => this.new_zip_code = c} id="new-zip-input" className="profile-input input--outline"/>
+                  <label className="label-input-placeholder" htmlFor="new-zip-input">New ZIP Code</label>
+                </div>
+                <div className="profile-section-controls">
+                  <button className="button--large button--outline button--gray" onClick={() => this.editAddress()}>Cancel</button>
+                  <button className="button--large" onClick={() => this.updateAddress()}>Save</button>
+                </div>
               </div>
-              <div className="profile-input-wrap input-label-wrap">
-                <input id="new-zip-input" className="profile-input input--outline"/>
-                <label className="label-input-placeholder" htmlFor="new-zip-input">New ZIP Code</label>
-              </div>
-              <div className="profile-section-controls">
-                <button className="button--large button--outline button--gray" onClick={() => this.editAddress()}>Cancel</button>
-                <button className="button--large" onClick={() => console.log('save address to DB')}>Save</button>
-              </div>
-            </div>
             }
             { !editingAddress &&
-            <div className="profile-section-content">
-              <div className="profile-current-value">
-                { this.getAddress(user) }
+              <div className="profile-section-content">
+                <div className="profile-current-value">
+                  { this.getAddress(user) }
+                </div>
+                <button className="profile-info-update-button button--medium button--outline button--gray" onClick={() => this.editAddress()}>Update Address</button>
               </div>
-              <button className="profile-info-update-button button--medium button--outline button--gray" onClick={() => this.editAddress()}>Update Address</button>
-            </div>
             }
           </div>
           <div className="profile-section">
             <h3 className="profile-label">{ changingPassword ? 'Change Your Password' : 'Password' }</h3>
             { changingPassword &&
-            <div className="profile-section-content">
-              <div className="profile-input-wrap input-label-wrap">
-                <input id="old-password-input" className="profile-input input--outline"/>
-                <label className="label-input-placeholder" htmlFor="old-password-input">Old Password</label>
+              <div className="profile-section-content">
+                <div className="profile-input-wrap input-label-wrap">
+                  <input ref={c => this.old_password = c} id="old-password-input" className="profile-input input--outline"/>
+                  <label className="label-input-placeholder" htmlFor="old-password-input">Old Password</label>
+                </div>
+                <div className="profile-input-wrap input-label-wrap">
+                  <input ref={c => this.new_password = c} id="new-password-input" className="profile-input input--outline"/>
+                  <label className="label-input-placeholder" htmlFor="new-password-input">New Password</label>
+                </div>
+                <div className="profile-input-wrap input-label-wrap">
+                  <input ref={c => this.confirm_new_password = c} id="new-password-confirm" className="profile-input input--outline"/>
+                  <label className="label-input-placeholder" htmlFor="new-password-confirm">Confirm Password</label>
+                </div>
+                <div className="profile-section-controls">
+                  <button className="button--large button--outline button--gray" onClick={() => this.changePassword()}>Cancel</button>
+                  <button className="button--large" onClick={() => this.updatePassword()}>Save</button>
+                </div>
               </div>
-              <div className="profile-input-wrap input-label-wrap">
-                <input id="new-password-input" className="profile-input input--outline"/>
-                <label className="label-input-placeholder" htmlFor="new-password-input">New Password</label>
-              </div>
-              <div className="profile-input-wrap input-label-wrap">
-                <input id="new-password-confirm" className="profile-input input--outline"/>
-                <label className="label-input-placeholder" htmlFor="new-password-confirm">Confirm Password</label>
-              </div>
-              <div className="profile-section-controls">
-                <button className="button--large button--outline button--gray" onClick={() => this.changePassword()}>Cancel</button>
-                <button className="button--large" onClick={() => console.log('save PW to DB')}>Save</button>
-              </div>
-            </div>
             }
             { !changingPassword &&
-            <div className="profile-section-content">
-              <span className="profile-current-value pw">********************</span>
-              <button className="profile-info-update-button button--medium button--outline button--gray" onClick={() => this.changePassword()}>Change Password</button>
-            </div>
+              <div className="profile-section-content">
+                <span className="profile-current-value pw">********************</span>
+                <button className="profile-info-update-button button--medium button--outline button--gray" onClick={() => this.changePassword()}>Change Password</button>
+              </div>
             }
           </div>
         </div>
@@ -131,6 +201,8 @@ export default Relay.createContainer(Settings, {
       fragment on Data {
         id
         user(user_id: $user_id) {
+          ${ChangeAddressMutation.getFragment('user')}
+          ${ChangePasswordMutation.getFragment('user')}
           city
           district
           first_name
