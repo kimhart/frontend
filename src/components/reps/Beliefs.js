@@ -97,7 +97,7 @@ class Beliefs extends React.Component {
     }
     return (
       <div>
-        <p className="rep-card-section-subtitle">Click on a section to explore more.</p>
+        <p className="rep-card-section-subtitle">Predicted ideologies based on voting history.<br/>Click on a section to get specific:</p>
         <div>{ this.renderBeliefs({ beliefs, level }) }</div>
       </div>
     );
