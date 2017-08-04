@@ -26,6 +26,10 @@ let RootQuery = {
   `
 };
 
+if (process.env.NODE_ENV !== "production") {
+  window["_fs_ready"] = function() { FS.disableConsole(); }
+}
+
 class App extends React.Component {
 
   render() {
