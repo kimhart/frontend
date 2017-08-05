@@ -104,7 +104,7 @@ class ReportCard extends React.Component {
                 <p className="explainer-title">Committees</p>
                 <p className="explainer-copy">Number of congressional committees {lastName} has joined, compared to the highest number of committees joined by a single rep.</p>
               </div>
-              <button className="close-explainer button--medium button--white" onClick={() => this.toggleExplainer()}>Got it</button>
+              <button className="close-explainer button--medium button--white" onClick={() => this.toggleExplainer()}><span className="button-contents">Got it</span></button>
             </div>
             }
             { !this.state.showExplainer &&
