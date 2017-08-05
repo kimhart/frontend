@@ -331,12 +331,13 @@
 
 .rep-belief-slider-wrap {
   position: relative;
-  background: transparentize($blue, .75);
+  background: transparentize($blue, .785);
   border-radius: 10px;
   width: 100%;
   height: 10px;
   margin: 0;
   padding: 0;
+
   .dots {
     width: 100%;
     position: absolute;
@@ -346,6 +347,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     .dot {
       background-color: transparentize($blue, .45);
       width: 8px;
@@ -378,14 +380,17 @@
   align-items: flex-end;
   height: 40px;
   font-size: 12px;
+
   .moderate {
     margin-left: 30px;
     font-weight: 400;
   }
+
   .liberal {
     color: lighten($blue, 5%);
     font-weight: 400;
   }
+  
   .conservative {
     color: lighten($soft-red, 5%);
     font-weight: 400;
@@ -412,7 +417,7 @@
 .rep-belief-item {
   width: 100%;
   padding: 20px 15px 50px 15px;
-  border-bottom: 1px solid transparentize($blue, .9);
+
   position: relative;
 
   &:first-child {
@@ -423,12 +428,16 @@
   &.clickable:hover {
     background-color: transparentize($blue, .95);
   }
+
+  &:not(:last-child) {
+    border-bottom: 1px solid transparentize($blue, .9);
+  }
 }
 
 
 .policy-area {
   font-size: 14px;
-  
+
   &:not(:last-child) {
     margin-bottom: 15px;
   }
