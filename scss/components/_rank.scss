@@ -53,7 +53,6 @@
     flex-direction: column;
     align-self: center;
     background-color: white;
-    box-sizing: border-box;
     border-radius: 5px;
     -webkit-animation: slide-down .3s ease-out;
     -moz-animation: slide-down .3s ease-out;
@@ -148,33 +147,28 @@
     justify-content: center;
     align-items: center;
     background-color: transparentize(white, .10);
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     overflow: hidden;
     position: fixed;
     top: 0;
-    right: 0;
+    left: 0;
     margin: 0;
-    padding: 0;
+    padding: 15px;
     z-index: $z-modal-overlay;
   }
 }
 
 .rank-explainer-modal {
   display: block;
-  position: absolute;
   z-index: $z-modal;
   padding: 30px;
   background-color: $blue;
   border-radius: 5px;
   width: 90%;
+  max-width: 420px;
   margin: 0 auto;
-
-  @media screen and (min-width: 700px) {
-    margin: 0 auto;
-    width: 70%;
-    max-width: 700px;
-  }
+  position: relative;
 }
 
 .explainer-title {
@@ -198,7 +192,6 @@
   text-align: center;
   width: 100%;
   padding: 10px 20px;
-  box-sizing: border-box;
 }
 
 .rank-list-ranked-direction-toggle {
@@ -329,7 +322,6 @@
   border-radius: 5px;
   padding: 8px;
   font-size: 14px;
-  box-sizing: border-box;
   font-size: 16px;
   position: relative;
 }
@@ -355,14 +347,20 @@
   justify-content: center;
   align-content: center;
   align-items: center;
-  .sort-arrow {
-    height: 1em;
-    width: 10px;
-    margin-left: 10px;
-    margin-bottom: 5px;
-  }
+
   @include min-width($tablet) {
     margin: 0 20px;
+  }
+
+  .icon-triangle-down {
+    margin-left: 10px;
+    transition: transform .3s $ease-out-quad;
+  }
+
+  &.sort-up {
+    .icon-triangle-down {
+      transform: rotate(180deg);
+    }
   }
 }
 

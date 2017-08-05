@@ -154,7 +154,7 @@ class ReportCard extends React.Component {
             { leadership_position !== "None" && <span className="rep-card-leadership">{ leadership_position }</span> }
           </div>
           <div className="rep-card-buttons-wrap">
-            <button className={`bio-btn button--medium button--outline button--blue ${bio ? ' active' : ''}`} onClick={() => this.setState({ bio: !bio, contact: false })}>Bio</button>
+            <button className={`bio-btn button--medium button--outline button--blue ${bio ? ' active' : ''}`} onClick={() => this.setState({ bio: !bio, contact: false })}><span className="button-contents">Bio</span></button>
             <div className="contact-icons">
               <a target="_blank" href={`tel:${phone}`}>
                 <div className="contact-icon-circle"><IconPhone /></div>

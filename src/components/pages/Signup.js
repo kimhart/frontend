@@ -83,22 +83,45 @@ class Signup extends React.Component {
             <Link to="/"><TallyLogo /></Link>
           </div>
           <div className="signup-page">
+            <h2 className="page-title">Sign Up</h2>
             <form className="signup-form" onChange={this.handleDemographics} onSubmit={ !error ? this.handleSubmit : null }>
-              <h2 className="page-title">Sign Up</h2>
-              <input id="email" type="email" placeholder="Email" ref="emailInput" required  />
-              <input id="password" type="password" placeholder="Password" ref="passwordInput" required />
-              <input id="password-match" type="password" placeholder="Confirm Password" ref="passwordConfirm" required />
-              <input id="first-name" type="text" placeholder="First Name" ref="firstNameInput" required />
-              <input id="last-name" type="text" placeholder="Last Name" ref="lastNameInput" required />
-              <select id="party" ref="partyInput" required>
-                <option>Democrat</option>
-                <option>Republican</option>
-                <option>Independent</option>
-                <option>Libertarian</option>
-                <option>Other</option>
-              </select>
-              <input id="address" type="text" placeholder="Street Address" ref="streetInput" required />
-              <input id="zip" type="text" placeholder="ZIP code" ref="zipcodeInput" required />
+              <div className="profile-input-wrap input-label-wrap">
+                <input id="email" className="signup-email-input input--outline no-placeholder" type="email" placeholder="Email" ref="emailInput" required />
+                <label className="label-input-placeholder" htmlFor="email">Email</label>
+              </div>
+              <div className="profile-input-wrap input-label-wrap">
+                <input id="password" className="signup-password-input input--outline no-placeholder" type="password" placeholder="Password" ref="passwordInput" required />
+                <label className="label-input-placeholder" htmlFor="password">Password</label>
+              </div>
+              <div className="profile-input-wrap input-label-wrap">
+                <input id="password-match" className="signup-password-confirm-input input--outline no-placeholder" type="password" placeholder="Confirm Password" ref="passwordConfirm" required />
+                <label className="label-input-placeholder" htmlFor="password-match">Confirm Password</label>
+              </div>
+              <div className="profile-input-wrap input-label-wrap">
+                <input id="first-name" className="signup-firstname-input input--outline no-placeholder" type="text" placeholder="First Name" ref="firstNameInput" required />
+                <label className="label-input-placeholder" htmlFor="first-name">First Name</label>
+              </div>
+              <div className="profile-input-wrap input-label-wrap">
+                <input id="last-name" className="signup-lastname-input input--outline no-placeholder" type="text" placeholder="Last Name" ref="lastNameInput" required />
+                <label className="label-input-placeholder" htmlFor="last-name">Last Name</label>
+              </div>
+              <div className="profile-input-wrap input-label-wrap">
+                <select id="party" className="signup-party-input input--outline no-placeholder" ref="partyInput" required>
+                  <option>Democrat</option>
+                  <option>Republican</option>
+                  <option>Independent</option>
+                  <option>Libertarian</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div className="profile-input-wrap input-label-wrap">
+                <input id="address" className="signup-address-input input--outline no-placeholder" type="text" placeholder="Street Address" ref="streetInput" required />
+                <label className="label-input-placeholder" htmlFor="address">Street Address</label>
+              </div>
+              <div className="profile-input-wrap input-label-wrap">
+                <input id="zip" className="signup-zip-input input--outline no-placeholder" type="text" placeholder="ZIP Code" ref="zipcodeInput" required />
+                <label className="label-input-placeholder" htmlFor="zip">ZIP Code</label>
+              </div>
               <span className="signup-error-msg">{error ? error : null}</span>
               <button onClick={this.validatePassword} className="signup-btn" type="submit">Go!</button>
             </form>

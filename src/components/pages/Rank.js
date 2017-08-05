@@ -184,10 +184,11 @@ class Rank extends Component {
               <IconSearch width="20px" fill="#3A7ADB" />
             </div>
           </div>
-          <button className="rank-sort-btn" onClick={() => this.setState({bestToWorst: !bestToWorst})}>Sort
-            <div className="sort-arrow">
-              <IconTriangleDown fill="#3A7ADB" transform={bestToWorst ? null : 'rotate(180)'} />
-            </div>
+          <button className={`rank-sort-btn ${bestToWorst ? 'sort-down' : 'sort-up'}`} onClick={() => this.setState({bestToWorst: !bestToWorst})}>
+            <span className="button-contents">
+              Sort
+              <IconTriangleDown fill="#3A7ADB" />
+            </span>
           </button>
           <span className="control-button question-mark-circle" onClick={() => this.getExplainerModal()}>?</span>
         </div>

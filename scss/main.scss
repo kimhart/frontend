@@ -9,6 +9,7 @@ $breakpoints: (
   'large': 1300px
 );
 
+@import '../node_modules/bourbon/app/assets/stylesheets/bourbon';
 @import '../node_modules/include-media/dist/_include-media.scss';
 
 

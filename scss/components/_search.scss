@@ -47,7 +47,6 @@
 .search-input-text {
   color: white;
   border: 0;
-  box-sizing: border-box;
   width: 100%;
   font-size: 20px;
   font-weight: 400;
@@ -103,7 +102,7 @@
   width: 100%;
   border-radius: 6px;
   @include card-shadow;
-  
+
   @media screen and (min-width: 700px) {
     max-width: 600px;
     margin: 0 auto;

@@ -147,11 +147,11 @@ class Settings extends React.Component {
                   </div>
                 }
                 <div className="profile-input-wrap input-label-wrap">
-                  <input ref={c => this.new_street = c} id="new-street-input" className="profile-input input--outline"/>
+                  <input ref={c => this.new_street = c} id="new-street-input" className="profile-input input--outline no-placeholder" placeholder="New Street Address"/>
                   <label className="label-input-placeholder" htmlFor="new-street-input">New Street Address</label>
                 </div>
                 <div className="profile-input-wrap input-label-wrap">
-                  <input ref={c => this.new_zip_code = c} id="new-zip-input" className="profile-input input--outline"/>
+                  <input ref={c => this.new_zip_code = c} id="new-zip-input" className="profile-input input--outline no-placeholder" placeholder="New Zip Code"/>
                   <label className="label-input-placeholder" htmlFor="new-zip-input">New ZIP Code</label>
                 </div>
                 <div className="profile-section-controls">
@@ -179,15 +179,15 @@ class Settings extends React.Component {
                   </div>
                 }
                 <div className="profile-input-wrap input-label-wrap">
-                  <input ref={c => this.old_password = c} type="password" id="old-password-input" className="profile-input input--outline"/>
+                  <input ref={c => this.old_password = c} type="password" id="old-password-input" className="profile-input input--outline no-placeholder"placeholder="Old Password"/>
                   <label className="label-input-placeholder" htmlFor="old-password-input">Old Password</label>
                 </div>
                 <div className="profile-input-wrap input-label-wrap">
-                  <input ref={c => this.new_password = c} type="password" id="new-password-input" className="profile-input input--outline"/>
+                  <input ref={c => this.new_password = c} type="password" id="new-password-input" className="profile-input input--outline no-placeholder"placeholder="New Password"/>
                   <label className="label-input-placeholder" htmlFor="new-password-input">New Password</label>
                 </div>
                 <div className="profile-input-wrap input-label-wrap">
-                  <input ref={c => this.confirm_new_password = c} type="password" id="new-password-confirm" className="profile-input input--outline"/>
+                  <input ref={c => this.confirm_new_password = c} type="password" id="new-password-confirm" className="profile-input input--outline no-placeholder"placeholder="Confirm Password"/>
                   <label className="label-input-placeholder" htmlFor="new-password-confirm">Confirm Password</label>
                 </div>
                 <div className="profile-section-controls">

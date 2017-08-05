@@ -1,5 +1,5 @@
 html, body {
-  font-family: $brand-font, 'Arial', sans-serif;
+  font-family: $brand-font;
   color: $text-gray;
   font-size: $standard-paragraph;
   line-height: 1.2;
@@ -15,7 +15,7 @@ p {
 
 p, li, a, label, input, span {
   font-weight: 300;
-  font-family: $brand-font, 'Arial', sans-serif;
+  font-family: $brand-font;
 }
 
 h1, h2, h3, h4 {

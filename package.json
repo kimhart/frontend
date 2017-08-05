@@ -54,6 +54,7 @@
     "webpack": "^1.13.3"
   },
   "devDependencies": {
+    "bourbon": "^4.3.4",
     "css-loader": "^0.25.0",
     "eslint": "^3.11.1",
     "eslint-plugin-react": "^6.7.1",
