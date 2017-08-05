@@ -6,6 +6,15 @@
   border-radius: $br-medium;
   background-color: $blue;
   color: white;
+  text-align: center;
+}
+
+.button-contents {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .button--small {
