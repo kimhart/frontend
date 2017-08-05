@@ -43,47 +43,46 @@ input:focus {
 }
 
 .login-form, .signup-form {
-   input, select {
+  input, select {
     border: 1px solid $light-gray;
     border-radius: 3px;
     padding: 10px;
     margin: 5px 0;
     font-size: 18px;
-    box-sizing: border-box;
+  }
+
+  label, input, select {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    text-align: left;
+    color: $text-gray;
+    background-color: #FFF;
+    font-size: $standard-paragraph;
+    font-weight: 300;
+  }
+
+  label {
+    color: $text-gray;
+    margin: 20px 0 10px 0;
+  }
+
+  .dob-container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+
+    .dob-day, .dob-month, .dob-year {
+      width: 60% / 3;
     }
 
-    label, input, select {
-      display: block;
-      width: 100%;
-      margin: 10px 0;
-      text-align: left;
-      color: $text-gray;
-      background-color: #FFF;
-      font-size: $standard-paragraph;
-      font-weight: 300;
+    .dob-month {
+      margin-right: 10px;
     }
 
-    label {
-      color: $text-gray;
-      margin: 20px 0 10px 0;
+    .dob-year {
+      margin-left: 10px;
     }
-
-    .dob-container {
-      width: 100%;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-
-      .dob-day, .dob-month, .dob-year {
-        width: 60% / 3;
-      }
-
-      .dob-month {
-        margin-right: 10px;
-      }
-
-      .dob-year {
-        margin-left: 10px;
-      }
-    }
+  }
 }

@@ -53,7 +53,6 @@
     flex-direction: column;
     align-self: center;
     background-color: white;
-    box-sizing: border-box;
     border-radius: 5px;
     -webkit-animation: slide-down .3s ease-out;
     -moz-animation: slide-down .3s ease-out;
@@ -198,7 +197,6 @@
   text-align: center;
   width: 100%;
   padding: 10px 20px;
-  box-sizing: border-box;
 }
 
 .rank-list-ranked-direction-toggle {
@@ -329,7 +327,6 @@
   border-radius: 5px;
   padding: 8px;
   font-size: 14px;
-  box-sizing: border-box;
   font-size: 16px;
   position: relative;
 }

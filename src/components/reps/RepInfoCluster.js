@@ -31,7 +31,7 @@ class RepInfoCluster extends React.Component {
         <div className="rep-info-cluster">
           <div className="rep-info-headshot" style={{ background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover` }}></div>
           <div className="rep-info-details">
-            <p className="rep-info-name">{fullName}</p>
+            <h3 className="rep-info-name">{fullName}</h3>
             <p className="rep-info-role">{chamber.replace(/\b\w/g, l => l.toUpperCase())} {this.formatParty(party)}</p>
           </div>
           <div className="rep-letter-grade-wrap">
