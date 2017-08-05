@@ -56,8 +56,14 @@ class Login extends React.Component {
           </div>
           <section className="home-section home-login">
             <div id="login-form" className="login-form">
-              <input type="email" placeholder="Email" required ref={(c) => this._email = c} />
-              <input type="password" placeholder="Password" required ref={(c) => this._password = c} />
+              <div className="profile-input-wrap input-label-wrap">
+                <input type="email" className="login-email-input input--outline no-placeholder" placeholder="Email" required ref={(c) => this._email = c} />
+                <label className="label-input-placeholder" htmlFor="email">Email</label>
+              </div>
+              <div className="profile-input-wrap input-label-wrap">
+                <input type="password" className="login-password-input input--outline no-placeholder" placeholder="Password" required ref={(c) => this._password = c} />
+                <label className="label-input-placeholder" htmlFor="password">Password</label>
+              </div>
               <button className="login-btn" type="button" onClick={this._handleSubmit}>Login</button>
             </div>
             { error && <p className="error">{ error }</p> }
