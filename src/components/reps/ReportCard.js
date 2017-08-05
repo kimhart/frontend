@@ -82,35 +82,37 @@ class ReportCard extends React.Component {
         <div className="rep-card-metrics-wrap">
           <div className="rep-card-section-divider">
             <h4 className="rep-card-section-title">Participation Scores</h4>
-              { this.state.showExplainer &&
-              <div className="rep-card-explainer">
-                <span className="close" onClick={() => this.toggleExplainer()}>x</span>
-                <p className="rep-card-explainer-copy-header">Attendance</p>
-                <p className="rep-card-explainer-copy">Days of work {lastName} has attended vs. the total work days in this term.</p>
-                <p className="rep-card-explainer-copy-header">Votes</p>
-                <p className="rep-card-explainer-copy">Number of votes {lastName} has cast vs. the total votes held this term.</p>
-                <p className="rep-card-explainer-copy-header">Bills</p>
-                <p className="rep-card-explainer-copy">Number of bills {lastName} has sponsored vs. the <em>most</em> bills sponsored by a single rep this term.</p>
-                <p className="rep-card-explainer-copy-header">Committees</p>
-                <p className="rep-card-explainer-copy">Number of congressional committees {lastName} has joined, compared to the highest number of committees joined by a single rep.</p>
-                <p className="close-explainer" onClick={() => this.toggleExplainer()}>Got it</p>
-              </div>
-              }
-              { !this.state.showExplainer &&
-              <div>
-                <p className="rep-card-section-subtitle">These scores contribute to your rep's letter grade. Learn more <span className="show-explainer" onClick={() => this.toggleExplainer()}>here</span>.</p>
-                <div className="rep-card-donut-charts">
-                  <Attendance {...this.props} />
-                  <Participation {...this.props} />
-                  <Efficacy {...this.props} />
-                  <MembershipStats {...this.props} />
-                </div>
-              </div>
-              }
+            { this.state.showExplainer &&
+            <div className="rep-card-explainer">
+              <span className="close" onClick={() => this.toggleExplainer()}>x</span>
+              <p className="rep-card-explainer-copy-header">Attendance</p>
+              <p className="rep-card-explainer-copy">Days of work {lastName} has attended vs. the total work days in this term.</p>
+              <p className="rep-card-explainer-copy-header">Votes</p>
+              <p className="rep-card-explainer-copy">Number of votes {lastName} has cast vs. the total votes held this term.</p>
+              <p className="rep-card-explainer-copy-header">Bills</p>
+              <p className="rep-card-explainer-copy">Number of bills {lastName} has sponsored vs. the <em>most</em> bills sponsored by a single rep this term.</p>
+              <p className="rep-card-explainer-copy-header">Committees</p>
+              <p className="rep-card-explainer-copy">Number of congressional committees {lastName} has joined, compared to the highest number of committees joined by a single rep.</p>
+              <p className="close-explainer" onClick={() => this.toggleExplainer()}>Got it</p>
             </div>
-          <h4 className="rep-card-section-title">Topics of Interest</h4>
-          <p className="rep-card-section-subtitle bills">{lastName} has sponsored bills under these categories:</p>
-          <PolicyAreas {...this.props} />
+            }
+            { !this.state.showExplainer &&
+            <div>
+              <p className="rep-card-section-subtitle">These scores contribute to your rep's letter grade. Learn more <span className="show-explainer" onClick={() => this.toggleExplainer()}>here</span>.</p>
+              <div className="rep-card-donut-charts">
+                <Attendance {...this.props} />
+                <Participation {...this.props} />
+                <Efficacy {...this.props} />
+                <MembershipStats {...this.props} />
+              </div>
+            </div>
+            }
+          </div>
+          <div className="rep-card-section-divider">
+            <h4 className="rep-card-section-title">Topics of Interest</h4>
+            <p className="rep-card-section-subtitle bills">{lastName} has sponsored bills under these categories:</p>
+            <PolicyAreas {...this.props} />
+          </div>
         </div>
       ),
       beliefs: (

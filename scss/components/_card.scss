@@ -40,7 +40,6 @@
 }
 
 .rep-card-content {
-  padding-bottom: 30px;
   width: 100%;
 }
 
@@ -113,7 +112,6 @@
 }
 
 .rep-card-metrics-wrap {
-  padding: 0 0 20px 0;
   border-top: 1px solid transparentize($blue, .7)
 }
 
@@ -395,14 +393,18 @@
 }
 
 .rep-card-section-divider {
-  border-bottom: 1px solid transparentize($blue, .7);
   padding-bottom: 20px;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid transparentize($blue, .7);
+  }
 }
 
 .rep-belief-item-type {
   text-transform: capitalize;
   font-size: 18px;
-  margin: 15px auto 30px auto;
+  margin: 0 auto;
+  margin-bottom: 30px;
   text-align: center;
   font-weight: 500;
 }
@@ -412,10 +414,12 @@
   padding: 20px 15px 50px 15px;
   border-bottom: 1px solid transparentize($blue, .9);
   position: relative;
+
   &:first-child {
     margin-top: 20px;
     background-color: transparentize($blue, .9);
   }
+
   &.clickable:hover {
     background-color: transparentize($blue, .95);
   }
@@ -424,6 +428,7 @@
 
 .policy-area {
   font-size: 14px;
+  
   &:not(:last-child) {
     margin-bottom: 15px;
   }

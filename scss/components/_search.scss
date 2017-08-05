@@ -17,8 +17,9 @@
   background-color: transparentize(white, .75);
   display: flex;
   align-items: center;
-  width: 96%;
-  margin: 10px auto;
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
   border-radius: 5px;
   height: 50px;
   padding: 0 10px;
@@ -29,12 +30,6 @@
     svg {
       width: 100%;
     }
-  }
-
-  @media screen and (min-width: 700px) {
-    width: 40%;
-    max-width: 600px;
-    margin: 0 auto;
   }
 }
 
@@ -74,6 +69,7 @@
   left: 0;
   right: 0;
   bottom: 0;
+
   &:first-of-type {
     display: none;
   }
@@ -83,12 +79,19 @@
   }
 }
 
+.search-result-section {
+  padding: 0 10px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
 .search-result-section-title {
   text-align: left;
   color: $blue;
   font-size: 20px;
   font-weight: 500;
-  padding: 40px 0 10px 20px;
+  padding: 40px 0 10px 10px;
+
   @media screen and (min-width: 700px) {
     max-width: 600px;
     margin: 0 auto;
@@ -97,48 +100,50 @@
 }
 
 .search-result-list {
+  @include card-shadow;
   list-style: none;
   padding: 0;
   width: 100%;
   border-radius: 6px;
-  @include card-shadow;
+}
 
-  @media screen and (min-width: 700px) {
-    max-width: 600px;
-    margin: 0 auto;
+.search-result-list-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+
+  &:not(:first-child) {
+    border-top: 1px solid transparentize($blue, .75);
   }
-  &-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    cursor: pointer;
 
-    &:not(:first-child) {
-      border-top: 1px solid transparentize($blue, .75);
+  &-photo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    flex-shrink: 0;
+
+    @include max-width($phone) {
+      width: 50px;
+      height: 50px;
     }
-    .start {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-    }
-    &-photo {
-      width: 60px;
-      height: 60px;
-      border-radius: 30px;
-      margin-left: 10px;
-    }
-    &-name {
-      font-weight: 600;
-      padding: 10px;
-      font-size: 16px;
-    }
-    &-party {
-      font-weight: 300;
-      padding: 0;
-      display: block;
-      font-size: 14px;
-      font-weight: 300;
-    }
+  }
+
+  &-name {
+    font-weight: 600;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  &-party {
+    font-weight: 300;
+    padding: 0;
+    display: block;
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  .rep-letter-grade-wrap {
+    margin-left: auto;
   }
 }
