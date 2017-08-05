@@ -27,6 +27,16 @@ class Template extends React.Component {
     });
   }
 
+  componentWillUpdate(nextProps, nextState) {
+    let { user: previousUser } = this.props.data;
+    let { user } = nextProps.data;
+    if (!previousUser && user && FS) {
+      FS.identify(user.user_id, {
+        displayName: `${user.first_name} ${user.last_name}`,
+        ...user
+      });
+    }
+  }
   componentDidMount() {
     initLoading(true);
     setTimeout(() => {
