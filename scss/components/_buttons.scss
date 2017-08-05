@@ -7,6 +7,11 @@
   background-color: $blue;
   color: white;
   text-align: center;
+  transition: all .2s ease-out;
+
+  &:hover {
+    opacity: .8;
+  }
 }
 
 .button-contents {
@@ -29,6 +34,11 @@
 
 .button--large {
   height: 40px;
+}
+
+.button--white {
+  background-color: white;
+  color: $blue;
 }
 
 .button--red {

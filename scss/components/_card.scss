@@ -137,56 +137,15 @@
 }
 
 .rep-card-explainer {
-  width: 100%;
-  min-height: 192px;
-  height: auto;
-  padding: 20px;
-  background-color: rgba(58, 122, 219, 0.1);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  .close {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 22px;
-    cursor: pointer;
-  }
-  .rep-card-explainer-headline {
-    text-transform: uppercase;
-    font-size: 20px;
-    font-weight: 500;
-    margin-top: 15px;
-  }
-  .rep-card-explainer-copy {
-    color: $text-gray;
-    max-width: 540px;
-    padding: 5px 15px;
-    &-header {
-      font-weight: 500;
-      margin-top: 20px;
-    }
-  }
-}
-
-.show-explainer {
-  text-transform: underline;
-  color: $blue;
-  font-weight: 500;
-}
-
-.close-explainer {
-  font-weight: 600;
-  text-transform: uppercase;
-  background-color: darken($teal-green, 12%);
-  box-shadow: 1px 1px 6px rgba(74, 74, 74, 0.35);
-  padding: 10px 40px;
-  cursor: pointer;
-  border-radius: 5px;
+  padding: 30px;
+  background-color: $blue;
   color: white;
-  margin: 20px auto;
+  position: relative;
+
+  .close-explainer {
+    width: 200px;
+    margin: 0 auto;
+  }
 }
 
 .rep-card-donut-charts {
@@ -390,7 +349,7 @@
     color: lighten($blue, 5%);
     font-weight: 400;
   }
-  
+
   .conservative {
     color: lighten($soft-red, 5%);
     font-weight: 400;
@@ -399,9 +358,16 @@
 
 .rep-card-section-divider {
   padding-bottom: 20px;
+  position: relative;
 
   &:not(:last-child) {
     border-bottom: 1px solid transparentize($blue, .7);
+  }
+
+  .question-mark-circle {
+    position: absolute;
+    top: 0;
+    right: 10px;
   }
 }
 

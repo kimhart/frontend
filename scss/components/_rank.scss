@@ -172,10 +172,14 @@
   position: relative;
 }
 
+.explainer-section {
+  margin-bottom: 1.5rem;
+}
+
 .explainer-title {
   font-size: 20px;
   font-weight: 500;
-  margin-bottom: 30px;
+  margin-bottom: 1rem;
   width: 100%;
   text-align: center;
   color: white;
@@ -183,7 +187,6 @@
 }
 
 .explainer-copy {
-  font-size: 18px;
   color: white;
   font-weight: 300;
   display: block;
