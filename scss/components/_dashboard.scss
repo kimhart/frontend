@@ -159,11 +159,12 @@ header.logo {
   &.desktop {
     flex-direction: row;
     justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
     padding: 0 15px;
 
     @include max-width($desktop) {
       display: none;
-      flex-flow: row wrap;
     }
 
     .rep-card-wrap {
