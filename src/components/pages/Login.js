@@ -5,6 +5,7 @@ import { Link, browserHistory } from 'react-router';
 import LoginMutation from './../mutations/LoginMutation';
 import { UserUtils } from '../../utils/Utils';
 import Signup from './Signup';
+import { TallyLogo } from '../icons/Icons';
 
 class Login extends React.Component {
 
@@ -50,7 +51,9 @@ class Login extends React.Component {
       let { error } = this.state;
       return (
         <div className="home-page-wrap">
-          <Link className="standard-link" to="/"><h2 className="page-title">Tally</h2></Link>
+          <div className="login-logo-wrap">
+            <TallyLogo /><span className="tally-title">Tally</span>
+          </div>
           <section className="home-section home-login">
             <div id="login-form" className="login-form">
               <input type="email" placeholder="Email" required ref={(c) => this._email = c} />
