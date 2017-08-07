@@ -61,15 +61,8 @@
   font-size: 20px;
   text-align: center;
   display: flex;
-  align-items: center;
   justify-content: center;
-  position: absolute;
-  padding: 20px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
+  padding: 40px 20px 20px 20px;
   &:first-of-type {
     display: none;
   }
