@@ -97,13 +97,15 @@ class Signup extends React.Component {
                 <input id="password-match" className="signup-password-confirm-input input--outline no-placeholder" type="password" placeholder="Confirm Password" ref="passwordConfirm" required />
                 <label className="label-input-placeholder" htmlFor="password-match">Confirm Password</label>
               </div>
-              <div className="profile-input-wrap input-label-wrap">
-                <input id="first-name" className="signup-firstname-input input--outline no-placeholder" type="text" placeholder="First Name" ref="firstNameInput" required />
-                <label className="label-input-placeholder" htmlFor="first-name">First Name</label>
-              </div>
-              <div className="profile-input-wrap input-label-wrap">
-                <input id="last-name" className="signup-lastname-input input--outline no-placeholder" type="text" placeholder="Last Name" ref="lastNameInput" required />
-                <label className="label-input-placeholder" htmlFor="last-name">Last Name</label>
+              <div className="flex-half">
+                <div className="profile-input-wrap input-label-wrap">
+                  <input id="first-name" className="signup-firstname-input input--outline no-placeholder" type="text" placeholder="First Name" ref="firstNameInput" required />
+                  <label className="label-input-placeholder" htmlFor="first-name">First Name</label>
+                </div>
+                <div className="profile-input-wrap input-label-wrap">
+                  <input id="last-name" className="signup-lastname-input input--outline no-placeholder" type="text" placeholder="Last Name" ref="lastNameInput" required />
+                  <label className="label-input-placeholder" htmlFor="last-name">Last Name</label>
+                </div>
               </div>
               <div className="profile-input-wrap input-label-wrap">
                 <select id="party" className="signup-party-input input--outline no-placeholder" ref="partyInput" required>
@@ -114,13 +116,29 @@ class Signup extends React.Component {
                   <option>Other</option>
                 </select>
               </div>
-              <div className="profile-input-wrap input-label-wrap">
-                <input id="address" className="signup-address-input input--outline no-placeholder" type="text" placeholder="Street Address" ref="streetInput" required />
-                <label className="label-input-placeholder" htmlFor="address">Street Address</label>
+              <div className="flex-half">
+                <div className="profile-input-wrap input-label-wrap">
+                  <input id="address" className="signup-address-input input--outline no-placeholder" type="text" placeholder="Street Address" ref="streetInput" required />
+                  <label className="label-input-placeholder" htmlFor="address">Address</label>
+                </div>
+                <div className="profile-input-wrap input-label-wrap">
+                  <input id="address2" className="signup-address-input input--outline no-placeholder" type="text" placeholder="Apartment / Suite / Unit / Floor / etc." ref="address2Input" required />
+                  <label className="label-input-placeholder" htmlFor="address2">Apartment / Suite / Unit / Floor / etc.</label>
+                </div>
               </div>
-              <div className="profile-input-wrap input-label-wrap">
-                <input id="zip" className="signup-zip-input input--outline no-placeholder" type="text" placeholder="ZIP Code" ref="zipcodeInput" required />
-                <label className="label-input-placeholder" htmlFor="zip">ZIP Code</label>
+              <div className="flex-thirds">
+                <div className="profile-input-wrap input-label-wrap">
+                  <input id="city" className="signup-address-input input--outline no-placeholder" type="text" placeholder="City" ref="cityInput" required />
+                  <label className="label-input-placeholder" htmlFor="city">City</label>
+                </div>
+                <div className="profile-input-wrap input-label-wrap">
+                  <input id="state" className="signup-address-input input--outline no-placeholder" type="text" placeholder="State" ref="stateInput" required />
+                  <label className="label-input-placeholder" htmlFor="address">State</label>
+                </div>
+                <div className="profile-input-wrap input-label-wrap">
+                  <input id="zip" className="signup-zip-input input--outline no-placeholder" type="text" placeholder="ZIP Code" ref="zipcodeInput" required />
+                  <label className="label-input-placeholder" htmlFor="zip">ZIP Code</label>
+                </div>
               </div>
               <span className="signup-error-msg">{error ? error : null}</span>
               <button onClick={this.validatePassword} className="signup-btn" type="submit">Go!</button>

@@ -4,6 +4,24 @@
   }
 }
 
+.flex-half {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  div {
+    width: 49%;
+  }
+}
+
+.flex-thirds {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  div {
+    width: 32%
+  }
+}
+
 .logged-out-header {
   height: 50px;
   margin-top: 20px;
