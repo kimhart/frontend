@@ -109,11 +109,12 @@ class Signup extends React.Component {
               </div>
               <div className="profile-input-wrap input-label-wrap">
                 <select id="party" className="signup-party-input input--outline no-placeholder" ref="partyInput" required>
-                  <option>Democrat</option>
-                  <option>Republican</option>
-                  <option>Independent</option>
-                  <option>Libertarian</option>
-                  <option>Other</option>
+                  <option value="">Choose a party...</option>
+                  <option value="Democrat">Democrat</option>
+                  <option value="Republican">Republican</option>
+                  <option value="Independent">Independent</option>
+                  <option value="Libertarian">Libertarian</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
               <div className="flex-half">

@@ -67,7 +67,12 @@ class Login extends React.Component {
               <button className="login-btn" type="button" onClick={this._handleSubmit}>Login</button>
             </div>
             { error && <p className="error">{ error }</p> }
-            <p className="create-account">New here? Create an <Link className="standard-link signup-link" to="/signup">account</Link>.</p>
+            <div id="login-form" className="login-form">
+              <p className="create-account">OR</p>
+              <Link className="standard-link signup-link" to="/signup">
+                <button className="login-btn" type="button" onClick={this._handleSubmit}>Create a New Account</button>
+              </Link>
+            </div>
           </section>
           <section className="home-section home-about section-white section-arrow">
             <div className="home-section-content">
