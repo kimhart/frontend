@@ -110,7 +110,7 @@ export let Signup = mutationWithClientMutationId({
           resolve({ user_id });
         } else {
           let errors = {
-            'Bad address': `We couldn't the address you entered. Please try again.`,
+            'Bad address': `We could not find the address you entered. Please try again.`,
             'That user name already exists.': 'That email already exists.'
           }
           resolve({ error: errors[results] || `There was an error in what you've entered. Please verify your information is correct.` });
@@ -147,7 +147,7 @@ export let ChangePassword = mutationWithClientMutationId({
           resolve(user);
         } else {
           let errors = {
-            'Bad address': `We couldn't the address you entered. Please try again.`,
+            'Bad address': `We could not find the address you entered. Please try again.`,
             'That user name already exists.': 'That email already exists.'
           }
           resolve({ error: errors[results] || `There was an error in what you've entered. Please verify your information is correct.` });
@@ -184,7 +184,7 @@ export let ChangeAddress = mutationWithClientMutationId({
           resolve(user);
         } else {
           let errors = {
-            'Bad address': `We couldn't the address you entered. Please try again.`,
+            'Bad address': `We could not find the address you entered. Please try again.`,
             'That user name already exists.': 'That email already exists.'
           }
           resolve({ error: errors[results] || `There was an error in what you've entered. Please verify your information is correct.` });
