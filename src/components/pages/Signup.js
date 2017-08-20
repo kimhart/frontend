@@ -123,17 +123,17 @@ class Signup extends React.Component {
                   <label className="label-input-placeholder" htmlFor="address">Address</label>
                 </div>
                 <div className="profile-input-wrap input-label-wrap">
-                  <input id="address2" className="signup-address-input input--outline no-placeholder" type="text" placeholder="Apartment / Suite / Unit / Floor / etc." ref="address2Input" required />
-                  <label className="label-input-placeholder" htmlFor="address2">Apartment / Suite / Unit / Floor / etc.</label>
+                  <input id="address2" className="signup-address-input input--outline no-placeholder" type="text" placeholder="Apartment / Suite / Unit / Floor / etc." ref="address2Input" />
+                  <label className="label-input-placeholder" htmlFor="address2">Apartment / Suite / Floor / etc.</label>
                 </div>
               </div>
               <div className="flex-thirds">
                 <div className="profile-input-wrap input-label-wrap">
-                  <input id="city" className="signup-address-input input--outline no-placeholder" type="text" placeholder="City" ref="cityInput" required />
+                  <input id="city" className="signup-address-input input--outline no-placeholder" type="text" placeholder="City" ref="cityInput" />
                   <label className="label-input-placeholder" htmlFor="city">City</label>
                 </div>
                 <div className="profile-input-wrap input-label-wrap">
-                  <input id="state" className="signup-address-input input--outline no-placeholder" type="text" placeholder="State" ref="stateInput" required />
+                  <input id="state" className="signup-address-input input--outline no-placeholder" type="text" placeholder="State" ref="stateInput" />
                   <label className="label-input-placeholder" htmlFor="address">State</label>
                 </div>
                 <div className="profile-input-wrap input-label-wrap">

@@ -153,7 +153,7 @@ class Settings extends React.Component {
                   </div>
                   <div className="profile-input-wrap input-label-wrap">
                     <input id="new-address2-input" className="profile-input input--outline no-placeholder" placeholder="Apartment / Suite / Unit / Floor"/>
-                    <label className="label-input-placeholder" htmlFor="new-address2-input"> Apartment / Suite / Unit / Floor / etc.</label>
+                    <label className="label-input-placeholder" htmlFor="new-address2-input"> Apartment / Suite / Floor / etc. (optional) </label>
                   </div>
                 </div>
                 <div className="profile-input-wrap input-label-wrap">
