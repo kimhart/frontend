@@ -93,12 +93,14 @@
 .rep-card-buttons-wrap {
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 0 15px;
   margin-bottom: 15px;
 }
 
 .bio-btn {
-  width: 90px;
+  width: 100px;
+  height: 40px;
   color: $blue;
   font-size: 14px;
   border-radius: 10px;
@@ -129,7 +131,6 @@
 
 .rep-card-section-subtitle {
   width: 90%;
-  cursor: pointer;
   text-align: center;
   margin: 0 auto;
   margin-bottom: 30px;
@@ -210,8 +211,8 @@
 }
 
 .contact-icon-circle {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   margin-right: 10px;
   padding: 5px;
   border-radius: 100%;
@@ -262,7 +263,7 @@
 .card-toggle-stats {
   color: #FFF;
   cursor: pointer;
-  background: transparentize($blue, .75);
+  background: transparentize($blue, .4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -278,7 +279,7 @@
   transform: translateY(1px);
   &.active {
     background: white;
-    border: 1px solid transparentize($blue, .7);
+    border: 1px solid transparentize($blue, .4);
     border-bottom: 1px solid white;
     color: $blue;
     font-weight: 600;

@@ -29,10 +29,10 @@ class RepRankCluster extends React.Component {
     return false;
   }
 
-  getShortParty = (party) => {
-    if (party === 'Democratic') return <span className="democrat-blue">Democrat</span>;
-    if (party === 'Independent') return <span className="independent-purple">Independent</span>;
-    if (party === 'Republican') return <span className="republican-red">Republican</span>;
+  getShortParty = (party, state) => {
+    if (party === 'Democratic') return <span className="democrat-blue">{state} Democrat</span>;
+    if (party === 'Independent') return <span className="independent-purple">{state} Independent</span>;
+    if (party === 'Republican') return <span className="republican-red">{state} Republican</span>;
     return false;
   }
 
@@ -44,7 +44,7 @@ class RepRankCluster extends React.Component {
         <div className="rep-rank-headshot" style={{background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}} />
         <div className="rep-rank-stack">
           <div className="rep-rank-stats">
-            <p className="rep-rank-name">{fullName} &middot; {this.getShortParty(party)}</p>
+            <p className="rep-rank-name">{fullName} &middot; {this.getShortParty(party, state)}</p>
           </div>
           <div className="rep-rank-stats-bar">
             <div className="rep-rank-stats-fill" style={{ backgroundColor: '#47E5BC', width: `${this.getBarFill(category)}%`}} />
