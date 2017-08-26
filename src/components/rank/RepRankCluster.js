@@ -8,8 +8,15 @@ class RepRankCluster extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cardActive: false
+      cardActive: false,
+      animate: false
     };
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ animate: true })
+    }, 300);
   }
 
   getPhotoSource = () => {
@@ -22,6 +29,10 @@ class RepRankCluster extends React.Component {
   }
 
   getBarFill = (category) => {
+    let { animate } = this.state;
+    if (!animate) {
+      return 0;
+    }
     let { percent_at_work, percent_votes, sponsor_percent } = this.props;
     if (category === 'attendance') return percent_at_work * 100;
     if (category === 'participation') return percent_votes * 100;
@@ -47,7 +58,7 @@ class RepRankCluster extends React.Component {
             <p className="rep-rank-name">{fullName} &middot; {this.getShortParty(party, state)}</p>
           </div>
           <div className="rep-rank-stats-bar">
-            <div className="rep-rank-stats-fill" style={{ backgroundColor: '#47E5BC', width: `${this.getBarFill(category)}%`}} />
+            <div className="rep-rank-stats-fill" style={{ width: `${this.getBarFill(category)}%`}} />
           </div>
         </div>
         <TallyModal key={`rank_reportcard_${bioguide_id}`} contentLabel={`${fullName} modal`} className={`rep-card-wrap`} isOpen={this.state.cardActive}>
