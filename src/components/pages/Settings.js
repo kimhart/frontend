@@ -138,7 +138,7 @@ class Settings extends React.Component {
             </div>
           </div>
           <div className="profile-section">
-            <h3 className="profile-label">{ editingAddress ? 'Edit Address' : 'Address' }</h3>
+            <h3 className="profile-label">{ editingAddress ? 'Enter New Address' : 'Address' }</h3>
             { editingAddress &&
               <div className="profile-section-content">
                 { address_error &&
@@ -146,13 +146,27 @@ class Settings extends React.Component {
                     { address_error }
                   </div>
                 }
+                <div className="flex-half">
+                  <div className="profile-input-wrap input-label-wrap">
+                    <input ref={c => this.new_street = c} id="new-street-input" className="profile-input input--outline no-placeholder" placeholder="New Street Address"/>
+                    <label className="label-input-placeholder" htmlFor="new-street-input"> Address</label>
+                  </div>
+                  <div className="profile-input-wrap input-label-wrap">
+                    <input id="new-address2-input" className="profile-input input--outline no-placeholder" placeholder="Apartment / Suite / Unit / Floor"/>
+                    <label className="label-input-placeholder" htmlFor="new-address2-input"> Apartment / Suite / Floor / etc. (optional) </label>
+                  </div>
+                </div>
                 <div className="profile-input-wrap input-label-wrap">
-                  <input ref={c => this.new_street = c} id="new-street-input" className="profile-input input--outline no-placeholder" placeholder="New Street Address"/>
-                  <label className="label-input-placeholder" htmlFor="new-street-input">New Street Address</label>
+                  <input className="profile-input input--outline no-placeholder" placeholder="City"/>
+                  <label className="label-input-placeholder" htmlFor="city-input">City</label>
+                </div>
+                <div className="profile-input-wrap input-label-wrap">
+                  <input className="profile-input input--outline no-placeholder" placeholder="State"/>
+                  <label className="label-input-placeholder" htmlFor="new-street-input"> State</label>
                 </div>
                 <div className="profile-input-wrap input-label-wrap">
                   <input ref={c => this.new_zip_code = c} id="new-zip-input" className="profile-input input--outline no-placeholder" placeholder="New Zip Code"/>
-                  <label className="label-input-placeholder" htmlFor="new-zip-input">New ZIP Code</label>
+                  <label className="label-input-placeholder" htmlFor="new-zip-input">ZIP Code</label>
                 </div>
                 <div className="profile-section-controls">
                   <button className="button--large button--outline button--gray" onClick={() => this.editAddress()}>Cancel</button>
