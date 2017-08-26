@@ -211,12 +211,13 @@
   margin: 20px 0;
 }
 
-.rep-rank-cluster {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  align-content: center;
-  margin: 20px 10px;
+$barFills: 10;
+@for $i from 0 to $barFills {
+  .rep-rank-clusters:nth-child(#{$i}) {
+    .rep-rank-stats-fill {
+       transition-delay: $i * .1s;
+     }
+  }
 }
 
 .rep-rank-headshot {
@@ -281,8 +282,11 @@
 }
 
 .rep-rank-stats-fill {
+  background-color: $teal-green;
   height: 100%;
   border-radius: 8px;
+  width: 0;
+  transition: width .2s $ease-out-quad;
 }
 
 .rep-rank-number-wrap {
