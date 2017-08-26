@@ -9,6 +9,7 @@ import {introspectionQuery} from 'graphql/utilities';
 import SchemaExporter from './utilities/SchemaExporter';
 import Schema from './graphql/schema';
 import config from './graphql/config';
+import sslRedirect from 'heroku-ssl-redirect';
 let { port, logs: { dateFormat } } = config.app;
 
 const app = express();
@@ -16,6 +17,7 @@ const schema = Schema(/* optional required connection */);
 
 app.use(bodyParser.json({limit: '2mb'}));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(sslRedirect());
 app.use('/', express.static('public'));
 app.use('/bios/:bioguide_id', express.static('public'));
 app.use('/rank', express.static('public'));
