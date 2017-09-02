@@ -59,10 +59,11 @@
   font-size: 14px;
   text-decoration: none;
   opacity: 0.5;
-
   &.active {
     opacity: 1;
     color: $soft-red;
+    font-weight: 400;
+    transform: translateY(-1px);
     svg {
       path {
         fill: $soft-red;
@@ -120,7 +121,6 @@
   right: 0;
   bottom: 0;
   position: fixed;
-  box-shadow: 0 0 10px rgba(0,0,0,.15);
 
   .main-tabs {
     flex-grow: 1;
@@ -131,6 +131,12 @@
     flex-direction: column;
     flex-grow: 1;
     flex-basis: 0;
+    border-top: 0;
+    border-top: 1px solid transparentize($text-gray, .5);
+    &.active {
+      border-top: 2px solid $soft-red;
+      padding-top: 2px;
+    }
   }
 
   .nav-bar-tab_icon {

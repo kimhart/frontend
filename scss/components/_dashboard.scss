@@ -86,15 +86,15 @@ header.logo {
 }
 
 .your-district {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 300;
   text-align: center;
   margin: 0 auto 20px auto;
 
   .state-icon {
     fill: white;
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     display: inline-block;
     vertical-align: middle;
     @media screen and (min-width: 700px) {
@@ -104,7 +104,7 @@ header.logo {
   }
 
   .state {
-    font-size: 18px;
+    font-size: 20px;
     margin-right: 5px;
   }
 }
@@ -114,12 +114,12 @@ header.logo {
 }
 
 .tap-a-rep {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 100;
   text-align: center;
   align-self: center;
   width: 100%;
-  margin: 15px auto;
+  margin: 30px auto;
   display: block;
   @include min-width($desktop) {
     display: none;
@@ -191,9 +191,8 @@ header.logo {
   margin-right: 15px;
   border-radius: 8px;
   padding: 10px 15px;
+  border: 1px solid $blue;
   cursor: pointer;
-  transition: box-shadow 0.1s linear;
-  @include card-shadow;
 
   @include max-width($tablet) {
     margin-left: 25px;
@@ -238,24 +237,16 @@ header.logo {
 .rep-info-name {
   color: $blue;
   font-family: $brand-font;
-  font-weight: 700;
-  font-size: 1rem;
+  font-weight: 400;
+  font-size: 18px;
   margin: 0;
   text-align: left;
-
-  @include max-width($phone) {
-    font-size: 14px;
-  }
 }
 
 .rep-info-role {
   margin: 0;
   font-weight: 300;
   font-size: 16px;
-
-  @include max-width($phone) {
-    font-size: 13px;
-  }
 }
 
 .rep-letter-grade-wrap {
