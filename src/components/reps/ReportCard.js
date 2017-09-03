@@ -200,8 +200,8 @@ class ReportCard extends React.Component {
             }
             { website &&
               <div className="contact-row">
-                <a target="_blank" href={`https://${website}`}>
-                  <div className="contact-icon-circle"><IconFacebook /></div>
+                <a target="_blank" href={website}>
+                  <div className="contact-icon-circle"><IconLink /></div>
                   {this.formatUrl(website)}
                 </a>
               </div>
@@ -223,7 +223,7 @@ class ReportCard extends React.Component {
             }
             { address &&
               <div className="contact-row">
-                <a target="_blank" href={`http://maps.google.com/?q=${address}`}>
+                <a target="_blank" href={`http://maps.google.com/?q=${this.formatAddress(address)}`}>
                   <div className="contact-icon-circle"><IconLocation /></div>
                   {this.formatAddress(address)}
                 </a>
