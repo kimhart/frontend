@@ -114,12 +114,12 @@ header.logo {
 }
 
 .tap-a-rep {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 100;
   text-align: center;
   align-self: center;
   width: 100%;
-  margin: 15px auto;
+  margin: 30px auto;
   display: block;
   @include min-width($desktop) {
     display: none;
@@ -192,8 +192,7 @@ header.logo {
   border-radius: 8px;
   padding: 10px 15px;
   cursor: pointer;
-  transition: box-shadow 0.1s linear;
-  @include card-shadow;
+  border: 1px solid $blue;
 
   @include max-width($tablet) {
     margin-left: 25px;
@@ -238,8 +237,8 @@ header.logo {
 .rep-info-name {
   color: $blue;
   font-family: $brand-font;
-  font-weight: 700;
-  font-size: 1rem;
+  font-weight: 400;
+  font-size: 18px;
   margin: 0;
   text-align: left;
 

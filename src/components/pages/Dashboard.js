@@ -75,7 +75,7 @@ class DashboardPage extends React.Component {
             <span className="state">{user.state_long}</span>District {this.getDistrict(user)}
           </p>
         </div>
-        <span className="tap-a-rep">Click on a rep to learn more.</span>
+        <span className="tap-a-rep">Click on each rep to learn more:</span>
         <div className="rep-info-clusters mobile">
           {this.getRepInfoClusters()}
           {this.getReportCardsAsModals()}
