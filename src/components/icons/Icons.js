@@ -12,6 +12,7 @@ import IconTriangleDown from './IconTriangleDown';
 import IconTwitter from './IconTwitter';
 import TallyLogo from './TallyLogo';
 import IconSettings from './IconSettings';
+import IconLink from './IconLink';
 
 export {
   IconClose,
@@ -19,6 +20,7 @@ export {
   IconAnalyze,
   IconFacebook,
   IconAngleDown,
+  IconLink,
   IconLocation,
   IconPhone,
   IconRank,
