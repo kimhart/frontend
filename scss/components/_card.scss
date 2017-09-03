@@ -38,7 +38,7 @@
   }
 
   .rep-letter-grade {
-    font-size: 30px;
+    font-size: 28px;
     color: white;
   }
 }
@@ -84,25 +84,21 @@
 }
 
 .rep-card-position-wrap {
-  margin-bottom: 30px;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 20px;
 }
 
 .rep-card-role, .rep-card-leadership {
   display: block;
   text-align: center;
-  margin: 0 15px;
   color: $text-gray;
 }
 
 .contact-btn {
-  width: auto;
-  height: 40px;
-  padding: 10px 20px;
-  color: $blue;
   font-size: 16px;
   font-weight: 400;
-  border-radius: 5px;
-  margin-right: 10px;
+  margin-bottom: 20px;
 }
 
 .rep-card-section-title {
@@ -219,6 +215,7 @@
 
 .back-btn {
   font-weight: 400;
+
   svg {
     margin-right: 5px;
   }
@@ -391,8 +388,9 @@
 .card-tab-description {
   text-align: center;
   color: $gray;
+  font-size: 14px;
   font-weight: 300;
-  padding: 10px 5px 20px 5px;
+  padding: 25px 15px;
 }
 
 .rep-belief-item-type {

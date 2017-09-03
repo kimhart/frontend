@@ -52,13 +52,15 @@
   color: inherit;
 
   &.button--gray {
-    background-color: transparent;
     color: transparentize(black, .7);
   }
 
   &.button--white {
-    background-color: transparent;
     color: white;
+  }
+
+  &.button--blue {
+    color: $blue;
   }
 }
 
