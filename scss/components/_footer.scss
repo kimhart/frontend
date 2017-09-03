@@ -121,8 +121,7 @@
   right: 0;
   bottom: 0;
   position: fixed;
-  box-shadow:0 0 5px rgba(0, 0, 0, 0.3);
-
+  border-top: 1px solid rgba(0, 0, 0, 0.2); 
   .main-tabs {
     flex-grow: 1;
     height: 100%;
@@ -133,7 +132,9 @@
     flex-grow: 1;
     flex-basis: 0;
     &.active {
-      border-bottom: 3px solid $soft-red;
+      border-top: 3px solid $soft-red;
+      padding-top: 3px;
+      transform: translateY(-2px);
     }
   }
 
