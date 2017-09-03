@@ -7,7 +7,7 @@ import Participation from './Participation';
 import Efficacy from './Efficacy';
 import MembershipStats from './MembershipStats';
 import PolicyAreas from './PolicyAreas';
-import { IconClose, IconStamp, IconAngleDown, IconPhone, IconFacebook, IconTwitter, IconLocation, IconStats, IconBeliefs, IconBio, IconSpeech } from '../icons/Icons';
+import { IconClose, IconStamp, IconAngleDown, IconPhone, IconFacebook, IconTwitter, IconLocation, IconStats, IconBeliefs, IconBio, IconSpeech, IconLink } from '../icons/Icons';
 
 class ReportCard extends React.Component {
 
@@ -179,7 +179,7 @@ class ReportCard extends React.Component {
             <IconStamp fill="#3A7ADB" />
             <span className="rep-letter-grade">{letter_grade}</span>
           </div>
-          <div className="rep-card-photo" style={{background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}}/>
+          <div className="rep-card-photo" style={{background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}} />
           <h1 className="rep-card-name">{ fullName }</h1>
           <div className="rep-card-position-wrap">
             <span className="rep-card-role">
@@ -187,10 +187,9 @@ class ReportCard extends React.Component {
             </span>
             { leadership_position !== "None" && <span className="rep-card-leadership">{ leadership_position }</span> }
           </div>
-          <div className="rep-card-buttons-wrap">
-            <button className={`contact-btn button--medium button--outline button--blue`} onClick={() => this.setState({ contact: !contact })}>{contact ? <span className="back-btn"><IconAngleDown transform="rotate(90)" fill="#3A7ADB"/>Back</span> : 'Contact'}</button>
-          </div>
-          {contact &&
+          <button className={`contact-btn button--medium button--outline button--blue`} onClick={() => this.setState({ contact: !contact })}>{contact ? <span className="back-btn"><IconAngleDown fill="#3A7ADB"/>Back</span> : 'Contact'}</button>
+          { !contact && this.getMetricsTabs() }
+          { contact &&
           <div className="contact-container">
             { phone &&
               <div className="contact-row">
@@ -198,42 +197,41 @@ class ReportCard extends React.Component {
                 <div className="contact-icon-circle"><IconPhone /></div>{this.formatPhone(phone)}
               </a>
             </div>
-          }
-          { website &&
-            <div className="contact-row">
-              <a target="_blank" href={`https://${website}`}>
-                <div className="contact-icon-circle"><IconFacebook /></div>
-                {this.formatUrl(website)}
-              </a>
-            </div>
-          }
-          { twitter_handle &&
-            <div className="contact-row">
-              <a target="_blank" href={`https://twitter.com/${twitter_handle}`}>
-                <div className="contact-icon-circle"><IconTwitter /></div>
-                {this.formatUrl(twitter_handle)}
-              </a>
-            </div>
-          }
-          { facebook &&
-            <div className="contact-row">
-              <a target="_blank" href={`https://${facebook}`}>
-                <div className="contact-icon-circle"><IconFacebook /></div>{this.formatUrl(facebook)}
-              </a>
-            </div>
-          }
-          { address &&
-            <div className="contact-row">
-              <a target="_blank" href={`http://maps.google.com/?q=${address}`}>
-                <div className="contact-icon-circle"><IconLocation /></div>
-                {this.formatAddress(address)}
-              </a>
+            }
+            { website &&
+              <div className="contact-row">
+                <a target="_blank" href={`https://${website}`}>
+                  <div className="contact-icon-circle"><IconFacebook /></div>
+                  {this.formatUrl(website)}
+                </a>
+              </div>
+            }
+            { twitter_handle &&
+              <div className="contact-row">
+                <a target="_blank" href={`https://twitter.com/${twitter_handle}`}>
+                  <div className="contact-icon-circle"><IconTwitter /></div>
+                  {this.formatUrl(twitter_handle)}
+                </a>
+              </div>
+            }
+            { facebook &&
+              <div className="contact-row">
+                <a target="_blank" href={`https://${facebook}`}>
+                  <div className="contact-icon-circle"><IconFacebook /></div>{this.formatUrl(facebook)}
+                </a>
+              </div>
+            }
+            { address &&
+              <div className="contact-row">
+                <a target="_blank" href={`http://maps.google.com/?q=${address}`}>
+                  <div className="contact-icon-circle"><IconLocation /></div>
+                  {this.formatAddress(address)}
+                </a>
+              </div>
+            }
             </div>
           }
           </div>
-          }
-          {!contact && this.getMetricsTabs() }
-        </div>
         { !contact && this.getCardContent() }
       </div>
     );

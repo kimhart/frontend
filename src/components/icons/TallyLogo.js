@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TallyLogo = ({ width, height, viewBox }) => {
+const TallyLogo = ({ width, height }) => {
   width = width || '295.4px';
   height = height || '350.3px';
   return (

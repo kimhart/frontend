@@ -16,6 +16,7 @@ import IconBio from './IconBio';
 import IconSpeech from './IconSpeech';
 import IconStats from './IconStats';
 import IconBeliefs from './IconBeliefs';
+import IconLink from './IconLink';
 
 export {
   IconClose,
@@ -23,6 +24,7 @@ export {
   IconAnalyze,
   IconFacebook,
   IconAngleDown,
+  IconLink,
   IconLocation,
   IconPhone,
   IconRank,

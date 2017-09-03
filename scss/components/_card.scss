@@ -15,6 +15,7 @@
 .rep-card-header-wrap {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100%;
   background: white;
   border-top-left-radius: 15px;
@@ -71,6 +72,7 @@
   height: 100px;
   width: 100px;
   border-radius: 100%;
+  flex-shrink: 0;
 }
 
 .rep-card-name {
@@ -83,7 +85,6 @@
 
 .rep-card-position-wrap {
   margin-bottom: 30px;
-  flex-grow: 1;
 }
 
 .rep-card-role, .rep-card-leadership {
@@ -91,13 +92,6 @@
   text-align: center;
   margin: 0 15px;
   color: $text-gray;
-}
-
-.rep-card-buttons-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 15px;
 }
 
 .contact-btn {
@@ -108,7 +102,7 @@
   font-size: 16px;
   font-weight: 400;
   border-radius: 5px;
-  margin-right: 10px;
+  margin-bottom: 20px;
 }
 
 .rep-card-section-title {
@@ -217,7 +211,6 @@
     flex: 1;
     &:first-of-type {
       border-top: 0;
-      margin-top: 10px;
     }
     a {
       display: flex;
@@ -232,6 +225,7 @@
   margin-bottom: 20px;
   svg {
     margin-right: 5px;
+    transform: rotate(90deg);
   }
 }
 
@@ -250,6 +244,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  svg {
+    height: 20px;
+    max-width: 20px;
+  }
 }
 
 .rep-card-details-wrap {
@@ -286,8 +285,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 20px;
-  border-bottom: 1px solid $light-gray;
+  margin-top: auto;
+  width: 100%;
 }
 
 .card-toggle {
