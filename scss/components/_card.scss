@@ -215,6 +215,10 @@
     border-top: 1px solid $light-gray;
     padding: 15px;
     flex: 1;
+    &:first-of-type {
+      border-top: 0;
+      margin-top: 10px;
+    }
     a {
       display: flex;
       color: $text-gray;
@@ -225,6 +229,7 @@
 
 .back-btn {
   font-weight: 400;
+  margin-bottom: 20px;
   svg {
     margin-right: 5px;
   }

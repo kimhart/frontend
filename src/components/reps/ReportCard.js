@@ -76,6 +76,20 @@ class ReportCard extends React.Component {
     return newUrl.replace(/\/$/, "");
   }
 
+  formatPhone = (phone) => {
+    let phone2 = (""+phone).replace(/\D/g, '');
+    let m = phone2.match(/^(\d{3})(\d{3})(\d{4})$/);
+    return (!m) ? null : "(" + m[1] + ") " + m[2] + "-" + m[3];
+  }
+
+  formatAddress = (address) => {
+     if (address.includes('Washington')) {
+       return address;
+     } else {
+       return address = `${address}, Washington DC 20510`;
+     }
+  }
+
   getCardContent = () => {
     let { contact, bio, tab, leadership_position } = this.state;
     let { chamber, name, bio_text } = this.props;
@@ -180,7 +194,7 @@ class ReportCard extends React.Component {
           <div className="contact-container">
             <div className="contact-row">
               <a target="_blank" href={`tel:${phone}`}>
-                <div className="contact-icon-circle"><IconPhone /></div>{phone}
+                <div className="contact-icon-circle"><IconPhone /></div>{this.formatPhone(phone)}
               </a>
             </div>
             <div className="contact-row">
@@ -192,7 +206,7 @@ class ReportCard extends React.Component {
             <div className="contact-row">
               <a target="_blank" href={`https://twitter.com/${twitter_handle}`}>
                 <div className="contact-icon-circle"><IconTwitter /></div>
-                {twitter_handle}
+                {this.formatUrl(twitter_handle)}
               </a>
             </div>
             <div className="contact-row">
@@ -203,7 +217,7 @@ class ReportCard extends React.Component {
             <div className="contact-row">
               <a target="_blank" href={`http://maps.google.com/?q=${address}`}>
                 <div className="contact-icon-circle"><IconLocation /></div>
-                {address}
+                {this.formatAddress(address)}
               </a>
             </div>
           </div>
