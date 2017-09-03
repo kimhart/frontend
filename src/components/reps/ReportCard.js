@@ -192,34 +192,44 @@ class ReportCard extends React.Component {
           </div>
           {contact &&
           <div className="contact-container">
-            <div className="contact-row">
+            { phone &&
+              <div className="contact-row">
               <a target="_blank" href={`tel:${phone}`}>
                 <div className="contact-icon-circle"><IconPhone /></div>{this.formatPhone(phone)}
               </a>
             </div>
+          }
+          { website &&
             <div className="contact-row">
               <a target="_blank" href={`https://${website}`}>
                 <div className="contact-icon-circle"><IconFacebook /></div>
                 {this.formatUrl(website)}
               </a>
             </div>
+          }
+          { twitter_handle &&
             <div className="contact-row">
               <a target="_blank" href={`https://twitter.com/${twitter_handle}`}>
                 <div className="contact-icon-circle"><IconTwitter /></div>
                 {this.formatUrl(twitter_handle)}
               </a>
             </div>
+          }
+          { facebook &&
             <div className="contact-row">
               <a target="_blank" href={`https://${facebook}`}>
                 <div className="contact-icon-circle"><IconFacebook /></div>{this.formatUrl(facebook)}
               </a>
             </div>
+          }
+          { address &&
             <div className="contact-row">
               <a target="_blank" href={`http://maps.google.com/?q=${address}`}>
                 <div className="contact-icon-circle"><IconLocation /></div>
                 {this.formatAddress(address)}
               </a>
             </div>
+          }
           </div>
           }
           {!contact && this.getMetricsTabs() }
