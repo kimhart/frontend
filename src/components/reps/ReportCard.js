@@ -7,7 +7,7 @@ import Participation from './Participation';
 import Efficacy from './Efficacy';
 import MembershipStats from './MembershipStats';
 import PolicyAreas from './PolicyAreas';
-import { IconClose, IconStamp, IconAngleDown, IconPhone, IconFacebook, IconTwitter, IconLocation } from '../icons/Icons';
+import { IconClose, IconStamp, IconAngleDown, IconPhone, IconFacebook, IconTwitter, IconLocation, IconStats, IconBeliefs, IconBio, IconSpeech } from '../icons/Icons';
 
 class ReportCard extends React.Component {
 
@@ -45,10 +45,21 @@ class ReportCard extends React.Component {
     if (contact || bio) return null;
     return (
       <div className="card-toggle-wrap">
-        <p className={`card-toggle ${tab == 'stats' ? ' active' : ''}`} onClick={() => this.setState({ tab: 'stats' })}>Stats</p>
-        <p className={`card-toggle ${tab == 'beliefs' ? ' active' : ''}`} onClick={() => this.setState({ tab: 'beliefs' })}>Beliefs</p>
-        {/* <p className={`card-toggle ${tab == 'speech' ? ' active' : ''}`} onClick={() => this.setState({ tab: 'speech' })}>Speech</p> */}
-        <p className={`card-toggle ${tab == 'bio' ? ' active' : ''}`} onClick={() => this.setState({ tab: 'bio' })}>Bio</p>
+        <div className={`card-toggle ${tab == 'stats' ? ' active' : ''}`} onClick={() => this.setState({ tab: 'stats' })}>
+            <IconStats fill={tab == 'stats' ? '#F0454B' : '#7f8494'}/>
+            Stats
+          </div>
+        <div className={`card-toggle ${tab == 'beliefs' ? ' active' : ''}`} onClick={() => this.setState({ tab: 'beliefs' })}>
+          <IconBeliefs fill={tab == 'beliefs' ? '#F0454B' : '#7f8494'} />
+          Beliefs
+        </div>
+        {/* <div className={`card-toggle ${tab == 'speech' ? ' active' : ''}`} onClick={() => this.setState({ tab: 'speech' })}>
+        <IconSpeech fill={tab == 'speech' ? '#F0454B' : '#7f8494'} />
+        Speech</div> */}
+        <div className={`card-toggle ${tab == 'bio' ? ' active' : ''}`} onClick={() => this.setState({ tab: 'bio' })}>
+          <IconBio fill={tab == 'bio' ? '#F0454B' : '#7f8494'} />
+          Bio
+        </div>
       </div>
     );
   }
@@ -75,11 +86,10 @@ class ReportCard extends React.Component {
       stats: (
         <div className="rep-card-metrics-wrap">
           <div className="rep-card-section-divider">
-            <div className="rep-card-section-title">Stats</div>
             <div className="card-tab-description">These scores contribute to {lastName}'s grade:
-              <span className="control-button question-mark-circle" onClick={() => this.toggleExplainer()}>?</span>
+              {/* <span className="control-button question-mark-circle" onClick={() => this.toggleExplainer()}>?</span> */}
             </div>
-            { this.state.showExplainer &&
+            {/* { this.state.showExplainer &&
             <div className="rep-card-explainer">
               <div className="card-close" onClick={() => this.toggleExplainer()}>
                 <IconClose color="white"/>
@@ -102,7 +112,7 @@ class ReportCard extends React.Component {
               </div>
               <button className="close-explainer button--medium button--white" onClick={() => this.toggleExplainer()}><span className="button-contents">Got it</span></button>
             </div>
-            }
+            } */}
             { !this.state.showExplainer &&
             <div>
               <div className="rep-card-donut-charts">
@@ -115,7 +125,6 @@ class ReportCard extends React.Component {
             }
           </div>
           <div className="rep-card-section-divider">
-            <h4 className="rep-card-section-title">Bills</h4>
             <p className="card-tab-description bills">{lastName} has sponsored bills in these categories:</p>
             <PolicyAreas {...this.props} />
           </div>
@@ -123,7 +132,6 @@ class ReportCard extends React.Component {
       ),
       beliefs: (
         <div className="rep-card-metrics-wrap">
-          <h4 className="rep-card-section-title">Beliefs</h4>
           <Beliefs {...this.props} />
         </div>
       ),
