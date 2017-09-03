@@ -7,7 +7,7 @@ import Participation from './Participation';
 import Efficacy from './Efficacy';
 import MembershipStats from './MembershipStats';
 import PolicyAreas from './PolicyAreas';
-import { IconClose, IconStamp, IconAngleDown, IconPhone, IconFacebook, IconTwitter, IconLocation } from '../icons/Icons';
+import { IconClose, IconStamp, IconAngleDown, IconPhone, IconLink, IconFacebook, IconTwitter, IconLocation } from '../icons/Icons';
 
 class ReportCard extends React.Component {
 
@@ -165,43 +165,41 @@ class ReportCard extends React.Component {
             </span>
             { leadership_position !== "None" && <span className="rep-card-leadership">{ leadership_position }</span> }
           </div>
-          <div className="rep-card-buttons-wrap">
-            <button className={`contact-btn button--medium button--outline button--blue`} onClick={() => this.setState({ contact: !contact })}>{contact ? <span className="back-btn"><IconAngleDown transform="rotate(90)" fill="#3A7ADB"/>Back</span> : 'Contact'}</button>
-          </div>
-          {contact &&
-          <div className="contact-container">
-            <div className="contact-row">
-              <a target="_blank" href={`tel:${phone}`}>
-                <div className="contact-icon-circle"><IconPhone /></div>{phone}
-              </a>
-            </div>
-            <div className="contact-row">
-              <a target="_blank" href={`https://${website}`}>
-                <div className="contact-icon-circle"><IconFacebook /></div>
-                {this.formatUrl(website)}
-              </a>
-            </div>
-            <div className="contact-row">
-              <a target="_blank" href={`https://twitter.com/${twitter_handle}`}>
-                <div className="contact-icon-circle"><IconTwitter /></div>
-                {twitter_handle}
-              </a>
-            </div>
-            <div className="contact-row">
-              <a target="_blank" href={`https://${facebook}`}>
-                <div className="contact-icon-circle"><IconFacebook /></div>{this.formatUrl(facebook)}
-              </a>
-            </div>
-            <div className="contact-row">
-              <a target="_blank" href={`http://maps.google.com/?q=${address}`}>
-                <div className="contact-icon-circle"><IconLocation /></div>
-                {address}
-              </a>
-            </div>
-          </div>
-          }
-          {!contact && this.getMetricsTabs() }
+          <button className={`contact-btn button--medium button--outline button--blue`} onClick={() => this.setState({ contact: !contact })}>{contact ? <span className="back-btn"><IconAngleDown transform="rotate(90)" fill="#3A7ADB"/>Back</span> : 'Contact'}</button>
+          { !contact && this.getMetricsTabs() }
         </div>
+        { contact &&
+        <div className="contact-container">
+          <div className="contact-row">
+            <a target="_blank" href={`tel:${phone}`}>
+              <div className="contact-icon-circle"><IconPhone /></div>{phone}
+            </a>
+          </div>
+          <div className="contact-row">
+            <a target="_blank" href={`https://${website}`}>
+              <div className="contact-icon-circle"><IconLink /></div>
+              {this.formatUrl(website)}
+            </a>
+          </div>
+          <div className="contact-row">
+            <a target="_blank" href={`https://twitter.com/${twitter_handle}`}>
+              <div className="contact-icon-circle"><IconTwitter /></div>
+              {twitter_handle}
+            </a>
+          </div>
+          <div className="contact-row">
+            <a target="_blank" href={`https://${facebook}`}>
+              <div className="contact-icon-circle"><IconFacebook /></div>{this.formatUrl(facebook)}
+            </a>
+          </div>
+          <div className="contact-row">
+            <a target="_blank" href={`http://maps.google.com/?q=${address}`}>
+              <div className="contact-icon-circle"><IconLocation /></div>
+              {address}
+            </a>
+          </div>
+        </div>
+        }
         { !contact && this.getCardContent() }
       </div>
     );
