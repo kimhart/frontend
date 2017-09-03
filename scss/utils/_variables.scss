@@ -20,15 +20,15 @@ $standard-h3: 20px;
 $soft-red:    #F0454B;
 $bright-red:  #ED2332;
 $blue:        #3A7ADB;
-$blue-pale:  #D0E1F7;
-$blue-light:  #6194e2;
+$blue-light:  lighten($blue, 10%);
 $blue-lightest: lighten(#6194e2, 15%);
+$blue-pale: transparentize($blue-lightest, .5);
 $teal-green:  #41ead4;
-$text-gray:   #4A4A4A;
-$dark-gray:   #122C34;
-$gray-med:    #838383;
-$gray:        #BBBBBB;
-$light-gray:  #DCDCDD;
+$text-gray:   #434650;
+$dark-gray:   darken($text-gray, 5%);
+$gray-med:    lighten($text-gray, 10%);
+$gray:        lighten($text-gray, 25%);
+$light-gray:  lighten($text-gray, 50%);
 $purple: #b178fa;
 
 // Z's

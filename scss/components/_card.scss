@@ -7,6 +7,9 @@
   @include card-shadow;
   border: 1px solid transparentize($blue, 0.85);
   position: relative;
+  p {
+    color: $gray;
+  }
 }
 
 .rep-card-header-wrap {
@@ -16,7 +19,7 @@
   background: white;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-
+  border-bottom: 0;
   @include min-width($tablet) {
     height: 310px;
   }
@@ -98,31 +101,23 @@
   margin-bottom: 15px;
 }
 
-.bio-btn {
-  width: 100px;
+.contact-btn {
+  width: auto;
   height: 40px;
+  padding: 10px 20px;
   color: $blue;
-  font-size: 14px;
-  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  border-radius: 5px;
   margin-right: 10px;
-
-  &.active {
-    background: $blue;
-    color: white;
-    border: none;
-  }
-}
-
-.rep-card-metrics-wrap {
-  border-top: 1px solid transparentize($blue, .7)
 }
 
 .rep-card-section-title {
-  color: $blue;
+  color: $text-gray;
   font-family: $brand-font;
-  font-weight: 400;
-  font-size: 22px;
-  margin: 40px 0 10px 0;
+  font-weight: 600;
+  font-size: 18px;
+  margin: 20px 0 10px 0;
   position: relative;
   display: flex;
   justify-content: center;
@@ -140,12 +135,13 @@
 .rep-card-explainer {
   padding: 30px;
   background-color: $blue;
-  color: white;
   position: relative;
-
   .close-explainer {
     width: 200px;
     margin: 0 auto;
+  }
+  p {
+    color: white;
   }
 }
 
@@ -154,7 +150,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-
+  p {
+    color: $text-gray;
+  }
   .donut-chart-container {
     display: inline-block;
   }
@@ -193,15 +191,44 @@
 }
 
 .policy-areas {
-  padding: 0 20px;
+  padding: 20px;
+}
+
+.policy-area-title {
+  color: $text-gray;
+  font-size: 16px;
+  font-weight: 300;
 }
 
 .details-title {
   width: 100%;
   margin: 10px auto;
   text-transform: uppercase;
-  color: transparentize($text-gray, .20);
+  color: $gray;
   font-size: 20px;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  .contact-row {
+    border-top: 1px solid $light-gray;
+    padding: 15px;
+    flex: 1;
+    a {
+      display: flex;
+      color: $text-gray;
+      align-items: center;
+    }
+  }
+}
+
+.back-btn {
+  font-weight: 400;
+  svg {
+    margin-right: 5px;
+  }
 }
 
 .contact-icons {
@@ -211,10 +238,9 @@
 }
 
 .contact-icon-circle {
-  width: 40px;
-  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
   margin-right: 10px;
-  padding: 5px;
   border-radius: 100%;
   border: 1px solid #ED2332;
   display: flex;
@@ -255,37 +281,27 @@
 .card-toggle-wrap {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  width: 90%;
-  margin: 0 auto;
+  justify-content: space-between;
+  margin-top: 20px;
+  border-bottom: 1px solid $light-gray;
 }
 
-.card-toggle-stats {
-  color: #FFF;
+.card-toggle {
+  color: $gray;
   cursor: pointer;
-  background: transparentize($blue, .4);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 300;
   text-align: center;
   font-size: 16px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  margin: 10px 5px 0 5px;
   padding: 0 15px;
   flex: 1;
   height: 40px;
-  transform: translateY(1px);
   &.active {
-    background: white;
-    border: 1px solid transparentize($blue, .4);
-    border-bottom: 1px solid white;
-    color: $blue;
-    font-weight: 600;
-    position: relative;
-    top: 2px;
-    transform: none;
+    color: $soft-red;
+    border-bottom: 2px solid $soft-red;
+    font-weight: 400;
   }
 }
 
@@ -347,12 +363,12 @@
   }
 
   .liberal {
-    color: lighten($blue, 5%);
+    color: $blue;
     font-weight: 400;
   }
 
   .conservative {
-    color: lighten($soft-red, 5%);
+    color: $soft-red;
     font-weight: 400;
   }
 }
@@ -360,16 +376,23 @@
 .rep-card-section-divider {
   padding-bottom: 20px;
   position: relative;
-
   &:not(:last-child) {
-    border-bottom: 1px solid transparentize($blue, .7);
+    padding-top: 20px;
+    border-bottom: 1px solid $light-gray;
   }
 
   .question-mark-circle {
     position: absolute;
-    top: 0;
-    right: 10px;
+    top: 15px;
+    right: 15px;
   }
+}
+
+.card-tab-description {
+  text-align: center;
+  color: $gray;
+  font-weight: 300;
+  padding: 10px 5px 20px 5px;
 }
 
 .rep-belief-item-type {
