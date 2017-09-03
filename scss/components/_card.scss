@@ -102,7 +102,7 @@
   font-size: 16px;
   font-weight: 400;
   border-radius: 5px;
-  margin-right: 10px;
+  margin-bottom: 20px;
 }
 
 .rep-card-section-title {
@@ -209,6 +209,9 @@
     border-top: 1px solid $light-gray;
     padding: 15px;
     flex: 1;
+    &:first-of-type {
+      border-top: 0;
+    }
     a {
       display: flex;
       color: $text-gray;
@@ -219,8 +222,10 @@
 
 .back-btn {
   font-weight: 400;
+  margin-bottom: 20px;
   svg {
     margin-right: 5px;
+    transform: rotate(90deg);
   }
 }
 
@@ -293,11 +298,15 @@
   font-weight: 300;
   text-align: center;
   font-size: 16px;
-  padding: 0 15px;
+  padding: 10px 15px;
   flex: 1;
-  height: 40px;
-  border-bottom: 2px solid $light-gray;
-
+  flex-wrap: wrap;
+  border-bottom: 2px solid transparent;
+  svg {
+    height: 25px;
+    width: 100%;
+    margin-bottom: 8px;
+  }
   &.active {
     color: $soft-red;
     border-bottom: 2px solid $soft-red;
@@ -374,10 +383,9 @@
 }
 
 .rep-card-section-divider {
-  padding-bottom: 20px;
+  padding: 20px 0;
   position: relative;
   &:not(:last-child) {
-    padding-top: 20px;
     border-bottom: 1px solid $light-gray;
   }
 
