@@ -1,1 +1,2 @@
 node-sass --include-path scss scss/main.scss public/css/main.css
+postcss --use autoprefixer -b 'last 2 versions' < public/css/main.css | postcss --use cssnano > public/css/main.min.css
