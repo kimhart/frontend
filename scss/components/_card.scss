@@ -3,9 +3,7 @@
   max-width: 440px;
   background: white;
   border-radius: 15px;
-  box-shadow: 0 5px 25px transparentize($blue, 0.65);
-  @include card-shadow;
-  border: 1px solid transparentize($blue, 0.85);
+  @include card-shadow-large;
   position: relative;
 }
 
@@ -96,6 +94,11 @@
   font-size: 16px;
   font-weight: 400;
   margin-bottom: 20px;
+
+  svg {
+    margin-right: 5px;
+    transform: rotate(90deg);
+  }
 }
 
 .rep-card-section-title {
@@ -196,31 +199,17 @@
 }
 
 .contact-container {
+
   display: flex;
   flex-direction: column;
   width: 100%;
+
   .contact-row {
-    border-top: 1px solid $light-gray;
     padding: 15px;
-    flex: 1;
-    &:first-of-type {
-      border-top: 0;
-    }
-    a {
-      display: flex;
-      color: $text-gray;
-      align-items: center;
-    }
-  }
-}
-
-.back-btn {
-  font-weight: 400;
-  margin-bottom: 20px;
-
-  svg {
-    margin-right: 5px;
-    transform: rotate(90deg);
+    border-top: 1px solid $light-gray;
+    display: flex;
+    color: $text-gray;
+    align-items: center;
   }
 }
 

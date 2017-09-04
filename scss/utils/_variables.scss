@@ -40,8 +40,12 @@ $z-modal-overlay: 400;
 // SHADOWS
 // ----------------------------------------------
 
+@mixin card-shadow-large {
+  box-shadow: 0 4px 0 0 tint(black, 85%), 0 6px 20px 0 transparentize($blue, .75);
+}
+
 @mixin card-shadow {
-  box-shadow: 0 4px 0 0 $blue-pale, 0 6px 20px 0 transparentize($blue, .75);
+  box-shadow: 0 3px 0 0 tint(black, 85%), 0 3px 10px 0 transparentize($blue, .65);
 }
 
 // BREAKPOINTS
