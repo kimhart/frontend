@@ -102,7 +102,7 @@ class ReportCard extends React.Component {
           <div className="rep-card-section-divider">
             <div className="card-section-header-wrap">
               <div className="card-section-description">
-                These scores contribute to {lastName}'s grade:
+                These scores contribute to {lastName}&apos;s grade:
               </div>
               {/* <span className="control-button question-mark-circle" onClick={() => this.toggleExplainer()}>?</span> */}
             </div>
