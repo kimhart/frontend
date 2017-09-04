@@ -119,7 +119,7 @@ header.logo {
   text-align: center;
   align-self: center;
   width: 100%;
-  margin: 30px auto;
+  padding: 15px;
   display: block;
   @include min-width($desktop) {
     display: none;
@@ -192,7 +192,7 @@ header.logo {
   border-radius: 8px;
   padding: 10px 15px;
   cursor: pointer;
-  border: 1px solid $blue;
+  @include card-shadow;
 
   @include max-width($tablet) {
     margin-left: 25px;
@@ -237,7 +237,6 @@ header.logo {
 .rep-info-name {
   color: $blue;
   font-family: $brand-font;
-  font-weight: 400;
   font-size: 18px;
   margin: 0;
   text-align: left;

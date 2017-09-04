@@ -142,7 +142,7 @@ class Settings extends React.Component {
             { editingAddress &&
               <div className="profile-section-content">
                 { address_error &&
-                  <div className="profile-address-error">
+                  <div className="profile-update-error">
                     { address_error }
                   </div>
                 }
@@ -152,8 +152,8 @@ class Settings extends React.Component {
                     <label className="label-input-placeholder" htmlFor="new-street-input"> Address</label>
                   </div>
                   <div className="profile-input-wrap input-label-wrap">
-                    <input id="new-address2-input" className="profile-input input--outline no-placeholder" placeholder="Apartment / Suite / Unit / Floor"/>
-                    <label className="label-input-placeholder" htmlFor="new-address2-input"> Apartment / Suite / Floor / etc. (optional) </label>
+                    <input id="new-address2-input" className="profile-input input--outline no-placeholder" placeholder="Apartment"/>
+                    <label className="label-input-placeholder" htmlFor="new-address2-input"> Apartment (optional) </label>
                   </div>
                 </div>
                 <div className="profile-input-wrap input-label-wrap">
@@ -188,7 +188,7 @@ class Settings extends React.Component {
             { changingPassword &&
               <div className="profile-section-content">
                 { password_error &&
-                  <div className="profile-address-error">
+                  <div className="profile-update-error">
                     { password_error }
                   </div>
                 }

@@ -3,13 +3,8 @@
   max-width: 440px;
   background: white;
   border-radius: 15px;
-  box-shadow: 0 5px 25px transparentize($blue, 0.65);
-  @include card-shadow;
-  border: 1px solid transparentize($blue, 0.85);
+  @include card-shadow-large;
   position: relative;
-  p {
-    color: $gray;
-  }
 }
 
 .rep-card-header-wrap {
@@ -38,7 +33,7 @@
   }
 
   .rep-letter-grade {
-    font-size: 30px;
+    font-size: 28px;
     color: white;
   }
 }
@@ -84,25 +79,26 @@
 }
 
 .rep-card-position-wrap {
-  margin-bottom: 30px;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 20px;
 }
 
 .rep-card-role, .rep-card-leadership {
   display: block;
   text-align: center;
-  margin: 0 15px;
   color: $text-gray;
 }
 
 .contact-btn {
-  width: auto;
-  height: 40px;
-  padding: 10px 20px;
-  color: $blue;
   font-size: 16px;
   font-weight: 400;
-  border-radius: 5px;
   margin-bottom: 20px;
+
+  svg {
+    margin-right: 5px;
+    transform: rotate(90deg);
+  }
 }
 
 .rep-card-section-title {
@@ -184,7 +180,8 @@
 }
 
 .policy-areas {
-  padding: 20px;
+  padding: 0 20px;
+  padding-bottom: 20px;
 }
 
 .policy-area-title {
@@ -202,30 +199,17 @@
 }
 
 .contact-container {
+
   display: flex;
   flex-direction: column;
   width: 100%;
-  .contact-row {
-    border-top: 1px solid $light-gray;
-    padding: 15px;
-    flex: 1;
-    &:first-of-type {
-      border-top: 0;
-    }
-    a {
-      display: flex;
-      color: $text-gray;
-      align-items: center;
-    }
-  }
-}
 
-.back-btn {
-  font-weight: 400;
-  margin-bottom: 20px;
-  svg {
-    margin-right: 5px;
-    transform: rotate(90deg);
+  .contact-row {
+    padding: 15px;
+    border-top: 1px solid $light-gray;
+    display: flex;
+    color: $text-gray;
+    align-items: center;
   }
 }
 
@@ -301,12 +285,14 @@
   padding: 10px 15px;
   flex: 1;
   flex-wrap: wrap;
-  border-bottom: 2px solid transparent;
+  border-bottom: 2px solid $light-gray;
+
   svg {
     height: 25px;
     width: 100%;
     margin-bottom: 8px;
   }
+
   &.active {
     color: $soft-red;
     border-bottom: 2px solid $soft-red;
@@ -383,7 +369,6 @@
 }
 
 .rep-card-section-divider {
-  padding: 20px 0;
   position: relative;
   &:not(:last-child) {
     border-bottom: 1px solid $light-gray;
@@ -396,11 +381,20 @@
   }
 }
 
-.card-tab-description {
+.card-section-header-wrap {
+  padding: 25px 15px;
   text-align: center;
-  color: $gray;
+}
+
+.card-section-header {
+  font-size: 20px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.card-section-description {
+  font-size: 14px;
   font-weight: 300;
-  padding: 10px 5px 20px 5px;
 }
 
 .rep-belief-item-type {

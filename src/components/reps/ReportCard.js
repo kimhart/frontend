@@ -100,7 +100,9 @@ class ReportCard extends React.Component {
       stats: (
         <div className="rep-card-metrics-wrap">
           <div className="rep-card-section-divider">
-            <div className="card-tab-description">These scores contribute to {lastName}'s grade:
+            <div className="card-section-header-wrap">
+              <div className="card-section-description">These scores contribute to {lastName}'s grade:
+            </div>
               {/* <span className="control-button question-mark-circle" onClick={() => this.toggleExplainer()}>?</span> */}
             </div>
             {/* { this.state.showExplainer &&
@@ -139,7 +141,10 @@ class ReportCard extends React.Component {
             }
           </div>
           <div className="rep-card-section-divider">
-            <p className="card-tab-description bills">{lastName} has sponsored bills in these categories:</p>
+            <div className="card-section-header-wrap">
+              <h2 className="card-section-header">Bills</h2>
+              <div className="card-section-description">{lastName} has sponsored bills in these categories:</div>
+            </div>
             <PolicyAreas {...this.props} />
           </div>
         </div>
@@ -171,7 +176,7 @@ class ReportCard extends React.Component {
       <div className="rep-card-content">
         { this.props.close &&
           <div className="card-close" onClick={() => this.props.close()}>
-            <IconClose color="#4990E2"/>
+            <IconClose color="#3A7ADB"/>
           </div>
         }
         <div className="rep-card-header-wrap">
@@ -179,7 +184,7 @@ class ReportCard extends React.Component {
             <IconStamp fill="#3A7ADB" />
             <span className="rep-letter-grade">{letter_grade}</span>
           </div>
-          <div className="rep-card-photo" style={{background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}} />
+          <div className="rep-card-photo" style={{background: `url(${this.getPhotoSource()}) no-repeat center 10% / cover`}}></div>
           <h1 className="rep-card-name">{ fullName }</h1>
           <div className="rep-card-position-wrap">
             <span className="rep-card-role">
@@ -187,51 +192,44 @@ class ReportCard extends React.Component {
             </span>
             { leadership_position !== "None" && <span className="rep-card-leadership">{ leadership_position }</span> }
           </div>
-          <button className={`contact-btn button--medium button--outline button--blue`} onClick={() => this.setState({ contact: !contact })}>{contact ? <span className="back-btn"><IconAngleDown fill="#3A7ADB"/>Back</span> : 'Contact'}</button>
+          <button className={`contact-btn button--large button--outline button--blue`} onClick={() => this.setState({ contact: !contact })}>{contact ? <span className="button-contents"><IconAngleDown fill="#3A7ADB"/>Back</span> : 'Contact'}</button>
+
           { !contact && this.getMetricsTabs() }
-          { contact &&
-          <div className="contact-container">
-            { phone &&
-              <div className="contact-row">
-              <a target="_blank" href={`tel:${phone}`}>
-                <div className="contact-icon-circle"><IconPhone /></div>{this.formatPhone(phone)}
-              </a>
-            </div>
-            }
-            { website &&
-              <div className="contact-row">
-                <a target="_blank" href={website}>
-                  <div className="contact-icon-circle"><IconLink /></div>
-                  {this.formatUrl(website)}
-                </a>
-              </div>
-            }
-            { twitter_handle &&
-              <div className="contact-row">
-                <a target="_blank" href={`https://twitter.com/${twitter_handle}`}>
-                  <div className="contact-icon-circle"><IconTwitter /></div>
-                  {this.formatUrl(twitter_handle)}
-                </a>
-              </div>
-            }
-            { facebook &&
-              <div className="contact-row">
-                <a target="_blank" href={`https://${facebook}`}>
-                  <div className="contact-icon-circle"><IconFacebook /></div>{this.formatUrl(facebook)}
-                </a>
-              </div>
-            }
-            { address &&
-              <div className="contact-row">
-                <a target="_blank" href={`http://maps.google.com/?q=${this.formatAddress(address)}`}>
-                  <div className="contact-icon-circle"><IconLocation /></div>
-                  {this.formatAddress(address)}
-                </a>
-              </div>
-            }
-            </div>
+        </div>
+        { contact &&
+        <div className="contact-container">
+          { phone &&
+          <a className="contact-row" target="_blank" href={`tel:${phone}`}>
+            <div className="contact-icon-circle"><IconPhone /></div>
+            {this.formatPhone(phone)}
+          </a>
           }
-          </div>
+          { website &&
+          <a className="contact-row" target="_blank" href={website}>
+            <div className="contact-icon-circle"><IconLink /></div>
+            {this.formatUrl(website)}
+          </a>
+          }
+          { twitter_handle &&
+          <a className="contact-row" target="_blank" href={`https://twitter.com/${twitter_handle}`}>
+            <div className="contact-icon-circle"><IconTwitter /></div>
+            {this.formatUrl(twitter_handle)}
+          </a>
+          }
+          { facebook &&
+          <a className="contact-row" target="_blank" href={`https://${facebook}`}>
+            <div className="contact-icon-circle"><IconFacebook /></div>
+            {this.formatUrl(facebook)}
+          </a>
+          }
+          { address &&
+          <a className="contact-row" target="_blank" href={`http://maps.google.com/?q=${this.formatAddress(address)}`}>
+            <div className="contact-icon-circle"><IconLocation /></div>
+            {this.formatAddress(address)}
+          </a>
+          }
+        </div>
+        }
         { !contact && this.getCardContent() }
       </div>
     );

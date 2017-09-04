@@ -123,8 +123,8 @@ class Signup extends React.Component {
                   <label className="label-input-placeholder" htmlFor="address">Address</label>
                 </div>
                 <div className="profile-input-wrap input-label-wrap">
-                  <input id="address2" className="signup-address-input input--outline no-placeholder" type="text" placeholder="Apartment / Suite / Unit / Floor / etc." ref="address2Input" />
-                  <label className="label-input-placeholder" htmlFor="address2">Apartment / Suite / Floor / etc.</label>
+                  <input id="address2" className="signup-address-input input--outline no-placeholder" type="text" placeholder="Apartment" ref="address2Input" />
+                  <label className="label-input-placeholder" htmlFor="address2">Apartment</label>
                 </div>
               </div>
               <div className="flex-thirds">

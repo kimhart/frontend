@@ -16,7 +16,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
+  font-weight: inherit;
 }
 
 .button--small {
@@ -39,7 +39,7 @@
 }
 
 .button--red {
-  background-color: $bright-red;
+  background-color: $red;
 }
 
 .button--gray {
@@ -52,13 +52,15 @@
   color: inherit;
 
   &.button--gray {
-    background-color: transparent;
     color: transparentize(black, .7);
   }
 
   &.button--white {
-    background-color: transparent;
     color: white;
+  }
+
+  &.button--blue {
+    color: $blue;
   }
 }
 
