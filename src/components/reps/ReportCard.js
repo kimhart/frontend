@@ -94,19 +94,20 @@ class ReportCard extends React.Component {
     let { contact, bio, tab, leadership_position } = this.state;
     let { chamber, name, bio_text } = this.props;
     let lastName = name.split(',')[0];
-    let list = bio_text.split('; ');
+    let list = bio_text.replace(/&amp;/g, '&').split('; ');
 
     let tabs = {
       stats: (
         <div className="rep-card-metrics-wrap">
           <div className="rep-card-section-divider">
             <div className="card-section-header-wrap">
-              <div className="card-section-description">These scores contribute to {lastName}'s grade:
-            </div>
+              <div className="card-section-description">
+                These scores contribute to {lastName}'s grade:
+              </div>
               {/* <span className="control-button question-mark-circle" onClick={() => this.toggleExplainer()}>?</span> */}
             </div>
             {/* { this.state.showExplainer &&
-            <div className="rep-card-explainer">
+              <div className="rep-card-explainer">
               <div className="card-close" onClick={() => this.toggleExplainer()}>
                 <IconClose color="white"/>
               </div>
@@ -127,17 +128,17 @@ class ReportCard extends React.Component {
                 <p className="explainer-copy">Number of congressional committees {lastName} has joined, compared to the highest number of committees joined by a single rep.</p>
               </div>
               <button className="close-explainer button--medium button--white" onClick={() => this.toggleExplainer()}><span className="button-contents">Got it</span></button>
-            </div>
+              </div>
             } */}
             { !this.state.showExplainer &&
-            <div>
-              <div className="rep-card-donut-charts">
-                <Attendance {...this.props} />
-                <Participation {...this.props} />
-                <Efficacy {...this.props} />
-                <MembershipStats {...this.props} />
+              <div>
+                <div className="rep-card-donut-charts">
+                  <Attendance {...this.props} />
+                  <Participation {...this.props} />
+                  <Efficacy {...this.props} />
+                  <MembershipStats {...this.props} />
+                </div>
               </div>
-            </div>
             }
           </div>
           <div className="rep-card-section-divider">
