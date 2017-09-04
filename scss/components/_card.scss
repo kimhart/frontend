@@ -7,9 +7,6 @@
   @include card-shadow;
   border: 1px solid transparentize($blue, 0.85);
   position: relative;
-  p {
-    color: $gray;
-  }
 }
 
 .rep-card-header-wrap {
@@ -180,7 +177,8 @@
 }
 
 .policy-areas {
-  padding: 20px;
+  padding: 0 20px;
+  padding-bottom: 20px;
 }
 
 .policy-area-title {
@@ -205,6 +203,9 @@
     border-top: 1px solid $light-gray;
     padding: 15px;
     flex: 1;
+    &:first-of-type {
+      border-top: 0;
+    }
     a {
       display: flex;
       color: $text-gray;
@@ -215,9 +216,11 @@
 
 .back-btn {
   font-weight: 400;
+  margin-bottom: 20px;
 
   svg {
     margin-right: 5px;
+    transform: rotate(90deg);
   }
 }
 
@@ -290,10 +293,16 @@
   font-weight: 300;
   text-align: center;
   font-size: 16px;
-  padding: 0 15px;
+  padding: 10px 15px;
   flex: 1;
-  height: 40px;
+  flex-wrap: wrap;
   border-bottom: 2px solid $light-gray;
+
+  svg {
+    height: 25px;
+    width: 100%;
+    margin-bottom: 8px;
+  }
 
   &.active {
     color: $soft-red;
@@ -371,10 +380,8 @@
 }
 
 .rep-card-section-divider {
-  padding-bottom: 20px;
   position: relative;
   &:not(:last-child) {
-    padding-top: 20px;
     border-bottom: 1px solid $light-gray;
   }
 
@@ -385,12 +392,20 @@
   }
 }
 
-.card-tab-description {
+.card-section-header-wrap {
+  padding: 25px 15px;
   text-align: center;
-  color: $gray;
+}
+
+.card-section-header {
+  font-size: 20px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.card-section-description {
   font-size: 14px;
   font-weight: 300;
-  padding: 25px 15px;
 }
 
 .rep-belief-item-type {

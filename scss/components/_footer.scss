@@ -121,7 +121,7 @@
   right: 0;
   bottom: 0;
   position: fixed;
-  border-top: 1px solid rgba(0, 0, 0, 0.2); 
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
   .main-tabs {
     flex-grow: 1;
     height: 100%;
@@ -131,9 +131,9 @@
     flex-direction: column;
     flex-grow: 1;
     flex-basis: 0;
+    border-top: 3px solid transparent;
     &.active {
       border-top: 3px solid $soft-red;
-      padding-top: 3px;
       transform: translateY(-2px);
     }
   }

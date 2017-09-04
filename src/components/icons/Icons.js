@@ -12,6 +12,10 @@ import IconTriangleDown from './IconTriangleDown';
 import IconTwitter from './IconTwitter';
 import TallyLogo from './TallyLogo';
 import IconSettings from './IconSettings';
+import IconBio from './IconBio';
+import IconSpeech from './IconSpeech';
+import IconStats from './IconStats';
+import IconBeliefs from './IconBeliefs';
 import IconLink from './IconLink';
 
 export {
@@ -29,5 +33,9 @@ export {
   IconTriangleDown,
   IconTwitter,
   TallyLogo,
-  IconSettings
+  IconSettings,
+  IconBeliefs,
+  IconStats,
+  IconSpeech,
+  IconBio
 }
