@@ -3,6 +3,7 @@ import Relay from 'react-relay';
 import { Link } from 'react-router';
 import Attendance from './Attendance';
 import Beliefs from './Beliefs';
+import Speech from './Speech';
 import Participation from './Participation';
 import Efficacy from './Efficacy';
 import MembershipStats from './MembershipStats';
@@ -46,16 +47,17 @@ class ReportCard extends React.Component {
     return (
       <div className="card-toggle-wrap">
         <div className={`card-toggle ${tab == 'stats' ? ' active' : ''}`} onClick={() => this.setState({ tab: 'stats' })}>
-            <IconStats fill={tab == 'stats' ? '#F0454B' : '#7f8494'}/>
-            Stats
-          </div>
+          <IconStats fill={tab == 'stats' ? '#F0454B' : '#7f8494'}/>
+          Stats
+        </div>
         <div className={`card-toggle ${tab == 'beliefs' ? ' active' : ''}`} onClick={() => this.setState({ tab: 'beliefs' })}>
           <IconBeliefs fill={tab == 'beliefs' ? '#F0454B' : '#7f8494'} />
           Beliefs
         </div>
-        {/* <div className={`card-toggle ${tab == 'speech' ? ' active' : ''}`} onClick={() => this.setState({ tab: 'speech' })}>
-        <IconSpeech fill={tab == 'speech' ? '#F0454B' : '#7f8494'} />
-        Speech</div> */}
+        <div className={`card-toggle ${tab == 'speech' ? ' active' : ''}`} onClick={() => this.setState({ tab: 'speech' })}>
+          <IconSpeech fill={tab == 'speech' ? '#F0454B' : '#7f8494'} />
+          Speech
+        </div>
         <div className={`card-toggle ${tab == 'bio' ? ' active' : ''}`} onClick={() => this.setState({ tab: 'bio' })}>
           <IconBio fill={tab == 'bio' ? '#F0454B' : '#7f8494'} />
           Bio
@@ -155,6 +157,11 @@ class ReportCard extends React.Component {
           <Beliefs {...this.props} />
         </div>
       ),
+      speech: (
+        <div className="rep-card-metrics-wrap">
+          <Speech {...this.props} />
+        </div>
+      ),
       bio: (
         <div className="rep-card-details-wrap">
           <ul className="rep-card-bio-list">
@@ -247,6 +254,7 @@ export default Relay.createContainer(ReportCard, {
     fragment on Data {
       id
       ${Beliefs.getFragment('data')}
+      ${Speech.getFragment('data')}
       ${Attendance.getFragment('data')}
       ${Participation.getFragment('data')}
       ${Efficacy.getFragment('data')}
