@@ -37,7 +37,7 @@ import {
   getRepParticipationSchema,
   getRepEfficacySchema,
   getRepPolicyAreasSchema,
-  getRepSearchSchema,
+  getRepSearchSchema
 } from './rep';
 
 import { getRepBeliefSchema } from './beliefs';
