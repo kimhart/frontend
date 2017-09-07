@@ -28,12 +28,16 @@ class Speech extends React.Component {
 
   renderSpeech = () => {
     const { speech } = this.state;
-    return speech.map(({ word, frequency, rank }, index) => (
-      <div key={`${word}${frequency}${rank}${index}`} className="rep-speech-list-item-wrap">
-        <span className="rep-speech-list-item-text">"{ word }"</span>
-        <span className="rep-speech-list-item-frequency">{ `${frequency} ${frequency > 1 ? 'times' : 'time'}` }</span>
-      </div>
-    ))
+    if (!speech) {
+      `We currently don't have enough data to gather these key terms. Check back soon!`
+    } else {
+      return speech.map(({ word, frequency, rank }, index) => (
+        <div key={`${word}${frequency}${rank}${index}`} className="rep-speech-list-item-wrap">
+          <span className="rep-speech-list-item-text">"{ word }"</span>
+          <span className="rep-speech-list-item-frequency">{ `${frequency} ${frequency > 1 ? 'times' : 'time'}` }</span>
+        </div>
+      ))
+    }
   }
 
   render() {
@@ -41,7 +45,7 @@ class Speech extends React.Component {
       <div>
         <div className="card-section-header-wrap">
           <div className="card-section-description">
-            <span>Analysis of this reps speech and what they at meetings and stuff so you can know</span>
+            <span>Most frequently spoken phrases throughout this session, according to official Congressional transcripts:</span>
           </div>
         </div>
         { this.renderSpeech() }

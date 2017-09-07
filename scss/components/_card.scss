@@ -456,14 +456,17 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 20px 15px;
   border-top: 1px solid $light-gray;
 }
 
 .rep-speech-list-item-frequency {
   color: $gray;
+  font-size: 14px;
 }
 
 .rep-speech-list-item-text {
   color: $blue;
+  font-size: 16px;
+  font-weight: 400;
 }
