@@ -450,3 +450,20 @@
   border-radius: 3px;
   margin: 5px 5px 0 0;
 }
+
+.rep-speech-list-item-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid $light-gray;
+}
+
+.rep-speech-list-item-frequency {
+  color: $gray;
+}
+
+.rep-speech-list-item-text {
+  color: $blue;
+}
