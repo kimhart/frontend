@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Political Awareness App",
   "scripts": {
-    "prestart": "node_modules/babel-cli/bin/babel-node.js --presets react,es2015,stage-0 ./utilities/SchemaExporterRunner.js && npm install && webpack && ./bin/build-css",
+    "prestart": "node_modules/babel-cli/bin/babel-node.js --presets react,es2015,stage-0 ./utilities/SchemaExporterRunner.js && npm install && ./bin/build-js && ./bin/build-css",
     "start": "node_modules/babel-cli/bin/babel-node.js --presets react,es2015,stage-0 server.js",
     "build-css": "./bin/build-css",
     "watch-css": "./bin/watch-css"
