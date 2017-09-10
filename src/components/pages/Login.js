@@ -55,15 +55,15 @@ class Login extends React.Component {
             <TallyLogo /><span className="tally-title">Tally</span>
           </div>
           <section className="home-section home-login">
-            <div id="login-facebook" className="login-form">
+            {/* <div id="login-facebook" className="login-form">
               <Link className="standard-link signup-link" to="/signup">
                 <button className="login-btn login-with-facebook" type="button" onClick={this.props.loginWithFacebook}>
-                  <IconFacebookOfficial fill="#ffffff" /> Login with Facebook
+              <IconFacebookOfficial fill="#ffffff" /> Login with Facebook
                 </button>
               </Link>
-            </div>
+            </div> */}
             <div id="login-form" className="login-form">
-              <p className="create-account">OR</p>
+              {/* <p className="create-account">OR</p> */}
               <div className="profile-input-wrap input-label-wrap">
                 <input type="email" className="login-email-input input--outline no-placeholder" placeholder="Email" required ref={(c) => this._email = c} />
                 <label className="label-input-placeholder" htmlFor="email">Email</label>
