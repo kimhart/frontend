@@ -42,13 +42,13 @@ class Speech extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="card-section-speech">
         <div className="card-section-header-wrap">
-          <div className="card-section-description">
-            <span>Most frequently spoken phrases throughout this session, according to official Congressional transcripts:</span>
-          </div>
+          <span className="card-section-description">Most frequently spoken phrases throughout this session, according to official Congressional transcripts:</span>
         </div>
-        { this.renderSpeech() }
+        <div className="speech-top-results-wrap">
+          { this.renderSpeech() }
+        </div>
       </div>
     )
   }

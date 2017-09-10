@@ -90,14 +90,18 @@ class Beliefs extends React.Component {
     if (!beliefs) return null;
     else if (!beliefs.length) {
       return (
-        <div>
-          <p className="card-section-description">This rep has not been in office long enough to predict their ideology.</p>
+        <div className="card-section-beliefs">
+          <div className="card-section-header-wrap">
+            <span className="card-section-description">This rep has not been in office long enough to predict their ideology yet.</span>
+          </div>
         </div>
       )
     }
     return (
-      <div>
-        <p className="card-section-description">Predicted ideologies based on voting history.<br/>Click to explore each section:</p>
+      <div className="card-section-beliefs">
+        <div className="card-section-header-wrap">
+          <span className="card-section-description">Predicted ideologies based on voting history.<br/>Click to explore each section:</span>
+        </div>
         <div>{ this.renderBeliefs({ beliefs, level }) }</div>
       </div>
     );
