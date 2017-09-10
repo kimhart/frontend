@@ -60,13 +60,13 @@ class Beliefs extends React.Component {
         <div
           key={`${bioguide_id}${sub_type_of}${type}`}
           className={`rep-belief-item ${isClickable ? 'clickable' : ''}`}
-          onClick={
+          onClick= {
             isClickable
             ? () => this.setState({ level: type || level })
             : () => null
           }
         >
-          <div className="rep-belief-item-type">{this.swapBeliefNames(type)}</div>
+        <div className="rep-belief-item-type">{this.swapBeliefNames(type)}</div>
           <BeliefRange {...this.props} {...belief} />
         </div>
       )
