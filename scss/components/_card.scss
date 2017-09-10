@@ -360,6 +360,7 @@
 
   .moderate {
     margin-left: 30px;
+    color: $gray;
     font-weight: 400;
   }
 
@@ -415,22 +416,20 @@
 }
 
 .rep-belief-item:first-of-type {
+  padding: 20px 15px 50px 15px;
+  border-top: 1px solid $lightest-gray;
+  background-color: transparentize($blue, .95);
   .rep-belief-item-type {
-    font-size: 18px;
-    font-weight: 600;
-  }
-  .arrow-down {
-    width: 0;
-    height: 0;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-top: 20px solid #f00;
+    font-size: 20px;
+    color: $text-gray;
+    font-weight: 400;
   }
 }
 
 .rep-belief-item {
   width: 100%;
-  padding: 20px 15px 50px 15px;
+  margin: 0 auto;
+  padding: 20px 50px 50px 50px;
   position: relative;
 
   &.clickable:hover {
@@ -438,7 +437,7 @@
   }
 
   &:not(:last-child) {
-    border-bottom: 1px solid transparentize($blue, .9);
+    border-bottom: 1px solid $lightest-gray;
   }
 }
 

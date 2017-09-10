@@ -91,7 +91,7 @@ class Beliefs extends React.Component {
     else if (!beliefs.length) {
       return (
         <div>
-          <p className="card-section-description">This rep has not been in office long enough to predict their ideology yet.</p>
+          <p className="card-section-description">This rep has not been in office long enough to predict their ideology.</p>
         </div>
       )
     }
