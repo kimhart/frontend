@@ -340,28 +340,10 @@ $barFills: 10;
 }
 
 .rank-sort-btn  {
-  background: white;
-  text-align: center;
-  color: $blue;
-  font-weight: 100;
-  height: auto;
-  width: 20%;
-  padding: 7px;
   margin: 0 10px;
-  box-shadow: 0 0 10px transparentize($blue, .75);
-  border: 1px solid transparentize($blue, .75);
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-
-  @include min-width($tablet) {
-    margin: 0 20px;
-  }
 
   .icon-triangle-down {
-    margin-left: 10px;
+    margin-left: 8px;
     transition: transform .3s $ease-out-quad;
   }
 
@@ -369,6 +351,10 @@ $barFills: 10;
     .icon-triangle-down {
       transform: rotate(180deg);
     }
+  }
+
+  @include min-width($tablet) {
+    margin: 0 20px;
   }
 }
 
