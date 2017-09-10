@@ -59,11 +59,11 @@
   font-size: 14px;
   text-decoration: none;
   opacity: 0.5;
-  padding-bottom: 3px;
-  &.active {
+
+  &.active, &:hover {
     opacity: 1;
     color: $soft-red;
-    padding-bottom: 0;
+
     svg {
       path {
         fill: $soft-red;
@@ -88,6 +88,10 @@
 
   .nav-bar-tab {
     padding: 15px 20px;
+
+    &.active {
+      box-shadow: inset 0 3px;
+    }
   }
 
   .nav-bar-tab_title {
@@ -121,7 +125,8 @@
   right: 0;
   bottom: 0;
   position: fixed;
-  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+
   .main-tabs {
     flex-grow: 1;
     height: 100%;
@@ -131,10 +136,10 @@
     flex-direction: column;
     flex-grow: 1;
     flex-basis: 0;
-    border-top: 3px solid transparent;
+    padding: 0;
+
     &.active {
-      border-top: 3px solid $soft-red;
-      transform: translateY(-2px);
+      box-shadow: 0 -3px 0 -1px;
     }
   }
 
