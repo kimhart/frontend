@@ -219,7 +219,9 @@ class Settings extends React.Component {
           </div>
         </div>
         <div className="profile-button-wrap">
-          <button className="button--large button--red logout-button" onClick={() => this.props.logOut()}>Logout</button>
+          <button className="button--large button--red logout-button" onClick={() => this.props.logOut()}>
+            <span className="button-contents">Logout</span>
+          </button>
         </div>
       </div>
     )
