@@ -394,6 +394,8 @@
 
 .card-section-description {
   font-size: 14px;
+  text-align: center;
+  margin: 20px auto 10px auto;
   font-weight: 300;
 }
 
@@ -447,4 +449,24 @@
   height: 15px;
   border-radius: 3px;
   margin: 5px 5px 0 0;
+}
+
+.rep-speech-list-item-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 15px;
+  border-top: 1px solid $light-gray;
+}
+
+.rep-speech-list-item-frequency {
+  color: $gray;
+  font-size: 14px;
+}
+
+.rep-speech-list-item-text {
+  color: $blue;
+  font-size: 16px;
+  font-weight: 400;
 }
