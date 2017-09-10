@@ -9,10 +9,6 @@ const scroll = Scroll.animateScroll;
 
 class Footer extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   getActiveTab = (tab) => {
     if (location.href.includes('search')) return 'search';
     if (location.href.includes('rank')) return 'rank';
@@ -32,7 +28,7 @@ class Footer extends React.Component {
   // }
 
   render() {
-    let { placement } = this.props;
+    let { placement, user } = this.props;
     return (
       <nav className={`nav-bar nav-bar--${placement}`}>
         { placement === 'top' &&
@@ -65,7 +61,7 @@ class Footer extends React.Component {
             </span>
             <span className="nav-bar-tab_title">Search</span>
           </Link>
-          { placement === 'bottom' &&
+          { placement === 'bottom' && user &&
             <Link to="/settings" className={`settings nav-bar-tab ${this.getActiveTab() === 'settings' ? ' active' : ''}`}>
               <span className="nav-bar-tab_icon">
                 <IconSettings />
@@ -74,7 +70,7 @@ class Footer extends React.Component {
             </Link>
           }
         </div>
-        { placement === 'top' &&
+        { placement === 'top' && user &&
           <Link to="/settings" className={`settings nav-bar-tab ${this.getActiveTab() === 'settings' ? ' active' : ''}`}>
             <span className="nav-bar-tab_icon">
               <IconSettings />
