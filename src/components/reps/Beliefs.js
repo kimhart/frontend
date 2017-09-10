@@ -66,7 +66,9 @@ class Beliefs extends React.Component {
             : () => null
           }
         >
-        <div className="rep-belief-item-type">{this.swapBeliefNames(type)}</div>
+        <div className="rep-belief-item-type">{this.swapBeliefNames(type)}
+          {isClickable && <span className="plus-expand">+</span> }
+        </div>
           <BeliefRange {...this.props} {...belief} />
         </div>
       )
@@ -100,7 +102,7 @@ class Beliefs extends React.Component {
     return (
       <div className="card-section-beliefs">
         <div className="card-section-header-wrap">
-          <span className="card-section-description">Predicted ideologies based on voting history.<br/>Click to explore each section:</span>
+          <span className="card-section-description">Predicted ideologies based on voting history.<br/>Click to explore each subsection.</span>
         </div>
         <div>{ this.renderBeliefs({ beliefs, level }) }</div>
       </div>
