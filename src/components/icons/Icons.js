@@ -1,6 +1,7 @@
 import IconClose from './IconClose';
 import IconAnalyze from './IconAnalyze';
 import IconFacebook from './IconFacebook';
+import IconFacebookOfficial from './IconFacebookOfficial';
 import IconAngleDown from './IconAngleDown';
 import IconLocation from './IconLocation';
 import IconPhone from './IconPhone';
@@ -23,6 +24,7 @@ export {
   IconStamp,
   IconAnalyze,
   IconFacebook,
+  IconFacebookOfficial,
   IconAngleDown,
   IconLink,
   IconLocation,
