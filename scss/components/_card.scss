@@ -395,7 +395,6 @@
 .card-section-description {
   font-size: 14px;
   text-align: center;
-  margin: 20px auto 10px auto;
   font-weight: 300;
 }
 
@@ -415,7 +414,6 @@
   position: relative;
 
   &:first-child {
-    margin-top: 20px;
     background-color: transparentize($blue, .9);
   }
 

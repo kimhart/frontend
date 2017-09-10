@@ -184,7 +184,7 @@ class Rank extends Component {
               <IconSearch width="20px" fill="#3A7ADB" />
             </div>
           </div>
-          <button className={`rank-sort-btn ${bestToWorst ? 'sort-down' : 'sort-up'}`} onClick={() => this.setState({bestToWorst: !bestToWorst})}>
+          <button className={`rank-sort-btn button--outline button--blue button--medium ${bestToWorst ? 'sort-down' : 'sort-up'}`} onClick={() => this.setState({bestToWorst: !bestToWorst})}>
             <span className="button-contents">
               Sort
               <IconTriangleDown fill="#3A7ADB" />
