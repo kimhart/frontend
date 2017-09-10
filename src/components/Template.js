@@ -3,6 +3,7 @@ import Relay from 'react-relay';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, IndexLink, Link, browserHistory, applyRouterMiddleware } from 'react-router';
 import useRelay from 'react-router-relay';
+import * as firebase from 'firebase';
 import Footer from './Footer';
 import Header from './Header';
 import Logout from './Logout';
@@ -15,6 +16,28 @@ import IconStates from './icons/IconStates';
 import About from './pages/About';
 import { UserUtils, isLoading, initLoading } from '../utils/Utils';
 
+// NOTE: refactor this code out
+const facebookAuth = new firebase.auth.FacebookAuthProvider();
+facebookAuth.addScope('user_location');
+firebase.initializeApp({
+  apiKey: "AIzaSyD2qIaesYB-4HavqZveObEL13zQX541Xgg",
+  authDomain: "tally-auth.firebaseapp.com",
+  databaseURL: "https://tally-auth.firebaseio.com",
+  projectId: "tally-auth",
+  storageBucket: "tally-auth.appspot.com",
+  messagingSenderId: "497606623527"
+});
+firebase.auth().getRedirectResult().then(result => {
+  let facebook_token = null;
+  if (result.credential) {
+    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+    facebook_token = result.credential.accessToken;
+  }
+  console.log({ result, facebook_token });
+}).catch(error => {
+  console.error(error);
+});
+
 class Template extends React.Component {
 
   constructor(props) {
@@ -25,6 +48,10 @@ class Template extends React.Component {
         this.setState({ done: true });
       }
     });
+  }
+
+  loginWithFacebook = () => {
+    firebase.auth().signInWithRedirect(facebookAuth)
   }
 
   componentWillUpdate(nextProps, nextState) {
@@ -83,7 +110,10 @@ class Template extends React.Component {
         return (
           <div className="page-wrap">
             <AppLoading />
-            <Login {...this.props} update={() => this.setUser()} />
+            <Login {...this.props}
+              update={() => this.setUser()}
+              loginWithFacebook={this.loginWithFacebook}
+            />
           </div>
         );
       }

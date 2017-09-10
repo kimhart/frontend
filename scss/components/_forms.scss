@@ -62,6 +62,17 @@ input:focus {
   }
 }
 
+.login-with-facebook {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $facebook-blue;
+  .icon-facebook {
+    height: 25px;
+    margin-right: 10px;
+  }
+}
+
 .login-form, .signup-form {
   // input, select {
   //   border: 1px solid $light-gray;
