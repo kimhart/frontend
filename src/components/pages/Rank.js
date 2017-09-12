@@ -161,7 +161,7 @@ class Rank extends Component {
       <div className="rank-wrap">
         <div className="rank-controls-wrap blue-header">
           <div className="rank-category-wrap">
-            <div className="rank-headline">Rank by:</div>
+            <div className="rank-headline">Rank reps by:</div>
             <div className="rank-category-name" onClick={() => this.getDropDown()}>
               <p>{this.getActiveCategory()}</p>
               <IconAngleDown fill="white" width="12px" />
