@@ -222,7 +222,7 @@ class ReportCard extends React.Component {
             {this.formatUrl(twitter_handle)}
           </a>
           }
-          { facebook &&
+          { facebook !== 'None' &&
           <a className="contact-row" target="_blank" href={`https://${facebook}`}>
             <div className="contact-icon-circle"><IconFacebook /></div>
             {this.formatUrl(facebook)}
