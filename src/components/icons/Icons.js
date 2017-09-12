@@ -18,6 +18,7 @@ import IconSpeech from './IconSpeech';
 import IconStats from './IconStats';
 import IconBeliefs from './IconBeliefs';
 import IconLink from './IconLink';
+import IconPlus from './IconPlus';
 
 export {
   IconClose,
@@ -39,5 +40,6 @@ export {
   IconBeliefs,
   IconStats,
   IconSpeech,
-  IconBio
+  IconBio,
+  IconPlus
 }

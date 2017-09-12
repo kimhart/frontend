@@ -2,7 +2,7 @@ import React from 'react';
 import Relay from 'react-relay';
 import { isLoading } from '../../utils/Utils';
 import BeliefRange from './BeliefRange';
-import { IconAngleDown } from '../icons/Icons';
+import { IconAngleDown, IconPlus } from '../icons/Icons';
 
 class Beliefs extends React.Component {
 
@@ -66,8 +66,13 @@ class Beliefs extends React.Component {
             : () => null
           }
         >
-        <div className="rep-belief-item-type">{this.swapBeliefNames(type)}
-          {isClickable && <span className="plus-expand">+</span> }
+        <div className="rep-belief-item-type">
+          {isClickable &&
+            <div className="expand-plus">
+              <IconPlus width="10px"/>
+            </div>
+          }
+          {this.swapBeliefNames(type)}
         </div>
           <BeliefRange {...this.props} {...belief} />
         </div>
@@ -102,7 +107,7 @@ class Beliefs extends React.Component {
     return (
       <div className="card-section-beliefs">
         <div className="card-section-header-wrap">
-          <span className="card-section-description">Predicted ideologies based on voting history.<br/>Click to explore each subsection.</span>
+          <span className="card-section-description">Predicted ideologies based on voting history.<br/>Click a subsection to explore.</span>
         </div>
         <div>{ this.renderBeliefs({ beliefs, level }) }</div>
       </div>
