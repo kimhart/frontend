@@ -7,6 +7,33 @@ import { UserUtils } from './../../utils/Utils';
 import { Link, browserHistory } from 'react-router';
 import TallyModal from '../modal/TallyModal';
 
+// NOTE: we can move this out to a file if we ever wanted to use it somewhere else
+class Ellipsis extends React.Component {
+  state = {
+    number: 0,
+    max: 1
+  }
+
+  componentDidMount() {
+    const { max } = this.props;
+    this.setState({ max })
+    setInterval(() => {
+      this.setState(prevState => ({
+        number: prevState.number === max ? 0 : prevState.number + 1
+      }))
+    }, 1000);
+  }
+
+  render() {
+    return (
+      <span>
+        { Array(this.state.number).fill('.') }
+      </span>
+    );
+  }
+
+}
+
 class DashboardPage extends React.Component {
 
   constructor(props) {
@@ -24,7 +51,8 @@ class DashboardPage extends React.Component {
     this.state = {
       coords: {
         longitude: null,
-        latitude: null
+        latitude: null,
+        state: ''
       },
       user,
       activeReportCard: null,
@@ -38,7 +66,11 @@ class DashboardPage extends React.Component {
     const url = `${GoogleMapsAPI}/geocode/json?latlng=${latitude},${longitude}`;
 
     return fetch(url).then(res => res.json()).then(json => {
-      return json.results[0].address_components.find(({ types }) => types.includes('postal_code')).long_name;
+          console.log({ results: json.results });
+      return {
+        zip: json.results[0].address_components.find(({ types }) => types.includes('postal_code')).long_name,
+        state: json.results[0].address_components.find(({ types }) => types.includes('administrative_area_level_1')).long_name,
+      };
     })
   }
 
@@ -47,7 +79,15 @@ class DashboardPage extends React.Component {
     let { longitude, latitude } = nextState.coords;
     if (prevLong !== longitude || prevLat !== latitude) {
       this.getZipFromCoords(latitude, longitude)
-      .then(zip => {
+      .then(({ zip, state }) => {
+        this.setState(prevState => {
+          return {
+            coords: {
+              ...prevState.coords,
+              state
+            }
+          }
+        });
         nextProps.relay.setVariables({ search_term: zip })
       })
       .catch(error => {
@@ -66,18 +106,27 @@ class DashboardPage extends React.Component {
     if (prevSearch && search && prevSearch.length !== search.length) {
       Object.assign(nextState, { reps: search });
     }
+
+    let { user: prevUser } = this.props;
+    let { user } = nextProps;
+    if (!prevUser && user) {
+      nextProps.relay.setVariables({ district: parseInt(user.district), state_long: user.state_long });
+      Object.assign(nextState, { user });
+      navigator.geolocation.clearWatch(this.geoId)
+    }
   }
 
   guessLocation = () => {
     if (window.hasOwnProperty('navigator')) {
-      navigator.geolocation.watchPosition(
+      this.geoId = navigator.geolocation.watchPosition(
         (position) => {
-          this.setState({
+          this.setState(prevState => ({
             coords: {
+              ...prevState.coords,
               latitude: position.coords.latitude,
               longitude: position.coords.longitude
             }
-          })
+          }))
         },
         (error) => {
           console.error(error);
@@ -127,19 +176,43 @@ class DashboardPage extends React.Component {
   getDistrict = (user) => user.district === 0 ? 'At Large' : user.district;
 
   render() {
-    let { user, coords } = this.state;
+    let { user, coords, coords_error } = this.state;
     return (
       <div className="main-dash">
         <div className="blue-header">
-          <h3 className="headline">Your Representatives</h3>
-          { user.state_long &&
-            <p className="your-district">
+          { !user.state_long && !coords.latitude && !coords.longitude && !coords_error &&
+            <h3 key="your-reps-h3" className="headline">
+              Determining Your Representatives<Ellipsis max={3} />
+            </h3>
+          }
+          { user.state_long && [
+            <h3 key="your-reps-h3" className="headline">
+              Your Representatives
+            </h3>,
+            <p key="your-reps-p" className="your-district">
               <svg className="state-icon">
                 <use xlinkHref={ `#icon-${user.state_long.replace(/\s/g, '-')}` }/>
               </svg>
               <br/>
               <span className="state">{user.state_long}</span>District {this.getDistrict(user)}
             </p>
+          ]}
+          { coords.latitude && coords.longitude && [
+            <h3 key="your-reps-h3" className="headline">
+              Representatives in your ZIP Code
+            </h3>,
+            <p key="your-reps-p" className="your-district">
+              <svg className="state-icon">
+                <use xlinkHref={ `#icon-${coords.state.replace(/\s/g, '-')}` }/>
+              </svg>
+              <br />
+              <span className="state">{coords.state}</span>
+            </p>
+          ]}
+          { coords_error &&
+            <h3 key="your-reps-h3" className="headline">
+              Uh-oh! You'll Need to Enable Location to Representatives in Your Area!
+            </h3>
           }
         </div>
         <span className="tap-a-rep">Click on each rep to learn more:</span>
