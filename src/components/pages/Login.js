@@ -79,7 +79,7 @@ class Login extends React.Component {
             <div id="login-form" className="login-form">
               <p className="create-account">OR</p>
               <Link className="standard-link signup-link" to="/signup">
-                <button className="login-btn" type="button" onClick={this._handleSubmit}>Create a New Account</button>
+                <button className="login-btn" type="button">Create a New Account</button>
               </Link>
             </div>
           </section>
