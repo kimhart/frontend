@@ -83,6 +83,7 @@ class Template extends React.Component {
   logOut = () => {
     UserUtils.logOut();
     this.props.relay.setVariables({ user_id: null });
+    browserHistory.push('/');
   }
 
   render() {

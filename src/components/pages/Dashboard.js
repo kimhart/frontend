@@ -12,26 +12,20 @@ class DashboardPage extends React.Component {
   constructor(props) {
     super(props);
     let { user } = props;
-    if (!user) {
-      user = {
-        district: null,
-        state_long: null
-      }
-      if (!UserUtils.isValidUserId(UserUtils.getUser())) {
+    let coords = { longitude: null, latitude: null, state: '', zip: null };
+    if (!user && !UserUtils.isValidUserId(UserUtils.getUser())) {
+      user = { district: null, state_long: null };
+      if (sessionStorage.getItem('tally::coords')) {
+        coords = JSON.parse(sessionStorage.getItem('tally::coords'))
+        props.relay.setVariables({ search_term: coords.zip })
+      } else {
         this.guessLocation();
       }
+    } else {
+      props.relay.setVariables({ district: parseInt(user.district), state_long: user.state_long });
+      coords = { longitude: null, latitude: null, state: '', zip: null };
     }
-    this.state = {
-      coords: {
-        longitude: null,
-        latitude: null,
-        state: ''
-      },
-      user,
-      activeReportCard: null,
-      reps: []
-    };
-    props.relay.setVariables({ district: parseInt(user.district), state_long: user.state_long });
+    this.state = { coords, user, activeReportCard: null, reps: [] };
   }
 
   getZipFromCoords = (latitude, longitude) => {
@@ -39,7 +33,6 @@ class DashboardPage extends React.Component {
     const url = `${GoogleMapsAPI}/geocode/json?latlng=${latitude},${longitude}`;
 
     return fetch(url).then(res => res.json()).then(json => {
-          console.log({ results: json.results });
       return {
         zip: json.results[0].address_components.find(({ types }) => types.includes('postal_code')).long_name,
         state: json.results[0].address_components.find(({ types }) => types.includes('administrative_area_level_1')).long_name,
@@ -54,12 +47,13 @@ class DashboardPage extends React.Component {
       this.getZipFromCoords(latitude, longitude)
       .then(({ zip, state }) => {
         this.setState(prevState => {
-          return {
-            coords: {
-              ...prevState.coords,
-              state
-            }
+          const coords = {
+            ...prevState.coords,
+            state,
+            zip
           }
+          sessionStorage.setItem('tally::coords', JSON.stringify(coords));
+          return { coords }
         });
         nextProps.relay.setVariables({ search_term: zip })
       })
@@ -84,7 +78,7 @@ class DashboardPage extends React.Component {
     let { user } = nextProps;
     if (!prevUser && user) {
       nextProps.relay.setVariables({ district: parseInt(user.district), state_long: user.state_long });
-      Object.assign(nextState, { user });
+      Object.assign(nextState, { user, coords: { longitude: null, latitude: null, state: '', zip: null } });
       navigator.geolocation.clearWatch(this.geoId)
     }
   }
