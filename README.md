@@ -1,5 +1,9 @@
 # Tally
 
+[![Code Climate Maintainability](https://api.codeclimate.com/v1/badges/6b87d3e22780f907abad/maintainability)](https://codeclimate.com/repos/59a5e32c07be1102a2000232/maintainability)
+
+https://www.tally.us.com
+
 ### Run Locally
 
 Server: `nodemon`
