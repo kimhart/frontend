@@ -490,7 +490,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 15px;
-  border-top: 1px solid $light-gray;
+  border-top: 1px solid $lightest-gray;
 }
 
 .rep-speech-list-item-frequency {
@@ -502,4 +502,14 @@
   color: $blue;
   font-size: 16px;
   font-weight: 400;
+}
+
+.speech-search {
+  margin: 0 auto;
+  max-width: 90%;
+}
+
+.speech-search-header {
+  text-align: center;
+  margin: 30px auto 10px auto;
 }
