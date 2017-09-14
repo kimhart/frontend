@@ -5,19 +5,9 @@ import useRelay from 'react-router-relay';
 import { UserUtils } from '../utils/Utils';
 import TallyLogo from './icons/TallyLogo';
 
-class Header extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-  logOut = () => {
-    UserUtils.logOut();
-    this.props.update();
-  }
+class Header extends React.PureComponent {
 
   render() {
-    let { user } = this.props;
     return (
       <header className="logo">
         <div className="logo-container">

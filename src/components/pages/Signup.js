@@ -49,7 +49,7 @@ class Signup extends React.Component {
         onSuccess: ({ Signup: { user } }) => {
           if (typeof user === 'object' && user.hasOwnProperty('user_id') && !!user.user_id) {
             UserUtils.setUserId(user.user_id);
-            this.props.update();
+            this.props.setUser();
             browserHistory.push('/');
           }
           else {

@@ -43,7 +43,7 @@ class Template extends React.Component {
   constructor(props) {
     super(props);
     let user_id = UserUtils.getUserId();
-    props.relay.setVariables({ user_id: this.isValidUserId(user_id) ? `${user_id}` : null }, ({ done, error, aborted }) => {
+    props.relay.setVariables({ user_id: UserUtils.isValidUserId(user_id) ? `${user_id}` : null }, ({ done, error, aborted }) => {
       if (done || error || aborted) {
         this.setState({ done: true });
       }
@@ -71,13 +71,9 @@ class Template extends React.Component {
     }, 1000);
   }
 
-  isValidUserId = (user_id) => {
-    return !!user_id || user_id === 0;
-  }
-
   setUser = () => {
     let user_id = UserUtils.getUserId();
-    this.props.relay.setVariables({ user_id: this.isValidUserId(user_id) ? `${user_id}` : null }, ({ done, error, aborted }) => {
+    this.props.relay.setVariables({ user_id: UserUtils.isValidUserId(user_id) ? `${user_id}` : null }, ({ done, error, aborted }) => {
       if (done || error || aborted) {
         this.setState({ done: !this.state.done });
       }
@@ -87,16 +83,17 @@ class Template extends React.Component {
   logOut = () => {
     UserUtils.logOut();
     this.props.relay.setVariables({ user_id: null });
+    browserHistory.push('/');
   }
 
   render() {
     let { user } = this.props.data;
-    if (user && user.user_id === "null" && !this.isValidUserId(UserUtils.getUserId())) {
+    if (user && user.user_id === "null" && !UserUtils.isValidUserId(UserUtils.getUserId())) {
       user = null;
     }
-    if (!user) {
+    if (false) {
       if (this.props.location.pathname === "/signup") {
-        return <Signup {...this.props} update={() => this.setUser()} />
+        return <Signup {...this.props} update={this.setUser} />
       }
       else if (this.props.location.pathname === "/about/" || this.props.location.pathname === "/about") {
         return (
@@ -111,21 +108,21 @@ class Template extends React.Component {
           <div className="page-wrap">
             <AppLoading />
             <Login {...this.props}
-              update={() => this.setUser()}
+              update={this.setUser}
               loginWithFacebook={this.loginWithFacebook}
             />
           </div>
         );
       }
     } else {
-      const childrenWithUser = React.Children.map(this.props.children, (child) => React.cloneElement(child, { user, logOut: () => this.logOut() }));
+      const childrenWithUser = React.Children.map(this.props.children, (child) => React.cloneElement(child, { user, logOut: () => this.logOut(), setUser: () => this.setUser() }));
       return (
         <div className="page-wrap">
           <IconStates />
           <Loading />
-          <Footer placement="top" update={() => this.setUser()} />
+          <Footer placement="top" update={this.setUser} user={user} />
           { childrenWithUser }
-          <Footer placement="bottom" update={() => this.setUser()} />
+          <Footer placement="bottom" update={this.setUser} user={user} />
         </div>
       );
     }
