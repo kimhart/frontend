@@ -15,6 +15,7 @@ class Footer extends React.Component {
     if (location.href.includes('explore')) return 'explore';
     if (location.href.includes('analyze')) return 'analyze';
     if (location.href.includes('settings')) return 'settings';
+    if (location.href.includes('login')) return 'login';
     return false;
   }
 
@@ -61,6 +62,14 @@ class Footer extends React.Component {
             </span>
             <span className="nav-bar-tab_title">Search</span>
           </Link>
+          { placement === 'bottom' && !user &&
+            <Link to="/login" className={`settings nav-bar-tab ${this.getActiveTab() === 'login' ? ' active' : ''}`}>
+              {/* <span className="nav-bar-tab_icon">
+                <IconSettings />
+              </span> */}
+              <span className="nav-bar-tab_title">Login</span>
+            </Link>
+          }
           { placement === 'bottom' && user &&
             <Link to="/settings" className={`settings nav-bar-tab ${this.getActiveTab() === 'settings' ? ' active' : ''}`}>
               <span className="nav-bar-tab_icon">
@@ -70,6 +79,14 @@ class Footer extends React.Component {
             </Link>
           }
         </div>
+        { placement === 'top' && !user &&
+          <Link to="/login" className={`settings nav-bar-tab ${this.getActiveTab() === 'login' ? ' active' : ''}`}>
+            {/* <span className="nav-bar-tab_icon">
+              <IconSettings />
+            </span> */}
+            <span className="nav-bar-tab_title">Login</span>
+          </Link>
+        }
         { placement === 'top' && user &&
           <Link to="/settings" className={`settings nav-bar-tab ${this.getActiveTab() === 'settings' ? ' active' : ''}`}>
             <span className="nav-bar-tab_icon">

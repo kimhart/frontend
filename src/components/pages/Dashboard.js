@@ -7,33 +7,6 @@ import { UserUtils } from './../../utils/Utils';
 import { Link, browserHistory } from 'react-router';
 import TallyModal from '../modal/TallyModal';
 
-// NOTE: we can move this out to a file if we ever wanted to use it somewhere else
-class Ellipsis extends React.Component {
-  state = {
-    number: 0,
-    max: 1
-  }
-
-  componentDidMount() {
-    const { max } = this.props;
-    this.setState({ max })
-    setInterval(() => {
-      this.setState(prevState => ({
-        number: prevState.number === max ? 0 : prevState.number + 1
-      }))
-    }, 1000);
-  }
-
-  render() {
-    return (
-      <span>
-        { Array(this.state.number).fill('.') }
-      </span>
-    );
-  }
-
-}
-
 class DashboardPage extends React.Component {
 
   constructor(props) {
@@ -182,7 +155,7 @@ class DashboardPage extends React.Component {
         <div className="blue-header">
           { !user.state_long && !coords.latitude && !coords.longitude && !coords_error &&
             <h3 key="your-reps-h3" className="headline">
-              Determining Your Representatives<Ellipsis max={3} />
+              Determining Your Representatives
             </h3>
           }
           { user.state_long && [

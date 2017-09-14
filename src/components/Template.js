@@ -114,7 +114,7 @@ class Template extends React.Component {
         );
       }
     } else {
-      const childrenWithUser = React.Children.map(this.props.children, (child) => React.cloneElement(child, { user, logOut: () => this.logOut() }));
+      const childrenWithUser = React.Children.map(this.props.children, (child) => React.cloneElement(child, { user, logOut: () => this.logOut(), setUser: () => this.setUser() }));
       return (
         <div className="page-wrap">
           <IconStates />

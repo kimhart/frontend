@@ -41,7 +41,8 @@ class Login extends React.Component {
           }
           else {
             UserUtils.setUserId(user.user_id);
-            this.props.update();
+            this.props.setUser();
+            browserHistory.push('/');
           }
         }
       });
