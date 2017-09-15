@@ -27,16 +27,6 @@ firebase.initializeApp({
   storageBucket: "tally-auth.appspot.com",
   messagingSenderId: "497606623527"
 });
-firebase.auth().getRedirectResult().then(result => {
-  let facebook_token = null;
-  if (result.credential) {
-    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-    facebook_token = result.credential.accessToken;
-  }
-  console.log({ result, facebook_token });
-}).catch(error => {
-  console.error(error);
-});
 
 class Template extends React.Component {
 
@@ -64,6 +54,7 @@ class Template extends React.Component {
       });
     }
   }
+
   componentDidMount() {
     initLoading(true);
     setTimeout(() => {
@@ -115,7 +106,14 @@ class Template extends React.Component {
         );
       }
     } else {
-      const childrenWithUser = React.Children.map(this.props.children, (child) => React.cloneElement(child, { user, logOut: () => this.logOut(), setUser: () => this.setUser() }));
+      const childrenWithUser = React.Children.map(this.props.children, (child) => {
+        return React.cloneElement(child, {
+          user,
+          logOut: () => this.logOut(),
+          setUser: () => this.setUser(),
+          loginWithFacebook: () => this.loginWithFacebook()
+        })
+      });
       return (
         <div className="page-wrap">
           <IconStates />
