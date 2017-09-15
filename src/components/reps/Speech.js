@@ -20,22 +20,15 @@ class Speech extends React.Component {
     isLoading(true);
   }
 
-  // handleSearch = _.debounce(() => {
-  //   this.props.relay.setVariables({
-  //     search_terms: this.searchBox.value,
-  //     bioguide_id: this.props.bioguide_id
-  //   }, ({ aborted, done, error }) => {
-  //     if (aborted || done || error) {
-  //       isLoading(false);
-  //     }
-  //   });
-  //   isLoading(true);
-  // }, 300);
 
   handleSearch = (e) => {
+    const searchTerms = [];
     if (e.key === 'Enter') {
-      console.log(this.searchBox.value)
+      searchTerms.push(this.searchBox.value);
     }
+    this.setState({
+      search_terms: searchTerms
+    })
   }
 
 
