@@ -159,12 +159,12 @@ class Rank extends Component {
     const { bestToWorst } = this.state;
     return (
       <div className="rank-wrap">
-        <div className="rank-controls-wrap blue-header">
+        <div className="blue-header">
           <div className="rank-category-wrap">
-            <p className="rank-headline">Rank reps based on core job performance:</p>
+            <p className="rank-headline">Rank reps by performance:</p>
             <div className="rank-category-name" onClick={() => this.getDropDown()}>
-              <p>{this.getActiveCategory()}</p>
-              <IconAngleDown fill="white" width="12px" />
+              <div className="rank-category-value">{this.getActiveCategory()}</div>
+              <IconAngleDown strokeWidth="3" />
             </div>
             <div className="rank-category-dropdown" ref="dropdown" onClick={() => this.getDropDown()}>
               <p className={`rank-category-item ${this.getActiveCategory() === 'Bills' ? 'active' : ''}`} onClick={() => this.setState({ attendance: false, participation: false, efficacy: true })}>Bills Sponsored</p>

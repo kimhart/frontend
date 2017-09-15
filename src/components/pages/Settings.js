@@ -128,7 +128,7 @@ class Settings extends React.Component {
     return (
       <div className="profile-wrap">
         <div className="blue-header">
-          <h2 className="page-title">Settings</h2>
+          <h1 className="page-title">Settings</h1>
         </div>
         <div className="profile-info">
           <div className="profile-section">

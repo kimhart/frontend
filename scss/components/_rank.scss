@@ -3,10 +3,6 @@
   background-color: white;
 }
 
-.rank-controls-wrap {
-  width: 100%;
-}
-
 .rank-category-wrap {
   display: flex;
   flex-grow: 1;
@@ -14,12 +10,13 @@
   align-content: center;
   flex-direction: column;
   max-width: 700px;
+  min-width: 340px;
   margin: 0 auto;
   padding: 30px 15px;
 
   .rank-headline {
     text-align: center;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 1;
     margin-bottom: 15px;
     color: white;
@@ -35,14 +32,17 @@
     margin: 0 auto;
     border-radius: 5px;
 
-    p {
-      color: white;
-      text-align: center;
-      margin: 10px;
-      font-size: 18px;
-      text-align: center;
-      font-weight: 500;
+    .icon-angle-down {
+      width: 14px;
+      height: auto;
     }
+  }
+
+  .rank-category-value {
+    color: white;
+    font-size: 20px;
+    margin: 10px;
+    text-align: center;
   }
 
   .rank-category-dropdown {
@@ -364,12 +364,16 @@ $barFills: 10;
   padding: 10px;
   width: 100%;
   background-color: transparentize($light-gray, .55);
-  font-size: 13px;
-  border-radius: 2px;
+  font-size: 14px;
+  border-radius: $br-medium;
+
   .icon-angle-down {
+    width: 12px;
+    height: auto;
     margin-left: 5px;
   }
-  @media screen and (min-width: 700px) {
+
+  @include min-width($tablet) {
     width: 45%;
     margin: 0 auto;
   }

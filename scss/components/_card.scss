@@ -95,7 +95,9 @@
   font-weight: 400;
   margin-bottom: 20px;
 
-  svg {
+  .icon-angle-down {
+    width: 10px;
+    height: auto;
     margin-right: 5px;
     transform: rotate(90deg);
   }
@@ -125,10 +127,12 @@
   padding: 30px;
   background-color: $blue;
   position: relative;
+
   .close-explainer {
     width: 200px;
     margin: 0 auto;
   }
+
   p {
     color: white;
   }
@@ -139,9 +143,11 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+
   p {
     color: $text-gray;
   }
+  
   .donut-chart-container {
     display: inline-block;
   }

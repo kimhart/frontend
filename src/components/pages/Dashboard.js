@@ -65,15 +65,14 @@ class DashboardPage extends React.Component {
     let { user } = this.state;
     return (
       <div className="main-dash">
-        <div className="blue-header">
-          <h3 className="headline">Your Representatives</h3>
-          <p className="your-district">
+        <div className="reps-header blue-header">
+          <h1 className="page-title">Your Representatives</h1>
+          <div className="your-district">
             <svg className="state-icon">
               <use xlinkHref={ `#icon-${user.state_long.replace(/\s/g, '-')}` }/>
             </svg>
-            <br/>
-            <span className="state">{user.state_long}</span>District {this.getDistrict(user)}
-          </p>
+            <div className="state-district-value">{user.state_long} District {this.getDistrict(user)}</div>
+          </div>
         </div>
         <span className="tap-a-rep">Click on each rep to learn more:</span>
         <div className="rep-info-clusters mobile">

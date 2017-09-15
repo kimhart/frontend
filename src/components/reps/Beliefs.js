@@ -46,7 +46,7 @@ class Beliefs extends React.Component {
                   top: 10
                 }}
               >
-                <IconAngleDown fill="#000000" transform="rotate(90)" /><span className="back-to-overall">Back</span>
+                <IconAngleDown /><span className="back-to-overall">Back</span>
               </a>
             )
             : null
