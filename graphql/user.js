@@ -46,6 +46,7 @@ let userInputFields = {
   email: { type: GraphQLString, resolve: ({ email }) => email },
   party: { type: GraphQLString, resolve: ({ party }) => party },
   password: { type: GraphQLString, resolve: ({ password }) => password  },
+  social: { type: GraphQLString, resolve: ({ social }) => social  },
   first_name: { type: GraphQLString, resolve: ({ first_name }) => first_name  },
   last_name: { type: GraphQLString, resolve: ({ last_name }) => last_name  },
   street: { type: GraphQLString, resolve: ({ street }) => street  },
@@ -61,14 +62,19 @@ export let Login = mutationWithClientMutationId({
       resolve: user => user,
     }
   },
-  mutateAndGetPayload: ({ email, password }) => {
+  mutateAndGetPayload: ({ email, password, social }) => {
     return new Promise((resolve, reject) => {
-      rp({
+      let options = {
         method: 'POST',
         uri: `${config.backend.uri}/login`,
         body: { email, password },
         json: true
-      })
+      }
+      if (!!social) {
+        Object.assign(options.body, { social });
+      }
+      // console.log(JSON.stringify(options.body, null, 2));
+      rp(options)
       .catch(error => {
         reject(error)
       })
