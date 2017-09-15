@@ -31,6 +31,7 @@ class SocialConfirmation extends React.Component {
       this.props.relay.commitUpdate(new LoginMutation({ user: this.props.data.user, email, password: '', social }), {
         onFailure: (error) => {
           console.error({ file: 'Login', error });
+          browserHistory.push('/signup?facebook=error')
         },
         onSuccess: ({ Login: { user } }) => {
           if (user.error) {
