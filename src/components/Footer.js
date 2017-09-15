@@ -9,16 +9,13 @@ const scroll = Scroll.animateScroll;
 
 class Footer extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   getActiveTab = (tab) => {
     if (location.href.includes('search')) return 'search';
     if (location.href.includes('rank')) return 'rank';
     if (location.href.includes('explore')) return 'explore';
     if (location.href.includes('analyze')) return 'analyze';
     if (location.href.includes('settings')) return 'settings';
+    if (location.href.includes('login')) return 'login';
     return false;
   }
 
@@ -32,7 +29,7 @@ class Footer extends React.Component {
   // }
 
   render() {
-    let { placement } = this.props;
+    let { placement, user } = this.props;
     return (
       <nav className={`nav-bar nav-bar--${placement}`}>
         { placement === 'top' &&
@@ -65,7 +62,15 @@ class Footer extends React.Component {
             </span>
             <span className="nav-bar-tab_title">Search</span>
           </Link>
-          { placement === 'bottom' &&
+          { placement === 'bottom' && !user &&
+            <Link to="/login" className={`settings nav-bar-tab ${this.getActiveTab() === 'login' ? ' active' : ''}`}>
+              {/* <span className="nav-bar-tab_icon">
+                <IconSettings />
+              </span> */}
+              <span className="nav-bar-tab_title">Login</span>
+            </Link>
+          }
+          { placement === 'bottom' && user &&
             <Link to="/settings" className={`settings nav-bar-tab ${this.getActiveTab() === 'settings' ? ' active' : ''}`}>
               <span className="nav-bar-tab_icon">
                 <IconSettings />
@@ -74,7 +79,15 @@ class Footer extends React.Component {
             </Link>
           }
         </div>
-        { placement === 'top' &&
+        { placement === 'top' && !user &&
+          <Link to="/login" className={`settings nav-bar-tab ${this.getActiveTab() === 'login' ? ' active' : ''}`}>
+            {/* <span className="nav-bar-tab_icon">
+              <IconSettings />
+            </span> */}
+            <span className="nav-bar-tab_title">Login</span>
+          </Link>
+        }
+        { placement === 'top' && user &&
           <Link to="/settings" className={`settings nav-bar-tab ${this.getActiveTab() === 'settings' ? ' active' : ''}`}>
             <span className="nav-bar-tab_icon">
               <IconSettings />

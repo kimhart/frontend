@@ -161,7 +161,7 @@ class Rank extends Component {
       <div className="rank-wrap">
         <div className="blue-header">
           <div className="rank-category-wrap">
-            <p className="rank-headline">Rank reps by performance:</p>
+            <div className="rank-headline">Rank reps by performance:</div>
             <div className="rank-category-name" onClick={() => this.getDropDown()}>
               <div className="rank-category-value">{this.getActiveCategory()}</div>
               <IconAngleDown strokeWidth="3" />

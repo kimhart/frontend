@@ -31,10 +31,16 @@
     background-color: lighten($blue, 15%);
     margin: 0 auto;
     border-radius: 5px;
+    padding: 0 30px;
+    width: 335px;
 
-    .icon-angle-down {
-      width: 14px;
-      height: auto;
+    p {
+      color: white;
+      text-align: center;
+      margin: 10px;
+      font-size: 18px;
+      text-align: center;
+      font-weight: 500;
     }
   }
 
@@ -55,8 +61,7 @@
     align-self: center;
     background-color: white;
     border-radius: 5px;
-    -webkit-animation: slide-down .3s ease-out;
-    -moz-animation: slide-down .3s ease-out;
+    animation: slide-down .3s ease-out;
 
     &.open {
       display: flex;
@@ -143,6 +148,7 @@
 
 .rank-modal-overlay {
   display: none;
+  
   &.open {
     display: flex;
     justify-content: center;

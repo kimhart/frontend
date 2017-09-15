@@ -30,6 +30,7 @@ $dark-gray:   darken($text-gray, 5%);
 $gray-med:    lighten($text-gray, 10%);
 $gray:        lighten($text-gray, 25%);
 $light-gray:  lighten($text-gray, 50%);
+$lightest-gray: transparentize($light-gray, .7);
 
 // THIRD PARTY BRAND COLORS
 // ----------------------------------------------

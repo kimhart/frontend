@@ -1,4 +1,4 @@
-let TALLY_NAMESPACE = 'tally::'
+const TALLY_NAMESPACE = 'tally::'
 export default {
   getUserId() {
     return JSON.parse(localStorage.getItem(`${TALLY_NAMESPACE}user_id`));
@@ -18,5 +18,8 @@ export default {
   logOut() {
     localStorage.removeItem(`${TALLY_NAMESPACE}user_id`);
     localStorage.removeItem(`${TALLY_NAMESPACE}user`);
+  },
+  isValidUserId(user_id) {
+    return !!user_id || user_id === 0;
   }
 }
