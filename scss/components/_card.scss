@@ -16,8 +16,13 @@
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   border-bottom: 0;
+
   @include min-width($tablet) {
     height: 310px;
+  }
+
+  &.contact-open {
+    height: auto;
   }
 
   .ReactModal__Content & {
@@ -81,7 +86,7 @@
 .rep-card-position-wrap {
   font-size: 14px;
   line-height: 1.5;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .rep-card-role, .rep-card-leadership {
@@ -324,76 +329,6 @@
     color: $soft-red;
     border-bottom: 2px solid $soft-red;
     font-weight: 400;
-  }
-}
-
-.rep-belief-slider-wrap {
-  position: relative;
-  background: $lightest-gray;
-  border-radius: 10px;
-  width: 100%;
-  height: 10px;
-  margin: 0;
-  padding: 0;
-
-  .dots {
-    width: 100%;
-    position: absolute;
-    height: 10px;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .dot {
-      background-color: $light-gray;
-      width: 8px;
-      height: 8px;
-      margin: 1px;
-      border-radius: 16px;
-      &.left {
-        background-color: lighten($blue, 8%);
-      }
-      &.right {
-        background-color: lighten($soft-red, 8%);
-      }
-    }
-  }
-}
-
-.rep-belief-slider {
-  width: 32px;
-  height: 32px;
-  position: absolute;
-  top: -11px;
-  border-radius: 50%;
-  background: $blue;
-  background-size: cover;
-}
-
-.rep-belief-slider-terms {
-  padding-top: 30px;
-  font-size: 12px;
-  font-weight: 400;
-  text-align: center;
-
-  .liberal, .conservative {
-    position: absolute;
-  }
-
-  .moderate {
-    color: $gray;
-  }
-
-  .liberal {
-    left: 0;
-    color: lighten($blue, 8%);
-  }
-
-  .conservative {
-    right: 0;
-    color: lighten($soft-red, 8%);
   }
 }
 
