@@ -2,12 +2,13 @@ import React from 'react';
 import Relay from 'react-relay';
 import { isLoading } from '../../utils/Utils';
 import BeliefRange from './BeliefRange';
-import { IconAngleDown, IconSearch } from '../icons/Icons';
+import { IconAngleDown, IconSearch, IconClose } from '../icons/Icons';
 
 class Speech extends React.Component {
 
   constructor(props) {
     super(props);
+    this.searchArray = [];
     this.state = {
       speech: [],
       search_terms: []
@@ -20,24 +21,34 @@ class Speech extends React.Component {
     isLoading(true);
   }
 
-
-  handleSearch = (e) => {
-    const searchTerms = [];
-    if (e.key === 'Enter') {
-      searchTerms.push(this.searchBox.value);
-    }
-    this.setState({
-      search_terms: searchTerms
-    })
-  }
-
-
   componentWillUpdate(nextProps, nextState) {
     if (nextProps.data.speech) {
       let { speech } = nextProps.data;
       Object.assign(nextState, { speech });
     }
   }
+
+  addSearchTerm = (e) => {
+    e.preventDefault();
+    this.searchArray.push(this.searchBox.value);
+    this.setState({
+      search_terms: this.searchArray
+    });
+    this.searchForm.reset();
+  }
+
+  renderSearchPills = () => {
+    let { search_terms } = this.state;
+    return search_terms ? search_terms.map((term, index) => {
+      return (
+        <div className="search-term-pill" key={`${term}${index}`}>
+          <span>{term}</span>
+          <IconClose />
+        </div>
+      )
+    }) : null;
+  }
+
 
   renderSpeech = () => {
     const { speech } = this.state;
@@ -59,17 +70,24 @@ class Speech extends React.Component {
     return (
       <div className="card-section-speech">
         <div className="card-section-header-wrap">
-          <span className="card-section-description">Analysis of {lastName}'s speech on the floor this session, according to official Congressional transcripts. </span>
+          <span className="card-section-description">Analysis of {lastName}'s speech on the floor this session, according to official Congressional transcripts.</span>
         </div>
         <div className="rank-search speech-search">
-          <input className="rank-search-filter no-focus-style" placeholder="Search keywords..." ref={c => this.searchBox = c} onKeyPress={(e) => this.handleSearch(e)}/>
+          <form className="add-search-term-form" onSubmit={(e) => this.addSearchTerm(e)} ref={c => this.searchForm = c}>
+            <input className="rank-search-filter no-focus-style" placeholder="Search keywords..." ref={c => this.searchBox = c} />
+          </form>
           <div className="search-bar-icon">
             <IconSearch width="20px" fill="#3A7ADB" />
           </div>
         </div>
-        <div className="speech-search-header">
-          { search_terms.length > 0 ? `Results for ${search_terms}:` : "Most-spoken phrases:" }
-        </div>
+          { search_terms.length > 0 &&
+            <div className="speech-pill-container">
+              {this.renderSearchPills()}
+            </div>
+          }
+          { !search_terms.length &&
+            <div className="speech-search-header">Most-spoken phrases:</div>
+          }
         <div className="speech-top-results-wrap">
           { this.renderSpeech() }
         </div>

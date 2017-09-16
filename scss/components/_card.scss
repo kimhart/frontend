@@ -507,9 +507,43 @@
 .speech-search {
   margin: 0 auto;
   max-width: 90%;
+  form {
+    width: 100%;
+  }
 }
 
 .speech-search-header {
   text-align: center;
   margin: 30px auto 10px auto;
+}
+
+.speech-pill-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
+  margin: 25px auto;
+}
+
+.search-term-pill {
+  background-color: $blue, 10%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  border-radius: 500px;
+  width: auto;
+  height: 2em;
+  padding: 3px 5px 3px 10px;
+  margin: 5px 5px 0 0;
+  span {
+    margin-right: 10px;
+  }
+  svg {
+    fill: white;
+    height: 35%;
+  }
 }
