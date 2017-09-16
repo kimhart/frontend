@@ -25,21 +25,32 @@ class Speech extends React.Component {
     }
   }
 
-
   addSearchTerm = (e) => {
     e.preventDefault();
-    this.searchArray.push(this.searchBox.value);
-    this.searchForm.reset();
-    this.setState({
-      search_terms: this.searchArray
-    });
+    if (this.searchBox.value === "") {
+      return;
+    } else {
+      this.searchArray.push(this.searchBox.value);
+      this.searchForm.reset();
+      this.setState({
+        search_terms: this.searchArray
+      });
+      this.props.relay.setVariables({
+        search_terms: this.searchArray
+      })
+    }
   }
 
   removeSearchTerm = (index) => {
     this.searchArray.splice(index, 1);
     this.setState({
       search_terms: this.searchArray
-    });
+    })
+    if (this.searchArray.length > 0) {
+      this.props.relay.setVariables({
+        search_terms: this.searchArray
+      })
+    }
   }
 
   renderSearchPills = () => {
@@ -73,7 +84,6 @@ class Speech extends React.Component {
   renderSearchResults = () => {
     const { search_speech } = this.props.data;
     const lastName = this.props.name.split(',')[0];
-    const firstName = this.props.name.split(',')[1];
 
     return search_speech ? search_speech.length > 0 ? search_speech.map(({ date, speaker, speaker_text, subject }, index) => (
       <div key={`${date}${subject}${index}`} className="rep-speech-list-item-wrap">
@@ -81,7 +91,7 @@ class Speech extends React.Component {
         <span className="rep-speech-list-item-subject">{ subject }</span>
       </div>
     )) :
-    <div className="no-speech-search-results">Sorry, we couldn't find any instances of {firstName} {lastName} speaking about these subjects.</div>
+    <div className="no-speech-search-results">Sorry, we couldn't find any instances of {lastName} speaking about these subjects.</div>
     : null;
   }
 
