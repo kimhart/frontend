@@ -16,8 +16,13 @@
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   border-bottom: 0;
+
   @include min-width($tablet) {
     height: 310px;
+  }
+
+  &.contact-open {
+    height: auto;
   }
 
   .ReactModal__Content & {
@@ -81,7 +86,7 @@
 .rep-card-position-wrap {
   font-size: 14px;
   line-height: 1.5;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .rep-card-role, .rep-card-leadership {
