@@ -25,6 +25,7 @@ class Speech extends React.Component {
     }
   }
 
+
   addSearchTerm = (e) => {
     e.preventDefault();
     this.searchArray.push(this.searchBox.value);
@@ -32,17 +33,11 @@ class Speech extends React.Component {
     this.setState({
       search_terms: this.searchArray
     });
-    this.props.relay.setVariables({
-      search_terms: this.searchArray
-    });
   }
 
-  removeSearchTerm = (e, index) => {
+  removeSearchTerm = (index) => {
     this.searchArray.splice(index, 1);
     this.setState({
-      search_terms: this.searchArray
-    });
-    this.props.relay.setVariables({
       search_terms: this.searchArray
     });
   }
@@ -53,14 +48,13 @@ class Speech extends React.Component {
       return (
         <div className="search-term-pill" key={`${term}${index}`}>
           <span>{term}</span>
-          <div className="remove-pill" onClick={(e) => this.removeSearchTerm(e, index)}>
+          <div className="remove-pill" onClick={() => this.removeSearchTerm(index)}>
             <IconClose fill="#fff"/>
           </div>
         </div>
       )
     }) : null;
   }
-
 
   renderSpeech = () => {
     const { speech } = this.state;
@@ -78,14 +72,17 @@ class Speech extends React.Component {
 
   renderSearchResults = () => {
     const { search_speech } = this.props.data;
-    return search_speech ? search_speech.map(({ date, speaker, speaker_text, subject }, index) => (
+    const lastName = this.props.name.split(',')[0];
+    const firstName = this.props.name.split(',')[1];
+
+    return search_speech ? search_speech.length > 0 ? search_speech.map(({ date, speaker, speaker_text, subject }, index) => (
       <div key={`${date}${subject}${index}`} className="rep-speech-list-item-wrap">
         <span className="rep-speech-list-item-date">"{ date }"</span>
         <span className="rep-speech-list-item-subject">{ subject }</span>
       </div>
-    ))
-    :
-    <div classNAme="no-search-results">We couldn't find any instances of {lastName} speaking about this subject.</div>
+    )) :
+    <div className="no-speech-search-results">Sorry, we couldn't find any instances of {firstName} {lastName} speaking about these subjects.</div>
+    : null;
   }
 
   render() {
@@ -104,18 +101,18 @@ class Speech extends React.Component {
             <IconSearch width="20px" fill="#3A7ADB" />
           </div>
         </div>
-          { !search_terms.length &&
-            <div>
-              <div className="speech-search-header">Most-spoken phrases:</div>
-              <div className="speech-top-results-wrap">{this.renderSpeech()}</div>
-            </div>
-          }
-          { search_terms.length > 0 &&
-            <div>
-              <div className="speech-pill-container">{this.renderSearchPills()}</div>
-              <div className="speech-search-results-wrap">{this.renderSearchResults()}</div>
-            </div>
-          }
+        { !search_terms.length &&
+          <div>
+            <div className="speech-search-header">Most-spoken phrases:</div>
+            <div className="speech-top-results-wrap">{this.renderSpeech()}</div>
+          </div>
+        }
+        { search_terms.length > 0 &&
+          <div>
+            <div className="speech-pill-container">{this.renderSearchPills()}</div>
+            <div className="speech-search-results-wrap">{this.renderSearchResults()}</div>
+          </div>
+        }
       </div>
     )
   }
