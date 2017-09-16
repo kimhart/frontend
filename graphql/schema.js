@@ -23,6 +23,7 @@ import { getUserSchema, Signup, Login, ChangePassword, ChangeAddress } from './u
 
 import {
   getSpeechSchema,
+  getSearchSpeechSchema
 } from './speech';
 
 import {
@@ -86,6 +87,7 @@ let schema = (db) => {
       search: getRepSearchSchema(),
       beliefs: getRepBeliefSchema(),
       speech: getSpeechSchema(),
+      search_speech: getSearchSpeechSchema()
     }),
     interfaces: [nodeDefs.nodeInterface]
   });

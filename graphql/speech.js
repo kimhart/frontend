@@ -32,6 +32,18 @@ export let speechCountType = new GraphQLObjectType({
   })
 });
 
+
+export let searchSpeechType = new GraphQLObjectType({
+  name: "SpeechSearch",
+  fields: () => ({
+    date: { type: GraphQLString, resolve: rep => rep.date },
+    speaker: { type: GraphQLString, resolve: rep => rep.speaker },
+    speaker_text: { type: GraphQLString, resolve: rep => rep.speaker_text },
+    subject: { type: GraphQLString, resolve: rep => rep.subject }
+  })
+});
+
+
 export let getSpeechSchema = () => {
   return {
     type: new GraphQLList(speechCountType),
@@ -46,6 +58,35 @@ export let getSpeechSchema = () => {
             method: 'POST',
             uri: `${config.backend.uri}/search_top_words`,
             body: { bioguide_id },
+            json: true
+          })
+          .catch(error => reject(error))
+          .then(reps => resolve(reps.results));
+        });
+      }
+      else {
+        return null;
+      }
+    }
+  }
+}
+
+
+export let getSearchSpeechSchema = () => {
+  return {
+    type: new GraphQLList(searchSpeechType),
+    args: {
+      bioguide_id: { type: GraphQLString },
+      search_terms: { type: new GraphQLList(GraphQLString) }
+    },
+    resolve: (__, args) => {
+      let { bioguide_id, search_terms } = args;
+      if (!!bioguide_id && !!search_terms && !!search_terms.length) {
+        return new Promise((resolve, reject) => {
+          rp({
+            method: 'POST',
+            uri: `${config.backend.uri}/search_speech`,
+            body: { bioguide_id, search_terms },
             json: true
           })
           .catch(error => reject(error))
