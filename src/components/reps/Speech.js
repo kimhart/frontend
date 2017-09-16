@@ -37,13 +37,22 @@ class Speech extends React.Component {
     this.searchForm.reset();
   }
 
+  removeSearchTerm = (e, index) => {
+    this.searchArray.splice(index, 1);
+    this.setState({
+      search_terms: this.searchArray
+    })
+  }
+
   renderSearchPills = () => {
     let { search_terms } = this.state;
     return search_terms ? search_terms.map((term, index) => {
       return (
         <div className="search-term-pill" key={`${term}${index}`}>
           <span>{term}</span>
-          <IconClose />
+          <div className="remove-pill" onClick={(e) => this.removeSearchTerm(e, index)}>
+            <IconClose fill="#fff"/>
+          </div>
         </div>
       )
     }) : null;

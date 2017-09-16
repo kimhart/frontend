@@ -528,7 +528,7 @@
 }
 
 .search-term-pill {
-  background-color: $blue, 10%;
+  background-color: $blue;
   color: white;
   display: flex;
   align-items: center;
@@ -542,8 +542,14 @@
   span {
     margin-right: 10px;
   }
-  svg {
-    fill: white;
+  .remove-pill {
     height: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    svg {
+      height: 100%;
+    }
   }
 }
