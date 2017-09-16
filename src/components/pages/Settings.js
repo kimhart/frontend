@@ -128,7 +128,7 @@ class Settings extends React.Component {
     return (
       <div className="profile-wrap">
         <div className="blue-header">
-          <h2 className="page-title">Settings</h2>
+          <h1 className="page-title">Settings</h1>
         </div>
         <div className="profile-info">
           <div className="profile-section">
@@ -219,7 +219,9 @@ class Settings extends React.Component {
           </div>
         </div>
         <div className="profile-button-wrap">
-          <button className="button--large button--red logout-button" onClick={() => this.props.logOut()}>Logout</button>
+          <button className="button--large button--red logout-button" onClick={() => this.props.logOut()}>
+            <span className="button-contents">Logout</span>
+          </button>
         </div>
       </div>
     )

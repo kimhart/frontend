@@ -198,7 +198,7 @@ class ReportCard extends React.Component {
             </span>
             { leadership_position !== "None" && <span className="rep-card-leadership">{ leadership_position }</span> }
           </div>
-          <button className={`contact-btn button--large button--outline button--blue`} onClick={() => this.setState({ contact: !contact })}>{contact ? <span className="button-contents"><IconAngleDown fill="#3A7ADB"/>Back</span> : 'Contact'}</button>
+          <button className={`contact-btn button--large button--outline button--blue`} onClick={() => this.setState({ contact: !contact })}>{contact ? <span className="button-contents"><IconAngleDown color="#3A7ADB" strokeWidth="3" />Back</span> : 'Contact'}</button>
 
           { !contact && this.getMetricsTabs() }
         </div>

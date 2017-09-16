@@ -17,20 +17,20 @@ $standard-h3: 20px;
 
 // BRAND COLORS
 // ----------------------------------------------
-$soft-red:    #F0454B;
 $red:  #ED2332;
+$soft-red:    #F0454B;
 $blue:        #3A7ADB;
 $blue-light:  lighten($blue, 10%);
 $blue-lightest: lighten(#6194e2, 15%);
 $blue-pale: transparentize($blue-lightest, .5);
 $teal-green:  #41ead4;
-$text-gray:   #434650;
+$purple: #b178fa;
+$text-gray:   #4b4b4b;
 $dark-gray:   darken($text-gray, 5%);
 $gray-med:    lighten($text-gray, 10%);
 $gray:        lighten($text-gray, 25%);
 $light-gray:  lighten($text-gray, 50%);
 $lightest-gray: transparentize($light-gray, .7);
-$purple: #b178fa;
 
 // THIRD PARTY BRAND COLORS
 // ----------------------------------------------
@@ -41,17 +41,6 @@ $facebook-blue: #3B5998;
 $z-top: 9999;
 $z-modal: 999;
 $z-modal-overlay: 400;
-
-// SHADOWS
-// ----------------------------------------------
-
-@mixin card-shadow-large {
-  box-shadow: 0 4px 0 0 tint(black, 85%), 0 6px 20px 0 transparentize($blue, .75);
-}
-
-@mixin card-shadow {
-  box-shadow: 0 3px 0 0 tint(black, 85%), 0 3px 10px 0 transparentize($blue, .65);
-}
 
 // BREAKPOINTS
 $phone: 360px;

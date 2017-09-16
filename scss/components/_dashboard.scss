@@ -4,6 +4,7 @@ header.logo {
   display: flex;
   align-items: center;
   width: 100%;
+
   .logo-container {
     margin-top: 10px;
     display: flex;
@@ -11,11 +12,13 @@ header.logo {
     height: 30px;
     width: 70%;
   }
+
   .tally-logo {
     width: 30px;
     height: 30px;
     margin: 0 10px 0 15px;
   }
+
   .tally-logo-helper {
     font-size: 22px;
     color: $text-gray;
@@ -23,33 +26,20 @@ header.logo {
     margin-bottom: 5px;
     font-family: 'Work Sans', sans-serif;
     text-decoration: none;
-    a, a:hover, a:visited, a:active {
+    
+    a,
+    a:hover,
+    a:visited,
+    a:active {
       text-decoration: none;
       color: $text-gray;
     }
   }
-  .user-container {
-    margin-top: 10px;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: 30%;
-    .greeting {
-      font-size: 18px;
-      font-weight: 300;
-      color: $text-gray;
-      margin: 0;
-      padding-top: 10px;
-      width: auto;
-    }
-    .logout {
-      color: $text-gray;
-      padding: 30px 20px 20px 20px;
-    }
-  }
 }
 
+.reps-header {
+  padding: 20px 15px;
+}
 
 .your-location {
   margin-bottom: 20px;
@@ -71,10 +61,6 @@ header.logo {
   }
 }
 
-.headline {
-  margin-top: -20px;
-}
-
 .location-info {
   display: flex;
   justify-content: center;
@@ -89,7 +75,6 @@ header.logo {
   font-size: 18px;
   font-weight: 300;
   text-align: center;
-  margin: 0 auto 20px auto;
 
   .state-icon {
     fill: white;
@@ -97,13 +82,14 @@ header.logo {
     height: 70px;
     display: inline-block;
     vertical-align: middle;
+
     @media screen and (min-width: 700px) {
       width: 60px;
       height: 60px;
     }
   }
 
-  .state {
+  .state-district-value {
     font-size: 18px;
     margin-right: 5px;
   }
