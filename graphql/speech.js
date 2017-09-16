@@ -77,7 +77,7 @@ export let getSearchSpeechSchema = () => {
     type: new GraphQLList(searchSpeechType),
     args: {
       bioguide_id: { type: GraphQLString },
-      search_terms: { type: GraphQLString }
+      search_terms: { type: new GraphQLList(GraphQLString) }
     },
     resolve: (__, args) => {
       let { bioguide_id, search_terms } = args;

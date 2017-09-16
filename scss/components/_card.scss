@@ -493,16 +493,26 @@
   border-top: 1px solid $lightest-gray;
 }
 
-.rep-speech-list-item-frequency {
-  color: $gray;
-  font-size: 14px;
+.rep-speech-list-item {
+  &-frequency {
+    color: $gray;
+    font-size: 14px;
+  }
+  &-text {
+    color: $blue;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  &-date {
+    font-size: 14px;
+  }
+  &-subject {
+    font-size: 16px;
+    font-weight: bold;
+    align-self: flex-start;
+  }
 }
 
-.rep-speech-list-item-text {
-  color: $blue;
-  font-size: 16px;
-  font-weight: 400;
-}
 
 .speech-search {
   margin: 0 auto;

@@ -13,12 +13,9 @@ class Speech extends React.Component {
       speech: [],
       search_terms: []
     };
-    props.relay.setVariables({ bioguide_id: props.bioguide_id, search_terms: props.search_terms }, ({ done, aborted, error }) => {
-      if (done || aborted || error) {
-        isLoading(false);
-      }
+    props.relay.setVariables({
+      bioguide_id: props.bioguide_id
     });
-    isLoading(true);
   }
 
   componentWillUpdate(nextProps, nextState) {
@@ -31,17 +28,23 @@ class Speech extends React.Component {
   addSearchTerm = (e) => {
     e.preventDefault();
     this.searchArray.push(this.searchBox.value);
+    this.searchForm.reset();
     this.setState({
       search_terms: this.searchArray
     });
-    this.searchForm.reset();
+    this.props.relay.setVariables({
+      search_terms: this.searchArray
+    });
   }
 
   removeSearchTerm = (e, index) => {
     this.searchArray.splice(index, 1);
     this.setState({
       search_terms: this.searchArray
-    })
+    });
+    this.props.relay.setVariables({
+      search_terms: this.searchArray
+    });
   }
 
   renderSearchPills = () => {
@@ -73,6 +76,16 @@ class Speech extends React.Component {
     }
   }
 
+  renderSearchResults = () => {
+    const { search_speech } = this.props.data;
+    return search_speech.map(({ date, speaker, speaker_text, subject }, index) => (
+      <div key={`${word}${frequency}${rank}${index}`} className="rep-speech-list-item-wrap">
+        <span className="rep-speech-list-item-date">"{ date }"</span>
+        <span className="rep-speech-list-item-subject">{subject}</span>
+      </div>
+    ))
+  }
+
   render() {
     const { search_terms } = this.state;
     const lastName = this.props.name.split(',')[0];
@@ -89,17 +102,18 @@ class Speech extends React.Component {
             <IconSearch width="20px" fill="#3A7ADB" />
           </div>
         </div>
-          { search_terms.length > 0 &&
-            <div className="speech-pill-container">
-              {this.renderSearchPills()}
+          { !search_terms.length &&
+            <div>
+              <div className="speech-search-header">Most-spoken phrases:</div>
+              <div className="speech-top-results-wrap">{this.renderSpeech()}</div>
             </div>
           }
-          { !search_terms.length &&
-            <div className="speech-search-header">Most-spoken phrases:</div>
+          { search_terms.length > 0 &&
+            <div>
+              <div className="speech-pill-container">{this.renderSearchPills()}</div>
+              <div className="speech-search-results">{this.renderSearchResults()}</div>
+            </div>
           }
-        <div className="speech-top-results-wrap">
-          { this.renderSpeech() }
-        </div>
       </div>
     )
   }
