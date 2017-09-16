@@ -161,7 +161,7 @@ class DashboardPage extends React.Component {
                 <use xlinkHref={ `#icon-${user.state_long.replace(/\s/g, '-')}` }/>
               </svg>
               <br/>
-              <span className="state">{user.state_long}</span>District {this.getDistrict(user)}
+              <span className="state">{user.state_long} </span>District {this.getDistrict(user)}
             </p>
           ]}
           { coords.latitude && coords.longitude && [
