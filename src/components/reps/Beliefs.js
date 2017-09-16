@@ -38,16 +38,10 @@ class Beliefs extends React.Component {
           </div>
           { !isClickable
             ? (
-              <a className="clickable"
-                onClick={() => this.setState({ level: type === 'overall' ? 'overall' : sub_type_of })}
-                style={{
-                  position: 'absolute',
-                  left: 10,
-                  top: 10
-                }}
-              >
-                <IconAngleDown fill="#000000" transform="rotate(90)" /><span className="back-to-overall">Back</span>
-              </a>
+              <span className="rep-belief-back-button" onClick={() => this.setState({ level: type === 'overall' ? 'overall' : sub_type_of })}>
+                <IconAngleDown color="#454545"/>
+                Back
+              </span>
             )
             : null
           }
@@ -67,12 +61,14 @@ class Beliefs extends React.Component {
           }
         >
         <div className="rep-belief-item-type">
-          {isClickable &&
-            <div className="expand-plus">
-              <IconPlus width="10px"/>
-            </div>
-          }
-          {this.swapBeliefNames(type)}
+          <span className="rep-belief-item-name">
+            { isClickable &&
+              <div className="expand-plus">
+                <IconPlus width="10px"/>
+              </div>
+            }
+            {this.swapBeliefNames(type)}
+          </span>
         </div>
           <BeliefRange {...this.props} {...belief} />
         </div>

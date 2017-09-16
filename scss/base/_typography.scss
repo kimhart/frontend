@@ -27,20 +27,11 @@ h2 {
   margin: 20px auto;
   width: 100%;
   display: block;
-  &.page-title {
-    margin: 0;
-    font-size: $standard-h2;
-    font-weight: 400;
-  }
 }
 
-h3.headline {
-  font-size: $standard-h3;
-  font-weight: 400;
-  margin: 20px auto 5px auto;
-  @include min-width($tablet) {
-    font-size: 24px;
-  }
+.page-title {
+  margin: 0;
+  font-size: $standard-h2;
 }
 
 .error {
