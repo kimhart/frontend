@@ -65,7 +65,7 @@ class Speech extends React.Component {
   renderSpeech = () => {
     const { speech } = this.state;
     if (!speech) {
-      `We currently don't have enough data to gather these key terms. Check back soon!`
+      `We couldn't find this rep's top phrases. Check back soon!`
     } else {
       return speech.map(({ word, frequency, rank }, index) => (
         <div key={`${word}${frequency}${rank}${index}`} className="rep-speech-list-item-wrap">
@@ -78,12 +78,14 @@ class Speech extends React.Component {
 
   renderSearchResults = () => {
     const { search_speech } = this.props.data;
-    return search_speech.map(({ date, speaker, speaker_text, subject }, index) => (
-      <div key={`${word}${frequency}${rank}${index}`} className="rep-speech-list-item-wrap">
+    return search_speech ? search_speech.map(({ date, speaker, speaker_text, subject }, index) => (
+      <div key={`${date}${subject}${index}`} className="rep-speech-list-item-wrap">
         <span className="rep-speech-list-item-date">"{ date }"</span>
-        <span className="rep-speech-list-item-subject">{subject}</span>
+        <span className="rep-speech-list-item-subject">{ subject }</span>
       </div>
     ))
+    :
+    <div classNAme="no-search-results">We couldn't find any instances of {lastName} speaking about this subject.</div>
   }
 
   render() {
@@ -111,7 +113,7 @@ class Speech extends React.Component {
           { search_terms.length > 0 &&
             <div>
               <div className="speech-pill-container">{this.renderSearchPills()}</div>
-              <div className="speech-search-results">{this.renderSearchResults()}</div>
+              <div className="speech-search-results-wrap">{this.renderSearchResults()}</div>
             </div>
           }
       </div>
