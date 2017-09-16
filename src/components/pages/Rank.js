@@ -167,9 +167,21 @@ class Rank extends Component {
               <IconAngleDown strokeWidth="3" />
             </div>
             <div className="rank-category-dropdown" ref="dropdown" onClick={() => this.getDropDown()}>
-              <p className={`rank-category-item ${this.getActiveCategory() === 'Bills' ? 'active' : ''}`} onClick={() => this.setState({ attendance: false, participation: false, efficacy: true })}>Bills Sponsored</p>
-              <p className={`rank-category-item ${this.getActiveCategory() === 'Attendance' ? 'active' : ''}`} onClick={() => this.setState({ attendance: true, participation: false, efficacy: false })}>Work Attendance</p>
-              <p className={`rank-category-item ${this.getActiveCategory() === 'Votes' ? 'active' : ''}`} onClick={() => this.setState({ attendance: false, participation: true, efficacy: false })}>Votes Cast</p>
+              { this.getActiveCategory() !== 'Bills Sponsored' &&
+                <div className={`rank-category-item`} onClick={() => this.setState({ attendance: false, participation: false, efficacy: true })}>
+                  <span>Bills Sponsored</span>
+                </div>
+              }
+              { this.getActiveCategory() !== 'Work Attendance' &&
+                <div className={`rank-category-item`} onClick={() => this.setState({ attendance: true, participation: false, efficacy: false })}>
+                  <span>Work Attendance</span>
+                </div>
+              }
+              { this.getActiveCategory() !== 'Votes Cast' &&
+                <div className={`rank-category-item`} onClick={() => this.setState({ attendance: false, participation: true, efficacy: false })}>
+                  <span>Votes Cast</span>
+                </div>
+              }
             </div>
           </div>
           <div className="rank-toggle-wrap">
