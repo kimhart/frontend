@@ -1,40 +1,42 @@
 import React from 'react';
 import Relay from 'react-relay';
 import ReactDOM from 'react-dom';
+import * as firebase from 'firebase';
 import { Link, browserHistory } from 'react-router';
 import LoginMutation from './../mutations/LoginMutation';
-import { UserUtils } from '../../utils/Utils';
 import Signup from './Signup';
 import { TallyLogo, IconFacebookOfficial } from '../icons/Icons';
+import { UserUtils, isLoading, initLoading } from '../../utils/Utils';
 
-class Login extends React.Component {
+class SocialConfirmation extends React.Component {
 
-    state = {
-      error: null
+    componentDidMount() {
+      firebase.auth().getRedirectResult().then(result => {
+        let facebook_token = null;
+        if (result.credential) {
+          // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+          facebook_token = result.credential.accessToken;
+        }
+        if (result && result.additionalUserInfo) {
+          const { email } = result.additionalUserInfo.profile;
+          this.logUserIn({ email, social: 'facebook' })
+        }
+      }).catch(error => {
+        console.error(error);
+        browserHistory.push('/login');
+      });
     }
 
-    componentWillMount() {
-      window.addEventListener('keypress', this._handleEnter, false);
-    }
-
-    componentWillUnmount() {
-      window.removeEventListener('keypress', this._handleEnter, false);
-    }
-
-    _handleEnter = (e) => {
-      if (e.keyCode == 13) this._handleSubmit();
-    }
-
-    _handleSubmit = (e) => {
-      this.props.relay.commitUpdate(new LoginMutation({ user: this.props.data.user, email: this._email.value, password: this._password.value }), {
+    logUserIn = ({ email, social }) => {
+      this.props.relay.commitUpdate(new LoginMutation({ user: this.props.data.user, email, password: '', social }), {
         onFailure: (error) => {
           console.error({ file: 'Login', error });
+          browserHistory.push('/signup?facebook=error')
         },
         onSuccess: ({ Login: { user } }) => {
           if (user.error) {
-            this.setState({
-              error: user.error
-            })
+            console.log(user.error);
+            browserHistory.push('/login')
           }
           else {
             UserUtils.setUserId(user.user_id);
@@ -45,45 +47,16 @@ class Login extends React.Component {
       });
     }
 
-    _loginWithFacebook = () => {
-      setTimeout(() => {
-        this.props.loginWithFacebook()
-      }, 1000);
-    }
-
     render() {
-      let { error } = this.state;
       return (
         <div className="home-page-wrap">
           <div className="login-logo-wrap">
             <TallyLogo /><span className="tally-title">Tally</span>
           </div>
           <section className="home-section home-login">
-            <div id="login-facebook" className="login-form">
-              <Link className="standard-link signup-link" to="/social_confirmation">
-                <button className="login-btn login-with-facebook" type="button" onClick={this._loginWithFacebook}>
-                  <IconFacebookOfficial fill="#ffffff" /> Login with Facebook
-                </button>
-              </Link>
-            </div>
-            <div id="login-form" className="login-form">
-              <p className="create-account">OR</p>
-              <div className="profile-input-wrap input-label-wrap">
-                <input type="email" className="login-email-input input--outline no-placeholder" placeholder="Email" required ref={(c) => this._email = c} />
-                <label className="label-input-placeholder" htmlFor="email">Email</label>
-              </div>
-              <div className="profile-input-wrap input-label-wrap">
-                <input type="password" className="login-password-input input--outline no-placeholder" placeholder="Password" required ref={(c) => this._password = c} />
-                <label className="label-input-placeholder" htmlFor="password">Password</label>
-              </div>
-              <button className="login-btn" type="button" onClick={this._handleSubmit}>Login with Email</button>
-            </div>
-            { error && <p className="error">{ error }</p> }
-            <div id="login-form" className="login-form">
-              <p className="create-account">OR</p>
-              <Link className="standard-link signup-link" to="/signup">
-                <button className="login-btn" type="button">Create a New Account</button>
-              </Link>
+            <div className="home-section-content">
+              <h3 className="home-section-title">Please Wait!</h3>
+              <p>Please wait while we find your account! I know it's back here somewhere 🤔.</p>
             </div>
           </section>
           <section className="home-section home-about section-white section-arrow">
@@ -146,10 +119,10 @@ class Login extends React.Component {
     }
 }
 
-export default Relay.createContainer(Login, {
+export default Relay.createContainer(SocialConfirmation, {
   initialVariables: {
     email: null,
-    password: null
+    social: null
   },
   fragments: {
     data: () => Relay.QL`

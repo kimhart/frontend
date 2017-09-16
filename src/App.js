@@ -10,6 +10,7 @@ import RepBio from './components/pages/RepBio';
 import Rank from './components/pages/Rank';
 import NotFound from './components/pages/NotFound';
 import Login from './components/pages/Login';
+import SocialConfirmation from './components/pages/SocialConfirmation';
 import Analyze from './components/pages/Analyze';
 import Search from './components/search/Search';
 import About from './components/pages/About';
@@ -41,6 +42,7 @@ class App extends React.Component {
           <Route path="/rank" component={Rank} queries={RootQuery} />
           <Route path="/signup" component={Signup} queries={RootQuery} />
           <Route path="/login" component={Login} queries={RootQuery} />
+          <Route path="/social_confirmation" component={SocialConfirmation} queries={RootQuery} />
           <Route path="/search" component={Search} queries={RootQuery} />
           <Route path="/analyze" component={Analyze} />
           <Route path="/about" component={About} />
