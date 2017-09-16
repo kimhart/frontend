@@ -8,7 +8,6 @@ class Speech extends React.Component {
 
   constructor(props) {
     super(props);
-    this.searchArray = [];
     this.state = {
       speech: [],
       search_terms: []
@@ -30,46 +29,38 @@ class Speech extends React.Component {
     if (this.searchBox.value === "") {
       return;
     } else {
-      this.searchArray.push(this.searchBox.value);
+      const search_terms = [ ...this.state.search_terms, this.searchBox.value ];
+      this.setState({ search_terms });
+      this.props.relay.setVariables({ search_terms });
       this.searchForm.reset();
-      this.setState({
-        search_terms: this.searchArray
-      });
-      this.props.relay.setVariables({
-        search_terms: this.searchArray
-      })
     }
   }
 
-  removeSearchTerm = (index) => {
-    this.searchArray.splice(index, 1);
-    this.setState({
-      search_terms: this.searchArray
-    })
-    if (this.searchArray.length > 0) {
-      this.props.relay.setVariables({
-        search_terms: this.searchArray
-      })
-    }
+  removeSearchTerm = (term) => {
+    const search_terms = this.state.search_terms.filter(search_term => {
+      return search_term !== term
+    });
+    this.setState({ search_terms });
+    this.props.relay.setVariables({ search_terms });
   }
 
   renderSearchPills = () => {
     let { search_terms } = this.state;
-    return search_terms ? search_terms.map((term, index) => {
+    return search_terms.map((term, index) => {
       return (
         <div className="search-term-pill" key={`${term}${index}`}>
           <span>{term}</span>
-          <div className="remove-pill" onClick={() => this.removeSearchTerm(index)}>
+          <div className="remove-pill" onClick={() => this.removeSearchTerm(term)}>
             <IconClose fill="#fff"/>
           </div>
         </div>
       )
-    }) : null;
+    });
   }
 
   renderSpeech = () => {
     const { speech } = this.state;
-    if (!speech) {
+    if (!speech.length) {
       `We couldn't find this rep's top phrases. Check back soon!`
     } else {
       return speech.map(({ word, frequency, rank }, index) => (
@@ -85,14 +76,13 @@ class Speech extends React.Component {
     const { search_speech } = this.props.data;
     const lastName = this.props.name.split(',')[0];
 
-    return search_speech ? search_speech.length > 0 ? search_speech.map(({ date, speaker, speaker_text, subject }, index) => (
+    return search_speech && search_speech.length > 0 ? search_speech.map(({ date, speaker, speaker_text, subject }, index) => (
       <div key={`${date}${subject}${index}`} className="rep-speech-list-item-wrap">
         <span className="rep-speech-list-item-date">"{ date }"</span>
         <span className="rep-speech-list-item-subject">{ subject }</span>
       </div>
     )) :
     <div className="no-speech-search-results">Sorry, we couldn't find any instances of {lastName} speaking about these subjects.</div>
-    : null;
   }
 
   render() {

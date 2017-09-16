@@ -81,7 +81,7 @@ export let getSearchSpeechSchema = () => {
     },
     resolve: (__, args) => {
       let { bioguide_id, search_terms } = args;
-      if (!!bioguide_id && !!search_terms) {
+      if (!!bioguide_id && !!search_terms && !!search_terms.length) {
         return new Promise((resolve, reject) => {
           rp({
             method: 'POST',

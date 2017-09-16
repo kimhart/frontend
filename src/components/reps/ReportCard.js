@@ -100,7 +100,7 @@ class ReportCard extends React.Component {
 
     let tabs = {
       stats: (
-        <div className="rep-card-metrics-wrap">
+        <div className={`rep-card-metrics-wrap ${contact ? "contact-open" : ""}`}>
           <div className="rep-card-section-divider">
             <div className="card-section-header-wrap">
               <span className="card-section-description">These scores contribute to {lastName}&apos;s grade:</span>
