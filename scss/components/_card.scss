@@ -371,10 +371,10 @@
 }
 
 .card-section-header {
-  font-size: 19px;
+  font-size: 18px;
   margin: 0;
-  margin-bottom: 10px;
-  font-weight: 500;
+  margin-bottom: 15px;
+  font-weight: 600;
 }
 
 .card-section-description {
@@ -409,7 +409,6 @@
 
     .rep-belief-item-type {
       font-size: 18px;
-      color: lighten($text-gray, 10%);
       font-weight: 600;
       display: flex;
       justify-content: center;
@@ -487,8 +486,13 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 15px;
+  padding: 20px;
   border-top: 1px solid $lightest-gray;
+  cursor: pointer;
+  .icon-angle-down {
+    transform: rotate(270deg);
+    margin-left: 20px;
+  }
 }
 
 .rep-speech-list-item-frequency {
@@ -504,12 +508,17 @@
 
 .rep-speech-list-item-date {
   font-size: 14px;
-  maring-right: 20px;
+  margin-right: 10px;
+  width: 25%;
+  font-weight: 500;
+  white-space: nowrap;
 }
 
 .rep-speech-list-item-subject {
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 14px;
+  color: $blue;
+  font-weight: 500;
+  flex: 1;
   align-self: flex-start;
 }
 
@@ -524,9 +533,9 @@
 .speech-search-header {
   display: flex;
   justify-content: center;
-  margin: 30px auto 10px auto;
-  font-size: 16px;
-  font-weight: 500;
+  margin: 30px auto 15px auto;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .speech-pill-container {
@@ -536,7 +545,8 @@
   align-items: center;
   width: 100%;
   padding: 0 20px;
-  margin: 25px auto;
+  font-size: 14px;
+  margin: 25px auto 15px auto;
 }
 
 .search-term-pill {

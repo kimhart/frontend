@@ -17,6 +17,10 @@ class Speech extends React.Component {
     });
   }
 
+  componentDidMount(){
+    this.searchBox.focus();
+  }
+
   componentWillUpdate(nextProps, nextState) {
     if (nextProps.data.speech) {
       let { speech } = nextProps.data;
@@ -75,11 +79,11 @@ class Speech extends React.Component {
   renderSearchResults = () => {
     const { search_speech } = this.props.data;
     const lastName = this.props.name.split(',')[0];
-
     return search_speech && search_speech.length > 0 ? search_speech.map(({ date, speaker, speaker_text, subject }, index) => (
       <div key={`${date}${subject}${index}`} className="rep-speech-list-item-wrap">
-        <span className="rep-speech-list-item-date">"{ date }"</span>
-        <span className="rep-speech-list-item-subject">{ subject }</span>
+        <span className="rep-speech-list-item-date">{new Date(date).toLocaleDateString()}</span>
+        <span className="rep-speech-list-item-subject">{subject}</span>
+        <IconAngleDown width="10px" color="#3A7ADB" />
       </div>
     )) :
     <div className="no-speech-search-results">We couldn't find any instances of {lastName} speaking about these subjects.</div>
@@ -103,13 +107,14 @@ class Speech extends React.Component {
         </div>
         { !search_terms.length &&
           <div>
-            <div className="speech-search-header">{lastName}'s top phrases this session:</div>
+            <div className="speech-search-header">Top Phrases this Session</div>
             <div className="speech-top-results-wrap">{this.renderSpeech()}</div>
           </div>
         }
         { search_terms.length > 0 &&
           <div>
             <div className="speech-pill-container">{this.renderSearchPills()}</div>
+            <div className="speech-search-header">Search Results</div>
             <div className="speech-search-results-wrap">{this.renderSearchResults()}</div>
           </div>
         }

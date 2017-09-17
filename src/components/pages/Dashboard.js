@@ -166,7 +166,7 @@ class DashboardPage extends React.Component {
           ]}
           { coords.latitude && coords.longitude && [
             <h3 key="your-reps-h3" className="headline">
-              Possible Representatives in Your ZIP Code
+              Potential Representatives for Your ZIP Code
             </h3>,
             <p key="your-reps-p" className="your-district">
               <svg className="state-icon">
