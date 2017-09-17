@@ -128,18 +128,38 @@
   display: block;
 }
 
-.rep-card-explainer {
-  padding: 30px;
-  background-color: $blue;
-  position: relative;
-
-  .close-explainer {
-    width: 200px;
-    margin: 0 auto;
+.card-section-explainer-toggle {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+  margin-left: 6px;
+  cursor: pointer;
+  .icon-angle-down {
+    transform: rotate(270deg);
+    color: $text-gray;
+    fill: $text-gray;
+    width: 7px;
+    margin-left: 2px;
   }
+}
 
-  p {
-    color: white;
+.rep-card-explainer {
+  padding: 20px;
+  position: relative;
+  .explainer-title {
+    color: #3a7adb;
+    font-size: 16px;
+    text-align: left;
+    margin: 20px 0 5px 0;
+  }
+  .explainer-copy {
+    font-size: 14px;
+    color: $text-gray;
+  }
+  .icon-close {
+    width: 10px;
+    color: $text-gray;
+    fill: $text-gray;
   }
 }
 
@@ -260,7 +280,6 @@
 }
 
 .rep-card-bio-list-item {
-  text-transform: capitalize;
   position: relative;
   padding-left: 20px;
   font-size: 14px;
@@ -352,15 +371,22 @@
 }
 
 .card-section-header {
-  font-size: 20px;
+  font-size: 19px;
   margin: 0;
   margin-bottom: 10px;
+  font-weight: 500;
 }
 
 .card-section-description {
   font-size: 14px;
   text-align: center;
   font-weight: 300;
+  .card-section-grade {
+    color: $blue;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 0 2px;
+  }
 }
 
 .rep-belief-item {
@@ -465,26 +491,27 @@
   border-top: 1px solid $lightest-gray;
 }
 
-.rep-speech-list-item {
-  &-frequency {
-    color: $gray;
-    font-size: 14px;
-  }
-  &-text {
-    color: $blue;
-    font-size: 16px;
-    font-weight: 400;
-  }
-  &-date {
-    font-size: 14px;
-  }
-  &-subject {
-    font-size: 16px;
-    font-weight: bold;
-    align-self: flex-start;
-  }
+.rep-speech-list-item-frequency {
+  color: $gray;
+  font-size: 14px;
 }
 
+.rep-speech-list-item-text {
+  color: $blue;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.rep-speech-list-item-date {
+  font-size: 14px;
+  maring-right: 20px;
+}
+
+.rep-speech-list-item-subject {
+  font-size: 16px;
+  font-weight: bold;
+  align-self: flex-start;
+}
 
 .speech-search {
   margin: 0 auto;
@@ -495,8 +522,11 @@
 }
 
 .speech-search-header {
-  text-align: center;
+  display: flex;
+  justify-content: center;
   margin: 30px auto 10px auto;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .speech-pill-container {
