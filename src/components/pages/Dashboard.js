@@ -166,7 +166,7 @@ class DashboardPage extends React.Component {
           ]}
           { coords.latitude && coords.longitude && [
             <h3 key="your-reps-h3" className="headline">
-              Representatives in your ZIP Code
+              Potential Representatives for Your ZIP Code
             </h3>,
             <p key="your-reps-p" className="your-district">
               <svg className="state-icon">
@@ -178,7 +178,7 @@ class DashboardPage extends React.Component {
           ]}
           { coords_error &&
             <h3 key="your-reps-h3" className="headline">
-              Uh-oh! You'll Need to Enable Location to Representatives in Your Area!
+              Uh-oh! You'll Need to Enable Location to Find Representatives in Your Area.
             </h3>
           }
         </div>

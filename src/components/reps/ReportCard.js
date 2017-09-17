@@ -88,13 +88,13 @@ class ReportCard extends React.Component {
      if (address.includes('Washington')) {
        return address;
      } else {
-       return address = `${address}, Washington DC 20510`;
+       return address = `${address},${<br/>} Washington DC 20510`;
      }
   }
 
   getCardContent = () => {
     let { contact, bio, tab, leadership_position } = this.state;
-    let { chamber, name, bio_text } = this.props;
+    let { chamber, name, bio_text, letter_grade } = this.props;
     let lastName = name.split(',')[0];
     let list = bio_text.replace(/&amp;/g, '&').split('; ');
 
@@ -102,49 +102,49 @@ class ReportCard extends React.Component {
       stats: (
         <div className={`rep-card-metrics-wrap ${contact ? "contact-open" : ""}`}>
           <div className="rep-card-section-divider">
-            <div className="card-section-header-wrap">
-              <span className="card-section-description">These scores contribute to {lastName}&apos;s grade:</span>
-              {/* <span className="control-button question-mark-circle" onClick={() => this.toggleExplainer()}>?</span> */}
-            </div>
-            {/* { this.state.showExplainer &&
+            { this.state.showExplainer &&
               <div className="rep-card-explainer">
-              <div className="card-close" onClick={() => this.toggleExplainer()}>
-                <IconClose color="white"/>
-              </div>
-              <div className="explainer-section">
-                <p className="explainer-title">Attendance</p>
-                <p className="explainer-copy">Days of work {lastName} has attended vs. the total work days in this term.</p>
-              </div>
-              <div className="explainer-section">
-                <p className="explainer-title">Votes</p>
-                <p className="explainer-copy">Number of votes {lastName} has cast vs. the total votes held this term.</p>
-              </div>
-              <div className="explainer-section">
-                <p className="explainer-title">Bills</p>
-                <p className="explainer-copy">Number of bills {lastName} has sponsored vs. the <em>most</em> bills sponsored by a single rep this term.</p>
-              </div>
-              <div className="explainer-section">
-                <p className="explainer-title">Committees</p>
-                <p className="explainer-copy">Number of congressional committees {lastName} has joined, compared to the highest number of committees joined by a single rep.</p>
-              </div>
-              <button className="close-explainer button--medium button--white" onClick={() => this.toggleExplainer()}><span className="button-contents">Got it</span></button>
-              </div>
-            } */}
-            { !this.state.showExplainer &&
-              <div>
-                <div className="rep-card-donut-charts">
-                  <Attendance {...this.props} />
-                  <Participation {...this.props} />
-                  <Efficacy {...this.props} />
-                  <MembershipStats {...this.props} />
+                <h2 className="card-section-header">Grade Calculations</h2>
+                <div className="card-close" onClick={() => this.toggleExplainer()}>
+                  <IconClose width="10px" color="#4b4b4b" />
+                </div>
+                <div className="explainer-section">
+                  <div className="explainer-title">Attendance</div>
+                  <div className="explainer-copy">Days of work {lastName} has attended compared to the <strong>total work days</strong> in this term.</div>
+                </div>
+                <div className="explainer-section">
+                  <div className="explainer-title">Votes</div>
+                  <div className="explainer-copy">Number of votes {lastName} has cast compared to the <strong>total votes held</strong> this term.</div>
+                </div>
+                <div className="explainer-section">
+                  <div className="explainer-title">Bills</div>
+                  <div className="explainer-copy">Number of bills {lastName} has sponsored compared to the <strong>most bills sponsored</strong> by one rep this term.</div>
+                </div>
+                <div className="explainer-section">
+                  <div className="explainer-title">Committees</div>
+                  <div className="explainer-copy">Number of congressional committees {lastName} has joined compared to the <strong>most committees joined</strong> by one rep this term.</div>
                 </div>
               </div>
+            }
+            { !this.state.showExplainer &&
+            <div>
+              <div className="card-section-header-wrap">
+                <span className="card-section-description">These scores contribute to {lastName}&apos;s <span className="card-section-grade">{letter_grade}</span> grade.
+                <span className="card-section-explainer-toggle" onClick={() => this.toggleExplainer()}>Learn how <IconAngleDown color="#4b4b4b" strokeWidth="3" /></span></span>
+              </div>
+              <div className="rep-card-donut-charts">
+                <Attendance {...this.props} />
+                <Participation {...this.props} />
+                <Efficacy {...this.props} />
+                <MembershipStats {...this.props} />
+              </div>
+            </div>
             }
           </div>
           <div className="rep-card-section-divider">
             <div className="card-section-header-wrap">
-              <h2 className="card-section-header">Bills</h2>
-              <div className="card-section-description">{lastName} has sponsored bills in these categories:</div>
+              <h2 className="card-section-header">Legislation</h2>
+              <div className="card-section-description">{lastName} has sponsored bills under these categories:</div>
             </div>
             <PolicyAreas {...this.props} />
           </div>
@@ -164,7 +164,7 @@ class ReportCard extends React.Component {
         <div className="rep-card-details-wrap">
           <ul className="rep-card-bio-list">
             { list.map((item, index) => !['none'].includes(item) ? (
-              <li className="rep-card-bio-list-item" key={`${item}${index}`}>{item}</li>
+              <li className="rep-card-bio-list-item" key={`${item}${index}`}>{item.charAt(0).toUpperCase() + item.slice(1)}</li>
             ) : null)}
           </ul>
         </div>

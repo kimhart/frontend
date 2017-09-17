@@ -128,18 +128,38 @@
   display: block;
 }
 
-.rep-card-explainer {
-  padding: 30px;
-  background-color: $blue;
-  position: relative;
-
-  .close-explainer {
-    width: 200px;
-    margin: 0 auto;
+.card-section-explainer-toggle {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+  margin-left: 6px;
+  cursor: pointer;
+  .icon-angle-down {
+    transform: rotate(270deg);
+    color: $text-gray;
+    fill: $text-gray;
+    width: 7px;
+    margin-left: 2px;
   }
+}
 
-  p {
-    color: white;
+.rep-card-explainer {
+  padding: 20px;
+  position: relative;
+  .explainer-title {
+    color: #3a7adb;
+    font-size: 16px;
+    text-align: left;
+    margin: 20px 0 5px 0;
+  }
+  .explainer-copy {
+    font-size: 14px;
+    color: $text-gray;
+  }
+  .icon-close {
+    width: 10px;
+    color: $text-gray;
+    fill: $text-gray;
   }
 }
 
@@ -260,7 +280,6 @@
 }
 
 .rep-card-bio-list-item {
-  text-transform: capitalize;
   position: relative;
   padding-left: 20px;
   font-size: 14px;
@@ -352,15 +371,22 @@
 }
 
 .card-section-header {
-  font-size: 20px;
+  font-size: 18px;
   margin: 0;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  font-weight: 600;
 }
 
 .card-section-description {
   font-size: 14px;
   text-align: center;
   font-weight: 300;
+  .card-section-grade {
+    color: $blue;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 0 2px;
+  }
 }
 
 .rep-belief-item {
@@ -383,7 +409,6 @@
 
     .rep-belief-item-type {
       font-size: 18px;
-      color: lighten($text-gray, 10%);
       font-weight: 600;
       display: flex;
       justify-content: center;
@@ -461,30 +486,41 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 15px;
+  padding: 20px;
   border-top: 1px solid $lightest-gray;
-}
-
-.rep-speech-list-item {
-  &-frequency {
-    color: $gray;
-    font-size: 14px;
-  }
-  &-text {
-    color: $blue;
-    font-size: 16px;
-    font-weight: 400;
-  }
-  &-date {
-    font-size: 14px;
-  }
-  &-subject {
-    font-size: 16px;
-    font-weight: bold;
-    align-self: flex-start;
+  cursor: pointer;
+  .icon-angle-down {
+    transform: rotate(270deg);
+    margin-left: 20px;
   }
 }
 
+.rep-speech-list-item-frequency {
+  color: $gray;
+  font-size: 14px;
+}
+
+.rep-speech-list-item-text {
+  color: $blue;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.rep-speech-list-item-date {
+  font-size: 14px;
+  margin-right: 10px;
+  width: 25%;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.rep-speech-list-item-subject {
+  font-size: 14px;
+  color: $blue;
+  font-weight: 500;
+  flex: 1;
+  align-self: flex-start;
+}
 
 .speech-search {
   margin: 0 auto;
@@ -495,8 +531,11 @@
 }
 
 .speech-search-header {
-  text-align: center;
-  margin: 30px auto 10px auto;
+  display: flex;
+  justify-content: center;
+  margin: 30px auto 15px auto;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .speech-pill-container {
@@ -506,7 +545,8 @@
   align-items: center;
   width: 100%;
   padding: 0 20px;
-  margin: 25px auto;
+  font-size: 14px;
+  margin: 25px auto 15px auto;
 }
 
 .search-term-pill {
