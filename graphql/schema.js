@@ -22,6 +22,11 @@ import rp from 'request-promise';
 import { getUserSchema, Signup, Login, ChangePassword, ChangeAddress } from './user';
 
 import {
+  getSpeechSchema,
+  getSearchSpeechSchema
+} from './speech';
+
+import {
   rankAttendanceSchema,
   rankParticipationSchema,
   rankEfficacySchema
@@ -37,7 +42,7 @@ import {
   getRepParticipationSchema,
   getRepEfficacySchema,
   getRepPolicyAreasSchema,
-  getRepSearchSchema,
+  getRepSearchSchema
 } from './rep';
 
 import { getRepBeliefSchema } from './beliefs';
@@ -80,7 +85,9 @@ let schema = (db) => {
       rank_participation: rankParticipationSchema(),
       rank_efficacy: rankEfficacySchema(),
       search: getRepSearchSchema(),
-      beliefs: getRepBeliefSchema()
+      beliefs: getRepBeliefSchema(),
+      speech: getSpeechSchema(),
+      search_speech: getSearchSpeechSchema()
     }),
     interfaces: [nodeDefs.nodeInterface]
   });

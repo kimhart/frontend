@@ -8,10 +8,6 @@
   color: white;
   text-align: center;
   transition: all .2s ease-out;
-
-  &:hover {
-    opacity: .8;
-  }
 }
 
 .button-contents {
@@ -20,7 +16,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
+  font-weight: inherit;
 }
 
 .button--small {
@@ -43,7 +39,7 @@
 }
 
 .button--red {
-  background-color: $bright-red;
+  background-color: $red;
 }
 
 .button--gray {
@@ -56,20 +52,21 @@
   color: inherit;
 
   &.button--gray {
-    background-color: transparent;
     color: transparentize(black, .7);
   }
 
   &.button--white {
-    background-color: transparent;
     color: white;
+  }
+
+  &.button--blue {
+    color: $blue;
   }
 }
 
 .control-button {
-  background-color: white;
-  box-shadow: 0 0 10px transparentize($blue, .75);
-  border: 1px solid transparentize($blue, .75);
+  border: 1px solid $blue;
+  color: $blue;
   cursor: pointer;
 }
 
@@ -82,5 +79,4 @@
   align-items: center;
   font-family: $brand-font, 'Arial', sans-serif;
   font-size: 20px;
-  color: transparentize($blue, .3);
 }

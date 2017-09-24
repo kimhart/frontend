@@ -159,17 +159,29 @@ class Rank extends Component {
     const { bestToWorst } = this.state;
     return (
       <div className="rank-wrap">
-        <div className="rank-controls-wrap blue-header">
+        <div className="blue-header">
           <div className="rank-category-wrap">
-            <p className="rank-headline">Rank reps based on core job performance:</p>
+            <div className="rank-headline">Rank reps by performance:</div>
             <div className="rank-category-name" onClick={() => this.getDropDown()}>
-              <p>{this.getActiveCategory()}</p>
-              <IconAngleDown fill="white" width="12px" />
+              <div className="rank-category-value">{this.getActiveCategory()}</div>
+              <IconAngleDown strokeWidth="3" />
             </div>
             <div className="rank-category-dropdown" ref="dropdown" onClick={() => this.getDropDown()}>
-              <p className={`rank-category-item ${this.getActiveCategory() === 'Bills' ? 'active' : ''}`} onClick={() => this.setState({ attendance: false, participation: false, efficacy: true })}>Bills Sponsored</p>
-              <p className={`rank-category-item ${this.getActiveCategory() === 'Attendance' ? 'active' : ''}`} onClick={() => this.setState({ attendance: true, participation: false, efficacy: false })}>Work Attendance</p>
-              <p className={`rank-category-item ${this.getActiveCategory() === 'Votes' ? 'active' : ''}`} onClick={() => this.setState({ attendance: false, participation: true, efficacy: false })}>Votes Cast</p>
+              { this.getActiveCategory() !== 'Bills Sponsored' &&
+                <div className={`rank-category-item`} onClick={() => this.setState({ attendance: false, participation: false, efficacy: true })}>
+                  <span>Bills Sponsored</span>
+                </div>
+              }
+              { this.getActiveCategory() !== 'Work Attendance' &&
+                <div className={`rank-category-item`} onClick={() => this.setState({ attendance: true, participation: false, efficacy: false })}>
+                  <span>Work Attendance</span>
+                </div>
+              }
+              { this.getActiveCategory() !== 'Votes Cast' &&
+                <div className={`rank-category-item`} onClick={() => this.setState({ attendance: false, participation: true, efficacy: false })}>
+                  <span>Votes Cast</span>
+                </div>
+              }
             </div>
           </div>
           <div className="rank-toggle-wrap">
@@ -184,7 +196,7 @@ class Rank extends Component {
               <IconSearch width="20px" fill="#3A7ADB" />
             </div>
           </div>
-          <button className={`rank-sort-btn ${bestToWorst ? 'sort-down' : 'sort-up'}`} onClick={() => this.setState({bestToWorst: !bestToWorst})}>
+          <button className={`rank-sort-btn button--outline button--blue button--medium ${bestToWorst ? 'sort-down' : 'sort-up'}`} onClick={() => this.setState({bestToWorst: !bestToWorst})}>
             <span className="button-contents">
               Sort
               <IconTriangleDown fill="#3A7ADB" />

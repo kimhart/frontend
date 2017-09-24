@@ -7,3 +7,7 @@
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }
+
+.ReactModal__Body--open {
+  position: fixed;
+}

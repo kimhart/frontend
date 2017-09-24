@@ -27,6 +27,7 @@
 
   .icon-search {
     width: 24px;
+
     svg {
       width: 100%;
     }
@@ -59,15 +60,17 @@
   font-family: $brand-font;
   text-align: center;
   font-size: 20px;
+  line-height: 1.5;
   text-align: center;
   display: flex;
   justify-content: center;
   padding: 40px 20px 20px 20px;
+
   &:first-of-type {
     display: none;
   }
+
   @media screen and (min-width: 700px) {
-    max-width: 500px;
     margin: 0 auto;
   }
 }

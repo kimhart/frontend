@@ -1,6 +1,7 @@
 import IconClose from './IconClose';
 import IconAnalyze from './IconAnalyze';
 import IconFacebook from './IconFacebook';
+import IconFacebookOfficial from './IconFacebookOfficial';
 import IconAngleDown from './IconAngleDown';
 import IconLocation from './IconLocation';
 import IconPhone from './IconPhone';
@@ -12,13 +13,21 @@ import IconTriangleDown from './IconTriangleDown';
 import IconTwitter from './IconTwitter';
 import TallyLogo from './TallyLogo';
 import IconSettings from './IconSettings';
+import IconBio from './IconBio';
+import IconSpeech from './IconSpeech';
+import IconStats from './IconStats';
+import IconBeliefs from './IconBeliefs';
+import IconLink from './IconLink';
+import IconPlus from './IconPlus';
 
 export {
   IconClose,
   IconStamp,
   IconAnalyze,
   IconFacebook,
+  IconFacebookOfficial,
   IconAngleDown,
+  IconLink,
   IconLocation,
   IconPhone,
   IconRank,
@@ -27,5 +36,10 @@ export {
   IconTriangleDown,
   IconTwitter,
   TallyLogo,
-  IconSettings
+  IconSettings,
+  IconBeliefs,
+  IconStats,
+  IconSpeech,
+  IconBio,
+  IconPlus
 }

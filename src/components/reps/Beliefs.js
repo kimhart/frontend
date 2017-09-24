@@ -2,7 +2,7 @@ import React from 'react';
 import Relay from 'react-relay';
 import { isLoading } from '../../utils/Utils';
 import BeliefRange from './BeliefRange';
-import { IconAngleDown } from '../icons/Icons';
+import { IconAngleDown, IconPlus } from '../icons/Icons';
 
 class Beliefs extends React.Component {
 
@@ -38,16 +38,10 @@ class Beliefs extends React.Component {
           </div>
           { !isClickable
             ? (
-              <a className="clickable"
-                onClick={() => this.setState({ level: type === 'overall' ? 'overall' : sub_type_of })}
-                style={{
-                  position: 'absolute',
-                  left: 10,
-                  top: 10
-                }}
-              >
-                <IconAngleDown fill="#000000" transform="rotate(90)" /><span className="back-to-overall">Back</span>
-              </a>
+              <span className="rep-belief-back-button" onClick={() => this.setState({ level: type === 'overall' ? 'overall' : sub_type_of })}>
+                <IconAngleDown color="#454545"/>
+                Back
+              </span>
             )
             : null
           }
@@ -60,13 +54,22 @@ class Beliefs extends React.Component {
         <div
           key={`${bioguide_id}${sub_type_of}${type}`}
           className={`rep-belief-item ${isClickable ? 'clickable' : ''}`}
-          onClick={
+          onClick= {
             isClickable
             ? () => this.setState({ level: type || level })
             : () => null
           }
         >
-          <div className="rep-belief-item-type">{this.swapBeliefNames(type)}</div>
+        <div className="rep-belief-item-type">
+          <span className="rep-belief-item-name">
+            { isClickable &&
+              <div className="expand-plus">
+                <IconPlus width="10px"/>
+              </div>
+            }
+            {this.swapBeliefNames(type)}
+          </span>
+        </div>
           <BeliefRange {...this.props} {...belief} />
         </div>
       )
@@ -90,14 +93,18 @@ class Beliefs extends React.Component {
     if (!beliefs) return null;
     else if (!beliefs.length) {
       return (
-        <div>
-          <p className="rep-card-section-subtitle">This rep has not been in office long enough to predict their ideology yet.</p>
+        <div className="card-section-beliefs">
+          <div className="card-section-header-wrap">
+            <span className="card-section-description">This rep has not been in office long enough to predict their ideology yet.</span>
+          </div>
         </div>
       )
     }
     return (
-      <div>
-        <p className="rep-card-section-subtitle">Predicted ideologies based on voting history.<br/>Click on a section to get specific:</p>
+      <div className="card-section-beliefs">
+        <div className="card-section-header-wrap">
+          <span className="card-section-description">Predicted ideologies based on voting history.<br/>Click a subsection to explore.</span>
+        </div>
         <div>{ this.renderBeliefs({ beliefs, level }) }</div>
       </div>
     );

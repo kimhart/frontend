@@ -1,28 +1,21 @@
 # Tally
 
-### Running Locally
-Open 3 terminal tabs in the root `frontend` directory, and run:
+[![Code Climate Maintainability](https://api.codeclimate.com/v1/badges/6b87d3e22780f907abad/maintainability)](https://codeclimate.com/repos/59a5e32c07be1102a2000232/maintainability)
 
-`nodemon`
+https://www.tally.us.com
 
-`webpack -wd`
+### Run Locally
 
-`npm run watch-css`
+Server: `nodemon`
 
-Alternatively, run `npm install`, followed by `npm start`.
+Webpack: `webpack -wd`
+
+Sass: `npm run watch-css`
 
 ### About
 2018 midterm elections are around the corner. Do your Senators & Congresspeople deserve your vote?
 
 We've gathered and scored your reps' attendance, sponsored legislation, voting record, and ideology trends — dating all the way back to 1989. Tally is journalism-free, so you can spend less time sifting through headlines and focus on metrics that matter.
-
-### Mission Statement
-Tally aims to provide all people with a simple and fresh way to connect with their elected officials and review legislation that affects their district.</p>
-
-Our data is directly collected from public records on [Congress.gov](https://congress.gov/) and [Senate.gov](https://www.senate.gov/"). We are not affiliated with a specific party and place utmost importance on remaining impartial in our data collection and scoring algorithms. Through this presentation of unbiased data, we hope to encourage confidence in voters and accountability in representatives.
-
-Ultimately, the Tally community will consist of users who wish to lead meaningful civic action and become better-informed citizens.
-
 
 ### Stack
 * React
@@ -34,7 +27,6 @@ Ultimately, the Tally community will consist of users who wish to lead meaningfu
 * Python
 * PostgresSQL
 * API [here](https://github.com/alexhubbard89/reps_app)
-
 
 ### Team
 * [Alex Hubbard](https://github.com/alexhubbard89) — Founder/ Data Scientist / Back End Engineer

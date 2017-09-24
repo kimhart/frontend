@@ -45,8 +45,7 @@
 
 .profile-label {
   font-weight: 500;
-  font-size: 1rem;
-  text-transform: uppercase;
+  font-size: 20px;
   text-align: left;
   padding-right: 30px;
   margin-bottom: 15px;
@@ -61,7 +60,6 @@
 .profile-current-value {
   display: block;
   flex-grow: 1;
-  font-size: 1.2rem;
 
   @include max-width($tablet) {
     width: 100%;
@@ -73,10 +71,10 @@
 }
 
 .profile-district {
-  font-size: 14px;
+  color: $blue;
   text-transform: uppercase;
+  font-weight: 600;
   margin-bottom: 5px;
-  letter-spacing: .04em;
   color: $gray-med;
 }
 
@@ -104,4 +102,10 @@
   button {
     margin-left: 10px;
   }
+}
+
+.profile-update-error {
+  color: $red;
+  margin-bottom: 20px;
+  font-size: 14px;
 }

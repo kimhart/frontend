@@ -49,7 +49,7 @@ class Signup extends React.Component {
         onSuccess: ({ Signup: { user } }) => {
           if (typeof user === 'object' && user.hasOwnProperty('user_id') && !!user.user_id) {
             UserUtils.setUserId(user.user_id);
-            this.props.update();
+            this.props.setUser();
             browserHistory.push('/');
           }
           else {
@@ -77,6 +77,7 @@ class Signup extends React.Component {
 
     render() {
       let { passwordsConfirmed, error } = this.state;
+      const { facebook } = this.props.location.query;
       return (
         <div className="signup-page-wrap">
           <div className="logged-out-header">
@@ -84,6 +85,12 @@ class Signup extends React.Component {
           </div>
           <div className="signup-page">
             <h2 className="page-title">Sign Up</h2>
+            { !!facebook &&
+              <div>
+                <h3>Looks like we couldn't find an account after all! Sign up for Tally here!</h3>
+                <br />
+              </div>
+            }
             <form className="signup-form" onChange={this.handleDemographics} onSubmit={ !error ? this.handleSubmit : null }>
               <div className="profile-input-wrap input-label-wrap">
                 <input id="email" className="signup-email-input input--outline no-placeholder" type="email" placeholder="Email" ref="emailInput" required />
@@ -123,8 +130,8 @@ class Signup extends React.Component {
                   <label className="label-input-placeholder" htmlFor="address">Address</label>
                 </div>
                 <div className="profile-input-wrap input-label-wrap">
-                  <input id="address2" className="signup-address-input input--outline no-placeholder" type="text" placeholder="Apartment / Suite / Unit / Floor / etc." ref="address2Input" />
-                  <label className="label-input-placeholder" htmlFor="address2">Apartment / Suite / Floor / etc.</label>
+                  <input id="address2" className="signup-address-input input--outline no-placeholder" type="text" placeholder="Apartment" ref="address2Input" />
+                  <label className="label-input-placeholder" htmlFor="address2">Apartment</label>
                 </div>
               </div>
               <div className="flex-thirds">

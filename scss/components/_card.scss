@@ -3,22 +3,26 @@
   max-width: 440px;
   background: white;
   border-radius: 15px;
-  box-shadow: 0 5px 25px transparentize($blue, 0.65);
-  @include card-shadow;
-  border: 1px solid transparentize($blue, 0.85);
+  @include card-shadow-large;
   position: relative;
 }
 
 .rep-card-header-wrap {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100%;
   background: white;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
+  border-bottom: 0;
 
   @include min-width($tablet) {
     height: 310px;
+  }
+
+  &.contact-open {
+    height: auto;
   }
 
   .ReactModal__Content & {
@@ -34,7 +38,7 @@
   }
 
   .rep-letter-grade {
-    font-size: 30px;
+    font-size: 28px;
     color: white;
   }
 }
@@ -68,6 +72,7 @@
   height: 100px;
   width: 100px;
   border-radius: 100%;
+  flex-shrink: 0;
 }
 
 .rep-card-name {
@@ -79,50 +84,36 @@
 }
 
 .rep-card-position-wrap {
-  margin-bottom: 30px;
-  flex-grow: 1;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 10px;
 }
 
 .rep-card-role, .rep-card-leadership {
   display: block;
   text-align: center;
-  margin: 0 15px;
   color: $text-gray;
 }
 
-.rep-card-buttons-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 15px;
-  margin-bottom: 15px;
-}
+.contact-btn {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 20px;
 
-.bio-btn {
-  width: 100px;
-  height: 40px;
-  color: $blue;
-  font-size: 14px;
-  border-radius: 10px;
-  margin-right: 10px;
-
-  &.active {
-    background: $blue;
-    color: white;
-    border: none;
+  .icon-angle-down {
+    width: 10px;
+    height: auto;
+    margin-right: 5px;
+    transform: rotate(90deg);
   }
 }
 
-.rep-card-metrics-wrap {
-  border-top: 1px solid transparentize($blue, .7)
-}
-
 .rep-card-section-title {
-  color: $blue;
+  color: $text-gray;
   font-family: $brand-font;
-  font-weight: 400;
-  font-size: 22px;
-  margin: 40px 0 10px 0;
+  font-weight: 600;
+  font-size: 18px;
+  margin: 20px 0 10px 0;
   position: relative;
   display: flex;
   justify-content: center;
@@ -137,15 +128,38 @@
   display: block;
 }
 
-.rep-card-explainer {
-  padding: 30px;
-  background-color: $blue;
-  color: white;
-  position: relative;
+.card-section-explainer-toggle {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+  margin-left: 6px;
+  cursor: pointer;
+  .icon-angle-down {
+    transform: rotate(270deg);
+    color: $text-gray;
+    fill: $text-gray;
+    width: 7px;
+    margin-left: 2px;
+  }
+}
 
-  .close-explainer {
-    width: 200px;
-    margin: 0 auto;
+.rep-card-explainer {
+  padding: 20px;
+  position: relative;
+  .explainer-title {
+    color: #3a7adb;
+    font-size: 16px;
+    text-align: left;
+    margin: 20px 0 5px 0;
+  }
+  .explainer-copy {
+    font-size: 14px;
+    color: $text-gray;
+  }
+  .icon-close {
+    width: 10px;
+    color: $text-gray;
+    fill: $text-gray;
   }
 }
 
@@ -154,6 +168,10 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+
+  p {
+    color: $text-gray;
+  }
 
   .donut-chart-container {
     display: inline-block;
@@ -194,14 +212,43 @@
 
 .policy-areas {
   padding: 0 20px;
+  padding-bottom: 20px;
+}
+
+.policy-area-title {
+  color: $text-gray;
+  font-size: 16px;
+  font-weight: 300;
 }
 
 .details-title {
   width: 100%;
   margin: 10px auto;
   text-transform: uppercase;
-  color: transparentize($text-gray, .20);
+  color: $gray;
   font-size: 20px;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .contact-row {
+    padding: 15px;
+    border-top: 1px solid $lightest-gray;
+    display: flex;
+    color: $text-gray;
+    align-items: center;
+
+    &:first-child {
+      border-color: $light-gray;
+    }
+
+    &:hover {
+      background-color: transparentize($blue, .95);
+    }
+  }
 }
 
 .contact-icons {
@@ -211,29 +258,46 @@
 }
 
 .contact-icon-circle {
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
-  padding: 5px;
+  min-width: 40px;
+  min-height: 40px;
+  margin-right: 15px;
   border-radius: 100%;
   border: 1px solid #ED2332;
   display: flex;
   justify-content: center;
   align-items: center;
-}
 
-.rep-card-details-wrap {
-  padding: 0 5px;
+  svg {
+    height: 20px;
+    max-width: 20px;
+  }
 }
 
 .rep-card-bio-list {
-  padding-left: 1em;
-  margin: 15px;
+  padding: 30px 0;
+  margin: 0 20px;
+  list-style: none;
 }
 
 .rep-card-bio-list-item {
-  padding: 10px 0;
-  text-transform: capitalize;
+  position: relative;
+  padding-left: 20px;
+  font-size: 14px;
+  line-height: 1.4;
+
+  &:before {
+    content: "•";
+    font-size: 20px;
+    line-height: 1;
+    color: $blue;
+    position: absolute;
+    left: 0;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 15px;
+  }
+
   &:first-of-type {
     display: none;
   }
@@ -241,7 +305,7 @@
 
 .rep-card-contact-list-item:nth-last-of-type(3) {
   flex-wrap: wrap;
-  line-height: 1.3em;
+  line-height: 1.3;
 }
 
 
@@ -255,152 +319,145 @@
 .card-toggle-wrap {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  width: 90%;
-  margin: 0 auto;
+  justify-content: space-between;
+  margin-top: auto;
+  width: 100%;
 }
 
-.card-toggle-stats {
-  color: #FFF;
+.card-toggle {
+  color: $gray;
   cursor: pointer;
-  background: transparentize($blue, .4);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 300;
   text-align: center;
   font-size: 16px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  margin: 10px 5px 0 5px;
-  padding: 0 15px;
+  padding: 10px 15px;
   flex: 1;
-  height: 40px;
-  transform: translateY(1px);
-  &.active {
-    background: white;
-    border: 1px solid transparentize($blue, .4);
-    border-bottom: 1px solid white;
-    color: $blue;
-    font-weight: 600;
-    position: relative;
-    top: 2px;
-    transform: none;
-  }
-}
+  flex-wrap: wrap;
+  border-bottom: 2px solid $light-gray;
 
-.rep-belief-slider-wrap {
-  position: relative;
-  background: transparentize($blue, .785);
-  border-radius: 10px;
-  width: 100%;
-  height: 10px;
-  margin: 0;
-  padding: 0;
-
-  .dots {
+  svg {
+    height: 25px;
     width: 100%;
-    position: absolute;
-    height: 10px;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .dot {
-      background-color: transparentize($blue, .45);
-      width: 8px;
-      height: 8px;
-      margin: 1px;
-      border-radius: 16px;
-    }
-  }
-}
-
-.back-to-overall {
-  font-size: 13px;
-  font-weight: 500;
-  margin-left: 5px;
-}
-
-.rep-belief-slider {
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  top: -10px;
-  border-radius: 30px;
-  background: $blue;
-  background-size: cover;
-}
-
-.rep-belief-slider-terms {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  height: 40px;
-  font-size: 12px;
-
-  .moderate {
-    margin-left: 30px;
-    font-weight: 400;
+    margin-bottom: 8px;
   }
 
-  .liberal {
-    color: lighten($blue, 5%);
-    font-weight: 400;
-  }
-
-  .conservative {
-    color: lighten($soft-red, 5%);
+  &.active {
+    color: $soft-red;
+    border-bottom: 2px solid $soft-red;
     font-weight: 400;
   }
 }
 
 .rep-card-section-divider {
-  padding-bottom: 20px;
   position: relative;
 
   &:not(:last-child) {
-    border-bottom: 1px solid transparentize($blue, .7);
+    border-bottom: 1px solid $light-gray;
   }
 
   .question-mark-circle {
     position: absolute;
-    top: 0;
-    right: 10px;
+    top: 15px;
+    right: 15px;
   }
 }
 
-.rep-belief-item-type {
-  text-transform: capitalize;
-  font-size: 18px;
-  margin: 0 auto;
-  margin-bottom: 30px;
+.card-section-header-wrap {
+  padding: 25px 15px;
   text-align: center;
-  font-weight: 500;
+}
+
+.card-section-header {
+  font-size: 18px;
+  margin: 0;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.card-section-description {
+  font-size: 14px;
+  text-align: center;
+  font-weight: 300;
+  .card-section-grade {
+    color: $blue;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 0 2px;
+  }
 }
 
 .rep-belief-item {
   width: 100%;
-  padding: 20px 15px 50px 15px;
-
+  margin: 0 auto;
+  padding: 20px 15px 50px;
   position: relative;
-
-  &:first-child {
-    margin-top: 20px;
-    background-color: transparentize($blue, .9);
-  }
 
   &.clickable:hover {
     background-color: transparentize($blue, .95);
   }
 
   &:not(:last-child) {
-    border-bottom: 1px solid transparentize($blue, .9);
+    border-bottom: 1px solid $lightest-gray;
+  }
+
+  &:first-child {
+    background-color: transparentize($blue, .92);
+    border-bottom: 0;
+
+    .rep-belief-item-type {
+      font-size: 18px;
+      font-weight: 600;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
 
+.rep-belief-item-type {
+  text-transform: capitalize;
+  font-size: 15px;
+  margin: 0 auto;
+  margin-bottom: 25px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.rep-belief-item-name {
+  position: relative;
+
+  .expand-plus {
+    position: absolute;
+    left: -23px;
+    border: 1px solid lighten($text-gray, 10%);
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.rep-belief-back-button {
+  position: absolute;
+  top: 21px;
+  left: 20px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  .icon-angle-down {
+    width: 10px;
+    transform: rotate(90deg);
+    margin-right: 5px;
+  }
+}
 
 .policy-area {
   font-size: 14px;
@@ -422,4 +479,105 @@
   height: 15px;
   border-radius: 3px;
   margin: 5px 5px 0 0;
+}
+
+.rep-speech-list-item-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-top: 1px solid $lightest-gray;
+  cursor: pointer;
+  .icon-angle-down {
+    transform: rotate(270deg);
+    margin-left: 20px;
+  }
+}
+
+.rep-speech-list-item-frequency {
+  color: $gray;
+  font-size: 14px;
+}
+
+.rep-speech-list-item-text {
+  color: $blue;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.rep-speech-list-item-date {
+  font-size: 14px;
+  margin-right: 10px;
+  width: 25%;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.rep-speech-list-item-subject {
+  font-size: 14px;
+  color: $blue;
+  font-weight: 500;
+  flex: 1;
+  align-self: flex-start;
+}
+
+.speech-search {
+  margin: 0 auto;
+  max-width: 90%;
+  form {
+    width: 100%;
+  }
+}
+
+.speech-search-header {
+  display: flex;
+  justify-content: center;
+  margin: 30px auto 15px auto;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.speech-pill-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
+  font-size: 14px;
+  margin: 25px auto 15px auto;
+}
+
+.search-term-pill {
+  background-color: $blue;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  border-radius: 500px;
+  width: auto;
+  height: 2em;
+  padding: 3px 5px 3px 10px;
+  margin: 5px 5px 0 0;
+  span {
+    margin-right: 10px;
+  }
+  .remove-pill {
+    height: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    svg {
+      height: 100%;
+    }
+  }
+}
+
+.no-speech-search-results {
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
 }

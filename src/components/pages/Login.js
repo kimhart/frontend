@@ -5,15 +5,12 @@ import { Link, browserHistory } from 'react-router';
 import LoginMutation from './../mutations/LoginMutation';
 import { UserUtils } from '../../utils/Utils';
 import Signup from './Signup';
-import { TallyLogo } from '../icons/Icons';
+import { TallyLogo, IconFacebookOfficial } from '../icons/Icons';
 
 class Login extends React.Component {
 
-    constructor(props) {
-      super(props);
-      this.state = {
-        error: null
-      }
+    state = {
+      error: null
     }
 
     componentWillMount() {
@@ -41,10 +38,17 @@ class Login extends React.Component {
           }
           else {
             UserUtils.setUserId(user.user_id);
-            this.props.update();
+            this.props.setUser();
+            browserHistory.push('/');
           }
         }
       });
+    }
+
+    _loginWithFacebook = () => {
+      setTimeout(() => {
+        this.props.loginWithFacebook()
+      }, 1000);
     }
 
     render() {
@@ -55,7 +59,15 @@ class Login extends React.Component {
             <TallyLogo /><span className="tally-title">Tally</span>
           </div>
           <section className="home-section home-login">
+            <div id="login-facebook" className="login-form">
+              <Link className="standard-link signup-link" to="/social_confirmation">
+                <button className="login-btn login-with-facebook" type="button" onClick={this._loginWithFacebook}>
+                  <IconFacebookOfficial fill="#ffffff" /> Login with Facebook
+                </button>
+              </Link>
+            </div>
             <div id="login-form" className="login-form">
+              <p className="create-account">OR</p>
               <div className="profile-input-wrap input-label-wrap">
                 <input type="email" className="login-email-input input--outline no-placeholder" placeholder="Email" required ref={(c) => this._email = c} />
                 <label className="label-input-placeholder" htmlFor="email">Email</label>
@@ -64,13 +76,13 @@ class Login extends React.Component {
                 <input type="password" className="login-password-input input--outline no-placeholder" placeholder="Password" required ref={(c) => this._password = c} />
                 <label className="label-input-placeholder" htmlFor="password">Password</label>
               </div>
-              <button className="login-btn" type="button" onClick={this._handleSubmit}>Login</button>
+              <button className="login-btn" type="button" onClick={this._handleSubmit}>Login with Email</button>
             </div>
             { error && <p className="error">{ error }</p> }
             <div id="login-form" className="login-form">
               <p className="create-account">OR</p>
               <Link className="standard-link signup-link" to="/signup">
-                <button className="login-btn" type="button" onClick={this._handleSubmit}>Create a New Account</button>
+                <button className="login-btn" type="button">Create a New Account</button>
               </Link>
             </div>
           </section>
@@ -119,7 +131,7 @@ class Login extends React.Component {
               <h3 className="home-section-title">Mission</h3>
               <p>Tally provides all people with a simple and fresh way to connect with their elected officials and review legislation that affects their district.</p><br/>
               <p>Our data is directly collected from public records on <a className="gov-sites" target="_blank" href="https://congress.gov/">Congress.gov</a> and <a className="gov-sites" target="_blank" href="https://www.senate.gov/">Senate.gov</a>. We are not affiliated with a specific party and place utmost importance on remaining impartial in our data collection and scoring algorithms. Through this presentation of unbiased data, we hope to encourage confidence in voters and accountability in representatives.</p>
-             </div>
+            </div>
           </section>
           <section className="home-section home-contact">
             <div className="home-section-content">
@@ -127,7 +139,7 @@ class Login extends React.Component {
               <p>Want to learn more about what we're building?<br/> Get in touch:</p><br/>
               <p>Alex Hubbard: <span className="home-contact-email">alex@tally.us.com</span></p>
               <p>Kim Hart: <span className="home-contact-email">kim@tally.us.com</span></p>
-             </div>
+            </div>
           </section>
         </div>
       );
