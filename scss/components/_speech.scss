@@ -1,0 +1,177 @@
+
+.rep-speech-list-item-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-top: 1px solid $lightest-gray;
+  cursor: pointer;
+  .icon-angle-down {
+    transform: rotate(270deg);
+    margin-left: 10px;
+  }
+}
+
+.flex-align-center {
+  display: flex;
+  align-items: center;
+}
+
+.rep-speech-list-item-frequency {
+  color: $gray;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.rep-speech-list-item-text {
+  color: $blue;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.rep-speech-list-item-date {
+  font-size: 16px;
+  margin-right: 10px;
+  width: 25%;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.rep-speech-list-item-subject {
+  font-size: 16px;
+  color: $blue;
+  text-transform: capitalize;
+  font-weight: 500;
+  flex: 1;
+  align-self: flex-start;
+}
+
+.speech-search {
+  margin: 0 auto;
+  max-width: 90%;
+  form {
+    width: 100%;
+  }
+}
+
+.speech-search-header {
+  display: flex;
+  justify-content: center;
+  margin: 30px auto 15px auto;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.speech-search-subheaders {
+  padding: 20px 20px 5px 20px;
+  display: flex;
+  span {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  span:first-of-type {
+    margin-right: 10px;
+    width: 25%;
+  }
+}
+
+.speech-pill-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
+  font-size: 14px;
+  margin: 25px auto 15px auto;
+}
+
+.search-term-pill {
+  background-color: $blue;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  border-radius: 500px;
+  width: auto;
+  height: 2em;
+  padding: 3px 5px 3px 10px;
+  margin: 5px 5px 0 0;
+  span {
+    margin-right: 10px;
+  }
+  .remove-pill {
+    height: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    svg {
+      height: 100%;
+    }
+  }
+}
+
+.no-speech-search-results {
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.back-to-subjects {
+  padding: 8px 10px;
+  color: #fff;
+  background-color: $blue;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  font-weight: 300;
+  font-size: 14px;
+  margin: 30px auto 20px auto;
+  cursor: pointer;
+  .icon-angle-down {
+    transform: rotate(90deg);
+    margin-right: 10px;
+    color: #fff;
+  }
+}
+
+.clear-all-search-terms {
+  color: $gray-med;
+  font-size: 14px;
+  font-weight: 300;
+  justify-content: flex-end;
+  margin-top: 10px;
+  display: flex;
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+.speech-subject-wrap {
+  display: flex;
+  padding: 0 20px 20px 20px;
+  flex-direction: column;
+  cursor: default;
+  .rep-speech-subject-title {
+    font-size: 18px;
+    text-align: center;
+    margin: 15px auto 10px auto;
+    text-transform: capitalize;
+  }
+  .rep-speech-subject-text {
+    line-height: 1.4;
+    strong {
+      padding: 1px;
+      background-color: transparentize($teal-green, .65);
+    }
+  }
+  .rep-speech-subject-date {
+    margin: 0 auto 20px auto;
+    text-align: center;
+    font-size: 16px;
+  }
+}
